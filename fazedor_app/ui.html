@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fazedor de Histórias — TÉO &amp; JUCA Company</title>
+<style>
+  :root{
+    --bg:#17161a; --painel:#201f25; --painel2:#26252c; --borda:#38363f;
+    --txt:#e8e2d6; --txt2:#a9a29a; --mostarda:#c98a2e; --terracota:#b35a3f;
+    --teal:#2f6f6a; --verde:#4c7d4f; --verm:#b54242; --roxo:#8a6aa0;
+    --areia:#c0a45c; --cinza:#7d7a86; --foco:#e0b35c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 "Segoe UI",system-ui,sans-serif}
+  header{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--borda);background:#1c1b20;position:sticky;top:0;z-index:5}
+  header .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--mostarda),var(--terracota));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#1b1206}
+  header h1{font-size:17px;margin:0}
+  header .sub{color:var(--txt2);font-size:12px;margin-top:2px}
+  main{max-width:1180px;margin:0 auto;padding:18px 22px 60px}
+  section{background:var(--painel);border:1px solid var(--borda);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  h2{font-size:13px;margin:0 0 12px;color:var(--foco);letter-spacing:.06em;text-transform:uppercase}
+  h2 .num{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#dff3ef;align-items:center;justify-content:center;font-size:11px;margin-right:8px}
+  .linha{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+  textarea,input[type=text],input[type=password],select{background:#141317;border:1px solid var(--borda);color:var(--txt);border-radius:8px;padding:9px 10px;font-size:13px;width:100%}
+  textarea{resize:vertical;min-height:70px}
+  textarea.mono{font:12px/1.45 Consolas,monospace}
+  button{background:var(--painel2);border:1px solid var(--borda);color:var(--txt);padding:9px 14px;border-radius:9px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--foco)}
+  button.primary{background:var(--mostarda);border-color:var(--mostarda);color:#241503;font-weight:600}
+  button.teal{background:var(--teal);border-color:var(--teal);color:#e6f5f2;font-weight:600}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .mic-grande{width:96px;height:96px;border-radius:50%;border:3px solid var(--terracota);background:radial-gradient(circle at 35% 30%,#c96a45,#7e3a26);color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s}
+  .mic-grande:active,.mic-grande.on{transform:scale(1.06);box-shadow:0 0 24px #b35a3f88;border-color:var(--foco)}
+  .mic-side{width:100%;text-align:center;color:var(--txt2);font-size:11px;margin-top:6px}
+  .pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;border:1px solid var(--borda);color:var(--txt2)}
+  .pill.ok{color:#9fd9a2;border-color:#3d6b3f}
+  .pill.erro{color:#f2b3b3;border-color:#7a3c3c}
+  .pill.aten{color:#eec98f;border-color:#8a6a34}
+  .tag{font-size:11px;padding:2px 8px;border-radius:6px;color:#101010;font-weight:700;display:inline-block}
+  .st-INTRO{background:var(--teal);color:#e7f6f3}.st-SERVICO{background:var(--areia)}
+  .st-TENTATIVA{background:var(--mostarda)}.st-FALHA{background:var(--terracota);color:#fff}
+  .st-REACAO_GAMBIARRA{background:var(--roxo);color:#f4eeff}
+  .st-NOVO_CAOS{background:var(--verm);color:#fff}.st-RESOLUCAO{background:var(--verde);color:#eaf5eb}
+  .st-TAG{background:var(--cinza)}
+  /* dossiê v1.0 — estágios oficiais dos 30 clipes */
+  .st-LIGACAO{background:var(--teal);color:#e7f6f3}.st-CHEGADA{background:var(--areia)}
+  .st-DIAGNOSTICO_ERRADO{background:var(--mostarda)}.st-PRIMEIRA_FALHA{background:var(--terracota);color:#fff}
+  .st-JEITINHO{background:var(--roxo);color:#f4eeff}.st-PAUSA_COMICA{background:#e8e2d8}
+  .st-ESCALADA{background:var(--verm);color:#fff}.st-CLIMAX{background:#8c1f14;color:#fff}
+  .st-REACAO_EM_CORO{background:var(--verde);color:#eaf5eb}.st-NOTA_FISCAL{background:var(--cinza)}
+  .timeline{display:flex;gap:2px;height:30px;border-radius:7px;overflow:hidden;margin:10px 0 4px;border:1px solid var(--borda)}
+  .timeline div{min-width:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#151515;font-weight:700;cursor:pointer}
+  .tl-leg{font-size:11px;color:var(--txt2)}
+  .card{background:var(--painel2);border:1px solid var(--borda);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+  .card .topo{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+  .card label{display:block;font-size:11px;color:var(--foco);margin:8px 0 3px;letter-spacing:.04em;text-transform:uppercase}
+  .card textarea{font-size:12.5px}
+  .uls{list-style:none;margin:8px 0 0;padding:0;font-size:12.5px}
+  .uls li{padding:4px 0 4px 12px;border-left:3px solid transparent}
+  .uls li.e{border-color:var(--verm);color:#f0bcbc}
+  .uls li.a{border-color:var(--mostarda);color:#e8cf9f}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .config-api{display:none}
+  .config-api.aberto{display:block}
+  .espreita{color:var(--txt2);font-size:12px}
+  code{background:#141317;border:1px solid var(--borda);border-radius:5px;padding:1px 6px;font-size:12px}
+  .oculto{display:none!important}
+  .status{font-size:12px;color:var(--txt2);min-height:18px}
+  a.linc{color:var(--foco)}
+  dialog{background:var(--painel);color:var(--txt);border:1px solid var(--borda);border-radius:14px;max-width:900px;width:86%}
+  dialog::backdrop{background:#000a}
+  .rodape{color:var(--txt2);font-size:11px;margin-top:6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">T&amp;J</div>
+  <div>
+    <h1>FAZEDOR DE HISTÓRIAS — <span style="color:var(--mostarda)">TÉO &amp; JUCA Company</span></h1>
+    <div class="sub">Fale a ideia → o programa lapida, valida pelas 14 regras do pipeline e entrega os prompts + settings v2.1 prontos · <b style="color:var(--mostarda)">UI v1.3</b> <span style="color:var(--txt2)">(se este selo não aparece, aperte Ctrl+F5)</span></div>
+  </div>
+  <div style="margin-left:auto" id="statusBases" class="pill">bases…</div>
+</header>
+<main>
+
+<!-- 1 · IDEIA -->
+<section>
+  <h2><span class="num">1</span>A ideia (fale ou digite)</h2>
+  <div class="linha">
+    <div>
+      <button id="bFalar" class="mic-grande" title="Clique, fale o episódio inteiro e clique de novo: o áudio é transcrito pelo Gemini">🎙️</button>
+      <div class="mic-side" id="micEstado">clique → fale → clique de novo</div>
+      <div style="display:flex;gap:4px;justify-content:center;margin-top:6px">
+        <button id="bDiag" style="font-size:10px;padding:3px 7px" title="Testa contexto, permissão, dispositivo, gravador e nível de voz — mostra O QUE falha">🩺 diagnóstico</button>
+        <button id="bEco" style="font-size:10px;padding:3px 7px" title="Grava 3 s e toca a sua voz de volta, depois transcreve o eco">🔊 eco-teste</button>
+        <button id="bWinMic" style="font-size:10px;padding:3px 7px" title="Abre Configurações do Windows > Privacidade > Microfone">🪟 áudio Windows</button>
+      </div>
+      <pre id="diagOut" class="mono" style="display:none;max-width:430px;white-space:pre-wrap;font-size:11px;border:1px solid var(--foco);border-radius:8px;padding:8px;margin-top:8px"></pre>
+    </div>
+    <div style="flex:1;min-width:320px">
+      <textarea id="ideia" rows="5" placeholder="Ex.: &quot;Contratados pra tirar o balde do poço, mas o balde cresce grávida de outros baldes&quot; — escreva o serviço, o lugar e (se souber) o que dá errado. O resto o programa completa."></textarea>
+      <div class="rodape">🎙️ = grava o microfone e transcreve pelo Gemini (a mesma chave que você deixou no app) · fallbacks: digitar ou ditar com Win+H.</div>
+      <div class="linha" style="margin-top:8px">
+        <button id="bAuto" class="teal" title="Sorteia um tema na matriz de 72.000 combinações do dossiê e a IA escreve o roteiro completo (30 clipes) — leva 5–15 min">🎲 Autoepisódio (IA gera tudo)</button>
+        <button id="bApi" class="primary" title="A IA transforma a ideia da caixa acima no roteiro completo — leva 5–15 min">🤖 Lapidar esta ideia (IA)</button>
+        <button id="bConf">⚙️ Config</button>
+        <span style="flex:1"></span>
+        <button id="bCola" class="teal" title="PLANO B sem API: monta o pacote da MEMORY DIRECTIVE para colar num chat gratuito (GLM/Gemini/ChatGPT) e trazer a resposta de volta">📦 Pacote p/ chat externo (sem API)</button>
+        <button id="bLimpa">🧹 limpar</button>
+      </div>
+      <div class="status" id="status1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · COLA -->
+<section id="secCola" class="oculto">
+  <h2><span class="num">2</span>Modo Cola AI (sem chave — use chat gratuito)</h2>
+  <div class="espreita">1) copie o pacote todo · 2) abra um chat · 3) o chat responde RESUMO + &#96;&#96;&#96;json&#96;&#96;&#96; · 4) cole a resposta no campo abaixo e clique <b>Validar JSON colado</b>.</div>
+  <div class="linha" style="margin-top:8px">
+    <a class="linc" href="https://chat.z.ai" target="_blank">GLM (chat.z.ai)</a> ·
+    <a class="linc" href="https://gemini.google.com" target="_blank">Gemini</a> ·
+    <a class="linc" href="https://chatgpt.com" target="_blank">ChatGPT</a> ·
+    <a class="linc" href="https://chat.deepseek.com" target="_blank">DeepSeek</a> ·
+    <a class="linc" href="https://groq.com" target="_blank">Groq</a>
+  </div>
+  <textarea id="pacote" class="mono" rows="9" spellcheck="false"></textarea>
+  <div class="linha" style="margin-top:6px">
+    <button id="bCopPacote" class="primary">📋 Copiar pacote</button>
+    <span style="flex:1"></span>
+    <span class="espreita" id="charsPacote"></span>
+  </div>
+  <hr style="border-color:var(--borda)">
+  <label class="espreita">Resposta do chat (cole aqui — json ou texto com json)</label>
+  <textarea id="respostaChat" class="mono" rows="6" spellcheck="false"></textarea>
+  <div class="linha" style="margin-top:6px">
+    <button id="bValidaCola" class="primary">✅ Validar JSON colado</button>
+    <button id="bCorrecao">🔁 Gerar pedido de correção (se houver erros)</button>
+    <span style="flex:1"></span>
+    <button id="bCopCorrecao" disabled>📋 copiar correção</button>
+  </div>
+</section>
+
+<!-- 3 · API -->
+<section id="secApi" class="config-api">
+  <h2><span class="num">3</span>API automática (OpenAI-compatível)</h2>
+  <div class="grid2">
+    <div>
+      <label>Provedor</label>
+      <select id="apiProv">
+        <option value="agentrouter" selected>AgentRouter — gpt-6.1-sol / gpt-6-astra / gpt-5.6-sol (fixo e validado)</option>
+      </select>
+      <label>Endpoint</label>
+      <input type="text" id="apiUrl">
+      <label>Modelo (ex.: gemini-3.8-flash · gpt-6.1-sol · gpt-6-astra · gpt-5.6-sol)</label>
+      <input type="text" id="apiModel" list="dlModelos">
+      <datalist id="dlModelos"></datalist>
+      <label>Nível de pensamento (Gemini, thinking)</label>
+      <select id="apiThinking">
+        <option value="medium" selected>medium (equilibrado)</option>
+        <option value="low">low (mais rápido/barato)</option>
+        <option value="high">high (mais criativo/lento)</option>
+        <option value="minimal">minimal (sem pensar)</option>
+      </select>
+    </div>
+    <div>
+      <label>Chave (fica só neste navegador / localStorage)</label>
+      <input type="password" id="apiChave">
+      <label>Temperatura <span id="tempVal">0.8</span></label>
+      <input type="range" id="apiTemp" min="0" max="1.4" step="0.1" value="0.8" style="width:100%">
+      <label>max_tokens</label>
+      <input type="text" id="apiMax" value="16000">
+      <div class="linha" style="margin-top:10px">
+        <button id="bApiSalvarCfg">💾 salvar config</button>
+        <button id="bApiLimparCfg">🧹 apagar</button>
+        <button id="bApiTeste">🔌 testar conexão</button>
+      </div>
+    </div>
+  </div>
+  <div class="status" id="statusApi"></div>
+</section>
+
+<!-- 4 · EPISÓDIO -->
+<section id="secEp" class="oculto">
+  <h2><span class="num">4</span>Episódio <span id="epTitulo" style="color:var(--txt)"></span></h2>
+  <div id="epResumo" class="oculto" style="background:var(--painel2);border:1px solid var(--borda);border-radius:10px;padding:10px 12px;font-size:13px;white-space:pre-wrap"></div>
+  <div style="margin-top:10px" id="epMec" class="espreita"></div>
+  <div class="timeline" id="tl"></div>
+  <div class="tl-leg">&#9679; largura = duração · clique barra = rolar ao cartão · marcadores: borda sólida = corte (<i>texto</i>)</div>
+  <div id="epStats" class="espreita" style="margin:6px 0 12px"></div>
+  <div id="cards"></div>
+</section>
+
+<!-- 5 · VALIDAÇÃO -->
+<section id="secVal" class="oculto">
+  <h2><span class="num">5</span>Validação (as 14 regras do pipeline)</h2>
+  <div class="linha">
+    <button id="bValidar" class="teal">▶ validar episódio</button>
+    <button id="bCorrApi">🧠 corrigir com a IA (API)</button>
+    <span style="flex:1"></span>
+    <span id="valSum" class="pill">—</span>
+  </div>
+  <ul class="uls" id="valLista"></ul>
+  <div class="status" id="status5"></div>
+</section>
+
+<!-- 6 · SAÍDA -->
+<section id="secSaida" class="oculto">
+  <h2><span class="num">6</span>Saída (arquivos + settings v2.1)</h2>
+  <div class="linha">
+    <button id="bSalvar" class="primary">💾 Salvar episódio + prompts (shot_NN.txt)</button>
+    <button id="bSettings" class="teal">⚙️ Gerar settings JSONs v2.1 + corrente</button>
+  </div>
+  <label style="margin-top:8px;display:inline-block"><input type="checkbox" id="sobrescrever"> permitir sobrescrever pasta existente (revisão do mesmo episódio)</label>
+  <div class="status" id="status6"></div>
+  <div id="saidaPaths" class="espreita" style="white-space:pre-wrap;font-family:Consolas,monospace"></div>
+</section>
+
+<!-- 7 · ARQUIVO -->
+<section>
+  <h2><span class="num">7</span>Episódios na pasta do app</h2>
+  <div id="lista" class="espreita">—</div>
+  <button id="bRefresca" style="margin-top:8px">↻ atualizar lista</button>
+</section>
+
+<dialog id="dlgAjuda">
+  <h2 style="color:var(--foco)">Como funciona o botão 🎙️</h2>
+  <p>O botão <b>grava o microfone</b> (MediaRecorder do próprio navegador) e envia o áudio para o <b>Gemini transcrever</b> — a mesma chave do app, sem serviço de fala do Windows. Clique, fale o episódio <b>TODO</b>, clique de novo: a transcrição entra na caixa de ideia.</p>
+  <p>Se não funcionar: <b>🩺 diagnóstico</b> mostra a linha exata (contexto seguro · permissão · dispositivo · gravador · nível de voz); <b>🔊 eco-teste</b> grava 3 s, toca a sua voz de volta e transcreve o eco; <b>🪟 áudio Windows</b> abre as permissões globais do sistema.</p>
+  <p>Enquanto grava, as bolinhas <code>●●●●○○</code> mostram o nível captado — sem bolinhas = o microfone não está captando nada.</p>
+  <p>Fallbacks sempre disponíveis: digitar, colar, ou ditar com <code>Win+H</code> (funciona em qualquer textarea).</p>
+  <button onclick="document.getElementById('dlgAjuda').close()">fechar</button>
+</dialog>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const ESTAGIOS = ["LIGACAO","CHEGADA","DIAGNOSTICO_ERRADO","PRIMEIRA_FALHA","JEITINHO","PAUSA_COMICA","ESCALADA","CLIMAX","REACAO_EM_CORO","NOTA_FISCAL"];
+let PIECES = {sistema:"",exemplo:"",blocos:{},dossie_md:"",dossie_estagios:[],dossie_dur:10,matriz:{}};
+let EPISODIO = null;              // objeto editável (fonte única)
+let PACOTE = "";                  // texto do modo cola
+let historicoAPI = [];            // mensagens p/ modo API
+
+function status(id, txt, cor){ const e=$(id); e.textContent=txt||""; e.style.color=cor||"var(--txt2)"; }
+function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+async function jpost(url, body){
+  const r = await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body||{})});
+  const j = await r.json().catch(()=>({erro:"resposta não é json"}));
+  if(!r.ok) throw new Error(j.erro||("http "+r.status));
+  return j;
+}
+function copiar(txt){ navigator.clipboard.writeText(txt); }
+
+/* ── 0 · bases ── */
+(async function init(){
+  try{
+    PIECES = await (await fetch("/api/pieces")).json();
+    $("statusBases").textContent = `bases OK · sistema ${(PIECES.sistema.length/1000).toFixed(1)}k chars · bloqueio ${Object.keys(PIECES.blocos).filter(k=>k!=="_nota").length} fixos`;
+    $("statusBases").className = "pill ok";
+    await configInicial();
+    listar();
+  }catch(e){ $("statusBases").textContent="erro nas bases: "+e.message; $("statusBases").className="pill erro"; }
+})();
+
+async function listar(){
+  try{
+    const j = await (await fetch("/api/episodios")).json();
+    $("lista").innerHTML = j.episodios.length ? j.episodios.map(e=>{
+      return `<div>📁 <b>${esc(e.nome)}</b> ${e.pronto?`<span class="pill ok">prompts</span>`:""} ${e.settings?`<span class="pill ok">settings</span>`:""} — <span class="espreita">${esc(e.pasta)}</span></div>`;
+    }).join("") : "Δ nenhum episódio salvo ainda";
+  }catch(e){ $("lista").textContent = "erro: "+e.message; }
+}
+$("bRefresca").onclick = listar;
+
+/* ── 1 · microfone — grava + transcreve pelo Gemini (sem serviço de fala do Windows) ── */
+let recStream = null, recorder = null, chunks = [], ouvindo = false;
+function pararRec(){
+  try{ recorder && recorder.state === "recording" && recorder.stop(); }
+  finally { if(recStream){ recStream.getTracks().forEach(t=>t.stop()); recStream = null; } }
+}
+$("bFalar").onclick = async () => {
+  if(ouvindo){
+    if(recorder && recorder.state === "recording"){ recorder.stop(); }
+    else { // estado travado por erro de navegador — desenrrola
+      ouvindo = false; $("bFalar").classList.remove("on");
+      $("micEstado").textContent = "clique → fale → clique de novo";
+    }
+    return;
+  }
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    status("status1","⚠️ este painel não tem microfone. Se você está dentro do painel Review do chat, abra o app no SEU navegador: http://127.0.0.1:8756 — ou aperte 🩺 diagnóstico","var(--terracota)");
+    return;
+  }
+  try{
+    recStream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}});
+  }catch(e){
+    const fix = {
+      NotAllowedError:"permissão NEGA — clique no cadeado da barra de endereço → Microfone → Permitir → recarregue (F5). Permissão global do sistema: botão 🪟",
+      NotFoundError:"nenhum microfone detectado — conecte/ative um e deixe-o como padrão do sistema",
+      NotReadableError:"microfone ocupado por outro programa (Teams/Zoom/Discord/OBS) — feche-os e tente de novo",
+      AbortError:"placa de áudio travou — feche e reabra o navegador"
+    };
+    status("status1","🎙️ " + (fix[e.name] || e.message) + " ["+e.name+"]","var(--terracota)");
+    return;
+  }
+  const mimes = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+  const mime = (window.MediaRecorder && MediaRecorder.isTypeSupported) ? mimes.find(m=>MediaRecorder.isTypeSupported(m)) || "" : "";
+  try{
+    recorder = mime ? new MediaRecorder(recStream, {mimeType:mime}) : new MediaRecorder(recStream);
+  }catch(e){
+    status("status1","falha ao iniciar gravação: "+e.message,"var(--terracota)"); pararRec(); return;
+  }
+  chunks = [];
+  recorder.ondataavailable = ev => { if(ev.data && ev.data.size) chunks.push(ev.data); };
+  recorder.onstop = async () => {
+    ouvindo = false; $("bFalar").classList.remove("on");
+    const blob = new Blob(chunks, {type: recorder.mimeType || mime || "audio/webm"});
+    chunks = []; pararRec();
+    $("micEstado").textContent = "transcrevendo… ("+Math.round(blob.size/1024)+" KB)";
+    if(blob.size < 2000){
+      $("micEstado").textContent="clique → fale → clique de novo";
+      status("status1","áudio vazio/curto — fale mais alto, mais perto do microfone","var(--terracota)"); return;
+    }
+    try{
+      const b64 = await new Promise((ok, fail) => {
+        const fr = new FileReader();
+        fr.onload = () => ok(String(fr.result).split(",")[1] || "");
+        fr.onerror = fail; fr.readAsDataURL(blob);
+      });
+      const mime2 = (blob.type||"audio/webm").split(";")[0];
+      const j = await jpost("/api/transcrever", {audio_b64:b64, mime:mime2});
+      const tx = (j.texto||"").trim();
+      if(tx){
+        const atual = $("ideia").value.trim();
+        $("ideia").value = (atual ? atual + " " : "") + normaliza(tx);
+        status("status1","transcrição OK ✓ ("+(j.modelo||"")+", "+((j.uso&&j.uso.total_tokens)||"")+" tokens) — revise e clique Lapidar","#9fd9a2");
+      } else {
+        status("status1","a transcrição veio vazia — fale mais perto do microfone","var(--terracota)");
+      }
+    }catch(e){ status("status1","transcrição falhou: "+e.message,"var(--terracota)"); }
+    $("micEstado").textContent = "clique → fale → clique de novo";
+  };
+  recorder.start();
+  ouvindo = true; $("bFalar").classList.add("on");
+  $("micEstado").textContent = "⏺ gravando… fale o episódio TODO e clique de novo p/ transcrever";
+  /* VU ao vivo — prova imediata de que a voz está sendo captada */
+  try{
+    const ac = new (window.AudioContext || window.webkitAudioContext)();
+    const an = ac.createAnalyser(); an.fftSize = 512;
+    ac.createMediaStreamSource(recStream).connect(an);
+    const buf = new Float32Array(an.fftSize);
+    (function tick(){
+      if(!ouvindo){ try{ ac.close(); }catch(_){} return; }
+      an.getFloatTimeDomainData(buf);
+      let p = 0; for(let i=0;i<buf.length;i++) p = Math.max(p, Math.abs(buf[i]));
+      const n = p <= 0.003 ? 0 : Math.max(1, Math.min(8, Math.round(p*33)));
+      $("micEstado").textContent = "⏺ " + "●".repeat(n) + "○".repeat(8-n) + " sem bolinhas = nada captado! fale TODO o episódio e clique de novo";
+      requestAnimationFrame(tick);
+    })();
+  }catch(_){}
+};
+$("bLimpa").onclick=()=>{ $("ideia").value=""; status("status1"); };
+
+/* ── 1b · diagnóstico do microfone — 6 testes, relatório em texto ── */
+function abrirDiag(txt){ const d = $("diagOut"); d.style.display = "block"; d.textContent = txt || ""; return d; }
+
+$("bDiag").onclick = async () => {
+  const d = abrirDiag("⏳ testando microfone… aguarde ~4 s (fale algo alto durante o teste!)");
+  const linhas = []; const L = (t, ok) => { d.textContent += "\n" + (ok===true?"✓ ":ok===false?"✗ ":"· ") + t; linhas.push(t); };
+  const ua = (navigator.userAgent.match(/(Edg|OPR|Chrome|Firefox)\/[\d.]+$/) || ["?"])[0];
+  L("navegador/painel: " + ua + " · UI v1.3");
+  L("contexto seguro (necessário p/ microfone): " + window.isSecureContext, window.isSecureContext);
+  const temMD = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  L("acesso a mídia (mediaDevices): " + temMD, temMD);
+  if(!temMD){
+    linhas.push("ARRUMAR: você está num painel sem microfone (review do chat?) → abra o app no SEU navegador: http://127.0.0.1:8756");
+    d.textContent += "\n\nRELATÓRIO p/ copiar:\n" + linhas.join("\n");
+    status("status1","diagnóstico: painel sem microfone — use http://127.0.0.1:8756 no seu navegador","var(--terracota)");
+    return;
+  }
+  let perm = "?";
+  try{ if(navigator.permissions){ perm = (await navigator.permissions.query({name:"microphone"})).state; } }catch(_){}
+  L("permissão do site p/ microfone: " + perm, perm==="granted" ? true : perm==="denied" ? false : null);
+  let st = null;
+  try{
+    st = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}});
+    const dev = (st.getAudioTracks()[0] || {}).label || "?";
+    L("microfone em uso: \"" + dev + "\"", true);
+  }catch(e){
+    L("getUserMedia FALHOU ["+e.name+"], " + e.message, false);
+    const fix = {
+      NotAllowedError:"permissão negada → cadeado na barra → Microfone → Permitir → F5 (e ver permissão global: 🪟)",
+      NotFoundError:"nenhum microfone no sistema → conecte/ative e defina como padrão",
+      NotReadableError:"microfone ocupado por outro app (Teams/Zoom/Discord/OBS) → feche-os",
+      AbortError:"placa de áudio travou → feche e reabra o navegador"
+    };
+    linhas.push("ARRUMAR: " + (fix[e.name] || "analise o nome do erro acima"));
+    d.textContent += "\n\nRELATÓRIO p/ copiar:\n" + linhas.join("\n");
+    status("status1","diagnóstico: falha em getUserMedia ["+e.name+"] — veja ARRUMAR no painel","var(--terracota)");
+    return;
+  }
+  const mimes = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+  const mime = (window.MediaRecorder && MediaRecorder.isTypeSupported) ? mimes.find(m=>MediaRecorder.isTypeSupported(m)) || "" : "";
+  let mr = null;
+  try{
+    mr = mime ? new MediaRecorder(st, {mimeType:mime}) : new MediaRecorder(st);
+    L("gravador (MediaRecorder): OK (" + (mr.mimeType || mime || "padrão") + ")", true);
+  }catch(e){
+    L("MediaRecorder FALHOU ["+e.name+"]", false);
+    linhas.push("ARRUMAR: atualize o navegador"); st.getTracks().forEach(t=>t.stop());
+    d.textContent += "\n\nRELATÓRIO p/ copiar:\n" + linhas.join("\n");
+    return;
+  }
+  // teste de nível real por 2 s (com o gravador ligado, como no uso verdadeiro)
+  const ac = new (window.AudioContext || window.webkitAudioContext)();
+  const an = ac.createAnalyser(); an.fftSize = 512;
+  ac.createMediaStreamSource(st).connect(an);
+  const buf = new Float32Array(an.fftSize); let pico = 0;
+  mr.start();
+  await new Promise(rep => {
+    const fim = performance.now() + 2000;
+    (function tick(){
+      an.getFloatTimeDomainData(buf);
+      for(let i=0;i<buf.length;i++) pico = Math.max(pico, Math.abs(buf[i]));
+      performance.now() < fim ? requestAnimationFrame(tick) : rep();
+    })();
+  });
+  try{ mr.stop(); }catch(_){}
+  st.getTracks().forEach(t=>t.stop());
+  try{ ac.close(); }catch(_){}
+  const fs = Math.round(20*Math.log10(pico));
+  const forte = pico >= 0.02;
+  L("nível de voz em 2 s: pico " + pico.toFixed(3) + " (" + (forte ? "bom, ~"+fs+" dB" : "MUITO BAIXO / mudo") + ")", forte);
+  if(forte){
+    linhas.push("CONCLUSÃO: captura OK — volte e clique 🎙️ normalmente");
+    status("status1","✓ microfone saudável ("+pico.toFixed(3)+") — clique 🎙️ e fale","#9fd9a2");
+  }else{
+    linhas.push("ARRUMAR nível: fale mais alto/perto · confira EM QUAL dispositivo o sistema gravou (🪟 > Entrada) · desmute o microfone · troque o padrão");
+    status("status1","⚠️ o microfone captou quase nada ("+pico.toFixed(4)+") — veja ARRUMAR no painel","var(--mostarda)");
+  }
+  d.textContent += "\n\nRELATÓRIO p/ copiar p/ o chat se persistir:\n" + linhas.join("\n");
+};
+
+$("bEco").onclick = async () => {
+  const d = abrirDiag("⏳ eco-teste: gravando 3 s AGORA — fale alto algo curto!");
+  try{
+    const st = await navigator.mediaDevices.getUserMedia({audio:true});
+    const mr = new MediaRecorder(st); const cs = [];
+    mr.ondataavailable = ev => cs.push(ev.data);
+    mr.start();
+    await new Promise(r => setTimeout(r, 3000));
+    mr.stop(); await new Promise(r => { mr.onstop = r; });
+    st.getTracks().forEach(t=>t.stop());
+    const blob = new Blob(cs, {type: mr.mimeType || "audio/webm"});
+    d.textContent = "🔊 gravado " + Math.round(blob.size/1024) + " KB (eco só faz sentido se > 5 KB) — tocando a SUA voz de volta…";
+    if(blob.size < 3000){
+      d.textContent += "\n✗ gravou quase nada → microfone não está captando: use 🩺 diagnóstico";
+      status("status1","eco-teste: áudio vazio — microfone não captou nada","var(--terracota)");
+      return;
+    }
+    const aud = new Audio(URL.createObjectURL(blob));
+    aud.onended = () => { d.textContent += "\n• fim da reprodução — se você OUVIU a própria voz, a captura funciona ✓"; };
+    aud.play().catch(e => { d.textContent += "\n(não tocou: " + e.message + ")"; });
+    // prova completa: manda o eco para o Gemini transcrever (independente da captura)
+    try{
+      const b64 = await new Promise((ok, fail) => {
+        const fr = new FileReader();
+        fr.onload = () => ok(String(fr.result).split(",")[1] || "");
+        fr.onerror = fail; fr.readAsDataURL(blob);
+      });
+      d.textContent += "\n⏳ transcrevendo o eco pelo Gemini…";
+      const j = await jpost("/api/transcrever", {audio_b64:b64, mime:(blob.type||"audio/webm").split(";")[0]});
+      const tx = (j.texto || "").trim();
+      d.textContent += "\n✓ o Gemini ouviu: \"" + (tx || "(vazio)") + "\"";
+      status("status1", tx ? "✓ se ouviu a própria voz E a transcrição acima saiu certa: tudo funciona — use 🎙️!"
+                           : "captura OK mas transcrição vazia — fale mais alto no 🎙️", tx ? "#9fd9a2" : "var(--mostarda)");
+    }catch(e2){
+      d.textContent += "\n(eco captado e tocado ✓, mas a transcrição do eco falhou: " + e2.message + ")";
+    }
+  }catch(e){
+    d.textContent = "✗ eco-teste falhou ["+e.name+"] " + e.message + "\n→ use 🩺 diagnóstico p/ ver onde quebrou";
+    status("status1","eco-teste falhou ["+e.name+"] — veja 🩺","var(--terracota)");
+  }
+};
+
+$("bWinMic").onclick = async () => {
+  try{
+    await jpost("/api/abrir_mic_settings", {});
+    status("status1","Configurações > Privacidade e segurança > Microfone aberta: ligue 'Acesso ao microfone' e 'Permitir que aplicativos de desktop acessem'","#9fd9a2");
+  }catch(e){
+    status("status1","não abriu ("+e.message+") — abra manual: Win+I > Privacidade e segurança > Microfone","var(--terracota)");
+  }
+};
+
+/* ── normalização de nomes (doc v1) ── */
+function normaliza(t){
+  return t.replace(/\b(theo|teo|teó)\b/gi,"TÉO").replace(/\bjuca\b/gi,"JUCA").trim();
+}
+
+/* ── 2 · modo cola ── */
+const CF = "```";                 // cerca de código para embutir com segurança
+$("bCola").onclick = () => {
+  const ideia = normaliza($("ideia").value);
+  if(!ideia){ status("status1","escreva ou fale a ideia primeiro","var(--terracota)"); return; }
+  $("secCola").classList.remove("oculto");
+  if(PIECES.dossie_md){
+    PACOTE = "INSTRUÇÕES: abaixo está a MEMORY DIRECTIVE fixa do agente TÉO & JUCA (dossiê v1.0). Ela define formato, regras e o template de saída.\n" +
+             "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio (30 clipes de 10 s). Nada depois do JSON.\n\n" +
+             PIECES.dossie_md + "\n\n" +
+             "=== IDEIA DO USUÁRIO ===\n" + ideia + "\n";
+  } else {
+    PACOTE = "INSTRUÇÕES: abaixo está o PROMPT DE SISTEMA completo do roteirista e, em seguida, UM EXEMPLO COMPLETO no exato formato de saída. Estude os dois.\n" +
+             "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio. Nada depois do JSON.\n\n" +
+             "=== INÍCIO DO PROMPT (sistema) ===\n" + PIECES.sistema + "\n" +
+             "=== FIM DO PROMPT (sistema) ===\n\n" +
+             "=== EXEMPLO COMPLETO (formato exato, use como gabarito) ===\n" + CF + "json\n" + PIECES.exemplo + "\n" + CF + "\n\n" +
+             "=== IDEIA DO USUÁRIO ===\n" + ideia + "\n";
+  }
+  $("pacote").value = PACOTE;
+  $("charsPacote").textContent = `${PACOTE.length.toLocaleString("pt-BR")} chars — se o chat aceitar só parte, cole a directive na 1ª mensagem e a ideia na 2ª`;
+  status("status1","pacote pronto — copie e cole num chat gratuito","#9fd9a2");
+};
+$("bCopPacote").onclick = () => copiar($("pacote").value);
+$("bValidaCola").onclick = () => processaResposta($("respostaChat").value);
+$("bCorrecao").onclick = () => {
+  const erros = ultimaValidacao ? (ultimaValidacao.erros||[]) : [];
+  const cor = "Sua resposta anterior não passou na validação do pipeline. Devolva O JSON COMPLETO corrigido (todos os campos, mesmo formato — RESUMO curto + um único " + CF + "json" + CF + "), corrigindo estes itens:\n" +
+              erros.map((e,i)=>(i+1)+". "+e).join("\n") +
+              (ultimaValidacao && ultimaValidacao.avisos && ultimaValidacao.avisos.length ? ("\nAvisos (melhorar, sem quebrar o resto): " + ultimaValidacao.avisos.join(" ; ")) : "");
+  $("respostaChat").value = ""; PACOTE_CORRECAO = cor; $("bCopCorrecao").disabled=false;
+  status("status5","Pedido de correção pronto — copie, mande no MESMO chat, traga o JSON de volta e valide de novo.","var(--foco)");
+};
+let PACOTE_CORRECAO = "";
+$("bCopCorrecao").onclick = () => copiar(PACOTE_CORRECAO);
+
+/* ── 3 · API ── */
+const ENDPOINTS = {agentrouter:"https://agentrouter.org/v1/responses"};
+const MODELOS = {agentrouter:"gpt-5.6-sol"};
+const KIND = {agentrouter:"responses"};
+const AR_MODELOS = ["gpt-6.1-sol","gpt-6-astra","gpt-5.6-sol"];
+const KEYS_SERVIDOR = {};   // chave pré-carregada pelo /api/fcfg
+let PREV_ID = "";
+$("bConf").onclick=()=>{ $("secApi").classList.toggle("aberto"); };
+$("apiProv").onchange=()=>{ const p=$("apiProv").value; if(ENDPOINTS[p]){$("apiUrl").value=ENDPOINTS[p];$("apiModel").value=MODELOS[p]||"";}
+  $("dlModelos").innerHTML = (p==="agentrouter"?AR_MODELOS:[]).map(m=>`<option value="${m}">`).join("");
+  if(KEYS_SERVIDOR[p] && !$("apiChave").value.trim()){ $("apiChave").value=KEYS_SERVIDOR[p]; status("statusApi","chave do servidor pré-carregada ✓"); }
+  if(p==="agentrouter"){ status("statusApi","AgentRouter: modelos de raciocínio — a lapidação pode levar 5–15 min por rodada (normal)"); }
+  else { status("statusApi"); } };
+$("apiTemp").oninput=()=>{ $("tempVal").textContent=$("apiTemp").value; };
+function cfgAPI(){                        // objeto api pronto p/ /api/gerar
+  return {kind:KIND[$("apiProv").value]||"openai", endpoint:$("apiUrl").value.trim(),
+          key:$("apiChave").value.trim(), model:$("apiModel").value.trim(),
+          temperature:Number($("apiTemp").value), max_tokens:Number($("apiMax").value)||16000,
+          thinking_level:$("apiThinking").value, previous_id:PREV_ID||undefined, na_fallback:true};
+}
+function carregarCfg(){ return false; }   // provedor único — config vem do servidor (configInicial)
+async function configInicial(){
+  let prefs = {};
+  try{ prefs = JSON.parse(localStorage.getItem("fazedorApi")||"{}"); }catch(e){}
+  try{
+    const f = await (await fetch("/api/fcfg")).json();
+    KEYS_SERVIDOR.agentrouter = f.ar_key || "";
+    $("apiProv").value="agentrouter";
+    const salvouAr = prefs.url && prefs.url.includes("agentrouter");
+    $("apiUrl").value = salvouAr ? prefs.url : (f.ar_endpoint||ENDPOINTS.agentrouter);
+    $("apiModel").value = f.model_ar || "gpt-5.6-sol";   // sempre o rápido certificado por padrão
+    const chaveSalva = (prefs.key && salvouAr) ? prefs.key : "";
+    $("apiChave").value = chaveSalva || KEYS_SERVIDOR.agentrouter || "";
+    $("apiTemp").value = prefs.temp || "0.8"; $("tempVal").textContent = $("apiTemp").value;
+    $("apiMax").value = prefs.max || "16000";
+    $("dlModelos").innerHTML = AR_MODELOS.map(m=>`<option value="${m}">`).join("");
+    $("secApi").classList.add("aberto");
+    status("statusApi", $("apiChave").value ? "config pronta — chave AgentRouter do servidor ✓ (💾 memoriza preferências)"
+                                            : "sem chave no servidor — cole a sua e marque 💾");
+  }catch(e){ status("statusApi","falha /api/fcfg: "+e.message,"var(--terracota)"); }
+}
+$("bApiSalvarCfg").onclick=()=>{ localStorage.setItem("fazedorApi",JSON.stringify({prov:$("apiProv").value,url:$("apiUrl").value,model:$("apiModel").value,key:$("apiChave").value,temp:$("apiTemp").value,max:$("apiMax").value,thinking:$("apiThinking").value})); status("statusApi","config salva (só no localStorage deste navegador) ✓","var(--foco)"); };
+$("bApiLimparCfg").onclick=()=>{ localStorage.removeItem("fazedorApi"); status("statusApi","config apagada do navegador","var(--terracota)"); };
+const cfgOk = ()=>{ const u=$("apiUrl").value.trim(),m=$("apiModel").value.trim(); if(!u||!m){status("statusApi","endpoint e modelo são obrigatórios","var(--terracota)");return false;} return true; };
+$("bApiTeste").onclick = async ()=>{
+  if(!cfgOk())return;
+  const b=$("bApiTeste"), orig=b.textContent; b.disabled=true; b.textContent="…";
+  try{
+    const j = await jpost("/api/gerar",{api:{...cfgAPI(), temperature:0.2, max_tokens:60, previous_id:undefined, na_fallback:true}, messages:[{role:"user",content:"responda apenas: ok"}]});
+    PREV_ID = j.interaction_id||"";
+    status("statusApi","conexão OK · "+(j.modelo||"")+" · "+(j.resumo?esc(j.resumo.slice(0,60)):"")+(j.interaction_id?" · cont. aberta":"."), "#9fd9a2");
+  }catch(e){ status("statusApi","falhou: "+e.message,"var(--terracota)"); }
+  b.disabled=false; b.textContent=orig;
+};
+/* sorteio de tema — matriz aberta do dossiê (seção 10.1) + antirrepetição (10.2) */
+function sorteiaTema(){
+  const M = PIECES.matriz || {};
+  const pick = a => a[Math.floor(Math.random()*a.length)];
+  let ultimo = {};
+  try{ ultimo = JSON.parse(localStorage.getItem("fazedorUltimoTema")||"{}"); }catch(e){}
+  let setor, servico, cliente, degrau, tent=0;
+  do{
+    setor=pick(M.setor); servico=pick(M.servico); cliente=pick(M.cliente); degrau=pick(M.degrau);
+    tent++;
+  }while(tent<50 && ultimo.degrau===degrau &&
+         ((ultimo.setor===setor)+(ultimo.servico===servico)+(ultimo.cliente===cliente))>=1);
+  const mecanismo = pick(M.mecanismo);
+  const molde = pick(["A","B","C"]);
+  const abertura = {A:"o cliente não aparece — eles chegam sozinhos ao local, carregando tudo",
+                    B:"dois clientes discordam um do outro sobre como o serviço deve ficar",
+                    C:"o prazo é curtíssimo e é anunciado por gestos apressados"}[molde];
+  const ideia = `Contratados para um serviço de ${servico} num lugar do tipo ${setor}, para um cliente ${cliente}. `+
+                `Abertura: ${abertura}. `+
+                `O erro central nasce porque "${mecanismo}", e a escalada termina quando tudo ${degrau} (dano só material). `+
+                `TÉO mede e planeja à esquerda; JUCA executa com confiança total à direita; ninguém percebe nada.`;
+  const resumo = `${servico.toUpperCase()} · ${setor.toUpperCase()} · cliente ${cliente.toUpperCase()} · "${mecanismo}" → ${degrau.toUpperCase()} (molde ${molde})`;
+  try{ localStorage.setItem("fazedorUltimoTema", JSON.stringify({setor,servico,cliente,degrau})); }catch(e){}
+  return {ideia, resumo};
+}
+$("bAuto").onclick = async () => {
+  if(!cfgOk())return;
+  const tema = sorteiaTema();
+  $("ideia").value = normaliza(tema.ideia);
+  status("status1","🎲 sorteado: "+tema.resumo+" — lapidando 30 clipes (5–15 min, deixe a página aberta)…","var(--mostarda)");
+  await lapidarComAPI(normaliza(tema.ideia));
+};
+
+/* lapidação compartilhada — usada pelo Lapidar e pelo 🎲 Autoepisódio */
+let _lapidando = null;                        // setInterval do cronômetro ao vivo
+function _paraCrono(origApi, origAuto){
+  if(_lapidando){ clearInterval(_lapidando); _lapidando = null; }
+  const b = $("bApi"), a = $("bAuto");
+  b.disabled=false; b.textContent=origApi;
+  a.disabled=false; a.textContent=origAuto;
+}
+async function lapidarComAPI(ideia){
+  if(!cfgOk()) return false;
+  const dados = cfgAPI(); dados.previous_id = undefined; PREV_ID = "";
+  historicoAPI = [
+    {role:"system",content:(PIECES.dossie_md||PIECES.sistema)},
+    {role:"user",content:"IDEIA DO USUÁRIO:\n"+ideia+"\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco " + CF + "json" + CF + " no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. Nada depois do JSON."}
+  ];
+  const b = $("bApi"), a = $("bAuto");
+  const origApi=b.textContent, origAuto=a.textContent;
+  b.disabled=true; b.textContent="🧠 escrevendo os 30 clipes…";
+  a.disabled=true; a.textContent="⏳ gerando…";
+  const t0 = Date.now();
+  if(_lapidando) clearInterval(_lapidando);
+  _lapidando = setInterval(()=>{
+    const s = Math.floor((Date.now()-t0)/1000);
+    const mm = String(Math.floor(s/60)).padStart(2,"0"), ss = String(s%60).padStart(2,"0");
+    let msg = "🧠 a IA está escrevendo o roteiro completo… "+mm+":"+ss+" (normal levar 5–15 min — os modelos raciocinam antes de escrever)";
+    if(s > 1200) msg += " — DICA: passou de 20 min. Recarregue (F5), confira se o campo Modelo está gpt-5.6-sol (o mais rápido) e gere de novo";
+    status("status1", msg, "var(--mostarda)");
+  }, 1000);
+  let ok=false;
+  try{
+    const j = await jpost("/api/gerar",{api:dados, messages:historicoAPI});
+    PREV_ID = j.interaction_id || PREV_ID;
+    $("respostaChat").value = j.cru||"";
+    $("secCola").classList.add("oculto");
+    await processaResposta(j.cru||"", true);
+    const s = Math.floor((Date.now()-t0)/1000);
+    if(j.modelo) status("status1","✓ roteiro pronto em "+Math.floor(s/60)+"m"+String(s%60).padStart(2,"0")+"s · "+j.modelo+" · "+((j.uso&&j.uso.total_tokens)||"")+" tokens — revise os 30 clipes e valide","#9fd9a2");
+    ok=true;
+  }catch(e){ status("status1","API: "+e.message,"var(--terracota)"); }
+  _paraCrono(origApi, origAuto);
+  return ok;
+}
+$("bApi").onclick = async () => {
+  const ideia = normaliza($("ideia").value);
+  if(!ideia){ status("status1","fale ou escreva a ideia primeiro","var(--terracota)"); return; }
+  await lapidarComAPI(ideia);
+};
+async function corrigirComIA(){
+  const semEstado = KIND[$("apiProv").value] !== "interactions";   // AgentRouter/OpenAI: sem memória no servidor
+  if(!PREV_ID && !$("respostaChat").value.trim()){ status("status5","sem interação aberta — use ▶ Lapidar com API primeiro","var(--terracota)"); return; }
+  const erros = ultimaValidacao ? (ultimaValidacao.erros||[]) : [];
+  if(!erros.length){ status("status5","nada a corrigir — 0 erros","#9fd9a2"); return; }
+  const b = $("bCorrApi"); b.disabled=true; const orig=b.textContent; b.textContent="🧠 corrigindo…";
+  try{
+    const av = ultimaValidacao.avisos&&ultimaValidacao.avisos.length ? ("\nAvisos (melhore, sem quebrar o resto): "+ultimaValidacao.avisos.join(" ; ")):"";
+    const msg = "Seu JSON anterior falhou na validação do pipeline. Devolva O JSON COMPLETO corrigido (mesmo formato: RESUMO curto + um único bloco " + CF + "json" + CF + "), corrigindo:\n" +
+                erros.map((e,i)=>(i+1)+". "+e).join("\n") + av;
+    const mensagens = [{role:"system",content:PIECES.sistema}];
+    if(semEstado){
+      // provedores sem memória: reenvia a resposta anterior como histórico
+      mensagens.push({role:"user",content:"(Sua resposta anterior está abaixo.)"},
+                     {role:"assistant",content:$("respostaChat").value||""});
+    }
+    mensagens.push({role:"user",content:msg});
+    const j = await jpost("/api/gerar",{api:{...cfgAPI(), na_fallback:true}, messages:mensagens});
+    PREV_ID = j.interaction_id||PREV_ID;
+    $("respostaChat").value = j.cru||"";
+    await processaResposta(j.cru||"", true);
+    status("status5","correção recebida — valide","#9fd9a2");
+  }catch(e){ status("status5","correção falhou: "+e.message,"var(--terracota)"); }
+  b.disabled=false; b.textContent=orig;
+}
+
+/* ── 4 · processar resposta → cartões ── */
+let ultimaValidacao = null;
+function parseTexto(txt){
+  const m = txt.match(/```(?:json)?\s*(\{[\s\S]*?\})\s*```/);
+  let bruto = m ? m[1] : null;
+  if(!bruto){ const i=txt.indexOf("{"), l=txt.lastIndexOf("}"); if(i>=0&&l>i) bruto=txt.slice(i,l+1); }
+  if(!bruto) return {resumo:txt.trim(), ep:null};
+  try{ return {resumo:(m?txt.slice(0,txt.indexOf("```")):txt.slice(0,i)).trim(), ep:JSON.parse(bruto)}; }
+  catch(e){ return {resumo:txt, ep:null}; }
+}
+async function processaResposta(txt, ehApi){
+  if(!txt||!txt.trim()){ status("status1","cole a resposta do chat primeiro","var(--terracota)"); return; }
+  const {resumo, ep} = parseTexto(txt);
+  if(!ep){ status("status1","não achei JSON na resposta — cole o json completo (…"+CF+"json "+CF+")","var(--terracota)"); return; }
+  if(!ep.shots||!ep.shots.length){ status("status1","JSON recebido sem shots","var(--terracota)"); return; }
+  EPISODIO = ep;
+  renderEp(resumo);
+  $("secEp").classList.remove("oculto"); $("secVal").classList.remove("oculto"); $("secSaida").classList.remove("oculto");
+  $("secEp").scrollIntoView({behavior:"smooth"});
+  status("status1","episódio carregado ✓ ("+ep.shots.length+" planos) — valide, ajuste e salve","#9fd9a2");
+}
+function campo(t){ return t==null?"":String(t); }
+function ehDossie(ep){
+  return !!ep && !!ep.shots && !!ep.shots.length &&
+    (Array.isArray(ep.objetos_plantados) || ("dur" in ep.shots[0]) ||
+     String(ep.shots[0].estagio||"").toUpperCase()==="LIGACAO");
+}
+function durDe(s){ return Number(s.duracao_s || s.dur || 0); }
+function renderEp(resumo){
+  const ep = EPISODIO; const dos = ehDossie(ep);
+  $("epTitulo").textContent = "— " + (ep.titulo||"(sem título)");
+  $("epResumo").classList.toggle("oculto", !resumo); $("epResumo").textContent = resumo||"";
+  if(dos){
+    const partes = [ep.logline,
+      ep.setor&&"setor: "+ep.setor, ep.servico&&"serviço: "+ep.servico,
+      ep.cliente&&"cliente: "+ep.cliente, ep.mecanismo&&"mecanismo: "+ep.mecanismo,
+      ep.degrau_final&&"degrau final: "+ep.degrau_final,
+      (ep.objetos_plantados||[]).length&&"objetos: "+ep.objetos_plantados.map(o=>`${o.objeto} (clipe ${o.plantado_no_clipe}→${o.pago_no_clipe})`).join(" · "),
+      ep.assinatura&&"assinatura: "+ep.assinatura].filter(Boolean);
+    $("epMec").textContent = partes.map(p=>esc(p)).join("\n");
+  } else {
+    $("epMec").textContent = esc((ep.premissa?"premissa: "+ep.premissa+"\n":"") + (ep.mecanismo?"mecanismo: "+ep.mecanismo:""));
+  }
+  const tot = ep.shots.reduce((a,s)=>a+durDe(s),0);
+  $("tl").innerHTML = ep.shots.map(s=>{
+    const largura = (100*durDe(s)/Math.max(tot,1)).toFixed(2);
+    const corte = !dos && s.inicio==="texto";
+    return `<div class="tag st-${s.estagio||"TAG"}" style="width:${largura}%;height:100%;">${s.n}</div>`+(corte?"<div style='width:3px;background:#0006'></div>":"");
+  }).join("");
+  Array.from($("tl").children).forEach((el,i)=>{ el.onclick=()=>document.getElementById("card_"+(i+1))?.scrollIntoView({behavior:"smooth"}); });
+  if(dos){
+    $("epStats").innerHTML = esc(`${ep.shots.length} clipes · ${tot}s (dossiê v1.0) · TÉO ⟂esquerda mede · JUCA ⟂direita executa · est. geração ~${(tot*80/3600).toFixed(1)} h`);
+  } else {
+    const cortes = ep.shots.filter(s=>s.inicio==="texto").length;
+    const silencio = ep.shots.filter(s=>(s.soundscape||"").includes("complete silence")).length;
+    $("epStats").innerHTML = esc(`${ep.shots.length} planos · ${tot}s (${Math.floor(tot/60)}:${String(tot%60).padStart(2,"0")}) · cortes ${cortes}/${Math.max(ep.shots.length-1,0)} · beats de silêncio ${silencio} · callbacks ${((ep.callbacks||[]).length)} · est. geração ~${(tot*80/3600).toFixed(1)} h`);
+  }
+  $("cards").innerHTML = ep.shots.map(s=>renderCard(s)).join("");
+  ep.shots.forEach(s=>camposLigar(s));
+}
+function renderCard(s){
+  const i = s.n;
+  const f = (nome,lbl,cls,mono) => `<label>${lbl}</label><textarea ${mono?"class='mono'":""} id="f_${nome}_${i}" data-nte="${nome}" data-nn="${i}">${esc(campo(s[nome]))}</textarea>`;
+  if(ehDossie(EPISODIO)){
+    const estSel = `<select id="f_estagio_${i}" data-nte="estagio" data-nn="${i}">` +
+      ESTAGIOS.map(e=>`<option value="${e}" ${e===s.estagio?"selected":""}>${e}</option>`).join("") + `</select>`;
+    const beats = Array.isArray(s.beats) ? s.beats.join("\n") : campo(s.beats);
+    return `<div class="card" id="card_${i}">
+      <div class="topo">
+        <b>#${i}</b> <span class="tag st-${s.estagio||"TAG"}">${s.estagio||"—"}</span>
+        ${estSel}
+        <input type="text" id="f_dur_${i}" data-nte="dur" data-nn="${i}" value="${esc(campo(s.dur))}" style="width:50px" title="clipe de 10 s (dossiê)">
+        <span class="pill" id="chars_${i}">…</span>
+        <span style="flex:1"></span>
+      </div>
+      <label>beats (3–4 ações, um por linha; o ÚLTIMO termina em movimento)</label>
+      <textarea class="mono" id="f_beats_${i}" data-nte="beats" data-nn="${i}" rows="4">${esc(beats)}</textarea>
+      <label>action (EN — prompt completo: estilo+set+objetos+âncoras+ação+"They do not speak…"+câmera+negativos)</label>
+      <textarea class="mono" id="f_action_${i}" data-nte="action" data-nn="${i}" rows="10">${esc(campo(s.action))}</textarea>
+      <div class="grid2">
+        <div>${f("overall_soundscape","overall_soundscape (eventos nomeados: material + verbo)",true)}</div>
+        <div><label>non_diegetic_music (fixo)</label><input type="text" id="f_non_diegetic_music_${i}" data-nte="non_diegetic_music" data-nn="${i}" value="${esc(campo(s.non_diegetic_music||"N/A"))}" readonly style="color:#888"></div>
+      </div>
+    </div>`;
+  }
+  const dur = `<label>duracao_s</label><input type="text" id="f_duracao_s_${i}" data-nte="duracao_s" data-nn="${i}" value="${esc(campo(s.duracao_s))}">`;
+  return `<div class="card" id="card_${i}">
+    <div class="topo">
+      <b>#${i}</b> <span class="tag st-${s.estagio||"TAG"}">${s.estagio||"—"}</span>
+      <input type="text" id="f_estagio_${i}" data-nte="estagio" data-nn="${i}" value="${esc(campo(s.estagio))}" style="width:140px">
+      <input type="text" id="f_duracao_s_${i}" data-nte="duracao_s" data-nn="${i}" value="${esc(campo(s.duracao_s))}" style="width:60px" title="duracao_s">
+      <span class="pill" id="chars_${i}">…</span>
+      <span style="flex:1"></span>
+      <input type="text" id="f_inicio_${i}" data-nte="inicio" data-nn="${i}" value="${esc(campo(s.inicio))}" style="width:110px" title="inicio: texto|ultimo_frame">
+      <input type="text" id="f_set_${i}" data-nte="set" data-nn="${i}" value="${esc(campo(s.set))}" style="width:90px" title="set: oficina|historia">
+    </div>
+    ${f("funcao_comica","função cômica (PT)",false)}
+    <div class="grid2">
+      <div>${f("estado","estado (EN)",true)}</div>
+      <div>${f("fim_estado","fim_estado (PT)",true)}</div>
+    </div>
+    ${f("acao","ação (EN, 40–90 palavras, termina em movimento)",true)}
+    ${f("camera","câmera (EN, um trabalho por plano)",true)}
+    ${f("soundscape","soundscape (EN, ≥3 eventos nomeados)",true)}
+  </div>`;
+}
+function camposLigar(s){
+  document.querySelectorAll(`#card_${s.n} [data-nte]`).forEach(el=>{
+    el.onchange = () => {
+      const nome=el.getAttribute("data-nte"), i=Number(el.getAttribute("data-nn"));
+      let v;
+      if(nome==="dur"||nome==="duracao_s") v = Number(el.value)||0;
+      else if(nome==="beats") v = el.value.split("\n").map(x=>x.trim()).filter(Boolean);
+      else v = el.value.trim();
+      EPISODIO.shots[i-1][nome] = v;
+      if(nome==="estagio"){            // atualiza a etiqueta do cartão e a barra no próximo validar
+        const chip = document.querySelector("#card_"+i+" .tag");
+        if(chip){ chip.textContent = v||"—"; chip.className = "tag st-"+(ESTAGIOS.includes(v)?v:"TAG"); }
+      }
+    };
+  });
+}
+
+/* ── 5 · validar ── */
+$("bValidar").onclick = ()=>validar();
+$("bCorrApi").onclick = ()=>corrigirComIA();
+async function validar(){
+  if(!EPISODIO){ status("status5","carregue um episódio primeiro","var(--terracota)"); return null; }
+  status("status5","validando…");
+  try{
+    const j = await jpost("/api/validar",{episodio:EPISODIO});
+    ultimaValidacao = j;
+    const itens = (j.erros||[]).map(e=>`<li class="e">✖ ${esc(e)}</li>`).concat((j.avisos||[]).map(a=>`<li class="a">⚠ ${esc(a)}</li>`));
+    $("valLista").innerHTML = itens.join("")||
+      `<li class="a" style="border-color:var(--verde);color:#9fd9a2">✔ 0 erros, 0 avisos — episódio puro</li>`;
+    $("valSum").className = "pill " + (j.erros&&j.erros.length?"erro":"ok");
+    $("valSum").textContent = `${j.erros.length} erro(s) · ${j.avisos.length} aviso(s) · ${j.total_s}s · maior prompt ${Math.max(...Object.values(j.chars_por_plano||{0:0}))} chars`;
+    const lim = j.chars_por_plano||{};
+    EPISODIO.shots.forEach(s=>{ const c=$("chars_"+s.n); if(c)c.textContent=(lim[s.n]||0)+" chars"; });
+    status("status5", j.erros&&j.erros.length ? "corrija nos cartões (edite o campo e valide de novo)" : "pronto para salvar", j.erros&&j.erros.length?"var(--terracota)":"#9fd9a2");
+    return j;
+  }catch(e){ status("status5","falha ao validar: "+e.message,"var(--terracota)"); return null; }
+}
+
+/* ── 6 · salvar + settings ── */
+$("bSalvar").onclick = async ()=>{
+  const val = await validar(); if(!val) return;
+  try{
+    const j = await jpost("/api/salvar",{episodio:EPISODIO, sobrescrever:$("sobrescrever").checked});
+    $("saidaPaths").textContent = `✔ SALVO\n${j.pasta}\n  episódio: ${j.episodio_json}\n  prompts: ${j.shotPaths||j.shots? (j.shots||[]).map(p=>"· "+p).join("\n  "):""}`;
+    if(val.erros.length) $("saidaPaths").textContent += "\n\n⚠ salvo COM erros (modo sobrescrever/exerto)\n" + val.erros.join("\n");
+    status("status6","episódio salvo ✓","#9fd9a2"); listar();
+  }catch(e){ $("saidaPaths").textContent="✖ "+e.message; status("status6","falhou","var(--terracota)"); }
+};
+$("bSettings").onclick = async ()=>{
+  if(!EPISODIO) return status("status6","carregue um episódio primeiro","var(--terracota)");
+  try{
+    const j = await jpost("/api/settings",{episodio:EPISODIO, sobrescrever:$("sobrescrever").checked});
+    const exercite = "python fazedor_app.py já rodando — não precisa";
+    $("saidaPaths").textContent = `✔ SETTINGS v2.1 GERADOS\n${j.settings_dir}\n` +
+      j.arquivos.map(a=>"  · "+a).join("\n") + `\n  corrente: ${j.corrente}\n` +
+      `  ${j.total_s}s · estimado ~${j.horas_estimadas} h de geração (@80 s/s)\n\n` +
+      `→ rodar: powershell -ExecutionPolicy Bypass -File "${j.corrente}"\n` +
+      `→ ou peça aqui no chat: rodar a corrente ${j.corrente}`;
+    status("status6","settings prontos ✓","#9fd9a2");
+  }catch(e){ $("saidaPaths").textContent="✖ "+e.message; status("status6","falhou","var(--terracota)"); }
+};
+</script>
+</body>
+</html>

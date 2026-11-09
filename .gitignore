@@ -1,0 +1,16 @@
+# SEGREDS — nunca versionar
+config_secret.json
+*.secret
+
+# saídas de render e mídia
+EPISODIOS/
+*.mp4
+*.wav
+fumaca_lista.txt
+
+# lixo de python/sistema
+__pycache__/
+*.pyc
+*.out
+Thumbs.db
+desktop.ini
