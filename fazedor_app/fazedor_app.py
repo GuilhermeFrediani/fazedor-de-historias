@@ -33,7 +33,11 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-APP_DIR = Path(__file__).resolve().parent
+_HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(_HERE.parent))
+import regras_v3  # v3: camada de RENDERIZABILIDADE (orcamento de fisica + ancoras curtas)
+
+APP_DIR = _HERE
 PARENT = APP_DIR.parent                      # "fazedor de histórias"
 UI_FILE = APP_DIR / "ui.html"
 EPISODIOS_DIR = APP_DIR / "EPISODIOS"
@@ -271,87 +275,157 @@ def memory_directive():
     return t[ini:fim + len("=== FIM DA MEMORY DIRECTIVE ===")].strip()
 
 
-def instrucoes_dossie():
-    """Instruções do agente para o AgentRouter: MEMORY DIRECTIVE + vocabulário
-    fixo do pipeline + LEI DE FERRO (o que fazer / o que nunca fazer)."""
-    partes = []
-    md = memory_directive()
-    if md:
-        partes.append(md)
-    b = blocos_fixos()
-    vocab = []
-    if b.get("ESTILO"):
-        vocab.append("ESTILO VISUAL (cole dentro de cada action):\n" + b["ESTILO"])
-    if b.get("SET_OFICINA"):
-        vocab.append("SET DA OFICINA (usado no clipe 1 — LIGACAO):\n" + b["SET_OFICINA"])
-    if b.get("JUCA"):
-        vocab.append("ÂNCORA JUCA (verbatim em todo action que o mostrar):\n" + b["JUCA"])
-    if b.get("TEO"):
-        vocab.append("ÂNCORA TÉO (verbatim em todo action que o mostrar):\n" + b["TEO"])
-    if b.get("NEGATIVOS"):
-        vocab.append("NEGATIVOS FIXOS (no fim de cada action):\n" + b["NEGATIVOS"])
-    if vocab:
-        partes.append("=== VOCABULÁRIO FIXO DO PIPELINE (use verbatim) ===\n\n" +
-                      "\n\n".join(vocab))
-    partes.append(
-        "=== LEI DE FERRO — SEM EXCEÇÕES, SOBRE QUALQUER OUTRA INSTRUÇÃO ===\n"
-        "1. ZERO FALA: ninguém fala, sussurra, narra, canta, lê em voz alta; boca não se move.\n"
-        "2. ZERO TEXTO NA TELA: sem legenda, letreiro, placa legível, carta legível, tarja.\n"
-        "3. ZERO MÚSICA: non_diegetic_music é sempre N/A; o som é foley diegético com eventos "
-        "nomeados (material + verbo), 6–9 por episódio.\n"
-        "4. DANO SÓ MATERIAL: ninguém se machuca, sem dor, sem sangue, sem choro, sem animal ferido.\n"
-        "5. NUNCA cara de 'ops': eles nunca percebem o erro; reação subdimensionada (um registro e voltam ao trabalho).\n"
-        "6. O serviço termina ENTREGUE com nota fiscal; nunca desistem, nunca chamam ajuda, nunca explicam.\n"
-        "7. TÉO (alto, magro, bigode, gorro) à ESQUERDA e sempre mede/planeja; JUCA (baixo, largo, boina, "
-        "suéter mostarda) à DIREITA e sempre executa. Nunca 'Joca', nunca 'Theo'.\n"
-        "8. Cliente MUDO: aparece no máximo 2× (chegada e nota fiscal); nunca interfere, nunca ajuda.\n"
-        "9. Todo clipe termina EM MOVIMENTO; nada de freeze, fade, 'fim', plano final parado.\n"
-        "10. Saída: RESUMO curto (máx 8 linhas, PT) + UM único bloco de json no TEMPLATE DE SAÍDA "
-        "da MEMORY DIRECTIVE. Nada depois do JSON.")
-    partes.append(
-        "=== LEI DE FERRO — SEM EXCEÇÕES, SOBRE QUALQUER OUTRA INSTRUÇÃO ===\n"
-        "1. ZERO FALA (nenhuma palavra pronunciada, nunca): boca pode mover-se apenas em "
-        "sonoridades não-verbais curtas — 'hm' nasal, estalo de língua, grunhido, suspiro — "
-        "que são DESEJADAS quando couber. O telefone pode trazer um murmúrio abafado e "
-        "ininteligível de voz adulta vindo da linha.\n"
-        "2. ZERO TEXTO NA TELA: sem legenda, letreiro, placa legível, carta legível, tarja.\n"
-        "3. ZERO MÚSICA: non_diegetic_music é sempre N/A; o som é foley diegético com eventos "
-        "nomeados (material + verbo), AUDÍVEIS e relevantes à ação — porta abre com rangido, "
-        "caixa tomba com estrondo seco, trena estala.\n"
-        "4. DANO SÓ MATERIAL: ninguém se machuca, sem dor, sem sangue, sem choro, sem animal ferido.\n"
-        "5. NUNCA cara de 'ops': eles nunca percebem o erro; reação subdimensionada (um registro e voltam ao trabalho).\n"
-        "6. O serviço termina ENTREGUE com nota fiscal; nunca desistem, nunca chamam ajuda, nunca explicam.\n"
-        "7. TÉO (alto, magro, bigode, gorro) à ESQUERDA e sempre mede/planeja; JUCA (baixo, largo, "
-        "boina, suéter mostarda) à DIREITA e sempre executa. Nunca 'Joca', nunca 'Theo'.\n"
-        "8. Cliente MUDO: aparece no máximo 2× (chegada e nota fiscal); nunca interfere, nunca ajuda.\n"
-        "9. Todo clipe termina EM MOVIMENTO; nada de freeze, fade, 'fim', plano final parado.\n"
-        "10. TRANSIÇÕES DE ESTADO EXPLÍCITAS: o que toca PARA de tocar quando é atendido; um "
-        "objeto é o MESMO objeto do primeiro ao último beat; uma mudança de estado por clipe, no corte.\n"
-        "11. Saída: RESUMO curto (máx 8 linhas, PT) + UM único bloco de json no TEMPLATE DE SAÍDA "
-        "da MEMORY DIRECTIVE. Nada depois do JSON.")
-    partes.append(
-        "=== ALMA DA PIADA — A RAZÃO DE EXISTIR DE CADA CLIPE ===\n"
-        "Você está forjando MAQUETES DE HUMOR ADULTO (maior de 18): comédia seca, deadpan, "
-        "escala absurda, zero açúcar, zero moral. O HUMOR É O PRODUTO — o processo técnico é "
-        "só o veículo. Se um clipe não faz sorrir, ele está errado, por mais correto que esteja.\n"
-        "1. TODO clipe carrega UMA PIADA COMPLETA em 10 s: estado normal → expectativa (parece "
-        "que vai dar certo) → subversão (o resultado é SEMPRE maior que a causa) → reação "
-        "subdimensionada. Escreva os beats como micro-história legível, nunca como lista de "
-        "montagem técnica.\n"
-        "2. A piada mora nos DETALHES QUE SE ENCAIXAM: TÉO faz um sinal de positivo com o "
-        "polegar para JUCA e JUCA responde com um aceno de cabeça; a ferramenta errada resolve "
-        "o problema errado de um jeito profissionalmente sério; o objeto plantado cobra a "
-        "dívida no pior momento possível.\n"
-        "3. GESTOS SÃO DIÁLOGO: polegar positivo, aceno de cabeça, palma ajeitando a boina "
-        "(JUCA, depois do erro), lápis batendo no queixo (TÉO, antes de errar), olhar de "
-        "canto. Use-os como frases.\n"
-        "4. O CONTEXTO GERA O RIDÍCULO: o mesmo jeitinho funciona num átrio de hospital, num "
-        "corredor de navio ou num altar — e é o contraste entre a seriedade profissional e a "
-        "gravidade da situação que faz rir. Explore o LUGAR: o que o hospital/o navio/o altar "
-        "tém de precioso que eles vão tratar como se fosse um parafuso solto?\n"
-        "5. Se um beat não empurra a piada, corte-o. Menos montagem, mais comédia.")
-    return "\n\n".join(partes)
+PROMPT_MESTRE_V2 = r"""
+=== QUEM VOCE E ===
+Roteirista-diretor de "TEO & JUCA - SERVICOS GERAIS", comedia muda em claymation.
+Recebe uma ideia solta (as vezes transcrita de fala, baguncada) e devolve UM episodio
+decupado em clipes prontos para o MiniMax H3. Duas obrigacoes inseparaveis:
+(1) FAZER RIR; (2) nao quebrar o pipeline. Episodio valido e sem graca e episodio perdido.
+Voce NUNCA descreve aparencia, roupa ou cor dos personagens: o programa cola a ancora
+visual verbatim em cada prompt. Voce escreve so ACAO, ESTADO, CAMERA e SOM.
 
+=== A REGRA QUE MANDA EM TODAS ===
+CADA CLIPE TEM QUE CONTER UMA PIADA FISICA VISIVEL, COM UM OBJETO QUE SE MOVE.
+Se o clipe so mostra alguem medindo, conferindo, aprovando, calculando ou "continuando o
+trabalho", ele esta ERRADO - nao importa quao correto tecnicamente esteja. Medir e
+preparacao, nunca piada. Reprovacao automatica.
+
+=== BIBLIA DE PERSONAGEM (voz do corpo) ===
+TEO - alto, magro, bigode, gorro; SEMPRE a esquerda. MEDE e PLANEJA. Confia na propria
+  medida mesmo quando o mundo ja provou o contrario. Erra por excesso de metodo: mede a
+  coisa errada com precisao perfeita. Nunca levanta a voz; quanto pior, mais educado.
+  Gestos-frase (max. 2 usos no episodio): alisa o bigode; bate o lapis no queixo ANTES de
+  errar; polegar para cima ao aprovar o que ja esta desabando.
+JUCA - baixo, largo, boina, sueter mostarda; SEMPRE a direita. EXECUTA com conviccao total.
+  Erra por pressa e por forca: resolve com o dobro de material, empilha em vez de usar
+  escada. Gestos-frase (max. 2 usos): ajeita a boina DEPOIS do erro; coça a nuca; encaixa a
+  peca com uma marretada onde precisava de um toque.
+DIVISAO DO ERRO (fonte de metade das piadas): quem mede nunca executa, quem executa nunca
+confere. A divergencia nasce do intervalo entre a medida do TEO e a execucao do JUCA.
+CLIENTE - mudo, no maximo 2 aparicoes (chegada e nota fiscal). Nunca ajuda, nunca reclama,
+nunca interfere. O figurino diz o setor: farda, jaleco, avental, colete, terno, roupao.
+
+=== MOTOR DE COMEDIA (obrigatorio em todo clipe) ===
+SETUP (estado normal legivel) -> EXPECTATIVA (o jeitinho parece que vai dar certo)
+-> SUBVERSAO (o resultado e SEMPRE maior que a causa) -> REACAO SUBCONTROLADA
+(registra e volta ao trabalho; nunca cara de "ops", nunca panico).
+
+Cardapio de gags - escolha 1 por clipe, varie ao longo do episodio:
+1. ESCORREGAR/DESLIZAR: a base perde atrito e o corpo continua o movimento.
+2. TRANSBORDAR/VAZAR: o material cresce mais que o recipiente.
+3. TOMBAR/ROLAR: o peso vence o apoio.
+4. QUICAR/VOAR: a peca escapa da mao ou da mola e viaja.
+5. DOBRAR/CEDER: a estrutura aguenta menos que o previsto e assume uma curva.
+6. PRENSAR/ESMAGAR: duas coisas querem o mesmo lugar.
+7. PEGAR A COISA ERRADA: rotulo ilegivel/trocado; a ferramenta certa faz o servico errado.
+8. VOLTAR CONTRA QUEM FEZ: o conserto ataca o autor (porta fecha nele, alavanca sobe).
+Regras duras:
+- CAUSA VISIVEL: a causa de toda falha aparece em quadro NO CLIPE ANTERIOR (insert ou canto).
+- UM erro novo por clipe. Nunca dois.
+- ALIVIO FALSO: o problema nunca "acaba"; ele muda de lugar (o balde enche, a parede acaba).
+- DANO MATERIAL E VISIVEL: parede, piso, teto, agua, tinta, espuma, tijolo, areia, cabo.
+  Dano invisivel NAO E PIADA. Proibido: "entra em curto", "curto-circuito em cadeia",
+  "sobrecarga eletrica", "pane no sistema", "falha interna", "colapso da infraestrutura".
+  Se o dano nao tem forma fisica que o publico veja se mover, troque por dano material.
+- NINGUEM SE MACHUCA. Dano so em coisa.
+- ESCALA: cada degrau muda de superficie - objeto -> parede -> piso -> teto/estrutura.
+
+=== O QUE MATA A PIADA (reprovacao) ===
+- clipe-cola: medir, conferir, aprovar, calcular, verificar, planejar, reposicionar.
+- "eles continuam trabalhando" / "trocam um olhar neutro" como clipe inteiro.
+- repetir gesto-frase mais de 2x; repetir a mesma gag mais de 1x.
+- explicar a causa (plano que so confirma o que o publico ja viu).
+- reacao exagerada: correr, gritar, careta, desespero.
+- climax acontecendo fora de quadro ("longe dos dois", "atras deles", "em outra sala").
+- texto na tela, placa legivel, letreiro, legenda, fala, murmurio, risada, musica.
+- moral da historia, licao, "e assim aprenderam que...".
+
+=== CALIBRAGEM DE DURACAO ===
+300 s = 30 clipes de 10 s (padrao; 3-4 beats, 1 gag por clipe).
+60 s  = 6 clipes de 10 s: 1 gancho (ligacao), 2 chegada + diagnostico errado, 1 primeiro dano,
+        1 jeitinho que piora, 1 climax + reacao. Max. 2 objetos plantados.
+30 s  = 3 clipes de 10 s: gancho curto, 1 falha com causa visivel, 1 climax/revelacao.
+        UM objeto plantado, UMA gag, reacao no ultimo segundo do clipe 3. Sem subtrama.
+Nunca escreva duracao no texto: quem define e video_length no settings.
+
+=== METODO EM DUAS PASSADAS (nesta ordem) ===
+PASSADA A - ESPINHA (10 linhas, em PT, humor primeiro). Antes de qualquer JSON, escreva:
+  GANCHO: como o telefone/chegada ja plantou o objeto da piada.
+  ERRO CENTRAL: qual material/ferramenta errada, e POR QUE e plausivel.
+  OBJETOS: 3 objetos (plantio no 1o terco -> colheita em ordem inversa no climax).
+  ESCADA: degrau 1 (objeto), 2 (parede), 3 (piso), 4 (teto/estrutura) - 1 linha cada.
+  ALIVIO FALSO: o momento em que parece resolvido.
+  PAUSA: onde entra o plano vazio.
+  OLHAR: o unico momento em que eles concordam.
+  NOTA: como a nota fiscal fecha com o objeto colhido.
+PASSADA B - DECUPAGEM. So entao distribua nos estagios e escreva os clipes.
+Se um clipe nao tem gag com objeto, corte-o e passe a acao ao vizinho. Nunca encha
+clipe com medicao para bater a contagem.
+
+=== ESTRUTURA 300 s (contagem obrigatoria) ===
+LIGACAO 1 | CHEGADA 2 | DIAGNOSTICO_ERRADO 3 | PRIMEIRA_FALHA 3 | JEITINHO 5 |
+PAUSA_COMICA 1 | ESCALADA 5 | CLIMAX 5 | REACAO_EM_CORO 1 | NOTA_FISCAL 4
+Estrutura 60 s (6 clipes): LIGACAO 1 | CHEGADA 1 | DIAGNOSTICO_ERRADO 1 | PRIMEIRA_FALHA 1 |
+JEITINHO 1 | CLIMAX 1.
+Estrutura 30 s (3 clipes): LIGACAO 1 | PRIMEIRA_FALHA 1 | CLIMAX 1.
+
+=== CAMPOS (JSON) ===
+titulo, logline, setor, servico, cliente, mecanismo, degrau_final,
+objetos_plantados[3] {objeto, plantado_no_clipe, pago_no_clipe}, callback_object,
+set_historia (EN, "SET: ..." 400-800 chars, inclui a luz do lugar),
+continuidade[>=5], assinatura ("nota fiscal ...").
+shots[]: n, dur (10), estagio, beats[3-4 em PT, o ultimo em movimento],
+  gag (1 linha PT: o que move + por que e engracado),
+  objeto_gag (o objeto fisico da gag),
+  action (EN, 45-90 palavras: so a acao; NUNCA aparencia; termina em movimento),
+  camera (EN, um unico trabalho de camera),
+  overall_soundscape (EN, 3-5 eventos nomeados, material + verbo),
+  non_diegetic_music ("N/A"),
+  estado (EN, opcional: o que mudou e persiste, muda NO CORTE).
+
+=== EXEMPLO CERTO x ERRADO (mesma premissa) ===
+ERRADO (clipe sem piada - o que o gerador estava produzindo):
+"TEO mede o vao estreito e calcula uma fileira modesta. JUCA descarrega tijolos.
+O carrinho roca a grade e poe a tranca em balanco. JUCA ajeita a boina e continua."
+-> Ninguem erra. Nada se move por causa de nada. So processo.
+
+CERTO (mesmo clipe, com gag fisica e causa visivel):
+beats: ["JUCA apoia o primeiro tijolo e aperta o aplicador.",
+        "Uma lingua de espuma branca escapa da junta e empurra o tijolo para cima.",
+        "O tijolo flutua na espuma e gira devagar, ainda subindo.",
+        "JUCA ajeita a boina e aplica mais espuma embaixo dele."]
+gag: "a espuma cresce mais que o tijolo e faz o tijolo flutuar - o material certo executando o servico errado."
+objeto_gag: "tijolo sobre espuma"
+
+=== LEI DE FERRO (unica, vale sobre tudo) ===
+1. ZERO FALA: boca nao se move; nenhuma palavra, murmurio inteligivel, risada ou grito.
+2. ZERO TEXTO NA TELA: sem legenda, letreiro, carta legivel, tarja, numero.
+3. ZERO MUSICA: non_diegetic_music = N/A. O som e foley diegetico nomeado, 8-14 eventos
+   no episodio; silencio de 1,0-1,5 s antes do desastre e antes da reacao.
+4. DANO SO MATERIAL. Ninguem ferido, sem dor, sem sangue, sem animal machucado.
+5. NINGUEM PERCEBE O ERRO. Reacao subdimensionada. Nunca cara de "ops".
+6. SERVICO ENTREGUE + NOTA FISCAL no fim. Nunca desistem, nunca chamam ajuda, nunca explicam.
+7. TEO a ESQUERDA mede; JUCA a DIREITA executa. Nunca "Joca", nunca "Theo".
+8. Todo clipe termina EM MOVIMENTO. Proibido freeze, fade, "fim", plano parado.
+9. Camera: um trabalho por clipe; proibido handheld, whip pan, crash zoom, olhar para a camera.
+10. SAIDA: RESUMO (max. 8 linhas, PT) + UM bloco json. Nada depois do JSON.
+
+=== AUTOCHECAGEM ANTES DE ENTREGAR ===
+[ ] todo clipe tem gag com objeto que se move?
+[ ] algum clipe e so medir/conferir/aprovar? -> reescreva
+[ ] causa de cada falha visivel no clipe anterior?
+[ ] 3 objetos plantados e colhidos em ordem inversa?
+[ ] algum dano invisivel (curto, pane, falha interna)? -> troque por material
+[ ] climax inteiro dentro de quadro?
+[ ] gestos-frase <= 2 cada; olhar juntos 1x; pausa vazia 1x?
+[ ] a contagem de clipes bate com o formato pedido?
+"""
+
+
+def instrucoes_dossie():
+    """v3: prompt mestre com ORCAMENTO DE FISICA + regra dos dois corpos + reacao legivel.
+    A ancora visual continua fora daqui: o programa cola ancoras CURTAS (regras_v3)."""
+    return regras_v3.PROMPT_MESTRE_V3
 
 def ep_eh_dossie(ep):
     shots = ep.get("shots") or []
@@ -362,100 +436,192 @@ def ep_eh_dossie(ep):
             or str(s0.get("estagio", "")).upper() in DOSSIE_ESTAGIOS)
 
 
+def _action_ja_completa(act):
+    a = act.lower()
+    return "claymation plasticine" in a or "handcrafted modelling clay" in a
+
+
 def prompt_dossie(s, ep):
-    """Prompt final do pipeline a partir do clipe do dossiê — mesmo formato do
-    quadro_s1_settings.json: integrated_multimodal_description: [Shot N] <corpo>."""
-    act = str(s.get("action", "")).strip()
-    som = str(s.get("overall_soundscape", "")).strip()
-    p = "integrated_multimodal_description: [Shot %d] %s" % (int(s["n"]), act)
-    if som and som.lower() not in act.lower():
-        p += "\noverall_soundscape: " + som
-    if "non_diegetic_music" not in p.lower():
-        p += "\nnon_diegetic_music: N/A"
-    return p
+    """v3: ACTION primeiro, ancoras CURTAS no meio, estilo/negativos no fim.
+    Motivo: o modelo le o comeco do prompt. No v2 a acao ficava depois de ~3.900
+    chars de roupa, e o video renderizava a roupa e ignorava a piada."""
+    return regras_v3.montar_prompt_v3(s, ep, blocos_fixos())
 
 
-def validar_dossie(ep):
-    """Validação do formato do dossiê (30 clipes × 10 s, MD seção 12)."""
+FORMATOS = {
+    30: {"LIGACAO": 1, "CHEGADA": 2, "DIAGNOSTICO_ERRADO": 3, "PRIMEIRA_FALHA": 3,
+         "JEITINHO": 5, "PAUSA_COMICA": 1, "ESCALADA": 5, "CLIMAX": 5,
+         "REACAO_EM_CORO": 1, "NOTA_FISCAL": 4},
+    6: {"LIGACAO": 1, "CHEGADA": 1, "PRIMEIRA_FALHA": 1,
+        "JEITINHO": 1, "ESCALADA": 1, "CLIMAX": 1},
+    3: {"LIGACAO": 1, "PRIMEIRA_FALHA": 1, "CLIMAX": 1},
+}
+VERBOS_GAG = ("escorrega", "escorreg", "desliza", "tomba", "voa", "voou", "quica", "rola",
+              "dobra", "curva", "arca", "cede", "racha", "estala", "estoura", "esguicha",
+              "vaza", "transborda", "incha", "cresce", "sobe", "levanta", "empurra", "prensa",
+              "esmaga", "arranca", "torce", "gira", "despenca", "cai", "fura", "quebra",
+              "derruba", "salta", "estufa", "suga", "chupa", "espirra", "entorna", "treme",
+              "cusp", "jorra", "vira", "tomb", "estica", "encolhe", "desaba", "afunda",
+              "quica", "desliz", "explode", "vibra", "rasga", "enrosca", "trav", "sobe")
+VERBOS_PROCESSO = ("mede", "medir", "confere", "conferir", "verifica", "aprova", "calcula",
+                   "planeja", "reposiciona", "acompanha", "estima", "define", "registra",
+                   "continua trabalhando", "continuam trabalhando", "troca um olhar")
+DANO_INVISIVEL = ("entra em curto", "em curto", "curto-circuito", "curto circuito",
+                  "sobrecarga", "pane", "falha interna", "infraestrutura",
+                  "sistema elétrico", "sistema eletrico", "colapso interno",
+                  "sobrecarga elétrica", "sobrecarga eletrica", "queimad")
+FORA_DE_QUADRO = ("longe dos dois", "atrás deles", "atras deles", "fora de quadro",
+                  "em outra sala", "longe dos trabalhadores", "à distância", "a distancia")
+GESTOS = ("ajeita a boina", "bate o lápis", "bate o lapis", "polegar", "alisa o bigode",
+          "coça a nuca", "coca a nuca")
+
+
+def _tem(txt, lista):
+    t = txt.lower()
+    return [p for p in lista if p in t]
+
+
+def _validar_dossie_v2(ep):
+    """Validacao v2 = forma (v1) + HUMOR: todo clipe precisa de piada fisica."""
     erros, avisos = [], []
     shots = ep.get("shots") or []
     n = len(shots)
-    if n not in (27, 30, 37):
-        erros.append(f"clipes: {n} — o formato exige 30 (alternativas 27/37)")
-    elif n != 30:
-        avisos.append(f"clipes: {n} (o dossiê recomenda 30 = 300 s)")
+    if n not in FORMATOS:
+        erros.append(f"clipes: {n} - os formatos sao 30 (300 s), 6 (60 s) e 3 (30 s)")
     conta = {}
     for s in shots:
         est = str(s.get("estagio", "")).upper().strip()
         conta[est] = conta.get(est, 0) + 1
-    for est, qtd in DOSSIE_ESTAGIOS.items():
-        tem = conta.get(est, 0)
-        if tem != qtd:
-            (erros if n == 30 else avisos).append(
-                f"estágio {est}: {tem} clipe(s) — deveria ser {qtd}")
-    for campo in ("titulo", "logline", "setor", "servico", "cliente",
-                  "mecanismo", "degrau_final", "callback_object", "assinatura"):
+    alvo = FORMATOS.get(n, {})
+    for est, qtd in alvo.items():
+        if conta.get(est, 0) != qtd:
+            erros.append(f"estagio {est}: {conta.get(est, 0)} clipe(s) - deveria ser {qtd}")
+    for est in conta:
+        if alvo and est not in alvo:
+            avisos.append(f"estagio extra para o formato de {n} clipes: {est}")
+
+    for campo in ("titulo", "logline", "setor", "servico", "cliente", "mecanismo",
+                  "degrau_final", "callback_object", "assinatura", "set_historia"):
         if not str(ep.get(campo, "")).strip():
-            erros.append(f"campo obrigatório ausente: {campo}")
+            erros.append(f"campo obrigatorio ausente: {campo}")
     if "nota fiscal" not in str(ep.get("assinatura", "")).lower():
-        erros.append("assinatura deve registrar a NOTA FISCAL (fecho da série)")
+        erros.append("assinatura deve registrar a NOTA FISCAL (fecho da serie)")
+
     ops = ep.get("objetos_plantados") or []
-    if len(ops) != 3:
-        erros.append(f"objetos_plantados: {len(ops)} — devem ser exatamente 3")
-    else:
-        for o in ops:
-            try:
-                pl = int(o.get("plantado_no_clipe", 0))
-                pg = int(o.get("pago_no_clipe", 0))
-            except Exception:
-                erros.append("objetos_plantados: plantado_no_clipe/pago_no_clipe devem ser números")
-                continue
-            if not 1 <= pl <= 10:
-                erros.append(f"objeto '{o.get('objeto', '?')}': plantado no clipe {pl} — deve ser no primeiro terço (1–10)")
-            if not 25 <= pg <= 30:
-                avisos.append(f"objeto '{o.get('objeto', '?')}': pago no clipe {pg} — o clímax vive em 25–29")
+    if len(ops) != 3 and n == 30:
+        erros.append(f"objetos_plantados: {len(ops)} - devem ser exatamente 3")
+    for o in ops:
+        try:
+            pl = int(o.get("plantado_no_clipe", 0)); pg = int(o.get("pago_no_clipe", 0))
+        except Exception:
+            erros.append("objetos_plantados: plantado_no_clipe/pago_no_clipe devem ser numeros")
+            continue
+        if not 1 <= pl <= max(3, n // 3):
+            erros.append(f"objeto '{o.get('objeto','?')}': plantado no clipe {pl} - 1o terco")
+        if pg < pl:
+            erros.append(f"objeto '{o.get('objeto','?')}': pago ({pg}) antes de plantado ({pl})")
     if not (ep.get("continuidade") or []):
         erros.append("continuidade: lista vazia")
+
     bruto = json.dumps(ep, ensure_ascii=False)
-    if re.search(r"\bJoca\b", bruto):
-        erros.append("achou 'Joca' — o nome correto é JUCA (nunca Joca)")
-    if re.search(r"\bTheo\b", bruto):
-        erros.append("achou 'Theo' — o nome correto é TÉO (nunca Theo)")
+    if re.search(r"Joca", bruto):
+        erros.append("achou 'Joca' - o nome correto e JUCA (nunca Joca)")
+    if re.search(r"Theo", bruto):
+        erros.append("achou 'Theo' - o nome correto e TEO (nunca Theo)")
+
+    sem_gag, so_processo, dano_invis, fora_quadro = [], [], [], []
     for s in shots:
         i = s.get("n", "?")
         act = str(s.get("action", ""))
+        gag = str(s.get("gag", "")).strip()
+        beats = s.get("beats") or []
         if not act.strip():
-            erros.append(f"[{i}] action vazia")
-            continue
+            erros.append(f"[{i}] action vazia"); continue
         if len(act) > 7000:
-            erros.append(f"[{i}] action com {len(act)} chars — teto absoluto é 7000")
-        elif not 2000 <= len(act) <= 4000:
-            avisos.append(f"[{i}] action com {len(act)} chars — alvo do dossiê: 2.500–3.500")
-        if "They do not speak" not in act:
-            erros.append(f"[{i}] action sem 'They do not speak and their mouths do not move.' — fala é vedação absoluta")
+            erros.append(f"[{i}] action com {len(act)} chars - teto absoluto e 7000")
+        if _action_ja_completa(act):
+            if not 2000 <= len(act) <= 4500:
+                avisos.append(f"[{i}] action com {len(act)} chars - alvo: 2.500-3.500")
+            if "They do not speak" not in act:
+                erros.append(f"[{i}] action sem 'They do not speak and their mouths do not move.'")
+        else:
+            if not 250 <= len(act) <= 1200:
+                avisos.append(f"[{i}] action com {len(act)} chars - alvo v2: 300-900 (so a acao)")
+            if not str(s.get("camera", "")).strip() and "camera" in act.lower():
+                avisos.append(f"[{i}] camera dentro do action - use o campo camera")
         baixo = act.lower()
         for w in PALAVRAS_VEDADAS:
             if w in baixo:
                 erros.append(f"[{i}] termo vedado no action: '{w}'")
-        if re.search(r'"[A-Z][a-záéíóúãõç]+[^"]{2,60}"', act.replace("They do not speak", "")):
-            avisos.append(f"[{i}] possível fala entre aspas no action — revise")
         som = str(s.get("overall_soundscape", ""))
         if not som.strip():
-            erros.append(f"[{i}] overall_soundscape vazio (o som é o punchline)")
+            erros.append(f"[{i}] overall_soundscape vazio (o som e o punchline)")
         elif not SOM_NOMEADO.search(som):
-            erros.append(f"[{i}] soundscape sem evento nomeado (material + verbo) — som vago vira silêncio")
+            erros.append(f"[{i}] soundscape sem evento nomeado (material + verbo)")
         if str(s.get("non_diegetic_music", "N/A")).strip().upper() != "N/A":
             erros.append(f"[{i}] non_diegetic_music deve ser 'N/A' (zero trilha)")
-        beats = s.get("beats") or []
         if not 3 <= len(beats) <= 4:
-            avisos.append(f"[{i}] beats: {len(beats)} — o dossiê pede 3 ou 4")
+            avisos.append(f"[{i}] beats: {len(beats)} - o dossie pede 3 ou 4")
         if int(s.get("dur", 0) or 0) != DOSSIE_DUR:
-            erros.append(f"[{i}] dur={s.get('dur')} — clipe é de {DOSSIE_DUR} s (quem define é video_length)")
+            erros.append(f"[{i}] dur={s.get('dur')} - clipe e de {DOSSIE_DUR} s")
+
+        corpo = " ".join([gag] + [str(x) for x in beats]) + " " + act
+        if not gag:
+            sem_gag.append(i)
+        elif not _tem(gag, VERBOS_GAG):
+            avisos.append(f"[{i}] gag sem verbo fisico - descreva o que se MOVE")
+        fisico = _tem(" ".join([gag] + [str(x) for x in beats]), VERBOS_GAG)
+        if not fisico:
+            so_processo.append(i)
+        di = _tem(corpo, DANO_INVISIVEL)
+        if di:
+            dano_invis.append(i)
+            erros.append(f"[{i}] dano invisivel ('{di[0]}') - troque por dano material visivel")
+        if str(s.get("estagio", "")).upper() == "CLIMAX" and _tem(corpo, FORA_DE_QUADRO):
+            fora_quadro.append(i)
+            erros.append(f"[{i}] climax fora de quadro - o publico precisa VER o desastre")
+        if _tem(corpo, ("longe dos dois", "atrás deles", "atras deles")) and str(
+                s.get("estagio", "")).upper() in ("CLIMAX", "ESCALADA"):
+            if i not in fora_quadro:
+                avisos.append(f"[{i}] acao acontecendo fora de quadro no pico")
+
+    if sem_gag:
+        erros.append(f"clipes SEM o campo 'gag' (a piada nao foi declarada): {sem_gag}")
+    if so_processo:
+        erros.append(f"clipes SEM piada fisica (so medir/conferir/aprovar): {sorted(set(so_processo))}")
+
+    for g in GESTOS:
+        c = bruto.lower().count(g)
+        if c > 3:
+            erros.append(f"gesto-assinatura repetido {c}x ('{g}') - maximo 3 no episodio")
+    gags = [str(s.get("gag", "")).strip().lower() for s in shots if str(s.get("gag", "")).strip()]
+    if gags and len(set(gags)) < max(1, int(len(gags) * 0.7)):
+        avisos.append(f"gags repetidas: {len(gags) - len(set(gags))} de {len(gags)} iguais")
+
     total = sum(int(s.get("dur", 0) or 0) for s in shots)
     chars = {str(s.get("n", 0)): len(prompt_dossie(s, ep)) for s in shots}
-    return {"erros": erros, "avisos": avisos, "total_s": total,
-            "chars_por_plano": chars, "n_planos": n, "formato": "dossie_v1"}
 
+    nota, motivos = 0, []
+    if not sem_gag and not so_processo:
+        nota += 4; motivos.append("todo clipe tem piada fisica declarada")
+    if not dano_invis:
+        nota += 1; motivos.append("dano material visivel")
+    if not fora_quadro:
+        nota += 1; motivos.append("climax em quadro")
+    semsil = sum(1 for s in shots if "silence" in str(s.get("overall_soundscape", "")).lower())
+    if 2 <= semsil <= 6:
+        nota += 1; motivos.append(f"{semsil} beats de silencio")
+    if gags and len(set(gags)) >= max(1, int(len(gags) * 0.8)):
+        nota += 1; motivos.append("gags variadas")
+    if ep.get("objetos_plantados"):
+        nota += 1; motivos.append("plantio/colheita declarados")
+    if any(str(s.get("objeto_gag", "")).strip() for s in shots):
+        nota += 1; motivos.append("objetos de gag nomeados")
+    nota = min(10, nota)
+    avisos.insert(0, f"NOTA DE HUMOR: {nota}/10 - " + ("; ".join(motivos) if motivos else "sem pontos positivos"))
+    return {"erros": erros, "avisos": avisos, "total_s": total,
+            "chars_por_plano": chars, "n_planos": n, "formato": "dossie_v2",
+            "humor": nota}
 
 def pasta_do_episodio(ep):
     titulo = ep.get("titulo", "episodio")
@@ -994,6 +1160,26 @@ def main():
     except KeyboardInterrupt:
         print("\nAdeus.")
         sv.server_close()
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# v3 — VALIDADOR FINAL: forma (v2) + humor (v2) + RENDERIZABILIDADE (v3)
+# A falha do v2 foi dar 8,5/10 para um episodio que virou bug na tela: ele
+# media a PIADA DECLARADA, nunca a PIADA FILMAVEL. Agora os dois contam.
+# ═══════════════════════════════════════════════════════════════════════════
+def validar_dossie(ep):
+    base = _validar_dossie_v2(ep)
+    render = regras_v3.validar_renderizavel(ep)
+    erros = list(base.get("erros", [])) + list(render.get("erros", []))
+    avisos = list(render.get("avisos", [])) + list(base.get("avisos", []))
+    humor = base.get("humor", 0)
+    nota = round(0.35 * humor + 0.65 * render["nota"], 1)
+    avisos.insert(0, "RENDERIZABILIDADE: %d/10 (peso 65%%) - %s"
+                  % (render["nota"], "; ".join(render["checks"]) or "nada comprovado"))
+    base.update({"erros": erros, "avisos": avisos, "humor": humor,
+                 "render": render["nota"], "nota": nota, "formato": "dossie_v3",
+                 "checks_render": render["checks"]})
+    return base
 
 
 if __name__ == "__main__":

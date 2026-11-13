@@ -1,0 +1,142 @@
+{
+ "titulo": "GELO NO ÁTRIO",
+ "logline": "Dois faz-tudo resfriam o átrio de um hospital com gelo seco e transformam a recepção numa nuvem que engole a fila.",
+ "setor": "hospitalar",
+ "servico": "climatização improvisada",
+ "cliente": "médico de jaleco",
+ "mecanismo": "usou o material errado — gelo seco no lugar de gelo comum, em ambiente fechado",
+ "degrau_final": "transborda (a nuvem branca sobe e cobre o balcão)",
+ "objetos_plantados": [
+  {
+   "objeto": "copo de papel com canudo",
+   "plantado_no_clipe": 1,
+   "pago_no_clipe": 5
+  },
+  {
+   "objeto": "carrinho de maca com rodinha solta",
+   "plantado_no_clipe": 2,
+   "pago_no_clipe": 6
+  }
+ ],
+ "callback_object": "copo de papel com canudo",
+ "assinatura": "nota fiscal emitida e entregue ao cliente mudo, dentro de uma nuvem de neblina",
+ "set_historia": "SET: interior of a small 1970s hospital atrium. Pale green tiled walls, white terrazzo floor with a dark scuff line, a long reception counter of pale wood with a brass service bell and a stack of blank forms, vinyl waiting chairs in two rows, a potted rubber plant, a glass double door at the rear with a metal kick plate, a ceiling fan. Flat cool fluorescent light from two ceiling panels, soft short shadows.",
+ "continuidade": [
+  "TÉO à esquerda em todos os clipes",
+  "JUCA à direita em todos os clipes",
+  "figurino completo sempre",
+  "luz fluorescente fria",
+  "a nuvem branca cresce a cada clipe e nunca recua",
+  "o copo de papel fica no balcão até o clipe 5"
+ ],
+ "shots": [
+  {
+   "n": 1,
+   "dur": 10,
+   "estagio": "LIGACAO",
+   "beats": [
+    "O telefone de disco toca e sacode a campainha de latão do balcão.",
+    "TÉO atende e, ao ouvir, mede a sala com a trena aberta no ar.",
+    "JUCA empilha quatro blocos de gelo seco numa caixa de isopor e a tampa sobe sozinha.",
+    "A tampa volta a descer com um estalo enquanto a caixa avança para a porta."
+   ],
+   "gag": "a tampa do Isopor sobe sozinha com o gás e volta a bater — o material já está trabalhando sem eles",
+   "objeto_gag": "tampa do isopor batendo",
+   "action": "JUCA stacks four blocks of dry ice into a polystyrene box; the lid lifts by itself, a curl of white vapour rolls over the rim, then the lid slaps back down. TÉO holds a steel tape open in the air, measuring the room while the box slides away.",
+   "camera": "Static medium two-shot at puppet eye level, the action flowing continuously.",
+   "overall_soundscape": "telephone bell rattles; steel tape snaps shut; foam lid slaps; dry ice hisses inside the box",
+   "non_diegetic_music": "N/A",
+   "estado": "a thin white vapour spills from the sealed box"
+  },
+  {
+   "n": 2,
+   "dur": 10,
+   "estagio": "CHEGADA",
+   "beats": [
+    "Um médico de jaleco aponta para a sala e bate o dedo no relógio de parede.",
+    "TÉO mede o balcão e marca a altura com o lápis.",
+    "JUCA apoia o Isopor no carrinho de maca e a rodinha solta gira no ar.",
+    "O carrinho rola meio metro sozinho e para contra o balcão."
+   ],
+   "gag": "a rodinha solta do carrinho gira no vazio e o carrinho anda sozinho até o balcão",
+   "objeto_gag": "rodinha solta do carrinho",
+   "action": "A doctor in a white coat points at the atrium and taps the wall clock. JUCA sets the box on a wheeled stretcher; one loose caster spins free in the air, the stretcher rolls half a metre on its own and stops against the counter.",
+   "camera": "Static wide shot at puppet eye level, the action flowing continuously.",
+   "overall_soundscape": "wall clock ticks; steel tape snaps; a loose caster rattles and spins; stretcher frame clanks against the counter",
+   "non_diegetic_music": "N/A",
+   "estado": "the stretcher is wedged against the counter, one caster still spinning"
+  },
+  {
+   "n": 3,
+   "dur": 10,
+   "estagio": "DIAGNOSTICO_ERRADO",
+   "beats": [
+    "TÉO abre a tampa e a nuvem branca cai pelo lado do balcão até o chão.",
+    "Ele mede a nuvem com a trena, como se fosse uma parede.",
+    "JUCA distribui os blocos em fila pelo piso de terrazzo.",
+    "A nuvem cobre os pés da primeira cadeira e continua baixando."
+   ],
+   "gag": "TÉO mede a neblina com a trena, tratando vapor como se fosse alvenaria",
+   "objeto_gag": "trena contra a neblina",
+   "action": "TÉO opens the lid and a heavy white cloud pours over the counter edge and down to the floor. He extends the steel tape into the cloud and reads the blade as if measuring a wall. JUCA lays the dry ice blocks in a line across the terrazzo; the cloud swallows the chair legs.",
+   "camera": "Slow push-in from a medium two-shot toward the tape blade disappearing into the vapour, the action flowing continuously.",
+   "overall_soundscape": "foam lid squeaks open; dry ice hisses and pops; steel tape extends; vapour pours over the counter edge",
+   "non_diegetic_music": "N/A",
+   "estado": "white vapour lies ankle-deep across the terrazzo, the tape blade inside it"
+  },
+  {
+   "n": 4,
+   "dur": 10,
+   "estagio": "PRIMEIRA_FALHA",
+   "beats": [
+    "JUCA fecha a porta de vidro para \"segurar o frio\" e o trinco trava.",
+    "A nuvem engrossa, sobe pelos joelhos das cadeiras e apaga o rodapé.",
+    "TÉO tenta ler o relógio de parede e a neblina come o mostrador.",
+    "O primeiro paciente sentado some da cintura para baixo."
+   ],
+   "gag": "fechar a porta para segurar o frio transforma a sala numa banheira de neblina que engole a fila",
+   "objeto_gag": "porta de vidro fechada",
+   "action": "JUCA pushes the glass door shut to keep the cold in and the latch clicks home. The cloud thickens, climbs past the chair seats and wipes out the skirting board. TÉO looks up: the vapour reaches the wall clock and swallows the dial whole.",
+   "camera": "Static wide shot at puppet eye level, the action flowing continuously.",
+   "overall_soundscape": "glass door latches with a metal click; dry ice hisses louder; vapour creeps over vinyl; a chair leg scrapes the floor",
+   "non_diegetic_music": "N/A",
+   "estado": "vapour at waist height, the wall clock dial completely gone"
+  },
+  {
+   "n": 5,
+   "dur": 10,
+   "estagio": "JEITINHO",
+   "beats": [
+    "TÉO pega o copo de papel com canudo do balcão e sopra dentro dele.",
+    "Soprar não faz nada; ele então enfia o canudo na neblina e aspira.",
+    "O copo enche de vapor branco, estufa e a tampa de plástico estala.",
+    "JUCA traz um segundo copo e os dois continuam enchendo copos que transbordam."
+   ],
+   "gag": "tentar beber a neblina com canudo: cada copo cheio transborda de volta para a sala",
+   "objeto_gag": "copo de papel com canudo",
+   "action": "TÉO takes the paper cup with the straw from the counter and blows into it, then dips the straw into the cloud and draws. The cup swells with white vapour, the plastic lid cracks open, and the vapour spills straight back down to the floor. JUCA arrives with a second cup and fills it.",
+   "camera": "Static medium two-shot at puppet eye level, the action flowing continuously.",
+   "overall_soundscape": "straw slurps against vapour; paper cup crinkles and pops; plastic lid cracks; vapour spills and hisses",
+   "non_diegetic_music": "N/A",
+   "estado": "two crushed paper cups on the counter, vapour now at chest height"
+  },
+  {
+   "n": 6,
+   "dur": 10,
+   "estagio": "CLIMAX",
+   "beats": [
+    "A nuvem sobe até o teto e o ventilador de teto começa a bater nela.",
+    "O carrinho de maca é empurrado pela corrente de ar e rola até o balcão.",
+    "A campainha de latão é engolida e toca sozinha dentro da neblina.",
+    "O médico recebe a nota fiscal com a mão saindo de dentro do vapor."
+   ],
+   "gag": "o ventilador bate na nuvem e empurra o carrinho pelo salão — o desastre ganha vento próprio",
+   "objeto_gag": "ventilador de teto contra a nuvem",
+   "action": "The cloud reaches the ceiling and the fan blades chop through it, throwing white rolls across the room. The stretcher rolls away with the draught and knocks the counter. The brass bell rings by itself inside the vapour while a hand comes out of the cloud holding a blank envelope.",
+   "camera": "Static low-angle wide shot at puppet eye level, the action flowing continuously.",
+   "overall_soundscape": "ceiling fan chops through vapour; stretcher wheels rattle across terrazzo; brass bell rings inside the cloud; dry ice pops",
+   "non_diegetic_music": "N/A",
+   "estado": "the atrium is full of rolling white vapour and the fan keeps cutting it"
+  }
+ ]
+}

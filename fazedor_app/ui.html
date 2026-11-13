@@ -78,7 +78,7 @@
   <div class="logo">T&amp;J</div>
   <div>
     <h1>FAZEDOR DE HISTÓRIAS — <span style="color:var(--mostarda)">TÉO &amp; JUCA Company</span></h1>
-    <div class="sub">Fale a ideia → o programa lapida, valida pelas 14 regras do pipeline e entrega os prompts + settings v2.1 prontos · <b style="color:var(--mostarda)">UI v1.3</b> <span style="color:var(--txt2)">(se este selo não aparece, aperte Ctrl+F5)</span></div>
+    <div class="sub">Fale a ideia → o programa lapida, valida pelas 14 regras do pipeline e entrega os prompts + settings v2.1 prontos · <b style="color:var(--mostarda)">UI v2.0 - PROMPT v2 (humor obrigatorio)</b> <span style="color:var(--txt2)">(se este selo não aparece, aperte Ctrl+F5)</span></div>
   </div>
   <div style="margin-left:auto" id="statusBases" class="pill">bases…</div>
 </header>
@@ -369,7 +369,7 @@ $("bDiag").onclick = async () => {
   const d = abrirDiag("⏳ testando microfone… aguarde ~4 s (fale algo alto durante o teste!)");
   const linhas = []; const L = (t, ok) => { d.textContent += "\n" + (ok===true?"✓ ":ok===false?"✗ ":"· ") + t; linhas.push(t); };
   const ua = (navigator.userAgent.match(/(Edg|OPR|Chrome|Firefox)\/[\d.]+$/) || ["?"])[0];
-  L("navegador/painel: " + ua + " · UI v1.3");
+  L("navegador/painel: " + ua + " · UI v2.0 - PROMPT v2 (humor obrigatorio)");
   L("contexto seguro (necessário p/ microfone): " + window.isSecureContext, window.isSecureContext);
   const temMD = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   L("acesso a mídia (mediaDevices): " + temMD, temMD);
