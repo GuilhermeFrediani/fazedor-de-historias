@@ -1,0 +1,23 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_mao_c01_ligacao",
+  "prompt": "integrated_multimodal_description: [Shot 1] ACTION: The white phone box sits on the left wall and the stacked-bucket cart stands near JUCA from the first frame. JUCA yanks the cart by its handle without looking, and the telephone cord snared on the handle tightens and rips the box off the wall. The handset swings down and clacks on the concrete. TEO catches the dangling cord and lifts the handset. Both look down at the fallen phone. TEO straightens his moustache. JUCA exhales one short nasal 'hh'. STATE AT CUT: dry floor, phone box intact on the wall, cart with stacked buckets beside JUCA. Character TEO: tall thin white handyman, bald crown with two straw-blond tufts, huge drooping straw-blond walrus moustache, teal knitted beanie with two cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark brown boots, yellow tape measure in hand. He stays at frame LEFT. Character JUCA: short wide Black handyman, barrel torso, black coiled clay hair, big terracotta nose, burnt-brown flat cap, mustard cable-knit sweater with grey elbow patch, olive-green trousers, pale wooden clogs, pencil behind the right ear. He stays at frame RIGHT. SET: small military vehicle-wash bay, riveted grey steel walls, wet grey concrete floor with two faded yellow safety lines, one rectangular steel drain with long slots at centre, white wall-mounted telephone box with coiled cord on the left wall, wall valve manifold with two red wheels on the right wall, white canvas curtain on a ceiling rail at the back, two caged industrial lamps, cool hard overhead light, short shadows. Claymation plasticine stop-motion style, handcrafted modelling clay with visible fingerprints. They do not speak and their mouths do not move. One fixed wide camera shot, both characters fully visible. No text, no logo, no watermark, no cartoon outlines, no anime eyes, no visible sclera, no teeth, no plastic gloss, no 2D vector, no CGI look, no extra fingers. \noverall_soundscape: metal phone box rips off the wall; handset clacks on concrete; short dry nasal exhale\nnon_diegetic_music: N/A"
+}
