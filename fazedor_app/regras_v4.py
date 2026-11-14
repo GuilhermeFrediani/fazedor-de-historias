@@ -170,6 +170,13 @@ def montar_prompt_v4(s, ep, blocos, musica=None):
         planos = [{"t": "00:00.000", "texto": str(s.get("action", ""))}]
 
     cabeca = " ".join(x for x in (ESTILO_CURTO, set_txt, TEO_CURTO, JUCA_CURTO) if x)
+    # OCCUPAÇÃO POSITIVA (cfg 1 não tem ramo negativo — ocupa o quadro com a verdade):
+    # mata personagens extras alucinados (ex.: soldado-urso atrás da cortina).
+    ocupacao = ("Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA "
+                "stays at frame right; no other people or animals appear.")
+    # CADEIA DE ESTADO (P0-2): o modelo precisa SABER como o mundo amanhece e como termina.
+    estado_in = str(s.get("estado_in", "")).strip().rstrip(".")
+    estado_out = str(s.get("estado_out", "")).strip().rstrip(".")
     corpo = []
     for i, p in enumerate(planos):
         txt = str(p.get("texto", "")).strip()
@@ -178,9 +185,14 @@ def montar_prompt_v4(s, ep, blocos, musica=None):
         else:
             corpo.append("[Shot %d] At %s, the camera cuts to %s"
                          % (i + 1, str(p.get("t") or _hora(i * 3.5)), txt))
-    desc = cabeca + " " + " ".join(corpo)
+    desc = cabeca + " " + ocupacao + " "
+    if estado_in:
+        desc += "AT START: " + estado_in + ". "
+    desc += " ".join(corpo)
     desc += (" They do not speak and their mouths do not move, but they breathe, swallow and "
              "react with their whole bodies.")
+    if estado_out:
+        desc += " AT END: " + estado_out + "."
 
     p_out = "integrated_multimodal_description: " + " ".join(desc.split())
     som = str(s.get("overall_soundscape", "")).strip()
@@ -292,6 +304,31 @@ def validar_montagem(ep):
         avisos.append("o cliente nao aparece no 1o e no ultimo clipe - sem fecho.")
     if n < 3:
         nota = min(nota, 6)
+
+    # g) CADEIA DE ESTADO (P0-1): estado_in(N) deve casar com estado_out(N-1).
+    #    A v3 comparava o clipe com ele mesmo e contava OK quando DIFERIA; a v4
+    #    simplesmente não checava. Aqui a corrente é real e bloqueante.
+    def _norm(t):
+        return " ".join(t.lower().strip().rstrip(".").split())
+
+    cadeia_ok = 0
+    prev_out = None
+    for s in shots:
+        i = s.get("n", "?")
+        ei = _norm(str(s.get("estado_in", "")))
+        eo = _norm(str(s.get("estado_out", "")))
+        if not ei or not eo:
+            erros.append("[%s] falta estado_in/estado_out - a cadeia de continuidade "
+                         "nao pode ser validada." % i)
+        elif prev_out is not None and ei != prev_out:
+            erros.append("[%s] QUEBRA DE CADEIA: estado_in nao casa com o estado_out do "
+                         "clipe anterior.\n     estado_out(N-1): %s\n     estado_in(N)   : %s"
+                         % (i, prev_out, ei))
+        else:
+            cadeia_ok += 1
+        prev_out = eo
+    if cadeia_ok == n:
+        checks.append("cadeia de estado emendada (estado_out N-1 == estado_in N)")
 
     if nota < 7:
         erros.append("NOTA DE MONTAGE %d/10: o episodio nao tem ritmo (minimo 7)." % nota)

@@ -23,13 +23,12 @@ SET = (
     "white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the "
     "drain, two caged industrial lamps. Cool hard overhead light, short shadows, wet surfaces."
 )
-MUS = ("A sparse comedy score: tuba plucks and a woodblock at a slow walking tempo, about "
-       "88 BPM, with one clean stop on each impact and a low bassoon note under the reactions.")
+MUS = "N/A"   # CANON: ZERO MÚSICA — o foley é o punchline (LEI DE FERRO nº 3 do dossiê v1)
 
 CLIPES = [
  {"n": 1, "dur": 10, "estagio": "LIGACAO",
-  "estado_in": "Telefone na parede com o fio enrolado; grelha de aco caida de brucos no piso; piso seco.",
-  "estado_out": "Caixa do telefone pendurada pelo fio, encostada na grelha; fone na mao do TEO.",
+  "estado_in": "white phone box bolted on the left wall with its coiled cord looped; steel grate lying face-down on the floor beside the drain; floor dry",
+  "estado_out": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; a military boot stepping in behind the curtain",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a white steel wall telephone box bolted at head "
       "height, its coiled cord hanging in a loose loop, and TEO's boots on the wet concrete below.")},
@@ -50,8 +49,8 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 2, "dur": 10, "estagio": "CHEGADA",
-  "estado_in": "Caixa do telefone no chao; cliente entrando pela cortina; carrinho baixo a direita.",
-  "estado_out": "Tambor rolando pelo box com a grelha equilibrada em cima; cliente ja saiu.",
+  "estado_in": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; a military boot stepping in behind the curtain",
+  "estado_out": "empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a military boot tapping twice on the wet floor "
       "beside the fallen phone box, a green document case swinging at the edge of frame.")},
@@ -72,8 +71,8 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 3, "dur": 10, "estagio": "PRIMEIRA_FALHA",
-  "estado_in": "Buraco do ralo aberto e vazio; tambor ao fundo; TEO com a trena na mao.",
-  "estado_out": "Tampao de borracha inchado preso na bota do TEO; buraco ainda aberto.",
+  "estado_in": "empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly",
+  "estado_out": "rubber test plug swollen and stuck to TEO's boot; drain hole still open; tape measure clattered on the floor",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of the open drain throat, a black rectangular hole in "
       "the wet concrete, with TEO's brass tape hook resting on its front rim.")},
@@ -94,8 +93,8 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 4, "dur": 10, "estagio": "JEITINHO",
-  "estado_in": "Buraco aberto; rolo de mantas absorventes no chao; piso molhado.",
-  "estado_out": "Manta encharcada inchada cobrindo as duas botas do TEO; piso mais molhado.",
+  "estado_in": "rubber test plug swollen and stuck to TEO's boot; drain hole still open; tape measure clattered on the floor",
+  "estado_out": "soaked absorbent pad swollen into a fat pillow covering both of TEO's boots; floor wetter; drain still open",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a roll of white absorbent pads lying on the wet "
       "floor beside a steel floor-wash pedal, and JUCA's clog settling onto that pedal.")},
@@ -115,8 +114,8 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 5, "dur": 10, "estagio": "ESCALADA",
-  "estado_in": "Piso alagado com mantas; tambor livre no chao; corrente com gancho sobre o buraco.",
-  "estado_out": "Tambor pendurado no teto; TEO com as botas no ar puxando o tambor.",
+  "estado_in": "soaked absorbent pad swollen into a fat pillow covering both of TEO's boots; floor wetter; drain still open",
+  "estado_out": "steel drum jammed flat against the ceiling plate on the chain; TEO hanging from the drum with his boots off the wet floor",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a steel hook hanging on a chain directly above the "
       "open drain, swinging gently, empty, with JUCA's hand reaching up into frame.")},
@@ -136,8 +135,8 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 6, "dur": 10, "estagio": "CLIMAX",
-  "estado_in": "TEO pendurado no tambor no teto; cliente reaparece na cortina com a pasta aberta.",
-  "estado_out": "Tambor no chao selando o buraco, agua cobrindo as botas, folha na pasta do cliente.",
+  "estado_in": "steel drum jammed flat against the ceiling plate on the chain; TEO hanging from the drum with his boots off the wet floor",
+  "estado_out": "drum landed flat sealing the drain; water up over both pairs of boots; blank sheet in the client's open case",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of an open green document case held at chest height, "
       "empty inside, with a military cuff and a brass button beside it.")},
