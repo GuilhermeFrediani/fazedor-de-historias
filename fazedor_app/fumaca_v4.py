@@ -34,14 +34,15 @@ CLIPES = [
       "height, its coiled cord hanging in a loose loop, and TEO's boots on the wet concrete below.")},
     {"t": "00:03.500", "texto": ("the camera cuts to a wide two-shot: TEO lifts the receiver and turns "
       "away, the cord snaps taut and the whole phone box is yanked off the wall and tumbles down onto "
-      "the fallen steel grate, while JUCA shoulders a steel drum past behind him and keeps walking.")},
+      "the fallen steel grate, while JUCA steadies the wobbling bucket cart beside him with one hand "
+      "and keeps walking.")},
     {"t": "00:07.000", "texto": ("the camera cuts to a tight two-shot: TEO still holds the receiver at "
       "his ear on a cord that now leads down to a telephone on the floor. He straightens his spine and "
       "raises one flat hand at chest height; behind him the white curtain slides and a military boot "
       "steps into the bay.")}],
   "gag": "o fio do telefone e curto: TEO se afasta e a caixa inteira sai da parede e cai na grelha.",
   "objeto_gag": "caixa do telefone", "fisica": "tombar",
-  "reacao": "TEO endireita a coluna de repente, ergue uma mao aberta na altura do peito e alisa o bigode devagar; JUCA encolhe os ombros e trava o passo com o tambor nas costas.",
+  "reacao": "TEO endireita a coluna de repente, ergue uma mao aberta na altura do peito e alisa o bigode devagar; JUCA trava o passo, apoia uma mao no carrinho e encolhe os ombros.",
   "som": "estalo de baquelite; fio esticando; caixa de aco batendo no concreto; grelha retinindo; resfolego do TEO; suspiro do JUCA",
   "overall_soundscape": ("A bakelite receiver clicks off its cradle, the coiled cord creaks as it "
     "tightens, and the steel phone box bangs down on the concrete and rings. TEO snorts one short "

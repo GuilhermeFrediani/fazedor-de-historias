@@ -109,13 +109,47 @@ def _estados(settings_dir, slugs):
     return cad
 
 
+def gate_ancora(key, png, estado=""):
+    """GATE DE ANCORA pre-render: julga UM frame antes de encadear.
+    Reprovado se: personagem extra, objeto flutuando sem apoio, texto na tela."""
+    SYS = ("Voce e o porteiro de continuidade de uma serie de comedia muda em claymation "
+           "com EXATAMENTE dois personagens fixos: TEO (alto, magro, bigode loiro de morsa, "
+           "gorro teal, camisa xadrez vermelho-e-preto, a ESQUERDA) e JUCA (baixo, largo, "
+           "pele escura, boina marrom, sueter mostarda, a DIREITA). Recebe UM frame que sera "
+           "o ponto de partida do proximo clipe. Julgue so o que ve, com rigor: "
+           "1) ha EXATAMENTE 2 bonecos? qualquer OUTRA figura (soldado, urso, silhueta, "
+           "reflexo com corpo) e personagem extra; "
+           "2) algum objeto esta FLUTUANDO sem apoio visivel (apoiado em nada, nem mao, "
+           "nem piso, nem gancho)? "
+           "3) ha texto legivel na tela? "
+           "Responda JSON estrito: "
+           '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
+           '"texto_na_tela": true/false, "objetos_presentes": [], '
+           '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
+    parts = [_img_part(png)]
+    if estado:
+        parts.append({"type": "text", "text": "Estado que este frame deveria mostrar: " + estado})
+    tx = _call(key, SYS, parts, max_tokens=1200)
+    return _json_de(tx)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--clipes", required=True)
+    ap.add_argument("--clipes")
+    ap.add_argument("--ancora", metavar="PNG", help="gate de 1 frame (pre-render)")
+    ap.add_argument("--estado", default="", help="estado esperado da ancora (opcional)")
     ap.add_argument("--padrao", default="*.mp4")
-    ap.add_argument("--settings", required=True)
+    ap.add_argument("--settings")
     ap.add_argument("--saida", default="qc_visao.json")
     a = ap.parse_args()
+
+    # GATE DE ANCORA (pre-render): 1 frame decide se a cadeia pode prosseguir
+    if a.ancora:
+        key = _chave()
+        j = gate_ancora(key, a.ancora, a.estado)
+        print(json.dumps(j, ensure_ascii=False))
+        print("ANCORA: " + j.get("veredito", "?") + " — " + j.get("motivo", ""))
+        return 0 if j.get("veredito") == "APROVADA" else 3
 
     key = _chave()
     pasta = Path(a.clipes)
