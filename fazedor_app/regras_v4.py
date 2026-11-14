@@ -98,10 +98,23 @@ SETUP (2 s, objeto grande em quadro) -> EXPECTATIVA (o jeitinho parece funcionar
 Cardapio de fisica (1 por clipe, sem repetir): tombar, escorregar, quicar,
 transbordar, dobrar, inflar, rolar.
 
+=== O ARCO DA SERIE (a identidade e GAMBIARRA que escala) ===
+TENTATIVA 1 - a ferramenta CERTA falha PEQUENO (o metodo deles e bom, o mundo trapaceia).
+TENTATIVA 2 - a gambiarra com o OBJETO PLANTADO falha MAIOR, e a consequencia PERSISTE
+  no estado (nada se resolve sozinho).
+TENTATIVA 3 - a gambiarra "funciona" ERRADO: o servico entrega, mas pelo pior caminho
+  possivel - e isso E o degrau_final.
+A mesma gag/mecanismo volta no minimo 2x com fisica DIFERENTE (repeticao com variacao).
+Em 60 s (6 clipes): as tres tentativas moram nos clipes 3, 4 e 5. Em 300 s: dentro da
+escada JEITINHO -> ESCALADA -> CLIMAX.
+Todo objeto de gag nasce do clipe anterior: declare "herda_de" (o objeto ou estado do
+clipe N-1 que CAUSA esta gag). Causa invisivel = piada que nao vem.
+
 === FORMATO DA SAIDA (JSON) ===
 Episodio: titulo, logline, setor, servico, cliente, mecanismo, degrau_final,
 objetos_plantados[], callback_object, set_historia, continuidade[], assinatura.
-shots[]: n, dur (10), estagio, estado_in, estado_out,
+shots[]: n, dur (10), estagio, estado_in (EN, 1 linha), estado_out (EN, 1 linha),
+  herda_de (EN: o objeto/estado do clipe ANTERIOR que causa esta gag),
   planos (LISTA DE 2-3, cada um com "t" e "texto"):
       {"t": "00:00.000", "texto": "Close insert of ... (EN, objeto grande no quadro)"}
       {"t": "00:03.500", "texto": "the camera cuts to ... (EN, plano geral, acao)"}
@@ -329,6 +342,77 @@ def validar_montagem(ep):
         prev_out = eo
     if cadeia_ok == n:
         checks.append("cadeia de estado emendada (estado_out N-1 == estado_in N)")
+
+    # ── CHECKS CAUSAIS (v4.2) ────────────────────────────────────────────────
+    # h) registro de props: todo objeto_gag[N] deve estar plantado (plantado <= N)
+    plantados = ep.get("objetos_plantados") or []
+    for s in shots:
+        i = s.get("n", "?")
+        og = str(s.get("objeto_gag", "")).strip().lower()
+        if not og:
+            continue
+        if not any((og in po or po in og)
+                   and int(p.get("plantado_no_clipe", 999)) <= int(i)
+                   for p in plantados
+                   for po in [str(p.get("objeto", "")).lower()]):
+            avisos.append("[%s] objeto_gag '%s' nao esta no registro objetos_plantados "
+                          "(com plantado <= %s) - objeto pode nascer do nada." % (i, og, i))
+
+    # i) callback + degrau_final no ULTIMO clipe (o fecho precisa existir)
+    if shots:
+        ult = shots[-1]
+        fecho = " ".join([str(ult.get("estado_out", ""))] +
+                         [str(p.get("texto", "")) for p in (ult.get("planos") or [])]).lower()
+        cb = str(ep.get("callback_object", "")).strip().lower()
+        og_ult = str(ult.get("objeto_gag", "")).strip().lower()
+        if cb and cb not in fecho and cb not in og_ult and og_ult not in cb:
+            avisos.append("callback_object '%s' nao aparece no ultimo clipe - o payoff "
+                          "da assinatura ficou no papel." % cb)
+        if not str(ep.get("degrau_final", "")).strip():
+            erros.append("episodio sem degrau_final - a escada nao tem topo.")
+
+    # j) fisica distinta (cardapio tem 7; repetir e tique)
+    fis = [str(s.get("fisica", "")).strip().lower() for s in shots if s.get("fisica")]
+    dup = sorted({f for f in fis if fis.count(f) > 1})
+    if dup:
+        avisos.append("fisica repetida: %s - o cardapio tem 7 primitivas, varie." % ", ".join(dup))
+
+    # k) herda_de (causa visivel): o objeto do clipe N nasce do clipe N-1
+    for idx, s in enumerate(shots):
+        i = s.get("n", "?")
+        if idx == 0:
+            continue  # o primeiro clipe nao herda de ninguem
+        hd = str(s.get("herda_de", "")).strip().lower()
+        if not hd:
+            avisos.append("[%s] sem 'herda_de' - declare de qual objeto/estado do clipe "
+                          "anterior esta gag nasce (causa visivel)." % i)
+            continue
+        ei = str(s.get("estado_in", "")).lower()
+        og_prev = str(shots[idx - 1].get("objeto_gag", "")).lower()
+        if hd in ei or hd in og_prev or og_prev in hd:
+            continue
+        avisos.append("[%s] herda_de '%s' nao aparece nem no estado_in nem no objeto_gag "
+                      "do clipe anterior - causa pode estar invisivel." % (i, hd))
+
+    # l) ARCO: repeticao com variacao (a mesma gag/mecanismo volta escalando)
+    if len(shots) >= 6:
+        arc_ok = False
+        for a in range(len(shots)):
+            for b in range(a + 1, len(shots)):
+                oa = str(shots[a].get("objeto_gag", "")).strip().lower()
+                ob = str(shots[b].get("objeto_gag", "")).strip().lower()
+                fa = str(shots[a].get("fisica", "")).strip().lower()
+                fb = str(shots[b].get("fisica", "")).strip().lower()
+                if oa and (oa in ob or ob in oa) and fa != fb:
+                    arc_ok = True
+                    break
+            if arc_ok:
+                break
+        if arc_ok:
+            checks.append("arco de repeticao com variacao (mesmo objeto, fisica diferente)")
+        else:
+            avisos.append("sem arco: nenhuma gag volta com fisica diferente - a serie e "
+                          "gambiarra que escala, nao acidente novo a cada clipe.")
 
     if nota < 7:
         erros.append("NOTA DE MONTAGE %d/10: o episodio nao tem ritmo (minimo 7)." % nota)

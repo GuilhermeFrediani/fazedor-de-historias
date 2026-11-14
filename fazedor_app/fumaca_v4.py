@@ -40,7 +40,7 @@ CLIPES = [
       "raises one flat hand at chest height; behind him the white curtain slides and a military boot "
       "steps into the bay.")}],
   "gag": "o fio do telefone e curto: TEO se afasta e a caixa inteira sai da parede e cai na grelha.",
-  "objeto_gag": "caixa do telefone", "fisica": "quicar",
+  "objeto_gag": "caixa do telefone", "fisica": "tombar",
   "reacao": "TEO endireita a coluna de repente, ergue uma mao aberta na altura do peito e alisa o bigode devagar; JUCA encolhe os ombros e trava o passo com o tambor nas costas.",
   "som": "estalo de baquelite; fio esticando; caixa de aco batendo no concreto; grelha retinindo; resfolego do TEO; suspiro do JUCA",
   "overall_soundscape": ("A bakelite receiver clicks off its cradle, the coiled cord creaks as it "
@@ -62,7 +62,7 @@ CLIPES = [
       "out and lowers it slowly; JUCA puts both hands on his knees and turns his head to follow the "
       "rolling drum, then pulls the pencil from behind his ear.")}],
   "gag": "a rodinha do carrinho sobe no telefone caido, o tambor desce sozinho e sai rolando com a grelha equilibrada em cima como uma tampa.",
-  "objeto_gag": "tambor de aco", "fisica": "rolar",
+  "objeto_gag": "tambor de aco", "fisica": "rolar", "herda_de": "phone box",
   "reacao": "JUCA apoia as duas maos nos joelhos, gira a cabeca seguindo o tambor e puxa o lapis de tras da orelha; TEO segura o braco esticado no ar e o abaixa devagar.",
   "som": "bota militar batendo no concreto; rodinha raspando em baquelite; tambor oco rolando; grelha raspando no tambor; resfolego curto; estalo de lingua",
   "overall_soundscape": ("A military boot taps twice on wet concrete, then the dolly caster scrapes "
@@ -84,7 +84,7 @@ CLIPES = [
       "with the swollen plug stuck to it like a slipper and holds the raised knee; JUCA leans in with "
       "both hands on his thighs to look at it too.")}],
   "gag": "o tampao de teste incha mais que o buraco, sai voando como rolha e cai justo no pe do TEO.",
-  "objeto_gag": "tampao de borracha", "fisica": "quicar",
+  "objeto_gag": "tampao de borracha", "fisica": "inflar", "herda_de": "steel grate",
   "reacao": "TEO levanta a bota do chao com o tampao grudado, dobra o joelho e segura a perna no ar; JUCA se inclina com as maos nas coxas e assente devagar.",
   "som": "borracha comprimida pelo calcanhar; estalo de ar; tampao batendo na bota; trena caindo no piso; resfolego; suspiro",
   "overall_soundscape": ("Rubber squeaks against the concrete rim, a wet pop fires the plug upward, "
@@ -106,7 +106,7 @@ CLIPES = [
       "TEO's boots and swallows them; TEO lifts one foot and the whole pad lifts with it; JUCA wipes "
       "both hands down his trousers.")}],
   "gag": "as mantas bebem toda a agua, incham como um travesseiro e engolem as duas botas do TEO.",
-  "objeto_gag": "mantas absorventes", "fisica": "transbordar",
+  "objeto_gag": "mantas absorventes", "fisica": "transbordar", "herda_de": "rubber test plug",
   "reacao": "TEO ergue um pe e a manta inteira sobe junto, dobra o joelho e olha para o proprio pe; JUCA limpa as duas maos na calca e assente com a cabeca.",
   "som": "pedal de aco batendo; agua jorrando pelos bicos; mantas encharcadas arrastando; botas sugadas; resfolego; estalo de lingua",
   "overall_soundscape": ("A steel pedal clanks down, water bursts along the floor, and soaked pads "
@@ -126,7 +126,7 @@ CLIPES = [
       "both hands and pulls, and his own boots come up off the wet floor while JUCA holds the chain "
       "still with one hand and shrugs.")}],
   "gag": "JUCA ergue o tambor na corrente e ele trava no teto; TEO puxa o tambor e e o TEO que sobe.",
-  "objeto_gag": "tambor de aco na corrente", "fisica": "inflar",
+  "objeto_gag": "tambor de aco na corrente", "fisica": "escorregar",
   "reacao": "TEO fica pendurado com as duas maos no tambor, as botas balancando no ar, e olha para os proprios pes; JUCA dobra o pescoco para tras e apoia as maos na cintura.",
   "som": "corrente raspando no gancho; tambor batendo no teto de aco; corrente esticando; botas raspando no ar; resfolego; assobio baixo",
   "overall_soundscape": ("The chain rasps through the hook and the steel drum clangs against the "
@@ -147,7 +147,7 @@ CLIPES = [
       "straightens his spine; the military client bends, pinches a wet blank sheet off the floating "
       "lid and lays it in the open case; JUCA puts both hands on his hips.")}],
   "gag": "a corrente escapa, o tambor cai e sela o buraco; a agua sobe e a nota sai do chao molhada.",
-  "objeto_gag": "tambor de aco", "fisica": "tombar",
+  "objeto_gag": "tambor de aco", "fisica": "tombar", "herda_de": "steel drum",
   "reacao": "TEO aterrissa nos calcanhares, endireita a coluna e olha a agua nas botas; JUCA apoia as duas maos na cintura e olha para o teto; o cliente fecha a pasta devagar.",
   "som": "corrente escapando; tambor batendo seco no concreto; agua subindo; tampa girando na agua; papel molhado; suspiro longo; estalo de lingua",
   "overall_soundscape": ("The chain slips with a sharp clack, the drum lands flat on the drain with a "
@@ -167,8 +167,11 @@ EP = {
     "de limpa-lo, e a agua de lavagem volta toda para o piso"),
   "degrau_final": "teto e piso: o tambor sobe na corrente e cai selando o buraco",
   "objetos_plantados": [
+    {"objeto": "caixa do telefone", "plantado_no_clipe": 1, "pago_no_clipe": 2},
     {"objeto": "grelha de aco", "plantado_no_clipe": 1, "pago_no_clipe": 2},
-    {"objeto": "tambor de aco", "plantado_no_clipe": 2, "pago_no_clipe": 6}],
+    {"objeto": "tambor de aco", "plantado_no_clipe": 2, "pago_no_clipe": 6},
+    {"objeto": "tampao de borracha", "plantado_no_clipe": 3, "pago_no_clipe": 4},
+    {"objeto": "mantas absorventes", "plantado_no_clipe": 4, "pago_no_clipe": 5}],
   "callback_object": "tambor de aco",
   "set_historia": SET,
   "continuidade": [

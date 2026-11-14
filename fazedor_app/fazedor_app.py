@@ -517,8 +517,12 @@ def _validar_dossie_v2(ep):
         except Exception:
             erros.append("objetos_plantados: plantado_no_clipe/pago_no_clipe devem ser numeros")
             continue
-        if not 1 <= pl <= max(3, n // 3):
-            erros.append(f"objeto '{o.get('objeto','?')}': plantado no clipe {pl} - 1o terco")
+        # v4.2: a janela do 1o terco so obriga objetos que ATRAVESSAM clipes
+        # (pago > plantado + 1). Objeto plantado e consumido localmente (inserto
+        # do Plano A do proprio clipe) fica isento — e o desenho v4 por clipe.
+        if not 1 <= pl <= max(3, n // 3) and pg > pl + 1:
+            erros.append(f"objeto '{o.get('objeto','?')}': plantado no clipe {pl} - objeto "
+                         f"que atravessa ate o clipe {pg} precisa nascer no 1o terco")
         if pg < pl:
             erros.append(f"objeto '{o.get('objeto','?')}': pago ({pg}) antes de plantado ({pl})")
     if not (ep.get("continuidade") or []):
