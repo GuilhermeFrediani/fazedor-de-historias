@@ -35,7 +35,8 @@ from pathlib import Path
 
 _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent))
-import regras_v3  # v3: camada de RENDERIZABILIDADE (orcamento de fisica + ancoras curtas)
+import regras_v3
+import regras_v4  # v3: camada de RENDERIZABILIDADE (orcamento de fisica + ancoras curtas)
 
 APP_DIR = _HERE
 PARENT = APP_DIR.parent                      # "fazedor de histórias"
@@ -425,7 +426,7 @@ objeto_gag: "tijolo sobre espuma"
 def instrucoes_dossie():
     """v3: prompt mestre com ORCAMENTO DE FISICA + regra dos dois corpos + reacao legivel.
     A ancora visual continua fora daqui: o programa cola ancoras CURTAS (regras_v3)."""
-    return regras_v3.PROMPT_MESTRE_V3
+    return regras_v4.PROMPT_MESTRE_V4
 
 def ep_eh_dossie(ep):
     shots = ep.get("shots") or []
@@ -445,7 +446,7 @@ def prompt_dossie(s, ep):
     """v3: ACTION primeiro, ancoras CURTAS no meio, estilo/negativos no fim.
     Motivo: o modelo le o comeco do prompt. No v2 a acao ficava depois de ~3.900
     chars de roupa, e o video renderizava a roupa e ignorava a piada."""
-    return regras_v3.montar_prompt_v3(s, ep, blocos_fixos())
+    return regras_v4.montar_prompt_v4(s, ep, blocos_fixos())
 
 
 FORMATOS = {
@@ -1167,18 +1168,49 @@ def main():
 # A falha do v2 foi dar 8,5/10 para um episodio que virou bug na tela: ele
 # media a PIADA DECLARADA, nunca a PIADA FILMAVEL. Agora os dois contam.
 # ═══════════════════════════════════════════════════════════════════════════
+def _com_action(ep):
+    """v4 escreve 'planos'; o checador de física da v3 lê 'action'. Deriva um do outro."""
+    novo = dict(ep)
+    shots = []
+    for s in ep.get("shots") or []:
+        s2 = dict(s)
+        if not s2.get("action"):
+            pl = s.get("planos") or []
+            # o plano de acao e o do meio (inserto -> acao -> reacao); os checks de fisica
+            # da v3 medem UM movimento, nao a soma dos tres.
+            txt = str((pl[1] if len(pl) > 1 else (pl[0] if pl else {})).get("texto", ""))
+            txt = re.sub(r"^\s*the camera cuts to (a|an|the)?[^:]*:\s*", "", txt, flags=re.I)
+            s2["action"] = txt
+        shots.append(s2)
+    novo["shots"] = shots
+    return novo
+
+
 def validar_dossie(ep):
-    base = _validar_dossie_v2(ep)
-    render = regras_v3.validar_renderizavel(ep)
+    ep_med = _com_action(ep)
+    base = _validar_dossie_v2(ep_med)
+    # v4 substitui tres regras da v2: trilha obrigatoria (nao N/A), montagem em planos
+    # (nao 'beats') e prompt curto (nao 300-900 chars de acao corrida).
+    if any(s.get("planos") for s in (ep_med.get("shots") or [])):
+        base["erros"] = [e for e in base["erros"] if "non_diegetic_music" not in e]
+        base["avisos"] = [a for a in base["avisos"]
+                          if "beats:" not in a and "alvo v2: 300-900" not in a]
+    render = regras_v3.validar_renderizavel(ep_med)
     erros = list(base.get("erros", [])) + list(render.get("erros", []))
     avisos = list(render.get("avisos", [])) + list(base.get("avisos", []))
     humor = base.get("humor", 0)
     nota = round(0.35 * humor + 0.65 * render["nota"], 1)
     avisos.insert(0, "RENDERIZABILIDADE: %d/10 (peso 65%%) - %s"
                   % (render["nota"], "; ".join(render["checks"]) or "nada comprovado"))
+    mont = regras_v4.validar_montagem(ep_med)
+    erros += [e for e in mont["erros"] if e not in erros]
+    avisos = ["MONTAGE: %d/10 - %s" % (mont["nota"], "; ".join(mont["checks"]) or "-")] + \
+             mont["avisos"] + avisos
+    nota = round(0.30 * humor + 0.35 * render["nota"] + 0.35 * mont["nota"], 1)
     base.update({"erros": erros, "avisos": avisos, "humor": humor,
-                 "render": render["nota"], "nota": nota, "formato": "dossie_v3",
-                 "checks_render": render["checks"]})
+                 "render": render["nota"], "montage": mont["nota"], "nota": nota,
+                 "formato": "dossie_v4", "checks_render": render["checks"],
+                 "checks_montage": mont["checks"]})
     return base
 
 

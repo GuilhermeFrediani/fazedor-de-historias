@@ -1,0 +1,80 @@
+LEIA PRIMEIRO — v4 (a versão do "molho")
+=========================================
+
+O QUE MUDOU, EM UMA FRASE:
+a v3 acertou o que FILMAR; a v4 muda o que FAZ RIR (corte, reação de corpo, som, montagem).
+
+------------------------------------------------------------------
+PASSO 1 — aplicar o patch (uma vez)
+------------------------------------------------------------------
+    cd fazedor_app
+    python aplicar_v4.py
+
+(backup automático: fazedor_app.py.v3.bak)
+
+------------------------------------------------------------------
+PASSO 2 — fumaça SECA (instantânea, 0 GPU)
+------------------------------------------------------------------
+    cd fazedor_app
+    python fumaca_v4.py --seco
+
+ESPERADO:
+    MONTAGE  10/10  (corte datado, reação de corpo, som com boca, objeto de gag, cliente)
+    RENDER   10/10
+    HUMOR     9/10
+    0 erro(s)
+    6 settings escritos em EPISODIOS\operacao_ralo_exato_v4\settings\
+
+Se aparecer erro, NÃO gaste GPU. Me manda a saída.
+
+------------------------------------------------------------------
+PASSO 3 — só se a nota >= 7: gastar GPU (~90 min)
+------------------------------------------------------------------
+    python fumaca_v4.py
+
+(os 6 clipes caem em C:\pinokio\api\wan2gp-amd\app\outputs\)
+
+------------------------------------------------------------------
+PASSO 4 — MONTAR (este passo é NOVO e é onde nasce metade do molho)
+------------------------------------------------------------------
+    cd ..\pipeline
+
+    REM 4a. medir ar morto e volume dos clipes crus
+    python pos_producao.py --analisar "C:\pinokio\api\wan2gp-amd\app\outputs"
+
+    REM 4b. montar com normalização para -14 LUFS + punch-in + trilha
+    python pos_producao.py --pasta "C:\pinokio\api\wan2gp-amd\app\outputs" ^
+           --saida operacao_ralo_exato_v4_FINAL.mp4
+
+Se você tiver um mp3 de trilha, acrescente:  --musica trilha.mp3
+(sem música ele monta do mesmo jeito; só não tem cama)
+
+------------------------------------------------------------------
+O QUE OLHAR NO MP4 (12 perguntas — CHECKLIST_QUALIDADE.md)
+------------------------------------------------------------------
+ 1. cada clipe tem 3 planos (inserto -> ação -> reação)?
+ 2. algum momento com os dois parados > 1,5 s?
+ 3. a reação mexe ombros/braços/joelhos, ou só a cabeça?
+ 4. dá para OUVIR resfôlego/suspiro/estalo de língua em cada clipe?
+ 5. tem trilha por baixo? ela para no impacto?
+ 6. o clipe termina com alguém se mexendo?
+ 7. o cliente aparece no 1º e no último clipe?
+ 8. o telefone fica no chão do clipe 1 ao 2 (não volta para a parede)?
+ 9. a grelha sai do ralo no 1 e volta no 2 em cima do tambor?
+10. o buraco fica aberto do 2 ao 5 e é selado no 6?
+11. a água cresce: seco -> molhado -> alagado?
+12. algum objeto aparece sem ter sido plantado? (era o domo preto do clipe 5 na v3)
+
+------------------------------------------------------------------
+O QUE **NÃO** FAZER (comprovado)
+------------------------------------------------------------------
+x subir steps para 12-20. O LoRA turbo é destilado para 6-8 steps: acima de 8 vem
+  over-sharpening e ZERO ganho de correção. Custa 2-3x GPU por nada.
+x colocar lista de negativos no prompt. O H3 roda em cfg 1, sem ramo negativo:
+  a lista vira CONCEITO e traz "cartoon outlines" para dentro do frame.
+x subir CFG. O modelo é destilado para 1.0.
+x comprimir mais a história no mesmo tempo. Isso produz corte, não graça.
+
+O que É barato e melhora de verdade:
+  + q4_K_M -> q5_K_M (se a VRAM aguentar): +5% de tempo, mais detalhe fino.
+  + pós-produção: 0 GPU, ~40 s de CPU, e é a maior parte do "molho" que faltava.
