@@ -61,3 +61,29 @@ ffmpeg (`-f concat -safe 0 -c copy`) — ver `fazedor_app/fumaca_v3.py` para o e
 O MiniMax H3 gera áudio diegético a partir do `overall_soundscape`
 (3–5 eventos nomeados: material + verbo). `non_diegetic_music` = `N/A` (regra da série).
 Sons de boca não-verbais (resfôlego, suspiro, estalo) são nomeados no soundscape.
+
+## 6. ENCADEAMENTO VISUAL — CONFIRMADO EM A/B (14/nov/2026)
+
+O H3 FL2VA aceita start/end frames NATIVAMENTE na nossa build
+(`image_prompt_types_allowed: "TSEVL"`, `end_frames_always_enabled: True` no handler).
+
+Chaves (settings JSON): `"image_start": "<caminho png>"`, `"image_end": "<caminho png>"`,
+`"image_prompt_type": "S"` (só início) ou `"SE"` (ponte). O guia oficial pede a linha de
+alinhamento no fim do prompt: *"For the target video, at 0.00 seconds into the target video,
+<Picture 1> (from [Shot 1]) is fully referenced."*
+
+**Prova medida (clipe 2, mesmo seed 7001):**
+- controle (texto puro): 1º frame vs âncora = PSNR 10,3 dB (cena inventada)
+- `image_start`: PSNR 26,8 dB — o clipe NASCE do frame pinado ✓
+- `image_start` + `image_end` (ponte): início 25,9 dB ✓ e o último frame cai no
+  estado pinado (27,4 dB vs a referência de fim) ✓
+
+**As 3 lições do A/B (custaram 2 renders, valem a série):**
+1. O keyframe de FIM deve ser um EDIT do frame de INÍCIO (mesma câmera, mesmos
+   bonecos, só o estado muda). Usar o último frame de OUTRO render como fim
+   produz um morph entre composições diferentes (câmera salta).
+2. A cadeia PROPAGA DEFECTOS: o personagem extra alucinado no clipe 1 entrou
+   na âncora e contamina o clipe 2. Regra: só encadeia a partir de clipe
+   APROVADO pelo gate de visão (ou âncora limpa na mão).
+3. Com imagem pinada, o texto AT START vira redundante (o pixel É o estado);
+   o gate deve julgar a âncora ANTES do render, não o texto depois.
