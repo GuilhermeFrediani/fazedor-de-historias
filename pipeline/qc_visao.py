@@ -121,8 +121,10 @@ def gate_ancora(key, png, estado=""):
            "corpo) e personagem extra; EXCECAO: se o estado esperado (abaixo) mencionar "
            "cliente/militar/bota entrando, uma figura de uniforme militar na borda do quadro "
            "e LEGITIMA (e o cliente da serie, mudo, que so aparece quando o estado o anuncia); "
-           "2) algum objeto esta FLUTUANDO sem apoio visivel (apoiado em nada, nem mao, "
-           "nem piso, nem gancho)? "
+           "2) algum objeto esta FLUTUANDO? ATENCAO: objeto TOCANDO ou PRESO a um dos bonecos "
+           "(pe, bota, mao, ombro, cabeca) TEM APOIO — nao e flutuante (a gag da serie e "
+           "justamente objetos grudados nos corpos). Flutuante e SOMENTE objeto no ar sem "
+           "tocar absolutamente nada (nem boneco, nem piso, nem gancho, nem corda, nem moveis); "
            "3) ha texto legivel na tela? "
            "Responda JSON estrito: "
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
