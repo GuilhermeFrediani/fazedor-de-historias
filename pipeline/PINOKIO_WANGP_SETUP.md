@@ -87,3 +87,21 @@ alinhamento no fim do prompt: *"For the target video, at 0.00 seconds into the t
    APROVADO pelo gate de visão (ou âncora limpa na mão).
 3. Com imagem pinada, o texto AT START vira redundante (o pixel É o estado);
    o gate deve julgar a âncora ANTES do render, não o texto depois.
+
+## 7. ARQUITETURA FINAL DE CADEIA (pivô de 15/nov/2026, decidido por dado)
+
+**ADOPTED: encadeamento SOLO-DE-ENTRADA (image_start apenas) + estados reality-driven.**
+
+- `image_start` = último frame REAL do clipe anterior aprovado: PSNR 24-26 dB
+  constante, `estado_in` cumprido 8/10, zero personagens extras com higiene.
+- `image_end` gerado por IA (draft 5 s do delta): **REPROVADO 2× pelo gate** —
+  o estado_out de um clipe é um estado EM TRANSIÇÃO (tambor rolando, caixa
+  esmagada); não existe imagem estática barata que o represente. Peça morta.
+- Consequência: os textos de estado passam a DOCUMENTAR a realidade — o Gemini
+  descreve a âncora real e essa descrição vira o AT START do próximo clipe
+  (cadeia_v2.py). O plano/ação continua mandando no movimento; o estado segue
+  o pixel.
+- Higiene da cadeia: âncora só avança se o gate aprovar (2 bonecos, zero extras,
+  zero flutuantes); reprovação = retry seed+1 (1×) e, persistindo, a cadeia PARA
+  (nunca propaga estado podre).
+- Custo por clipe encadeado: ~15 min de GPU + ~1 min de gates (API).
