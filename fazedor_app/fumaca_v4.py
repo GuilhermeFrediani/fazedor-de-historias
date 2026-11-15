@@ -28,7 +28,7 @@ MUS = "N/A"   # CANON: ZERO MÚSICA — o foley é o punchline (LEI DE FERRO nº
 CLIPES = [
  {"n": 1, "dur": 10, "estagio": "LIGACAO",
   "estado_in": "white phone box bolted on the left wall with its coiled cord looped; steel grate lying face-down on the floor beside the drain; floor dry",
-  "estado_out": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; a military boot stepping in behind the curtain",
+  "estado_out": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; the bay empty behind the curtain",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a white steel wall telephone box bolted at head "
       "height, its coiled cord hanging in a loose loop, and TEO's boots on the wet concrete below.")},
@@ -38,8 +38,8 @@ CLIPES = [
       "and keeps walking.")},
     {"t": "00:07.000", "texto": ("the camera cuts to a tight two-shot: TEO still holds the receiver at "
       "his ear on a cord that now leads down to a telephone on the floor. He straightens his spine and "
-      "raises one flat hand at chest height; behind him the white curtain slides and a military boot "
-      "steps into the bay.")}],
+      "raises one flat hand at chest height; JUCA sets the bucket cart square beside him and both look "
+      "at the fallen phone box.")}],
   "gag": "o fio do telefone e curto: TEO se afasta e a caixa inteira sai da parede e cai na grelha.",
   "objeto_gag": "caixa do telefone", "fisica": "tombar",
   "reacao": "TEO endireita a coluna de repente, ergue uma mao aberta na altura do peito e alisa o bigode devagar; JUCA trava o passo, apoia uma mao no carrinho e encolhe os ombros.",
@@ -50,7 +50,7 @@ CLIPES = [
   "non_diegetic_music": MUS},
 
  {"n": 2, "dur": 10, "estagio": "CHEGADA",
-  "estado_in": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; a military boot stepping in behind the curtain",
+  "estado_in": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; the bay empty behind the curtain",
   "estado_out": "empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of a military boot tapping twice on the wet floor "
