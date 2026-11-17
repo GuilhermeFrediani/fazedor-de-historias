@@ -108,10 +108,17 @@ def analisar(pasta, padrao="*.mp4"):
     return plano
 
 
-def _filtro_clipe(c, idx, margem_morta=0.35, punch=True):
-    """Video do clipe: corta o rabo morto, opcionalmente abre um punch-in no meio.
-    Retorna (grafo_ou_vf, corte_fim, eh_grafo). O punch-in usa split->zoom->concat
-    (o 'enable=' com vírgula quebra o parser do ffmpeg 7.1 sem shell)."""
+def _filtro_clipe(c, idx, margem_morta=0.35, punch=True, cortar_meio=False, meio_min=1.5):
+    """Plano do clipe: corta rabo morto, ar morto do gancho e (opcional) blocos
+    mortos no MEIO; punch-in de 1,25x no meio do tempo restante.
+
+    Zona protegida: ultimo quartil do clipe (a reacao SECA parada e comedia,
+    nao lixo — LEI DO AR MORTO corta o tempo morto, nao o beat seco).
+    Retorna (args_ffmpeg, dur_final_s). Modos:
+      1 segmento sem punch -> "-vf" (comportamento antigo)
+      1 segmento com punch -> grafo trim/trim (comportamento antigo, audio cru)
+      n segmentos          -> grafo video+audio sincronizados (novo)
+    """
     d = duracao(c)
     cong = ar_morto(c)
     corte_fim = d
@@ -120,18 +127,69 @@ def _filtro_clipe(c, idx, margem_morta=0.35, punch=True):
         if fim >= d - 0.15 and ini > d * 0.35:
             corte_fim = min(corte_fim, ini + margem_morta)
     corte_fim = max(corte_fim, 3.0)
-    if punch:
-        meio = corte_fim / 2.0
-        graph = ("[0:v]trim=0:%.3f,setpts=PTS-STARTPTS[v1];"
-                 "[0:v]trim=start=%.3f,setpts=PTS-STARTPTS,"
+
+    segs = []
+    seg_ini = 0.0
+    for ini, fim in sorted(cong):
+        if ini <= 0.35 and fim <= d * 0.5:
+            # ar morto no GANCHO (0-1s): a entrada nao pode ser parada
+            seg_ini = max(seg_ini, min(fim - margem_morta, d * 0.3))
+        elif cortar_meio and fim < corte_fim - 0.15 and (fim - ini) >= meio_min \
+                and fim <= d * 0.75:
+            # bloco morto no meio: remove com 0,25s de respiro antes do corte
+            if ini - 0.25 - seg_ini >= 0.8:
+                segs.append((seg_ini, ini - 0.25))
+            seg_ini = fim + 0.05
+    segs.append((seg_ini, corte_fim))
+    segs = [(a, b) for a, b in segs if b - a >= 0.8]
+    if not segs:
+        segs = [(0.0, corte_fim)]
+    dur_final = sum(b - a for a, b in segs)
+    af = ("loudnorm=I=-14:TP=-1.5:LRA=11,"
+          "highpass=f=60,acompressor=threshold=-18dB:ratio=3:attack=8:release=180")
+
+    if len(segs) == 1 and punch:
+        a0, b0 = segs[0]
+        meio = dur_final / 2.0
+        graph = ("[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS[full];"
+                 "[full]split[t1][t2];"
+                 "[t1]trim=0:%.3f,setpts=PTS-STARTPTS[v1];"
+                 "[t2]trim=start=%.3f,setpts=PTS-STARTPTS,"
                  "scale=iw*1.25:ih*1.25,crop=iw/1.25:ih/1.25[v2];"
-                 "[v1][v2]concat=n=2:v=1:a=0[vout]" % (meio, meio))
-        return graph, corte_fim, True
-    vf = "trim=0:%.3f,setpts=PTS-STARTPTS" % corte_fim
-    return vf, corte_fim, False
+                 "[v1][v2]concat=n=2:v=1:a=0[vout]" % (a0, b0, meio, meio))
+        return (["-filter_complex", graph, "-map", "[vout]", "-map", "0:a",
+                 "-af", "atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS," % (a0, b0) + af],
+                dur_final)
+    if len(segs) == 1:
+        a0, b0 = segs[0]
+        return (["-vf", "trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS" % (a0, b0),
+                 "-af", "atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS," % (a0, b0) + af],
+                dur_final)
+
+    # n segmentos: video e audio cortados nos MESMOS pontos (sem dessincronia)
+    pv = ["[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS[s%d]" % (a, b, i)
+          for i, (a, b) in enumerate(segs)]
+    pa = ["[0:a]atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS[a%d]" % (a, b, i)
+          for i, (a, b) in enumerate(segs)]
+    n = len(segs)
+    graph = (";".join(pv) + ";" + "".join("[s%d]" % i for i in range(n))
+             + "concat=n=%d:v=1:a=0[full];" % n)
+    if punch:
+        meio = dur_final / 2.0
+        graph += ("[full]split[t1][t2];"
+                  "[t1]trim=0:%.3f,setpts=PTS-STARTPTS[v1];"
+                  "[t2]trim=start=%.3f,setpts=PTS-STARTPTS,"
+                  "scale=iw*1.25:ih*1.25,crop=iw/1.25:ih/1.25[v2];"
+                  "[v1][v2]concat=n=2:v=1:a=0[vout];" % (meio, meio))
+    else:
+        graph += "[full]null[vout];"
+    graph += (";".join(pa) + ";" + "".join("[a%d]" % i for i in range(n))
+              + "concat=n=%d:v=0:a=1[a0];[a0]" % n + af + "[aout]")
+    return (["-filter_complex", graph, "-map", "[vout]", "-map", "[aout]"], dur_final)
 
 
-def montar(pasta, saida, musica=None, dry=False, padrao="*.mp4"):
+def montar(pasta, saida, musica=None, dry=False, padrao="*.mp4",
+           cortar_meio=False, meio_min=1.5):
     pasta = Path(pasta)
     clipes = sorted(pasta.glob(padrao))
     if not clipes:
@@ -142,18 +200,11 @@ def montar(pasta, saida, musica=None, dry=False, padrao="*.mp4"):
     tmp.mkdir(exist_ok=True)
     preparados = []
     for i, c in enumerate(clipes, 1):
-        vf, dur, eh_grafo = _filtro_clipe(c, i)
+        espec, dur = _filtro_clipe(c, i, cortar_meio=cortar_meio, meio_min=meio_min)
         out = tmp / ("p%02d.mp4" % i)
-        af = ("loudnorm=I=-14:TP=-1.5:LRA=11,"
-              "highpass=f=60,acompressor=threshold=-18dB:ratio=3:attack=8:release=180")
-        base = [FFMPEG, "-y", "-i", str(c)]
-        if eh_grafo:
-            base += ["-filter_complex", vf, "-map", "[vout]", "-map", "0:a"]
-        else:
-            base += ["-vf", vf]
-        r = _run(base + ["-af", af,
-                  "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-                  "-c:a", "aac", "-b:a", "192k", "-ar", "48000", str(out)])
+        base = [FFMPEG, "-y", "-i", str(c)] + espec
+        r = _run(base + ["-c:v", "libx264", "-preset", "medium", "-crf", "18",
+                         "-c:a", "aac", "-b:a", "192k", "-ar", "48000", str(out)])
         print("[%d/%d] %s -> %.1fs %s" % (i, len(clipes), c.name, dur,
                                           "ok" if out.exists() else r.stderr[-200:]))
         preparados.append(out)
@@ -189,6 +240,11 @@ def main():
     ap.add_argument("--analisar", metavar="PASTA")
     ap.add_argument("--padrao", default="*.mp4", help="filtro de arquivos (ex: operacao_ralo_exato_v4_*.mp4)")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--cortar-meio", action="store_true",
+                    help="remove blocos mortos no MEIO do clipe (protege o ultimo "
+                         "quartil = beat seco)")
+    ap.add_argument("--meio-min", type=float, default=1.5,
+                    help="duracao minima (s) de bloco morto removivel no meio")
     ap.add_argument("--json")
     a = ap.parse_args()
     if a.analisar:
@@ -199,7 +255,8 @@ def main():
     if not (a.pasta and a.saida):
         ap.print_help()
         return 2
-    return montar(a.pasta, a.saida, a.musica, a.dry, a.padrao)
+    return montar(a.pasta, a.saida, a.musica, a.dry, a.padrao,
+                  cortar_meio=a.cortar_meio, meio_min=a.meio_min)
 
 
 if __name__ == "__main__":
