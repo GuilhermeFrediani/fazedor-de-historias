@@ -53,8 +53,10 @@ CLIPES = [
   "estado_in": "phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; the bay empty behind the curtain",
   "estado_out": "empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly",
   "planos": [
-    {"t": "00:00.000", "texto": ("Close insert of a military boot tapping twice on the wet floor "
-      "beside the fallen phone box, a green document case swinging at the edge of frame.")},
+    {"t": "00:00.000", "texto": ("Close insert: a polished military boot steps into frame from behind "
+      "the white curtain and taps twice on the wet floor beside the fallen phone box; the camera "
+      "tilts up to the stern face of the military client in his olive uniform as he holds out the "
+      "green document case.")},
     {"t": "00:03.500", "texto": ("the camera cuts to a wide shot: JUCA rolls a low drum dolly at the "
       "open hole, one caster rides up onto the fallen phone box and the dolly tips, and the empty "
       "steel drum tumbles off across the bay with the steel grate balanced flat on its top, while "
@@ -137,13 +139,15 @@ CLIPES = [
 
  {"n": 6, "dur": 10, "estagio": "CLIMAX",
   "estado_in": "steel drum jammed flat against the ceiling plate on the chain; TEO hanging from the drum with his boots off the wet floor",
-  "estado_out": "drum landed flat sealing the drain; water up over both pairs of boots; blank sheet in the client's open case",
+  "estado_out": "drum landed flat sealing the drain; water up over both pairs of boots; empty hook swaying on the chain draped over the sealed drum; blank sheet in the client's open case",
   "planos": [
     {"t": "00:00.000", "texto": ("Close insert of an open green document case held at chest height, "
       "empty inside, with a military cuff and a brass button beside it.")},
-    {"t": "00:03.500", "texto": ("the camera cuts to a wide shot: JUCA lets the chain slip and TEO "
-      "drops with it, the drum lands flat on the open drain and seals it, water swells up over both "
-      "pairs of boots and the drum lid spins away flat across the flood.")},
+    {"t": "00:03.500", "texto": ("the camera cuts back to the same wide shot as before, the "
+      "steel drum still hanging on the chain from the ceiling hook above the drain: JUCA lets "
+      "the chain slip and TEO drops with it, the drum lands flat on the open drain and seals "
+      "it, water swells up over both pairs of boots and the drum lid spins away flat across "
+      "the flood.")},
     {"t": "00:07.000", "texto": ("the camera cuts to a medium two-shot: TEO lands on his heels and "
       "straightens his spine; the military client bends, pinches a wet blank sheet off the floating "
       "lid and lays it in the open case; JUCA puts both hands on his hips.")}],
