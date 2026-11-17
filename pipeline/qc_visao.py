@@ -109,9 +109,10 @@ def _estados(settings_dir, slugs):
     return cad
 
 
-def gate_ancora(key, png, estado=""):
+def gate_ancora(key, png, estado="", props=""):
     """GATE DE ANCORA pre-render: julga UM frame antes de encadear.
-    Reprovado se: personagem extra, objeto flutuando sem apoio, texto na tela."""
+    Reprovado se: personagem extra, objeto flutuando sem apoio, texto na tela,
+    ou objeto grande FORA do registro de props permitidos."""
     SYS = ("Voce e o porteiro de continuidade de uma serie de comedia muda em claymation "
            "com EXATAMENTE dois personagens fixos: TEO (alto, magro, bigode loiro de morsa, "
            "gorro teal, camisa xadrez vermelho-e-preto, a ESQUERDA) e JUCA (baixo, largo, "
@@ -127,15 +128,26 @@ def gate_ancora(key, png, estado=""):
            "justamente objetos grudados nos corpos). Flutuante e SOMENTE objeto no ar sem "
            "tocar absolutamente nada (nem boneco, nem piso, nem gancho, nem corda, nem moveis); "
            "3) ha texto legivel na tela? "
+           "4) REGISTRO DE PROPS: se a lista de objetos PERMITIDOS (abaixo) existir, todo "
+           "objeto GRANDE e nomeavel do frame deve pertencer a ela ou ao estado esperado — "
+           "objeto grande fora da lista vai em 'objetos_nao_plantados' (ex.: rolo de papel, "
+           "extintor, saco que ninguem trouxe). "
            "Responda JSON estrito: "
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
-           '"texto_na_tela": true/false, "objetos_presentes": [], '
+           '"texto_na_tela": true/false, "objetos_presentes": [], "objetos_nao_plantados": [], '
            '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
     parts = [_img_part(png)]
     if estado:
         parts.append({"type": "text", "text": "Estado que este frame deveria mostrar: " + estado})
+    if props:
+        parts.append({"type": "text", "text": "Objetos PERMITIDOS neste set (registro + cenário fixo): " + props})
     tx = _call(key, SYS, parts, max_tokens=1200)
-    return _json_de(tx)
+    j = _json_de(tx)
+    # enforcement: objeto grande fora do registro reprova a ancora
+    if j.get("objetos_nao_plantados"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "props nao plantados: " + ", ".join(j["objetos_nao_plantados"][:4])
+    return j
 
 
 def main():
@@ -143,6 +155,7 @@ def main():
     ap.add_argument("--clipes")
     ap.add_argument("--ancora", metavar="PNG", help="gate de 1 frame (pre-render)")
     ap.add_argument("--estado", default="", help="estado esperado da ancora (opcional)")
+    ap.add_argument("--props", default="", help="registro de props permitidos (opcional)")
     ap.add_argument("--padrao", default="*.mp4")
     ap.add_argument("--settings")
     ap.add_argument("--saida", default="qc_visao.json")
@@ -151,7 +164,7 @@ def main():
     # GATE DE ANCORA (pre-render): 1 frame decide se a cadeia pode prosseguir
     if a.ancora:
         key = _chave()
-        j = gate_ancora(key, a.ancora, a.estado)
+        j = gate_ancora(key, a.ancora, a.estado, a.props)
         print(json.dumps(j, ensure_ascii=False))
         print("ANCORA: " + j.get("veredito", "?") + " — " + j.get("motivo", ""))
         return 0 if j.get("veredito") == "APROVADA" else 3
