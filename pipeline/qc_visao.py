@@ -132,9 +132,14 @@ def gate_ancora(key, png, estado="", props=""):
            "objeto GRANDE e nomeavel do frame deve pertencer a ela ou ao estado esperado — "
            "objeto grande fora da lista vai em 'objetos_nao_plantados' (ex.: rolo de papel, "
            "extintor, saco que ninguem trouxe). "
+           "5) INVARIANTE DE SET: este set e um GALPAO FECHADO de chapas de aco rebitadas, "
+           "com TETO de aco e luminarias jauladas penduradas — NAO existe ceu aberto nele. "
+           "Se o topo do quadro mostrar ceu azul, nuvens ou luz exterior no lugar de "
+           "parede/teto de aco, marque em 'cenario_violado' (ex.: 'ceu aberto no topo'). "
            "Responda JSON estrito: "
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
            '"texto_na_tela": true/false, "objetos_presentes": [], "objetos_nao_plantados": [], '
+           '"cenario_violado": [], '
            '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
     parts = [_img_part(png)]
     if estado:
@@ -147,6 +152,10 @@ def gate_ancora(key, png, estado="", props=""):
     if j.get("objetos_nao_plantados"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "props nao plantados: " + ", ".join(j["objetos_nao_plantados"][:4])
+    # enforcement: invariante de set (galpao fechado, teto de aco — nunca ceu)
+    if j.get("cenario_violado"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "cenario violado: " + ", ".join(j["cenario_violado"][:3])
     return j
 
 
