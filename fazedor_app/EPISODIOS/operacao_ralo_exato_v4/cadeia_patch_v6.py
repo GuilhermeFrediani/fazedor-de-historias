@@ -29,7 +29,7 @@ import qc_visao
 KEY = qc_visao._chave()
 
 ANCORA_INI = EP / "refs" / "ancora_lha_v2.png"   # c03 tail — sanity APROVADA (gate v3)
-SEED_BASE = 7100
+SEED_BASE = 7200   # rodada 3: sorteio novo (7100-7102 da rodada 1/2 ficam no historico)
 TENTATIVAS = 3
 CLIPES = [
     ("operacao_ralo_exato_v4_c04_jeitinho", "V6A_C04", "c04"),
@@ -39,9 +39,33 @@ CLIPES = [
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
 
-# NEGATIVA nativa do build (wgp.py le configs["negative_prompt"]): o c04 falhou
-# 2/3 e o c05 3/3 por ceu pintado no topo — atrator sistematico, agora suprimido
-NEG = "open sky, blue sky, clouds, outdoor daylight, open roof, sunlight beams from above"
+# LICOES DA RODADA 2 (renders bit-identicos, PSNR 0.1 dB iguais em 3/3):
+# 1) o SET vive CONGELADO dentro do settings JSON — editar fumaca_v4.py (gerador)
+#    nao muda renders existentes; a cirurgia tem que ser AQUI, no prompt, por render
+# 2) negative_prompt e MORTO no H3 (handler: "no_negative_prompt": True) — o model
+#    ignora por design; a unica alavanca de texto e o proprio prompt
+# 3) mesma seed + mesmo prompt + mesma ancora = MESMO video (determinismo util:
+#    aprova 1x e o clipe fica estável)
+SET_NOVO = (
+    "a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete "
+    "floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate "
+    "lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, "
+    "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a "
+    "white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the "
+    "drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is "
+    "fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel "
+    "walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; "
+    "when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. "
+    "Cool hard overhead light, short shadows, wet surfaces.")
+
+
+def troca_set(prompt):
+    """Substitui o paragrafo de set congelado (velho) pelo SET fechado anti-ceu.
+    ATENCAO: nos settings congelados o set vive SEM prefixo 'SET:' (o enhancer o
+    embutiu no bloco integrated_multimodal_description) — o alvo e o texto puro."""
+    return re.sub(r"a small military vehicle-wash bay.*?wet surfaces\.", SET_NOVO,
+                  prompt, flags=16)
+
 
 PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, steel "
          "drum, rubber test plug, absorbent pads / swollen pillow, white paper sack, bucket "
@@ -95,12 +119,12 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
         st = dict(st_base)
         st["output_filename"] = slug
         st["seed"] = SEED_BASE + tent
-        st["negative_prompt"] = NEG
         st["image_start"] = str(ancora_png)
         st["image_prompt_type"] = "S"
+        p = troca_set(st_base["prompt"])   # SET congelado e VELHO — troca por render
         st["prompt"] = (re.sub(r"AT START: (.+?)\. \[Shot",
                                "AT START: " + estado_real.replace("\\", "") + ". [Shot",
-                               st_base["prompt"], count=1, flags=16)
+                               p, count=1, flags=16)
                         + ALINHA)
         sdf = SETDIR / (slug + "_settings.json")
         sdf.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -157,6 +181,22 @@ if rp.exists():
         if f.get("aprovado") and f.get("gate_ancora", {}).get("veredito") == "APROVADA" \
            and f.get("gate_meio", {}).get("veredito") == "APROVADA":
             bancados[f["curto"]] = f
+
+# DRY: valida a cirurgia de SET em TODOS os prompts sem queimar 1 segundo de GPU
+if "--dry" in sys.argv:
+    for slug_base, tag, curto in CLIPES:
+        sb = json.loads((SETDIR / (slug_base + "_settings.json")).read_text(encoding="utf-8"))
+        p = re.sub(r"AT START: (.+?)\. \[Shot", "AT START: <REALIDADE>. [Shot",
+                   troca_set(sb["prompt"]), count=1, flags=16) + ALINHA
+        ok = ("fully ENCLOSED" in p) and ("no sky" in p) and ("looks up" in p) \
+            and ("hanging from the riveted steel ceiling" in p) \
+            and ("industrial lamps. Cool" not in p)
+        print("%s: prompt ok=%s len=%d ocorrencias_do_set=%d"
+              % (curto, ok, len(p), p.count("vehicle-wash bay")), flush=True)
+        if curto == "c05":
+            print("---- c05 (primeiros 1000 chars) ----")
+            print(p[:1000], flush=True)
+    sys.exit(0)
 
 ancora = ANCORA_INI
 feitos = []
