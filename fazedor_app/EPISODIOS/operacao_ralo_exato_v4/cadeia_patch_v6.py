@@ -85,7 +85,7 @@ def descrever_ancora(png):
     import base64
     parts = [{"type": "image", "data": base64.b64encode(Path(png).read_bytes()).decode(),
               "mime_type": "image/png"}]
-    tx = qc_visao._call(KEY, SYS, parts, max_tokens=400)
+    tx = qc_visao._call(KEY, SYS, parts, max_tokens=2000)
     return json.loads(qc_visao._json_de(tx) and re.search(r"\{.*\}", tx, 16).group(0))["estado"]
 
 
