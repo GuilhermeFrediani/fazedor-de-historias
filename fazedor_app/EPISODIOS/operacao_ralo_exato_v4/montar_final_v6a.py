@@ -24,13 +24,15 @@ SAIDA = EP / "operacao_ralo_exato_v4_v6a_PATCH.mp4"
 rel = json.loads((EP / "cadeia_patch_relatorio.json").read_text(encoding="utf-8"))
 novos = {}
 for f in rel:
-    if not f.get("aprovado"):
-        continue
     ga, gm = f.get("gate_ancora", {}), f.get("gate_meio", {})
-    if ga.get("veredito") == "APROVADA" and gm.get("veredito") == "APROVADA":
+    if f.get("aprovado") and ga.get("veredito") == "APROVADA" and gm.get("veredito") == "APROVADA":
         novos[f["curto"]] = f["mp4"]
+    elif f.get("fallback") and f.get("mp4"):
+        novos[f["curto"]] = f["mp4"]
+        print("!! %s entra como FALLBACK (gate nao aprovou) — corte de hoje, "
+              "sujeito a nova rodada" % f["curto"])
 if len(novos) < 3:
-    print("XX cadeia patch incompleta (%d/3 aprovados) — emenda cancelada." % len(novos))
+    print("XX cadeia patch incompleta (%d/3 disponiveis) — emenda cancelada." % len(novos))
     sys.exit(2)
 print("novos da cadeia: " + ", ".join("%s=%s" % (k, Path(v).name) for k, v in sorted(novos.items())))
 

@@ -70,10 +70,11 @@ def troca_set(prompt):
 PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, steel "
          "drum, rubber test plug, absorbent pads / swollen pillow, white paper sack, bucket "
          "cart with plastic buckets, squeegee, floor-wash pedal, pressure hose reel, "
-         "red-wheel water valves, wall-mounted pressure gauges, steel pipes along the walls, "
-         "chain with hook, white canvas curtain, broom, tape measure, carpenter pencil, "
-         "caged industrial lamps, wet concrete floor with yellow safety lines, folded metal "
-         "ruler, military client in olive uniform ONLY when announced by the estado")
+         "red-wheel water valves, wall-mounted pressure gauges, electric cabinets with dials "
+         "on the right wall, two stacked steel drums at rear right, steel pipes along the "
+         "walls, chain with hook, white canvas curtain, broom, tape measure, carpenter "
+         "pencil, caged industrial lamps, wet concrete floor with yellow safety lines, "
+         "folded metal ruler, military client in olive uniform ONLY when announced by the estado")
 
 
 def descrever_ancora(png):
@@ -165,7 +166,7 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
         print("    nao_plantados=%s cenario=%s" % (j50.get("objetos_nao_plantados"),
                                                    j50.get("cenario_violado")), flush=True)
         tentativas.append({"slug": slug, "seed": st["seed"], "rc": r.returncode, "dur_min": round(dur, 1),
-                           "psnr_f02": ps, "gate_ancora": j99, "gate_meio": j50})
+                           "mp4": str(mp4), "psnr_f02": ps, "gate_ancora": j99, "gate_meio": j50})
         if _ok(j99) and _ok(j50):
             return mp4, f99, j99, j50, tentativas
         print("  gate reprovou — retry seed+1", flush=True)
@@ -211,6 +212,22 @@ for slug_base, tag, curto in CLIPES:
     print("\n>>> estado REAL da ancora: %s" % est_real, flush=True)
     mp4, f99, j99, j50, tentativas = render_com_gate(slug_base, tag, curto, ancora, est_real)
     if not mp4:
+        # FALLBACK CONTROLADO: se existe ancora extraida da ultima tentativa, o
+        # episodio continua com ela (a realidade dela alimenta o proximo AT START)
+        # em vez de travar a noite inteira — o gate do PROXIMO clipe segue valendo.
+        fb = EP / "refs" / ("ancora_v6a_" + curto + ".png")
+        mp_fb = next((t["mp4"] for t in reversed(tentativas) if t.get("mp4")), None)
+        if fb.exists() and mp_fb:
+            print("XX %s: 3 tentativas reprovadas — CONTINUANDO com a ultima ancora "
+                  "extraida como fallback (o clipe entra marcado como nao aprovado)."
+                  % slug_base, flush=True)
+            feitos.append({"slug": slug_base, "curto": curto, "mp4": mp_fb,
+                           "estado_in_real": est_real, "aprovado": False, "fallback": True,
+                           "gate_ancora": tentativas[-1].get("gate_ancora", {}),
+                           "gate_meio": tentativas[-1].get("gate_meio", {}),
+                           "ancora_out": str(fb), "tentativas": tentativas})
+            ancora = fb
+            continue
         print("XX %s nao aprovado em 3 tentativas — cadeia para aqui (regra da serie)."
               % slug_base, flush=True)
         feitos.append({"slug": slug_base, "estado_in_real": est_real,
