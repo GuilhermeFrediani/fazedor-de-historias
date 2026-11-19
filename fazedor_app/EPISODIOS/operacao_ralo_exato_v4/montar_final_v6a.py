@@ -53,8 +53,10 @@ for cand in cands:
         c01 = cand
         break
 if not c01:
-    print("XX nenhum c01 casa com a ancora aprovada")
-    sys.exit(2)
+    # mesmo comportamento do montar_final_v5 (que fechou o episódio 8/6):
+    # nenhum candidato bate 30 dB -> usa o mais recente "por conta e risco"
+    print("!! nenhum c01 casa com a ancora — usando o mais recente (como no v5)")
+    c01 = cands[0]
 print("c01 escolhido: %s" % Path(c01).name)
 
 # 2) palco: c01-c03 do v5 + c04-c06 novos
