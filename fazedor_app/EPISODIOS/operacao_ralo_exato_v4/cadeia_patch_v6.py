@@ -39,6 +39,10 @@ CLIPES = [
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
 
+# NEGATIVA nativa do build (wgp.py le configs["negative_prompt"]): o c04 falhou
+# 2/3 e o c05 3/3 por ceu pintado no topo — atrator sistematico, agora suprimido
+NEG = "open sky, blue sky, clouds, outdoor daylight, open roof, sunlight beams from above"
+
 PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, steel "
          "drum, rubber test plug, absorbent pads / swollen pillow, white paper sack, bucket "
          "cart with plastic buckets, squeegee, floor-wash pedal, pressure hose reel, "
@@ -91,6 +95,7 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
         st = dict(st_base)
         st["output_filename"] = slug
         st["seed"] = SEED_BASE + tent
+        st["negative_prompt"] = NEG
         st["image_start"] = str(ancora_png)
         st["image_prompt_type"] = "S"
         st["prompt"] = (re.sub(r"AT START: (.+?)\. \[Shot",
@@ -143,9 +148,25 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
     return None, None, None, None, tentativas
 
 
+# RESUME: clipes ja APROVADOS em rodada anterior ficam bancados (a ancora de
+# saida aprovada e o ponto de partida — nada de clipe aprovado re-renderiza)
+rp = EP / "cadeia_patch_relatorio.json"
+bancados = {}
+if rp.exists():
+    for f in json.loads(rp.read_text(encoding="utf-8")):
+        if f.get("aprovado") and f.get("gate_ancora", {}).get("veredito") == "APROVADA" \
+           and f.get("gate_meio", {}).get("veredito") == "APROVADA":
+            bancados[f["curto"]] = f
+
 ancora = ANCORA_INI
 feitos = []
 for slug_base, tag, curto in CLIPES:
+    if curto in bancados:
+        print("\n>>> %s BANCADO da rodada anterior (gate duplo aprovado) — pulando" % curto,
+              flush=True)
+        feitos.append(bancados[curto])
+        ancora = Path(bancados[curto]["ancora_out"])
+        continue
     est_real = descrever_ancora(ancora)
     print("\n>>> estado REAL da ancora: %s" % est_real, flush=True)
     mp4, f99, j99, j50, tentativas = render_com_gate(slug_base, tag, curto, ancora, est_real)

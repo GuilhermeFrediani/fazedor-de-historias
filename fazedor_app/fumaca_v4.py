@@ -21,7 +21,11 @@ SET = (
     "lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, "
     "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a "
     "white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the "
-    "drain, two caged industrial lamps. Cool hard overhead light, short shadows, wet surfaces."
+    "drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is "
+    "fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel "
+    "walls close every side — no sky, no clouds, no windows, no daylight openings anywhere; "
+    "when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. "
+    "Cool hard overhead light, short shadows, wet surfaces."
 )
 MUS = "N/A"   # CANON: ZERO MÚSICA — o foley é o punchline (LEI DE FERRO nº 3 do dossiê v1)
 
