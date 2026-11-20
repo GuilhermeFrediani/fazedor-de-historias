@@ -31,10 +31,12 @@ KEY = qc_visao._chave()
 ANCORA_INI = EP / "refs" / "ancora_lha_v2.png"   # c03 tail — sanity APROVADA (gate v3)
 SEED_BASE = 7200   # rodada 3: sorteio novo (7100-7102 da rodada 1/2 ficam no historico)
 TENTATIVAS = 3
+# 4o campo = CLIENTE militar autorizado no gate de ancora (ocupacao AGENDADA:
+# lei v4 exige o cliente nos clipes 1 e N; nos clipes do meio ele e figura extra)
 CLIPES = [
-    ("operacao_ralo_exato_v4_c04_jeitinho", "V6A_C04", "c04"),
-    ("operacao_ralo_exato_v4_c05_escalada", "V6A_C05", "c05"),
-    ("operacao_ralo_exato_v4_c06_climax",   "V6A_C06", "c06"),
+    ("operacao_ralo_exato_v4_c04_jeitinho", "V6A_C04", "c04", False),
+    ("operacao_ralo_exato_v4_c05_escalada", "V6A_C05", "c05", False),
+    ("operacao_ralo_exato_v4_c06_climax",   "V6A_C06", "c06", True),
 ]
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
@@ -67,14 +69,18 @@ def troca_set(prompt):
                   prompt, flags=16)
 
 
-PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, steel "
-         "drum, rubber test plug, absorbent pads / swollen pillow, white paper sack, bucket "
-         "cart with plastic buckets, squeegee, floor-wash pedal, pressure hose reel, "
+PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, grey "
+         "steel drum, rubber test plug, white absorbent pads that swell into one pillow, white "
+         "paper sack, bucket cart with plastic buckets, squeegee, pressure hose reel, "
          "red-wheel water valves, wall-mounted pressure gauges, electric cabinets with dials "
          "on the right wall, two stacked steel drums at rear right, steel pipes along the "
-         "walls, chain with hook, white canvas curtain, broom, tape measure, carpenter "
-         "pencil, caged industrial lamps, wet concrete floor with yellow safety lines, "
-         "folded metal ruler, military client in olive uniform ONLY when announced by the estado")
+         "walls, chain with hook, white canvas curtain, broom, caged industrial lamps, wet "
+         "concrete floor with yellow safety lines, folded metal ruler, "
+         "brass tape hook (loose on the drain rim), "
+         "steel tape measure (JUCA's chest pocket - never TEO's hand), "
+         "YELLOW carpenter pencil (TEO's; pinned through the hook eye in c05; never red), "
+         "green document case (inside the sealed drum in c06), "
+         "military client in olive uniform (clips 1 and 6 only, when announced by the estado)")
 
 
 def descrever_ancora(png):
@@ -108,7 +114,7 @@ def _ok(j):
             and j.get("dois_bonecos") is not False)
 
 
-def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
+def render_com_gate(slug_base, tag, curto, ancora_png, estado_real, cliente=False):
     """Render + GATE DUPLO (ancora f9.9 + meio f5.0). Ate 3 tentativas, seed+1."""
     st_base = json.loads((SETDIR / (slug_base + "_settings.json")).read_text(encoding="utf-8"))
     mo_end = re.search(r"AT END: (.+?)\.?(?:\n|$)", st_base["prompt"])
@@ -157,11 +163,11 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real):
                            capture_output=True, text=True, encoding="utf-8", errors="replace")
         print(r.stdout[-400:], flush=True)
         # GATE DUPLO — o decisor
-        j99 = qc_visao.gate_ancora(KEY, str(f99), estado=estado_end, props=PROPS)
+        j99 = qc_visao.gate_ancora(KEY, str(f99), estado=estado_end, props=PROPS, cliente=cliente)
         print("  GATE ANCOR f9.9: %s — %s" % (j99.get("veredito"), j99.get("motivo", "")), flush=True)
         print("    nao_plantados=%s cenario=%s" % (j99.get("objetos_nao_plantados"),
                                                    j99.get("cenario_violado")), flush=True)
-        j50 = qc_visao.gate_ancora(KEY, str(f50), estado="", props=PROPS)
+        j50 = qc_visao.gate_ancora(KEY, str(f50), estado="", props=PROPS, cliente=cliente)
         print("  GATE MEIO  f5.0: %s — %s" % (j50.get("veredito"), j50.get("motivo", "")), flush=True)
         print("    nao_plantados=%s cenario=%s" % (j50.get("objetos_nao_plantados"),
                                                    j50.get("cenario_violado")), flush=True)
@@ -185,7 +191,7 @@ if rp.exists():
 
 # DRY: valida a cirurgia de SET em TODOS os prompts sem queimar 1 segundo de GPU
 if "--dry" in sys.argv:
-    for slug_base, tag, curto in CLIPES:
+    for slug_base, tag, curto, _cli in CLIPES:
         sb = json.loads((SETDIR / (slug_base + "_settings.json")).read_text(encoding="utf-8"))
         p = re.sub(r"AT START: (.+?)\. \[Shot", "AT START: <REALIDADE>. [Shot",
                    troca_set(sb["prompt"]), count=1, flags=16) + ALINHA
@@ -201,7 +207,7 @@ if "--dry" in sys.argv:
 
 ancora = ANCORA_INI
 feitos = []
-for slug_base, tag, curto in CLIPES:
+for slug_base, tag, curto, cliente in CLIPES:
     if curto in bancados:
         print("\n>>> %s BANCADO da rodada anterior (gate duplo aprovado) — pulando" % curto,
               flush=True)
@@ -210,7 +216,8 @@ for slug_base, tag, curto in CLIPES:
         continue
     est_real = descrever_ancora(ancora)
     print("\n>>> estado REAL da ancora: %s" % est_real, flush=True)
-    mp4, f99, j99, j50, tentativas = render_com_gate(slug_base, tag, curto, ancora, est_real)
+    mp4, f99, j99, j50, tentativas = render_com_gate(slug_base, tag, curto, ancora, est_real,
+                                                     cliente=cliente)
     if not mp4:
         # FALLBACK CONTROLADO: se existe ancora extraida da ultima tentativa, o
         # episodio continua com ela (a realidade dela alimenta o proximo AT START)

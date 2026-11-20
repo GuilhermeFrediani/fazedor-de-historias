@@ -210,29 +210,34 @@ def _estados(settings_dir, slugs):
     return cad
 
 
-def gate_ancora(key, png, estado="", props=""):
+def gate_ancora(key, png, estado="", props="", cliente=False):
     """GATE DE ANCORA pre-render: julga UM frame antes de encadear.
     Reprovado se: personagem extra, objeto flutuando sem apoio, texto na tela,
-    ou objeto grande FORA do registro de props permitidos."""
+    objeto grande FORA do registro (v2: cor/posse/conexao), ou set violado.
+    cliente=True SOMENTE nos clipes 1 e N (ocupacao AGENDADA, nao absoluta)."""
     SYS = ("Voce e o porteiro de continuidade de uma serie de comedia muda em claymation "
            "com EXATAMENTE dois personagens fixos: TEO (alto, magro, bigode loiro de morsa, "
            "gorro teal, camisa xadrez vermelho-e-preto, a ESQUERDA) e JUCA (baixo, largo, "
            "pele escura, boina marrom, sueter mostarda, a DIREITA). Recebe UM frame que sera "
            "o ponto de partida do proximo clipe. Julgue so o que ve, com rigor: "
-           "1) ha EXATAMENTE 2 bonecos? qualquer OUTRA figura (urso, silhueta, reflexo com "
-           "corpo) e personagem extra; EXCECAO: se o estado esperado (abaixo) mencionar "
-           "cliente/militar/oficial/nota, uma figura de uniforme militar (o CLIENTE da serie, "
-           "mudo) e LEGITIMA em QUALQUER posicao do quadro (ele entra e sai quando o estado "
-           "o anuncia); "
+           "1) OCUPACAO AGENDADA: a regra base e EXATAMENTE 2 bonecos (TEO e JUCA); "
+           "qualquer OUTRA figura (urso, silhueta, reflexo com corpo) e personagem extra. "
+           "O CLIENTE militar de uniforme olive e permitido SOMENTE se a linha "
+           "'CLIENTE AUTORIZADO' disser SIM — e ai so onde o estado o anuncia; se a linha "
+           "disser NAO, qualquer terceira figura e extra. A lei v4 exige o cliente nos "
+           "clipes 1 e N (entrega da ordem / fecho com a nota) — a ausencia dele NAO e "
+           "defeito do gate de ancora; "
            "2) algum objeto esta FLUTUANDO? ATENCAO: objeto TOCANDO ou PRESO a um dos bonecos "
            "(pe, bota, mao, ombro, cabeca) TEM APOIO — nao e flutuante (a gag da serie e "
            "justamente objetos grudados nos corpos). Flutuante e SOMENTE objeto no ar sem "
            "tocar absolutamente nada (nem boneco, nem piso, nem gancho, nem corda, nem moveis); "
            "3) ha texto legivel na tela? "
-           "4) REGISTRO DE PROPS: se a lista de objetos PERMITIDOS (abaixo) existir, todo "
-           "objeto GRANDE e nomeavel do frame deve pertencer a ela ou ao estado esperado — "
-           "objeto grande fora da lista vai em 'objetos_nao_plantados' (ex.: rolo de papel, "
-           "extintor, saco que ninguem trouxe). "
+           "4) REGISTRO DE PROPS v2: se a lista PERMITIDOS (abaixo) existir, todo objeto "
+           "GRANDE e nomeavel do frame deve pertencer a ela ou ao estado esperado — objeto "
+           "fora da lista vai em 'objetos_nao_plantados'. As linhas com COR e POSSE sao "
+           "CONTRATO: a cor nao muda nunca (lapis amarelo jamais vira vermelho) e o portador "
+           "so muda se o estado narrar a troca de maos; divergencia vai em 'props_violados' "
+           "(ex.: 'lapis vermelho (registro: amarelo)', 'trena na mao do TEO (registro: JUCA)'); "
            "5) INVARIANTE DE SET: este set e um GALPAO FECHADO de chapas de aco rebitadas, "
            "com TETO de aco e luminarias jauladas penduradas — NAO existe ceu aberto nele. "
            "Se o topo do quadro mostrar ceu azul, nuvens ou luz exterior no lugar de "
@@ -240,13 +245,14 @@ def gate_ancora(key, png, estado="", props=""):
            "Responda JSON estrito: "
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
            '"texto_na_tela": true/false, "objetos_presentes": [], "objetos_nao_plantados": [], '
-           '"cenario_violado": [], '
+           '"props_violados": [], "cenario_violado": [], '
            '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
     parts = [_img_part(png)]
     if estado:
         parts.append({"type": "text", "text": "Estado que este frame deveria mostrar: " + estado})
     if props:
         parts.append({"type": "text", "text": "Objetos PERMITIDOS neste set (registro + cenário fixo): " + props})
+    parts.append({"type": "text", "text": "CLIENTE AUTORIZADO neste clipe: " + ("SIM" if cliente else "NAO")})
     # 19/11: sem thinking_level, o modelo pensa e o thinking come o orcamento —
     # 1200 truncava o JSON; 3500 da folga para pensar + responder completo
     tx = _call(key, SYS, parts, max_tokens=3500)
@@ -255,6 +261,10 @@ def gate_ancora(key, png, estado="", props=""):
     if j.get("objetos_nao_plantados"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "props nao plantados: " + ", ".join(j["objetos_nao_plantados"][:4])
+    # enforcement: registro v2 — cor/posse/conexao divergentes reprovam
+    if j.get("props_violados"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "props violados (cor/posse/conexao): " + ", ".join(j["props_violados"][:4])
     # enforcement: invariante de set (galpao fechado, teto de aco — nunca ceu)
     if j.get("cenario_violado"):
         j["veredito"] = "REPROVADA"
@@ -268,6 +278,8 @@ def main():
     ap.add_argument("--ancora", metavar="PNG", help="gate de 1 frame (pre-render)")
     ap.add_argument("--estado", default="", help="estado esperado da ancora (opcional)")
     ap.add_argument("--props", default="", help="registro de props permitidos (opcional)")
+    ap.add_argument("--cliente", action="store_true",
+                    help="cliente militar autorizado NESTE clipe (somente clipes 1 e N)")
     ap.add_argument("--padrao", default="*.mp4")
     ap.add_argument("--settings")
     ap.add_argument("--saida", default="qc_visao.json")
@@ -276,7 +288,7 @@ def main():
     # GATE DE ANCORA (pre-render): 1 frame decide se a cadeia pode prosseguir
     if a.ancora:
         key = _chave()
-        j = gate_ancora(key, a.ancora, a.estado, a.props)
+        j = gate_ancora(key, a.ancora, a.estado, a.props, cliente=a.cliente)
         print(json.dumps(j, ensure_ascii=False))
         print("ANCORA: " + j.get("veredito", "?") + " — " + j.get("motivo", ""))
         return 0 if j.get("veredito") == "APROVADA" else 3
@@ -307,7 +319,12 @@ def main():
              "o seguinte? telefone continua caido? buraco continua aberto? agua continua subindo?) "
              "2) causalidade_narrativa 0-10 (cada situacao nasce da anterior? existe arco ou sao "
              "eventos soltos?) 3) teleportes: objetos que mudaram de lugar/estado sem explicacao "
-             "4) personagens_extras. Responda JSON estrito: "
+             "4) personagens_extras — OCUPACAO AGENDADA: o cliente militar de uniforme olive "
+             "so e legitimo no PRIMEIRO e no ULTIMO clipe; nos clipes do meio, qualquer "
+             "terceira figura e extra; "
+             "5) REGISTRO v2: anote em momentos_sem_nexo troca de COR de objeto entre frames "
+             "(lapis amarelo vira vermelho) e troca de PORTADOR sem acao (trena que estava no "
+             "bolso do JUCA aparece na mao do TEO). Responda JSON estrito: "
              '{"continuidade_visual": 0-10, "causalidade_narrativa": 0-10, "teleportes": [], '
              '"personagens_extras": [], "momentos_sem_nexo": [], "notas": "2 frases"}')
 
