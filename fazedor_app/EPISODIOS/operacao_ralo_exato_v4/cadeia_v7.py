@@ -54,7 +54,7 @@ print("\n===== CADEIA V7 · largada %s =====" % time.strftime("%Y-%m-%d %H:%M:%S
 import qc_visao, scan_ceu
 KEY = qc_visao._chave()
 
-ANCORA_INI = EP / "refs" / "ancora_v7_abertura.png"
+ANCORA_INI = EP / "refs" / "ancora_v7_porta.png"
 TENTATIVAS = 3
 # (slug_base, tag, curto, cliente_autorizado, seed_base, tentativas)
 # c01 ja queimou 3 tentativas (7001-7003) — recomeca em 7004 com 5 tentativas
@@ -76,9 +76,9 @@ SET_NOVO = (
     "floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate "
     "lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, "
     "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a "
-    "white canvas curtain on a ceiling rail at the back hanging against the bay's OWN riveted "
-    "rear steel wall — behind the curtain there is only more riveted steel wall of the same "
-    "bay, never sky, never trees, never any exterior, a bare chain with a hook above the "
+    "a RIBBED STEEL ROLL-UP DOOR closed against the bay's rear steel wall - behind the door "
+    "there is only more riveted steel wall of the same bay, never sky, never trees, never "
+    "any exterior, a bare chain with a hook above the "
     "drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is "
     "fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel "
     "walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; "
@@ -87,7 +87,7 @@ SET_NOVO = (
 # CONSERTO 8 (auditoria 21/11): registro v2 sem CONTAGEM deixou o 2o balde de 15 s
 # passar (nao era violacao de contrato). Agora toda grande peca declara QUANTAS
 # unidades existem — e o gate (gate_ancora/SYS_A) reprova divergencia de contagem.
-PROPS = ("white wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
+PROPS = ("dark charcoal BAKELITE wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
          "bay, fallen steel grate — EXACTLY ONE loose grate beside the centre drain. A grate "
          "lying in front of or touching the edge of the drain IS that same single loose "
          "grate (the drain partially behind it is never a second grate): there is never a "
@@ -101,7 +101,7 @@ PROPS = ("white wall telephone box with handset and coiled cord — EXACTLY ONE 
          "paper sack, bucket cart with EXACTLY ONE galvanized metal bucket (never a second "
          "bucket), squeegee, pressure hose reel, red-wheel water valves, wall-mounted "
          "pressure gauges, electric cabinets with dials on the right wall, steel pipes along "
-         "the walls, chain with hook, white canvas curtain, broom, caged industrial lamps, "
+         "the walls, chain with hook, ribbed steel roll-up door at the back, broom, caged industrial lamps, "
          "wet concrete floor with yellow safety lines, folded metal ruler, "
          "brass tape hook (loose on the drain rim), "
          "steel tape measure (JUCA's chest pocket - never TEO's hand), "
@@ -327,5 +327,8 @@ print("\n>>> CADEIA V7: %d/%d clipes aprovados — relatorio: cadeia_v7_relatori
       % (n_ok, len(CLIPES)), flush=True)
 if n_ok + sum(1 for f in feitos if f.get("fallback")) == len(CLIPES):
     print(">>> proximo passo: montar_final_v7.py", flush=True)
+
+
+
 
 

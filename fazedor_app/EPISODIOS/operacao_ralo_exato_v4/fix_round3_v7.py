@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """fix_round3_v7.py — RODADA 3 (auditoria do usuario sobre os 20 s, 21/11 a noite):
 
   1) FUNDO-EXTERIOR atras da cortina (ceu + arvores em 2-4 s): o SET agora declara o que
@@ -55,20 +55,20 @@ C01_SHOTS = [
     ("[Shot 1] the opening wide frame exactly as established: TEO stands at frame left beside "
      "the wall telephone with its coiled cord looped, JUCA stands at frame right with one hand "
      "resting on the bucket cart handle, a steel drum stands planted at the rear right corner "
-     "of the bay, the white canvas curtain hangs closed at the back against the bay's own "
+     "of the bay, the RIBBED STEEL ROLL-UP DOOR is closed at the back against the bay's own "
      "riveted rear steel wall, the bare chain and hook hang above the central drain, and the "
      "steel grate lies face down on the wet floor beside the drain; both puppets hold their "
      "positions, breathing, for the first beat and the military client is NOT visible yet, "
      "still hidden behind the closed curtain." + MOLHADO),
-    ("[Shot 2] At 00:01.500, the WHITE CURTAIN STAYS FULLY CLOSED the whole time — it never "
-     "opens; the military client in his olive uniform steps INTO the frame from frame right, "
-     "arriving from behind the closed curtain, and holds out a folded BLANK white sheet of "
-     "paper (completely smooth, no writing, no lines, no marks of any kind); the closed "
-     "curtain with the bay's own riveted steel wall stays in the background, never sky, "
-     "never trees, never any exterior; TEO takes the sheet with both hands; the client "
-     "points one finger down at the floor drain to mime the job, and TEO folds the blank "
-     "sheet and tucks it into his flannel chest pocket before the client steps back out of "
-     "frame; both heads stay fully inside the frame."),
+    ("[Shot 2] At 00:01.500, the military client in his olive uniform steps INTO the frame "
+     "from frame right, arriving from the side of the closed ribbed steel roll-up door, and "
+     "holds out a folded BLANK white sheet of paper (completely smooth, no writing, no "
+     "lines, no marks of any kind); the closed ribbed steel door with the bay's own riveted "
+     "steel wall stays in the background, never sky, never trees, never any exterior; TEO "
+     "takes the sheet with both hands; the client points one finger down at the floor drain "
+     "to mime the job, and TEO folds the blank sheet and tucks it into his flannel chest "
+     "pocket before the client steps back out of frame; both heads stay fully inside the "
+     "frame."),
     ("[Shot 3] At 00:04.500, the camera cuts to a wide two-shot with the blank sheet already "
      "tucked inside TEO's chest pocket: TEO lifts the receiver and turns away, the cord snaps "
      "taut and the whole phone box is yanked off the wall and tumbles down onto the fallen "
@@ -124,3 +124,4 @@ for slug, shots in MOLDES.items():
     st["num_inference_steps"] = 8
     arq.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
     print("OK %s: %d planos regravados + steps=8" % (slug, len(shots)))
+

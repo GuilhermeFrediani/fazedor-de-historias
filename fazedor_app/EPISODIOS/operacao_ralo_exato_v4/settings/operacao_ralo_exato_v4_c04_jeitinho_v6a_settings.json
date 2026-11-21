@@ -1,4 +1,4 @@
-{
+﻿{
   "model_type": "minimax_h3_fl2va_pruned",
   "num_inference_steps": 6,
   "resolution": "1152x640",
