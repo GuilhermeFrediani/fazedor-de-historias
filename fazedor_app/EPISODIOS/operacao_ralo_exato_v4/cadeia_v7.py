@@ -62,8 +62,8 @@ TENTATIVAS = 3
 # balde duplicado passaram pelo banco). Seeds novas + moldes novos (planos[0] =
 # ancora) = resultado novo mesmo com seed antiga. c03/c04 seguem bancados.
 CLIPES = [
-    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7010, 3),
-    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7010, 3),
+    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7012, 3),
+    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7012, 3),
     ("operacao_ralo_exato_v4_c03_primeira_falha_v2","V7_C03", "c03", False, 7002, 3),
     ("operacao_ralo_exato_v4_c04_jeitinho_v6a",     "V7_C04", "c04", False, 7102, 3),
     ("operacao_ralo_exato_v4_c05_escalada_v6a",     "V7_C05", "c05", False, 7200, 3),
@@ -86,22 +86,25 @@ SET_NOVO = (
 # passar (nao era violacao de contrato). Agora toda grande peca declara QUANTAS
 # unidades existem — e o gate (gate_ancora/SYS_A) reprova divergencia de contagem.
 PROPS = ("white wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
-         "bay, fallen steel grate — EXACTLY ONE (lies face down beside the drain until the "
-         "drum carries it in c02; never migrates on its own), grey steel drum — the TWO "
-         "stacked drums at rear right stay stacked until exactly ONE empty drum rolls off in "
-         "c02, rubber test plug, white absorbent pads that swell into one pillow, white "
+         "bay, fallen steel grate — EXACTLY ONE loose grate beside the centre drain; the "
+         "centre drain itself stays OPEN and uncovered and does NOT count as a grate; the "
+         "loose grate settles in front of the drain and stays there until the drum carries "
+         "it in c02; never migrates on its own, steel drums standing at the rear (one drum "
+         "is visible; no count is declared for background drums — only the ONE empty drum "
+         "that rolls in c02 is counted); the steel drums carry a painted RING EMBLEM on "
+         "their side — a decorative mark, NOT text, never flag it as texto_na_tela, rubber "
+         "test plug, white absorbent pads that swell into one pillow, white "
          "paper sack, bucket cart with EXACTLY ONE galvanized metal bucket (never a second "
          "bucket), squeegee, pressure hose reel, red-wheel water valves, wall-mounted "
-         "pressure gauges, electric cabinets with dials on the right wall, two stacked steel "
-         "drums at rear right, steel pipes along the walls, chain with hook, white canvas "
-         "curtain, broom, caged industrial lamps, wet concrete floor with yellow safety "
-         "lines, folded metal ruler, "
+         "pressure gauges, electric cabinets with dials on the right wall, steel pipes along "
+         "the walls, chain with hook, white canvas curtain, broom, caged industrial lamps, "
+         "wet concrete floor with yellow safety lines, folded metal ruler, "
          "brass tape hook (loose on the drain rim), "
          "steel tape measure (JUCA's chest pocket - never TEO's hand), "
          "YELLOW carpenter pencil (TEO's working pencil; pinned through the hook eye in c05; "
          "never red; JUCA's own small yellow pencil stays behind his right ear), "
          "green document case (inside the sealed drum in c06), "
-         "BLANK white work-order sheet (no writing, no lines, no marks ever; client hands it to "
+         "BLANK white work-order sheet — EXACTLY ONE (no writing, no lines, no marks ever; client hands it to "
          "TEO in c01 and TEO keeps it in his chest pocket), "
          "phone box/base: intact until yanked off the wall in c01; any crack or dent only from a "
          "VISIBLE impact (the dolly caster in c02); never self-damages and never flickers between "
