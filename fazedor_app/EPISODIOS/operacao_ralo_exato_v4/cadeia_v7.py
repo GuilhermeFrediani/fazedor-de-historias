@@ -62,8 +62,8 @@ TENTATIVAS = 3
 # balde duplicado passaram pelo banco). Seeds novas + moldes novos (planos[0] =
 # ancora) = resultado novo mesmo com seed antiga. c03/c04 seguem bancados.
 CLIPES = [
-    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7014, 3),
-    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7014, 3),
+    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7017, 3),
+    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7017, 3),
     ("operacao_ralo_exato_v4_c03_primeira_falha_v2","V7_C03", "c03", False, 7002, 3),
     ("operacao_ralo_exato_v4_c04_jeitinho_v6a",     "V7_C04", "c04", False, 7102, 3),
     ("operacao_ralo_exato_v4_c05_escalada_v6a",     "V7_C05", "c05", False, 7200, 3),
@@ -327,4 +327,5 @@ print("\n>>> CADEIA V7: %d/%d clipes aprovados — relatorio: cadeia_v7_relatori
       % (n_ok, len(CLIPES)), flush=True)
 if n_ok + sum(1 for f in feitos if f.get("fallback")) == len(CLIPES):
     print(">>> proximo passo: montar_final_v7.py", flush=True)
+
 

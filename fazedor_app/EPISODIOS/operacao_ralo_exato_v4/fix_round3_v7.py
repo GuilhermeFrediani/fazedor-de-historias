@@ -60,14 +60,15 @@ C01_SHOTS = [
      "steel grate lies face down on the wet floor beside the drain; both puppets hold their "
      "positions, breathing, for the first beat and the military client is NOT visible yet, "
      "still hidden behind the closed curtain." + MOLHADO),
-    ("[Shot 2] At 00:01.500, the white curtain swings open and the military client in his "
-     "olive uniform steps out from BEHIND it - behind the curtain there is only the bay's own "
-     "riveted steel wall, never sky, never trees, never any exterior; the client holds out a "
-     "folded BLANK white sheet of paper (completely smooth, no writing, no lines, no marks of "
-     "any kind); TEO takes the sheet with both hands; the client points one finger down at "
-     "the floor drain to mime the job, and TEO folds the blank sheet and tucks it into his "
-     "flannel chest pocket before the client steps back behind the curtain; both heads stay "
-     "fully inside the frame."),
+    ("[Shot 2] At 00:01.500, the WHITE CURTAIN STAYS FULLY CLOSED the whole time — it never "
+     "opens; the military client in his olive uniform steps INTO the frame from frame right, "
+     "arriving from behind the closed curtain, and holds out a folded BLANK white sheet of "
+     "paper (completely smooth, no writing, no lines, no marks of any kind); the closed "
+     "curtain with the bay's own riveted steel wall stays in the background, never sky, "
+     "never trees, never any exterior; TEO takes the sheet with both hands; the client "
+     "points one finger down at the floor drain to mime the job, and TEO folds the blank "
+     "sheet and tucks it into his flannel chest pocket before the client steps back out of "
+     "frame; both heads stay fully inside the frame."),
     ("[Shot 3] At 00:04.500, the camera cuts to a wide two-shot with the blank sheet already "
      "tucked inside TEO's chest pocket: TEO lifts the receiver and turns away, the cord snaps "
      "taut and the whole phone box is yanked off the wall and tumbles down onto the fallen "
