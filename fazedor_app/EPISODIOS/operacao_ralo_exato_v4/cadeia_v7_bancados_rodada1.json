@@ -1,0 +1,21 @@
+{
+  "c01": {
+    "slug": "operacao_ralo_exato_v4_c01_ligacao",
+    "curto": "c01",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c01_ligacao_v7_r2(2).mp4",
+    "estado_in_real": "AT START: TEO behind the curtain at the rear, JUCA beside the drain with a metal bucket, bay empty.",
+    "aprovado": true,
+    "fallback": false,
+    "seed": 7006,
+    "bancado_por_inspecao": true,
+    "nota": "Bancado a mao com prova visual (refs/contato_c01_7006.png, 12 quadros): cliente em uniforme olive entrega a ordem na mao do TEO (~1-4s, plenamente visivel), TEO atende no telefone, a caixa e arrancada da parede (6-8s) e termina no chao (9-10s). O gate reprovou (veredito perdido no crash do app as 15:09); inspecao visual aprova. Faixa clara/azulada acima da cortina = set aprovado desde o v5 (nao contada como ceu no dossie do usuario).",
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v7_c01.png",
+    "tentativas": [
+      {
+        "seed": 7006,
+        "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c01_ligacao_v7_r2(2).mp4",
+        "observacao": "aprovado por inspecao visual; gate reprovado (veredito perdido)"
+      }
+    ]
+  }
+}

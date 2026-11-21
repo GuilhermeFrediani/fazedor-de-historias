@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7002,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_exato_v4_c06_climax_v2",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the drain, two caged industrial lamps. Cool hard overhead light, short shadows, wet surfaces. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: In an industrial claymation room with metal walls, hanging lamps, and dry floor, a tall man in a red plaid shirt stands on a white sack holding up a metal container suspended from above, while a shorter man in a yellow sweater stands beside him holding a chain with a metal hook attached.. [Shot 1] Close insert of an open green document case held at chest height, empty inside, with a military cuff and a brass button beside it. [Shot 2] At 00:03.500, the camera cuts to the camera cuts to a wide shot: JUCA lets the chain slip and TEO drops with it, the drum lands flat on the open drain and seals it, water swells up over both pairs of boots and the drum lid spins away flat across the flood. [Shot 3] At 00:07.000, the camera cuts to the camera cuts to a medium two-shot: TEO lands on his heels and straightens his spine; the military client bends, pinches a wet blank sheet off the floating lid and lays it in the open case; JUCA puts both hands on his hips. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: drum landed flat sealing the drain; water up over both pairs of boots; blank sheet in the client's open case.\noverall_soundscape: The chain slips with a sharp clack, the drum lands flat on the drain with a deep boom, and water laps up over leather boots. A wet sheet of paper peels off the metal. TEO exhales a long sigh and JUCA clicks his tongue once.\nnon_diegetic_music: N/A For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.",
+  "image_start": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_calada.png",
+  "image_prompt_type": "S"
+}

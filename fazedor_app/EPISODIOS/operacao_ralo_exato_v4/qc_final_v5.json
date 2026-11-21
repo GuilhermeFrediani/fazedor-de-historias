@@ -1,0 +1,150 @@
+{
+  "episodio": {
+    "continuidade_visual": 6,
+    "causalidade_narrativa": 8,
+    "teleportes": [
+      "Telefone desaparece da parede no frame 4 e 5",
+      "Balde com rodinhas desaparece entre frame 1 e 2",
+      "Rolo de papel higiênico surge no frame 4 e some no 5",
+      "Extintor de incêndio surge na parede no frame 5"
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [
+      "O ralo muda de formato e profundidade drasticamente entre os frames 4 e 5",
+      "O telefone que estava na mão do personagem no frame 3 desaparece completamente no frame 4"
+    ],
+    "notas": "A narrativa de falha e escalada é clara, mas há graves erros de continuidade de objetos (props). Elementos como o telefone, o balde e o papel higiênico surgem e somem sem transição visual entre os cortes."
+  },
+  "por_clipe": [
+    {
+      "clipe": "c01_operacao_ralo_exato_v4_c01_ligacao(10)",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone de parede",
+        "gancho industrial",
+        "balde",
+        "carrinho",
+        "vassoura",
+        "barril",
+        "mangueira"
+      ],
+      "objetos_sumidos": [
+        "grelha de ralo"
+      ],
+      "notas": "Teo atende o telefone enquanto Juca observa, com a grelha do ralo sumindo entre os frames de plano aberto e fechado."
+    },
+    {
+      "clipe": "c02_operacao_ralo_exato_v4_c02_cadeia",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "gancho",
+        "balde",
+        "barril",
+        "vassoura",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Teo atende o telefone e aponta para Juca, que reage com desânimo em um cenário industrial."
+    },
+    {
+      "clipe": "c03_operacao_ralo_exato_v4_c03_primeira_falha_v2",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "trena",
+        "gancho",
+        "grade de bueiro",
+        "vassoura",
+        "barril",
+        "pedra de curling"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Teo e Juca interagem com um bueiro aberto usando uma trena e uma pedra de curling."
+    },
+    {
+      "clipe": "c04_operacao_ralo_exato_v4_c04_jeitinho",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "gancho",
+        "pedal",
+        "travesseiro",
+        "papel toalha",
+        "barril",
+        "vassoura",
+        "mangueira"
+      ],
+      "objetos_sumidos": [
+        "papel toalha",
+        "vassoura"
+      ],
+      "notas": "Juca aciona o pedal e Teo manipula um travesseiro que revela botas em seu interior."
+    },
+    {
+      "clipe": "c05_operacao_ralo_exato_v4_c05_escalada",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "gancho com corrente",
+        "barril metálico",
+        "vassoura",
+        "extintor",
+        "painel elétrico",
+        "mangueira"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Teo e Juca operam um guindaste manual para içar um barril de um alçapão no chão."
+    },
+    {
+      "clipe": "c06_operacao_ralo_exato_v4_c06_climax_v2",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 10,
+      "dois_bonecos": true,
+      "personagens_extras": [
+        "Militar"
+      ],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "barril",
+        "gancho",
+        "corrente",
+        "vassoura",
+        "mangueira",
+        "caixa verde",
+        "papel"
+      ],
+      "objetos_sumidos": [
+        "gancho",
+        "corrente"
+      ],
+      "notas": "A cena transita de Teo e Juca operando um guindaste para a interação com um militar extra."
+    }
+  ],
+  "media_estado_in": 10.0,
+  "media_estado_out": 10.0
+}

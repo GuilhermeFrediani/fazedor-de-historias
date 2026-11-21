@@ -1,0 +1,28 @@
+{
+  "c01_aprovado": {
+    "seed": 7003,
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c01_ligacao(10).mp4",
+    "ancora": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_limpa_t3.png"
+  },
+  "c02_ponte": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c02_cadeia.mp4",
+    "psnr_inicio": "24.601118",
+    "gate": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "telefone",
+        "gancho",
+        "corrente",
+        "barril",
+        "mangueira",
+        "luminárias"
+      ],
+      "veredito": "REPROVADA",
+      "motivo": "O frame não mostra o barril rolando, a grade equilibrada ou o telefone esmagado conforme o estado esperado."
+    },
+    "estado_out": "empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly"
+  }
+}

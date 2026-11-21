@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7002,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_exato_v4_c03_primeira_falha_v2_v7",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. Cool hard overhead light, short shadows, wet surfaces. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: A tall mustached man at left holds a white telephone receiver connected by a coiled cord to a broken phone on the wet floor beside a tipped hand truck, while a stocky mustached man at center-right stands empty-handed beside an open square floor hole; two lamps and a chain hook hang overhead, a white curtain covers the rear wall, pipes, valves, and a red hose line the left wall, and a control box, leaning wooden handle, upright rusty barrel, and horizontal metal drum topped with planks occupy the right side, with yellow lines crossing the wet reflective floor.. [Shot 1] Close insert of the open drain throat, a black rectangular hole in the wet concrete, with a brass tape hook resting loose on its front rim. [Shot 2] At 00:03.500, the camera cuts to a wide shot: JUCA stamps an oversized rubber test plug into the hole with his heel, the rubber swells past the rim and fires the plug straight up, and it arcs straight back down onto TEO's boot in one clear continuous fall, while TEO crouches and jabs his YELLOW carpenter pencil at the drain rim, measuring with it. [Shot 3] At 00:07.000, the camera cuts to a low two-shot: TEO lifts that boot off the floor with the swollen plug stuck to it like a slipper and holds the raised knee; JUCA leans in with both hands on his thighs to look at it too. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: rubber test plug swollen and stuck to TEO's boot; drain hole still open; yellow carpenter pencil in TEO's fist; JUCA's steel tape measure clipped in his chest pocket.\noverall_soundscape: Rubber squeaks against the concrete rim, a wet pop fires the plug upward, and it slaps onto a leather boot while a tape measure clatters down. TEO huffs once through his nose. JUCA lets out a low sigh.\nnon_diegetic_music: N/A For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced. For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.",
+  "image_start": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v7_c02.png",
+  "image_prompt_type": "S"
+}

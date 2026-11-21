@@ -1,0 +1,23 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_exato_v4_c04_jeitinho",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the drain, two caged industrial lamps. Cool hard overhead light, short shadows, wet surfaces. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: rubber test plug swollen and stuck to TEO's boot; drain hole still open; tape measure clattered on the floor. [Shot 1] Close insert of a roll of white absorbent pads lying on the wet floor beside a steel floor-wash pedal, and JUCA's clog settling onto that pedal. [Shot 2] At 00:03.500, the camera cuts to the camera cuts to a wide shot: JUCA stamps the wash pedal with his heel, water bursts along the floor and the loose pads swell into one fat pillow and slide across the concrete, while TEO crouches down and grabs at the edge of the sliding pillow with both hands. [Shot 3] At 00:07.000, the camera cuts to the camera cuts to a low two-shot: the swollen pillow stops over TEO's boots and swallows them; TEO lifts one foot and the whole pad lifts with it; JUCA wipes both hands down his trousers. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: soaked absorbent pad swollen into a fat pillow covering both of TEO's boots; floor wetter; drain still open.\noverall_soundscape: A steel pedal clanks down, water bursts along the floor, and soaked pads slap and drag across the concrete. TEO snorts. JUCA clicks his tongue twice.\nnon_diegetic_music: N/A"
+}

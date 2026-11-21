@@ -1,0 +1,535 @@
+{
+  "c01_t1_seed7006": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c01_ligacao_v7(3).mp4",
+    "frames": {
+      "9.9": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "fone branco com cordão espiralado",
+          "folha branca em branco no bolso de TEO",
+          "lápis atrás da orelha direita de JUCA",
+          "balde galvanizado no carrinho",
+          "carretel de mangueira de pressão",
+          "válvulas com volantes vermelhos",
+          "tubos de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "luminárias industriais jauladas",
+          "dois tambores de aço empilhados"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [
+          "lápis de JUCA com corpo azul (registro: amarelo)"
+        ],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "REPROVADA",
+        "motivo": "props violados (cor/posse/conexao): lápis de JUCA com corpo azul (registro: amarelo)"
+      },
+      "5.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone de parede branco com fone e fio espiralado",
+          "grade de aço caída",
+          "carrinho com balde galvanizado",
+          "carretel de mangueira de pressão",
+          "válvulas de volante vermelho",
+          "armários elétricos com mostradores",
+          "tambores de aço empilhados",
+          "tubos de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "vassoura",
+          "luminárias industriais gradeadas",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Apenas TEO e JUCA aparecem, com props apoiados e registrados, sem texto, fantasmas ou violações do cenário."
+      },
+      "3.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco de parede com cabo espiral",
+          "folha branca de ordem de serviço em branco",
+          "carretel de mangueira de pressão",
+          "válvulas com volante vermelho",
+          "tubos de aço",
+          "cortina de lona branca",
+          "ralo de piso",
+          "piso de concreto com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert válido, com folha em branco apoiada, props plantados e cliente militar autorizado."
+      },
+      "2.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone de parede branco com fone e cabo espiralado",
+          "folha de ordem branca em branco",
+          "válvula de água com volante vermelho",
+          "tubos de aço",
+          "mangueira de pressão",
+          "cortina de lona branca",
+          "grade de aço",
+          "piso de concreto com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [
+          "folha de ordem na mão de JUCA (registro: o cliente entrega a TEO)"
+        ],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "REPROVADA",
+        "motivo": "props violados (cor/posse/conexao): folha de ordem na mão de JUCA (registro: o cliente entrega a TEO)"
+      }
+    },
+    "aprovado_4frames": false
+  },
+  "c01_t2_seed7007": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c01_ligacao_v7_r1(3).mp4",
+    "frames": {
+      "9.9": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "receptor de telefone branco com cordão espiralado",
+          "carrinho com balde galvanizado",
+          "carretel de mangueira de pressão",
+          "válvulas com volantes vermelhos",
+          "armário elétrico",
+          "dois tambores de aço empilhados",
+          "tubulações de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "luminárias industriais jauladas",
+          "piso de concreto com linhas amarelas",
+          "folha branca em branco no bolso de TEO",
+          "lápis amarelo atrás da orelha de JUCA"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Há exatamente TEO e JUCA, e todos os elementos visíveis são compatíveis com o estado e o registro, sem texto, flutuação, fantasmas ou violações."
+      },
+      "5.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone de parede branco com fone e cabo espiralado",
+          "grade de aço caída",
+          "balde galvanizado no carrinho",
+          "carretel de mangueira de pressão",
+          "válvulas com volantes vermelhos",
+          "armário elétrico",
+          "dois tambores de aço empilhados",
+          "tubulações de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "vassoura",
+          "luminárias industriais jauladas",
+          "piso molhado com linhas amarelas",
+          "folha branca em branco no bolso de TEO",
+          "pequeno lápis amarelo atrás da orelha de JUCA"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Há exatamente TEO e JUCA, sem extras, flutuação, texto, violações de continuidade, cenário ou fantasmas."
+      },
+      "3.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "folha de ordem branca em branco",
+          "grade de aço",
+          "ralo",
+          "mangueira de pressão",
+          "carrinho de balde com balde galvanizado",
+          "piso de concreto molhado com linha amarela"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [
+          "grade de aço sobre o ralo (registro: caída virada para baixo ao lado do ralo)"
+        ],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "REPROVADA",
+        "motivo": "props violados (cor/posse/conexao): grade de aço sobre o ralo (registro: caída virada para baixo ao lado do ralo)"
+      },
+      "2.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "folha branca de ordem em branco",
+          "grade de aço",
+          "carrinho com balde galvanizado",
+          "mangueira de pressão",
+          "cortina de lona branca",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "O insert mostra TEO parcial e o cliente autorizado entregando a folha lisa em branco, sem defeitos impeditivos."
+      }
+    },
+    "aprovado_4frames": false
+  },
+  "c02_t1_seed7005": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c02_cadeia_v7(3).mp4",
+    "frames": {
+      "9.9": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e fio espiralado",
+          "caixa de telefone esmagada sob o carrinho tombado",
+          "carrinho de balde com balde galvanizado",
+          "tambor de aço cinza com grade apoiada no topo",
+          "dois tambores de aço empilhados",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "luminárias industriais gradeadas",
+          "válvulas de roda vermelha",
+          "carretel de mangueira",
+          "armários elétricos",
+          "tubulações de aço",
+          "vassoura",
+          "piso molhado com linhas amarelas",
+          "folha de ordem branca no bolso de TEO"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Há exatamente TEO e JUCA, sem extras, texto, flutuação, fantasmas ou divergências visíveis do estado esperado."
+      },
+      "5.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e cabo espiralado",
+          "grade de aço caída",
+          "tambor de aço cinza",
+          "carrinho de balde com balde galvanizado",
+          "carretel de mangueira de pressão",
+          "válvulas de água com rodas vermelhas",
+          "armários elétricos com mostradores",
+          "dois tambores de aço empilhados",
+          "tubos de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "vassoura",
+          "luminárias industriais enjauladas",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Há exatamente TEO e JUCA, sem personagem extra, objeto flutuante, texto, fantasma ou violação visível."
+      },
+      "3.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "base do telefone branco com fio espiralado",
+          "carrinho de balde com balde galvanizado",
+          "grade de aço caída",
+          "piso de concreto com linha amarela"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [
+          "base do telefone rachada sem impacto visível do rodízio"
+        ],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "REPROVADA",
+        "motivo": "props violados (cor/posse/conexao): base do telefone rachada sem impacto visível do rodízio"
+      },
+      "2.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "base branca do telefone com fio espiralado",
+          "carrinho de balde com balde galvanizado",
+          "grelha de aço",
+          "piso de concreto molhado com linha amarela"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert sem infrações: os objetos estão apoiados, os dígitos do telefone são diegéticos e não há figura extra nem fantasma."
+      }
+    },
+    "aprovado_4frames": false
+  },
+  "c02_t2_seed7006": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c02_cadeia_v7_r1(3).mp4",
+    "frames": {
+      "9.9": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e cordão espiralado",
+          "caixa do telefone esmagada sob o carrinho tombado",
+          "carrinho de balde com balde galvanizado",
+          "tambor de aço cinza junto à parede direita",
+          "grade de aço apoiada sobre o tambor",
+          "dois tambores de aço empilhados",
+          "carretel de mangueira de pressão",
+          "válvulas com rodas vermelhas",
+          "armário elétrico com mostradores",
+          "tubos de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "vassoura",
+          "luminárias industriais jauladas",
+          "folha de ordem branca em branco no bolso de TEO",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Apenas TEO e JUCA aparecem, e os props apoiados e plantados correspondem ao estado esperado, sem texto ou fantasmas."
+      },
+      "5.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e fio espiralado",
+          "tambor de aço cinza",
+          "carrinho de balde tombado com balde galvanizado",
+          "grade de aço caída junto ao ralo",
+          "válvulas com volantes vermelhos",
+          "tubos de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "armários elétricos com mostradores",
+          "tambores de aço empilhados",
+          "vassoura",
+          "luminárias industriais jauladas",
+          "piso molhado com linhas amarelas",
+          "papel branco em branco no bolso de TEO",
+          "lápis amarelo atrás da orelha de JUCA"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Apenas TEO e JUCA aparecem, com props plantados e apoiados, sem texto, violações de continuidade ou artefatos."
+      },
+      "3.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "base do telefone branco com cordão espiralado",
+          "carrinho com balde galvanizado",
+          "grade de aço caída",
+          "piso de concreto molhado"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert sem personagem extra, flutuação, texto, violação de props ou cenário, nem fantasmas."
+      },
+      "2.0": {
+        "dois_bonecos": false,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "base branca do telefone com cordão espiralado",
+          "tambor de aço cinza",
+          "carrinho com rodízios",
+          "grade de aço caída",
+          "tampão de teste de borracha",
+          "piso de concreto molhado"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert sem personagem extra, texto, flutuação, violação de props, cenário ou fantasmas."
+      }
+    },
+    "aprovado_4frames": true
+  },
+  "c04_t1_seed7102": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c04_jeitinho_v6a_v7.mp4",
+    "frames": {
+      "9.9": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e fio espiralado",
+          "almofada absorvente branca inchada",
+          "ralo aberto",
+          "trena de aço no peito de JUCA",
+          "lápis amarelo na mão de TEO",
+          "lápis amarelo atrás da orelha de JUCA",
+          "carretel de mangueira de pressão",
+          "válvulas de roda vermelha",
+          "gancho suspenso",
+          "cortina de lona branca",
+          "tambor de aço cinza",
+          "gabinete elétrico com mostradores",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [
+          "a almofada absorvente inchada não cobre ambas as botas de TEO; uma bota permanece visível fora dela"
+        ],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "REPROVADA",
+        "motivo": "estado divergente: a almofada absorvente inchada não cobre ambas as botas de TEO; uma bota permanece visível fora dela"
+      },
+      "5.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "telefone branco com fone e cabo espiralado",
+          "grade de aço caída",
+          "tambores de aço cinza",
+          "almofada branca de mantas absorventes",
+          "válvulas de água com volantes vermelhos",
+          "armários elétricos com mostradores",
+          "tubulações de aço",
+          "corrente com gancho",
+          "cortina de lona branca",
+          "vassoura",
+          "luminárias industriais jauladas",
+          "piso de concreto molhado com linhas amarelas",
+          "trena de aço no peito de JUCA",
+          "lápis amarelo de TEO",
+          "pequeno lápis amarelo atrás da orelha de JUCA"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Há somente TEO e JUCA, com props permitidos e apoiados, sem texto, violações de cenário ou fantasmas."
+      },
+      "3.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "absorventes brancos inchados",
+          "grade de aço caída",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert mostra partes dos dois bonecos e apenas props plantados e apoiados, sem texto, extras ou violações."
+      },
+      "2.0": {
+        "dois_bonecos": true,
+        "personagens_extras": [],
+        "objetos_flutuantes": [],
+        "texto_na_tela": false,
+        "objetos_presentes": [
+          "mantas absorventes brancas enroladas",
+          "grade de aço caída",
+          "cortina de lona branca",
+          "piso de concreto molhado com linhas amarelas"
+        ],
+        "objetos_nao_plantados": [],
+        "props_violados": [],
+        "estado_divergente": [],
+        "cenario_violado": [],
+        "fantasmas": [],
+        "veredito": "APROVADA",
+        "motivo": "Insert válido com dois bonecos parciais e props plantados, sem texto, flutuação, extras ou artefatos de transição."
+      }
+    },
+    "aprovado_4frames": false
+  }
+}

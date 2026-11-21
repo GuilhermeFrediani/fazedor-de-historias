@@ -1,0 +1,158 @@
+{
+  "episodio": {
+    "continuidade_visual": 8,
+    "causalidade_narrativa": 9,
+    "teleportes": [
+      "Entre c04 e c05, o aparelho preto sobre o ralo é substituído abruptamente por sacos e uma alavanca/bomba.",
+      "Em c06, um grande tambor surge suspenso no centro sem preparação visível."
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [],
+    "notas": "O cenário, os dois operários, o telefone, a corrente, o ralo aberto e o aumento da água mantêm boa continuidade. A ação progride logicamente da ligação às tentativas cada vez mais improvisadas, embora alguns aparatos surjam sem transição visível."
+  },
+  "por_clipe": [
+    {
+      "clipe": "c01_operacao_ralo_exato_v4_c01_ligacao(10)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "balde",
+        "carrinho",
+        "gancho",
+        "vassoura",
+        "válvulas",
+        "painel elétrico",
+        "barril",
+        "grades de chão"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Os dois bonecos permanecem visíveis e reagem enquanto Teo atende ao telefone, mas os estados prometidos não foram informados."
+    },
+    {
+      "clipe": "c02_operacao_ralo_exato_v4_c02_cadeia",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "lápis amarelo",
+        "gancho com corrente",
+        "recipiente metálico com carrinho",
+        "tambores",
+        "vassoura",
+        "válvulas",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Os estados prometidos não foram informados, mas os dois bonecos permanecem visíveis e reagem durante o clipe."
+    },
+    {
+      "clipe": "c03_operacao_ralo_exato_v4_c03_primeira_falha_v2",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "trena",
+        "gancho com corrente",
+        "peso preto",
+        "lápis",
+        "ralo",
+        "válvulas",
+        "barril",
+        "vassoura",
+        "painel elétrico"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Não é possível avaliar os estados inicial e final porque ambos foram fornecidos como '?'."
+    },
+    {
+      "clipe": "c04_operacao_ralo_exato_v4_c04_jeitinho_v6a_r2",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "fita métrica",
+        "lápis",
+        "ventosa preta",
+        "ralo",
+        "grade",
+        "rolo de papel higiênico",
+        "alavanca",
+        "almofadas",
+        "gancho",
+        "barril",
+        "vassoura"
+      ],
+      "objetos_sumidos": [
+        "ventosa preta",
+        "rolo de papel higiênico",
+        "fita métrica"
+      ],
+      "notas": "Sem estados prometidos definidos, início e fim não podem ser avaliados, embora ambos os bonecos apareçam e Juca reaja visivelmente."
+    },
+    {
+      "clipe": "c05_operacao_ralo_exato_v4_c05_escalada_v6a_r2(5)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "almofadas",
+        "tambores metálicos",
+        "corrente",
+        "mangueiras",
+        "válvulas",
+        "vassoura",
+        "lâmpadas",
+        "painéis elétricos"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio",
+        "almofadas"
+      ],
+      "notas": "Os estados prometidos não foram informados, mas os dois bonecos erguem um tambor e demonstram reação visível."
+    },
+    {
+      "clipe": "c06_operacao_ralo_exato_v4_c06_climax_v6a",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "tambor metálico",
+        "corrente com gancho",
+        "estojo verde",
+        "folha de papel",
+        "alçapão",
+        "mangueira",
+        "vassoura",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Sem estados prometidos definidos, não é possível avaliar o cumprimento da entrada ou da saída."
+    }
+  ],
+  "media_estado_in": 0.0,
+  "media_estado_out": 0.0
+}

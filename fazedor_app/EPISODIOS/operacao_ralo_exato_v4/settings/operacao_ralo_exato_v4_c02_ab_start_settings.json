@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_exato_v4_c02_ab_start",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the drain, two caged industrial lamps. Cool hard overhead light, short shadows, wet surfaces. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; a military boot stepping in behind the curtain. [Shot 1] Close insert of a military boot tapping twice on the wet floor beside the fallen phone box, a green document case swinging at the edge of frame. [Shot 2] At 00:03.500, the camera cuts to the camera cuts to a wide shot: JUCA rolls a low drum dolly at the open hole, one caster rides up onto the fallen phone box and the dolly tips, and the empty steel drum tumbles off across the bay with the steel grate balanced flat on its top, while TEO straightens up and points at the hole a beat too late. [Shot 3] At 00:07.000, the camera cuts to the camera cuts to a medium shot: TEO holds the point with one arm out and lowers it slowly; JUCA puts both hands on his knees and turns his head to follow the rolling drum, then pulls the pencil from behind his ear. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: empty steel drum rolling across the bay with the steel grate balanced flat on top; client gone; phone box crushed under the toppled dolly.\noverall_soundscape: A military boot taps twice on wet concrete, then the dolly caster scrapes over the bakelite phone box and the hollow steel drum rolls away with a low rumble. TEO makes one short nasal snort. JUCA clicks his tongue once.\nnon_diegetic_music: N/A For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.",
+  "image_start": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ref_start_c01_fim.png",
+  "image_prompt_type": "S"
+}

@@ -1,0 +1,156 @@
+{
+  "episodio": {
+    "continuidade_visual": 3,
+    "causalidade_narrativa": 4,
+    "teleportes": [
+      "telefone desaparece no frame 3",
+      "rolo de papel aparece no frame 4 e some no 5",
+      "extintor aparece no frame 5",
+      "tampa do ralo alterna entre aberta e fechada sem transição lógica entre os frames 3, 4 e 5"
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [
+      "O estado do ralo e dos objetos ao redor (telefone, papel, ferramentas) muda drasticamente entre cada frame sem respeitar a 'cadeia prometida'.",
+      "A bota militar mencionada na descrição do clipe 1 e 2 não é visível nos frames."
+    ],
+    "notas": "A continuidade visual é severamente comprometida por objetos que surgem e desaparecem entre os frames (teleporte). A narrativa prometida no texto não condiz com o que é mostrado visualmente nos pontos de partida de cada clipe."
+  },
+  "por_clipe": [
+    {
+      "clipe": "operacao_ralo_exato_v4_c01_ligacao",
+      "estado_in_cumprido": 8,
+      "estado_out_cumprido": 4,
+      "dois_bonecos": true,
+      "personagens_extras": [
+        "Militar"
+      ],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "barris",
+        "gancho",
+        "vassoura",
+        "ralo",
+        "cortina"
+      ],
+      "objetos_sumidos": [
+        "tampa do ralo"
+      ],
+      "notas": "A caixa do telefone permanece na parede e a grade no chão, falhando no estado final prometido."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c02_chegada",
+      "estado_in_cumprido": 2,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "gancho",
+        "barril",
+        "telefone verde",
+        "vassoura",
+        "painel de controle",
+        "lâmpadas",
+        "tampa de bueiro"
+      ],
+      "objetos_sumidos": [
+        "bota militar",
+        "receptor na mão do Teo",
+        "carrinho de carga"
+      ],
+      "notas": "Nenhuma das promessas de ação ou estado final foi cumprida nos frames, com objetos estáticos ou ausentes."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c03_primeira_falha",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 8,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "trena",
+        "gancho",
+        "ralo",
+        "tambores de aço",
+        "vassoura",
+        "painel elétrico",
+        "mangueira",
+        "plugue de teste"
+      ],
+      "objetos_sumidos": [
+        "telefone",
+        "carrinho de carga"
+      ],
+      "notas": "O início prometido não condiz com os frames, mas o fim mostra o plugue preso à bota de Teo conforme esperado."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c04_jeitinho",
+      "estado_in_cumprido": 2,
+      "estado_out_cumprido": 8,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "gancho",
+        "barril",
+        "vassoura",
+        "rolo de papel",
+        "almofada absorvente",
+        "pedal",
+        "mangueira"
+      ],
+      "objetos_sumidos": [
+        "trena"
+      ],
+      "notas": "O início falha ao mostrar Juca acionando um pedal em vez do plugue na bota, mas o fim cumpre bem a almofada inchada sobre as botas."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "gancho com corrente",
+        "barril de metal",
+        "vassoura",
+        "extintor",
+        "painel elétrico",
+        "mangueira",
+        "hidrante"
+      ],
+      "objetos_sumidos": [
+        "almofada absorvente inchada"
+      ],
+      "notas": "Os estados prometidos não foram cumpridos; o barril está sendo içado manualmente e Teo permanece no chão."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c06_climax",
+      "estado_in_cumprido": 2,
+      "estado_out_cumprido": 4,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "maleta verde",
+        "tambor de aço",
+        "gancho",
+        "vassoura",
+        "mangueira",
+        "papel branco"
+      ],
+      "objetos_sumidos": [],
+      "notas": "O início falha pois o tambor não está no teto no frame 0.2s, e o fim falha pois não há inundação visível sobre as botas."
+    }
+  ],
+  "media_estado_in": 2.3,
+  "media_estado_out": 4.0
+}

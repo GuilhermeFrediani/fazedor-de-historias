@@ -1,0 +1,577 @@
+[
+  {
+    "slug": "operacao_ralo_exato_v4_c04_jeitinho",
+    "curto": "c04",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c04_jeitinho_v6a_r2.mp4",
+    "estado_in_real": "A claymation man in a red plaid shirt holds a telephone receiver while resting his foot on a black object above a floor grate, as another man in a yellow sweater and flat cap leans over to look at a hole in the wet concrete floor next to a tape measure and a metal barrel.",
+    "aprovado": true,
+    "gate_ancora": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "white wall telephone box with handset and coiled cord",
+        "fallen steel grate",
+        "steel drum",
+        "absorbent pads / swollen pillow",
+        "floor-wash pedal",
+        "pressure hose reel",
+        "chain with hook",
+        "white canvas curtain",
+        "broom",
+        "carpenter pencil",
+        "wet concrete floor with yellow safety lines"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "O frame respeita a continuidade dos personagens, o cenário de galpão e todos os objetos estão previstos ou apoiados."
+    },
+    "gate_meio": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "white wall telephone box with handset and coiled cord",
+        "fallen steel grate",
+        "steel drum",
+        "absorbent pads / swollen pillow",
+        "pressure hose reel",
+        "red-wheel water valves",
+        "steel pipes along the walls",
+        "chain with hook",
+        "white canvas curtain",
+        "broom",
+        "tape measure",
+        "caged industrial lamps",
+        "wet concrete floor with yellow safety lines",
+        "floor-wash pedal"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "O frame respeita rigorosamente a continuidade dos personagens, o cenário de galpão e a lista de objetos permitidos."
+    },
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v6a_c04.png",
+    "tentativas": [
+      {
+        "slug": "operacao_ralo_exato_v4_c04_jeitinho_v6a",
+        "seed": 7100,
+        "rc": 1,
+        "dur_min": 15.0,
+        "psnr_f02": 23.422674,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "absorbent pads / swollen pillow",
+            "fallen steel grate",
+            "steel drum",
+            "pressure hose reel",
+            "red-wheel water valves",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "carpenter pencil",
+            "wet concrete floor with yellow safety lines"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "O frame respeita a continuidade dos personagens, o cenário de galpão e todos os objetos presentes constam na lista de permitidos ou no estado esperado."
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "white wall telephone box with handset and coiled cord",
+            "fallen steel grate",
+            "steel drum",
+            "swollen pillow",
+            "pressure hose reel",
+            "red-wheel water valves",
+            "wall-mounted pressure gauges",
+            "steel pipes along the walls",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "carpenter pencil",
+            "caged industrial lamps",
+            "wet concrete floor with yellow safety lines"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "ceu aberto no topo"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: ceu aberto no topo"
+        }
+      },
+      {
+        "slug": "operacao_ralo_exato_v4_c04_jeitinho_v6a_r1",
+        "seed": 7101,
+        "rc": 1,
+        "dur_min": 15.3,
+        "psnr_f02": 30.429882,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "white wall telephone box with handset and coiled cord",
+            "fallen steel grate",
+            "steel drum",
+            "absorbent pads / swollen pillow",
+            "pressure hose reel",
+            "wall-mounted pressure gauges",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "tape measure",
+            "carpenter pencil",
+            "wet concrete floor with yellow safety lines",
+            "floor-wash pedal"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "ceu aberto no topo"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: ceu aberto no topo"
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "white wall telephone box with handset and coiled cord",
+            "fallen steel grate",
+            "steel drum",
+            "absorbent pads / swollen pillow",
+            "pressure hose reel",
+            "red-wheel water valves",
+            "wall-mounted pressure gauges",
+            "steel pipes along the walls",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "tape measure",
+            "caged industrial lamps",
+            "wet concrete floor with yellow safety lines"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "ceu aberto no topo"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: ceu aberto no topo"
+        }
+      },
+      {
+        "slug": "operacao_ralo_exato_v4_c04_jeitinho_v6a_r2",
+        "seed": 7102,
+        "rc": 1,
+        "dur_min": 15.1,
+        "psnr_f02": 28.005304,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "white wall telephone box with handset and coiled cord",
+            "fallen steel grate",
+            "steel drum",
+            "absorbent pads / swollen pillow",
+            "floor-wash pedal",
+            "pressure hose reel",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "carpenter pencil",
+            "wet concrete floor with yellow safety lines"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "O frame respeita a continuidade dos personagens, o cenário de galpão e todos os objetos estão previstos ou apoiados."
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "white wall telephone box with handset and coiled cord",
+            "fallen steel grate",
+            "steel drum",
+            "absorbent pads / swollen pillow",
+            "pressure hose reel",
+            "red-wheel water valves",
+            "steel pipes along the walls",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "tape measure",
+            "caged industrial lamps",
+            "wet concrete floor with yellow safety lines",
+            "floor-wash pedal"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "O frame respeita rigorosamente a continuidade dos personagens, o cenário de galpão e a lista de objetos permitidos."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "operacao_ralo_exato_v4_c05_escalada",
+    "curto": "c05",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c05_escalada_v6a_r2(5).mp4",
+    "estado_in_real": "On the left, a partially visible figure in a red-and-black plaid shirt, suspenders, and tan trousers stands on white cushions holding a cream telephone handset with a coiled cord, while on the right a figure in a tan cable-knit sweater, green trousers, and beige clogs holds a small red object in his right hand; between them are a low metal device with an upright handle, white material, dark boards, and a black puddle, with coiled hoses on the left wall, a hanging hook above, a rusty barrel and broom on the right, and shallow water reflecting across the floor beside a yellow line.",
+    "aprovado": true,
+    "gate_ancora": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "steel drum",
+        "chain with hook",
+        "pressure hose reel",
+        "steel pipes along the walls",
+        "white canvas curtain",
+        "caged industrial lamps",
+        "carpenter pencil",
+        "broom",
+        "wet concrete floor"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "Há apenas TEO e JUCA, o tambor e a corrente estão apoiados pelos bonecos, TEO está suspenso com as botas fora do piso e o galpão fechado permanece coerente."
+    },
+    "gate_meio": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "fone branco com cabo espiralado",
+        "grade de aço caída",
+        "tambor de aço suspenso",
+        "almofada absorvente inchada",
+        "pedal de lavagem",
+        "carretel de mangueira de pressão",
+        "válvulas com rodas vermelhas",
+        "armários elétricos com mostradores",
+        "tambores de aço ao fundo",
+        "tubulações de aço",
+        "corrente com gancho",
+        "cortina de lona branca",
+        "vassoura",
+        "luminárias industriais gradeadas",
+        "piso de concreto molhado com linhas amarelas"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "Há exatamente Teo e Juca, e todos os objetos visíveis estão apoiados e pertencem ao registro permitido."
+    },
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v6a_c05.png",
+    "tentativas": [
+      {
+        "slug": "operacao_ralo_exato_v4_c05_escalada_v6a",
+        "seed": 7200,
+        "rc": 0,
+        "dur_min": 15.7,
+        "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c05_escalada_v6a(5).mp4",
+        "psnr_f02": 15.343265,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "tambor de aço",
+            "corrente",
+            "cortina de lona branca",
+            "carretel de mangueira de pressão",
+            "tubos de aço",
+            "tambores de aço ao fundo",
+            "luminárias industriais jauladas",
+            "vassoura",
+            "lápis de carpinteiro"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "céu azul visível por abertura no teto"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: céu azul visível por abertura no teto"
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "fone branco com fio espiralado",
+            "almofada absorvente inchada",
+            "tambores de aço",
+            "tampão de teste de borracha",
+            "carretel de mangueira de pressão",
+            "válvulas de água com rodas vermelhas",
+            "armário elétrico com mostradores",
+            "tubos de aço",
+            "corrente",
+            "cortina de lona branca",
+            "vassoura",
+            "grade de aço caída",
+            "pedal de lavagem do piso",
+            "luminárias industriais jauladas",
+            "piso molhado com linhas amarelas"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "céu azul visível por abertura no teto"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: céu azul visível por abertura no teto"
+        }
+      },
+      {
+        "slug": "operacao_ralo_exato_v4_c05_escalada_v6a_r1",
+        "seed": 7201,
+        "rc": 1,
+        "dur_min": 15.7,
+        "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c05_escalada_v6a_r1(5).mp4",
+        "psnr_f02": 16.408571,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "tambores de aço",
+            "corrente",
+            "cortina de lona branca",
+            "luminárias industriais jauladas",
+            "carretel de mangueira de pressão",
+            "tubos de aço",
+            "vassoura",
+            "lápis de carpinteiro"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "TEO e JUCA são os únicos bonecos, com o tambor preso ao teto pela corrente e TEO suspenso sem apoio no piso."
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "telefone branco com fone e cordão espiralado",
+            "grade de aço caída",
+            "tambores de aço",
+            "almofadas absorventes inchadas",
+            "pedal de lavagem do piso",
+            "carretel de mangueira de pressão",
+            "válvulas de água com rodas vermelhas",
+            "armários elétricos com mostradores",
+            "tubos de aço",
+            "cortina de lona branca",
+            "vassoura",
+            "luminárias industriais jauladas",
+            "piso molhado com linhas amarelas"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [
+            "céu azul visível por abertura no teto"
+          ],
+          "veredito": "REPROVADA",
+          "motivo": "cenario violado: céu azul visível por abertura no teto"
+        }
+      },
+      {
+        "slug": "operacao_ralo_exato_v4_c05_escalada_v6a_r2",
+        "seed": 7202,
+        "rc": 1,
+        "dur_min": 15.1,
+        "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c05_escalada_v6a_r2(5).mp4",
+        "psnr_f02": 25.366939,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "steel drum",
+            "chain with hook",
+            "pressure hose reel",
+            "steel pipes along the walls",
+            "white canvas curtain",
+            "caged industrial lamps",
+            "carpenter pencil",
+            "broom",
+            "wet concrete floor"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "Há apenas TEO e JUCA, o tambor e a corrente estão apoiados pelos bonecos, TEO está suspenso com as botas fora do piso e o galpão fechado permanece coerente."
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "fone branco com cabo espiralado",
+            "grade de aço caída",
+            "tambor de aço suspenso",
+            "almofada absorvente inchada",
+            "pedal de lavagem",
+            "carretel de mangueira de pressão",
+            "válvulas com rodas vermelhas",
+            "armários elétricos com mostradores",
+            "tambores de aço ao fundo",
+            "tubulações de aço",
+            "corrente com gancho",
+            "cortina de lona branca",
+            "vassoura",
+            "luminárias industriais gradeadas",
+            "piso de concreto molhado com linhas amarelas"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "Há exatamente Teo e Juca, e todos os objetos visíveis estão apoiados e pertencem ao registro permitido."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "operacao_ralo_exato_v4_c06_climax",
+    "curto": "c06",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c06_climax_v6a.mp4",
+    "estado_in_real": "On the left, a man in overalls holds a large metal drum at center while a man on the right grips its hanging chain; two caged lamps hang overhead, a red hose reel is on the left wall, a white curtain is at the rear, a rusty drum is on the right, and the floor is cropped out with no water visible.",
+    "aprovado": true,
+    "gate_ancora": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "tambor de aço selando o ralo",
+        "corrente com gancho vazio",
+        "maleta aberta com folha em branco",
+        "carretel de mangueira de pressão",
+        "válvula de roda vermelha",
+        "cortina de lona branca",
+        "vassoura",
+        "armário elétrico com mostradores",
+        "dois tambores de aço empilhados",
+        "luminárias industriais jauladas",
+        "piso molhado com linhas amarelas"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "Há somente TEO e JUCA, todos os objetos estão apoiados e permitidos, não há texto legível nem violação clara do galpão fechado."
+    },
+    "gate_meio": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "pressure hose reel",
+        "red-wheel water valve",
+        "steel drum",
+        "fallen steel grate",
+        "chain with hook",
+        "white canvas curtain",
+        "broom",
+        "carpenter pencil",
+        "caged industrial lamps",
+        "electric cabinet with dials",
+        "steel pipes",
+        "wet concrete floor with yellow safety lines"
+      ],
+      "objetos_nao_plantados": [],
+      "cenario_violado": [],
+      "veredito": "APROVADA",
+      "motivo": "Há exatamente Teo e Juca, sem objetos flutuantes, texto legível, props não plantados ou violação do galpão fechado."
+    },
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v6a_c06.png",
+    "tentativas": [
+      {
+        "slug": "operacao_ralo_exato_v4_c06_climax_v6a",
+        "seed": 7200,
+        "rc": 1,
+        "dur_min": 15.1,
+        "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c06_climax_v6a.mp4",
+        "psnr_f02": 15.41215,
+        "gate_ancora": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "tambor de aço selando o ralo",
+            "corrente com gancho vazio",
+            "maleta aberta com folha em branco",
+            "carretel de mangueira de pressão",
+            "válvula de roda vermelha",
+            "cortina de lona branca",
+            "vassoura",
+            "armário elétrico com mostradores",
+            "dois tambores de aço empilhados",
+            "luminárias industriais jauladas",
+            "piso molhado com linhas amarelas"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "Há somente TEO e JUCA, todos os objetos estão apoiados e permitidos, não há texto legível nem violação clara do galpão fechado."
+        },
+        "gate_meio": {
+          "dois_bonecos": true,
+          "personagens_extras": [],
+          "objetos_flutuantes": [],
+          "texto_na_tela": false,
+          "objetos_presentes": [
+            "pressure hose reel",
+            "red-wheel water valve",
+            "steel drum",
+            "fallen steel grate",
+            "chain with hook",
+            "white canvas curtain",
+            "broom",
+            "carpenter pencil",
+            "caged industrial lamps",
+            "electric cabinet with dials",
+            "steel pipes",
+            "wet concrete floor with yellow safety lines"
+          ],
+          "objetos_nao_plantados": [],
+          "cenario_violado": [],
+          "veredito": "APROVADA",
+          "motivo": "Há exatamente Teo e Juca, sem objetos flutuantes, texto legível, props não plantados ou violação do galpão fechado."
+        }
+      }
+    ]
+  }
+]

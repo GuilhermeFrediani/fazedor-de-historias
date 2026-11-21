@@ -1,0 +1,41 @@
+{
+  "episodio": {
+    "continuidade_visual": 6,
+    "causalidade_narrativa": 6,
+    "teleportes": [
+      "Caixa do telefone não está no chão",
+      "Cliente ainda está presente na cena"
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [
+      "Estado inicial não reflete o telefone arrancado e a grade caída previstos no AT START"
+    ],
+    "notas": "A cena apresenta divergências em relação aos estados esperados dos objetos e personagens no início do clipe. A continuidade com a cadeia prometida é parcial, mantendo o ambiente básico mas falhando nos detalhes de danos."
+  },
+  "por_clipe": [
+    {
+      "clipe": "operacao_ralo_exato_v4_c02_cadeia",
+      "estado_in_cumprido": 8,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "gancho",
+        "barril",
+        "balde",
+        "vassoura",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [
+        "grade caída",
+        "carrinho"
+      ],
+      "notas": "O estado final prometido não ocorre nos frames; os personagens permanecem estáticos e o cenário não sofre as mudanças descritas."
+    }
+  ],
+  "media_estado_in": 8.0,
+  "media_estado_out": 0.0
+}

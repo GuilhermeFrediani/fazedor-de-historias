@@ -1,0 +1,69 @@
+{
+  "episodio": {
+    "continuidade_visual": 1,
+    "causalidade_narrativa": 1,
+    "teleportes": [
+      "caixa de telefone",
+      "grade caída",
+      "bota militar",
+      "tambor de aço",
+      "carrinho de carga"
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [
+      "A imagem mostra o telefone fixado na parede e o cenário intacto, contradizendo totalmente a descrição de destruição prometida.",
+      "Os frames enviados são idênticos, não demonstrando a progressão narrativa descrita nos estados AT START e AT END."
+    ],
+    "notas": "Os frames não correspondem à cadeia de estados descrita, mostrando o cenário antes de qualquer incidente. Não há evidência visual da caixa de telefone arrancada, do tambor rolando ou da bota militar mencionada."
+  },
+  "por_clipe": [
+    {
+      "clipe": "operacao_ralo_exato_v4_c02_ab_bridge",
+      "estado_in_cumprido": 2,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [
+        "Militar"
+      ],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "gancho",
+        "maleta",
+        "mangueira",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [
+        "telefone",
+        "maleta"
+      ],
+      "notas": "As promessas de início e fim não foram cumpridas, pois o telefone e o cenário permanecem intactos."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c02_ab_start",
+      "estado_in_cumprido": 8,
+      "estado_out_cumprido": 4,
+      "dois_bonecos": true,
+      "personagens_extras": [
+        "Militar (ao fundo)"
+      ],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone",
+        "gancho de guindaste",
+        "caminhão militar",
+        "tambor de aço",
+        "vassoura",
+        "painel elétrico"
+      ],
+      "objetos_sumidos": [
+        "grade caída"
+      ],
+      "notas": "O estado final falha pois a grade não está equilibrada sobre o tambor e a caixa do telefone não aparece esmagada sob o carrinho."
+    }
+  ],
+  "media_estado_in": 5.0,
+  "media_estado_out": 2.0
+}

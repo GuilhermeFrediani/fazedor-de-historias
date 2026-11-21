@@ -1,0 +1,35 @@
+{
+  "ancora": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_calada.png",
+  "plate": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\v6_plate_c06.mp4",
+    "psnr_f0_vs_ancora": 26.912827
+  },
+  "ctrl": {
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\v6_c06_ctrl.mp4",
+    "psnr_f0_vs_ancora": 18.49357,
+    "gate_f99": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "pressure hose reel",
+        "red-wheel water valves",
+        "steel pipes",
+        "white paper sack",
+        "chain with hook",
+        "white canvas curtain",
+        "broom",
+        "carpenter pencil",
+        "caged industrial lamps",
+        "steel drum",
+        "fallen steel grate",
+        "open case",
+        "blank sheet"
+      ],
+      "objetos_nao_plantados": [],
+      "veredito": "APROVADA",
+      "motivo": "O frame apresenta Teo e Juca corretamente posicionados com os objetos permitidos e o estado da nota/case conforme solicitado."
+    }
+  }
+}

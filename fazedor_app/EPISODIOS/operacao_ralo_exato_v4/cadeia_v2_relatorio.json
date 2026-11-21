@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "operacao_ralo_exato_v4_c04_jeitinho",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c04_jeitinho(2).mp4",
+    "estado_in_real": "A claymation scene depicts a man in a plaid shirt holding a telephone handset while resting his boot on a black bulbous object suspended over a floor drain, while a man in a yellow sweater and flat cap leans down to inspect a square hole in the wet concrete floor, with a tape measure lying on the ground nearby.",
+    "gate_ancora": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "gancho",
+        "travesseiro",
+        "vassoura",
+        "barril",
+        "mangueira",
+        "painel de controle",
+        "telefone",
+        "trena"
+      ],
+      "veredito": "APROVADA",
+      "motivo": "O frame apresenta Teo e Juca corretamente caracterizados, sem personagens extras, objetos flutuantes ou texto."
+    },
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_itinho.png"
+  },
+  {
+    "slug": "operacao_ralo_exato_v4_c05_escalada",
+    "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\operacao_ralo_exato_v4_c05_escalada(2).mp4",
+    "estado_in_real": "Inside a workshop setting, a blonde claymation man with a green beanie kneels on his left knee while resting his right foot on a white pillow over a flooded floor, while a Black claymation man wearing a beige sweater, cap, and clog shoes stands nearby looking down, with a red hose reel, a hanging hook, a broom, and a metal barrel positioned around the room.",
+    "gate_ancora": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "balde metálico",
+        "corrente com gancho",
+        "mangueira",
+        "vassoura",
+        "painel de controle",
+        "lâmpadas industriais",
+        "barril",
+        "cortina"
+      ],
+      "veredito": "APROVADA",
+      "motivo": "A cena apresenta Teo e Juca corretamente caracterizados e posicionados, sem personagens extras ou objetos flutuando."
+    },
+    "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_calada.png"
+  }
+]

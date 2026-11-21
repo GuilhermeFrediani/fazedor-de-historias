@@ -210,7 +210,7 @@ def _estados(settings_dir, slugs):
     return cad
 
 
-def gate_ancora(key, png, estado="", props="", cliente=False):
+def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
     """GATE DE ANCORA pre-render: julga UM frame antes de encadear.
     Reprovado se: personagem extra, objeto flutuando sem apoio, texto na tela,
     objeto grande FORA do registro (v2: cor/posse/conexao), ou set violado.
@@ -231,7 +231,13 @@ def gate_ancora(key, png, estado="", props="", cliente=False):
            "(pe, bota, mao, ombro, cabeca) TEM APOIO — nao e flutuante (a gag da serie e "
            "justamente objetos grudados nos corpos). Flutuante e SOMENTE objeto no ar sem "
            "tocar absolutamente nada (nem boneco, nem piso, nem gancho, nem corda, nem moveis); "
-           "3) ha texto legivel na tela? "
+           "3) ha texto legivel na tela? Linhas, rabiscos, letras ou glifos num papel CONTAM como "
+           "texto; papel de ordem DEVE ser liso e EM BRANCO (lei zero-texto). Digitos em teclado "
+           "de telefone, mostradores de medidor, botoes e placas de identificacao de equipamento "
+           "sao PROPriedades diegeticas do set e NAO contam como texto. "
+           "3b) ARTEFATO DE TRANSICAO: figura DUPLICADA (dois bonecos iguais na mesma figura), "
+           "boneco translucido/sobreposto (double exposure), ghost ou morph entre poses REPROVA "
+           "('ghost/morph na emenda'); os cortes do video sao instantaneos. "
            "4) REGISTRO DE PROPS v2: se a lista PERMITIDOS (abaixo) existir, todo objeto "
            "GRANDE e nomeavel do frame deve pertencer a ela ou ao estado esperado — objeto "
            "fora da lista vai em 'objetos_nao_plantados'. As linhas com COR e POSSE sao "
@@ -239,14 +245,34 @@ def gate_ancora(key, png, estado="", props="", cliente=False):
            "so muda se o estado narrar a troca de maos; divergencia vai em 'props_violados' "
            "(ex.: 'lapis vermelho (registro: amarelo)', 'trena na mao do TEO (registro: JUCA)'); "
            "5) INVARIANTE DE SET: este set e um GALPAO FECHADO de chapas de aco rebitadas, "
-           "com TETO de aco e luminarias jauladas penduradas — NAO existe ceu aberto nele. "
-           "Se o topo do quadro mostrar ceu azul, nuvens ou luz exterior no lugar de "
-           "parede/teto de aco, marque em 'cenario_violado' (ex.: 'ceu aberto no topo'). "
+           "com TETO de aco e luminarias jauladas penduradas — NAO existe ceu aberto no teto. "
+           "Se o TETO/topo do quadro mostrar ceu azul, nuvens ou abertura para fora no lugar "
+           "de parede/teto de aco, marque em 'cenario_violado' (ex.: 'ceu aberto no topo'). "
+           "Claridade BRANCA, reflexos entre as chapas e o clarao das luminarias NAO sao ceu - "
+           "so marque se houver AZUL de ceu ou NUVENS. "
+           "EXCECAO APROVADA: a faixa clara/azulada da janela de fundo atras/logo acima da "
+           "cortina branca faz parte do set aprovado desde o v5 — NAO e violacao; "
+           "6) ESTADO: se um estado esperado for fornecido, compare o frame com ele: "
+           "divergencia GRAVE e o estado CONTRARIO ao que se ve (ex.: estado diz 'telefone "
+           "arrancado no chao' e o frame mostra o telefone na parede, ou 'tambor na parede' e o "
+           "frame mostra o tambor no meio do galpao) e vai em 'estado_divergente'. Se os objetos "
+           "do estado simplesmente NAO ESTAEM no quadro (close de rosto, enquadramento apertado), "
+           "isso NAO reprova; mas se ESTAO visiveis e no lugar/status ERRADO, reprova. "
+           "Diferencas menores de detalhe NAO reprovam. "
+           "7) FANTASMAS/DUPLICADOS: personagem duplicado, copia translucida, sobreposicao ou "
+           "dissolve de dois quadros (o mesmo boneco em dois lugares, contorno fantasma, overlay) "
+           "e defeito GRAVE: liste em 'fantasmas' e reprove. "
            "Responda JSON estrito: "
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
            '"texto_na_tela": true/false, "objetos_presentes": [], "objetos_nao_plantados": [], '
-           '"props_violados": [], "cenario_violado": [], '
+           '"props_violados": [], "estado_divergente": [], "cenario_violado": [], "fantasmas": [], '
            '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
+    if inserto:
+        SYS += ("\n\nMODO INSERT (close de detalhe): este quadro e um close de insert e pode mostrar "
+                "UM boneco parcial, so maos/botas/objeto, ou nenhum boneco - isso NAO e defeito e "
+                "NAO reprova por 'nem todos os dois bonecos'. Neste modo, veredito REPROVADA so se "
+                "houver: personagem EXTRA (terceira figura completa), ghost/morph/duplicado, texto "
+                "legivel, objeto flutuante, props violados ou cenario violado.")
     parts = [_img_part(png)]
     if estado:
         parts.append({"type": "text", "text": "Estado que este frame deveria mostrar: " + estado})
@@ -265,6 +291,10 @@ def gate_ancora(key, png, estado="", props="", cliente=False):
     if j.get("props_violados"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "props violados (cor/posse/conexao): " + ", ".join(j["props_violados"][:4])
+    # enforcement: estado prometido nao cumprido (acao principal ausente/contraria)
+    if j.get("estado_divergente"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "estado divergente: " + ", ".join(j["estado_divergente"][:3])
     # enforcement: invariante de set (galpao fechado, teto de aco — nunca ceu)
     if j.get("cenario_violado"):
         j["veredito"] = "REPROVADA"

@@ -1,0 +1,218 @@
+{
+  "episodio": {
+    "continuidade_visual": 7,
+    "causalidade_narrativa": 2,
+    "teleportes": [
+      "Após o fim de r1, o tambor de aço sai do teto e reaparece no chão à direita sem explicação.",
+      "TEO passa de pendurado no tambor, com os pés fora do piso molhado, para novamente em pé na água."
+    ],
+    "personagens_extras": [],
+    "momentos_sem_nexo": [
+      "Os oito frames praticamente repetem a configuração inicial, sem progressão visível entre clipes.",
+      "A passagem do fim de r1 ao início de r2 reinicia integralmente a escalada."
+    ],
+    "notas": "Cenário, personagens e acessórios permanecem visualmente muito consistentes nos frames iniciais. Porém, o estado final prometido de r1 não é preservado em r2, quebrando a cadeia causal."
+  },
+  "por_clipe": [
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r1(2)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "travesseiros",
+        "corrente com gancho",
+        "tambor metálico",
+        "barris",
+        "válvulas",
+        "painéis de controle",
+        "vassoura"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio",
+        "travesseiros"
+      ],
+      "notas": "Os estados prometidos não foram informados, portanto não podem ser confirmados pelos frames."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r1(3)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": false,
+      "personagens_extras": [
+        "duplicata de TEO",
+        "duplicata de JUCA"
+      ],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "almofadas",
+        "corrente com gancho",
+        "tambor metálico",
+        "pedal de piso",
+        "carretel de mangueira",
+        "luminárias",
+        "vassoura"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio",
+        "almofadas",
+        "pedal de piso"
+      ],
+      "notas": "Os estados '?' não podem ser verificados e o quadro de 3,5 s exibe duplicatas sobrepostas de TEO e JUCA."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r1(4)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone branco",
+        "almofadas",
+        "corrente com gancho",
+        "tambores metálicos",
+        "vassoura",
+        "mangueiras e válvulas",
+        "painel de controle"
+      ],
+      "objetos_sumidos": [],
+      "notas": "Os estados prometidos não foram informados, mas os dois bonecos aparecem reagindo enquanto erguem um tambor."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r1",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 6,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone branco com fio",
+        "almofadas brancas",
+        "dispositivo de piso preto e prateado",
+        "mangueiras enroladas",
+        "corrente com gancho",
+        "tambores de aço",
+        "vassoura",
+        "água reflexiva"
+      ],
+      "objetos_sumidos": [
+        "telefone branco com fio",
+        "almofadas brancas"
+      ],
+      "notas": "O início bate por completo; no fim o tambor está no alto e preso à corrente, mas a placa do teto e as botas fora do piso não aparecem, deixando a suspensão de TEO ambígua."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r2(2)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "almofadas",
+        "corrente com gancho",
+        "tambores metálicos",
+        "carretel de mangueira",
+        "luminárias",
+        "cortina",
+        "painel de controle",
+        "vassoura",
+        "pedal de chão"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio",
+        "almofadas",
+        "pedal de chão"
+      ],
+      "notas": "Sem estados prometidos definidos, não é possível verificá-los; Teo ergue um tambor enquanto Juca segura a corrente e reage."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r2(3)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "almofada branca",
+        "telefone com fio",
+        "tambores metálicos",
+        "corrente",
+        "alavanca de piso",
+        "válvula vermelha",
+        "mangueira",
+        "vassoura",
+        "painel de controle",
+        "luminárias"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio"
+      ],
+      "notas": "Os estados prometidos não foram informados; TEO e JUCA içam um tambor e JUCA reage com um gesto de aprovação."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r2(4)",
+      "estado_in_cumprido": 0,
+      "estado_out_cumprido": 0,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone com fio",
+        "almofadas brancas",
+        "barril metálico",
+        "corrente com gancho",
+        "válvula com mangueira",
+        "vassoura",
+        "painéis de controle",
+        "luminárias"
+      ],
+      "objetos_sumidos": [
+        "telefone com fio",
+        "almofadas brancas"
+      ],
+      "notas": "Os estados prometidos não são verificáveis porque foram informados apenas como '?'."
+    },
+    {
+      "clipe": "operacao_ralo_exato_v4_c05_escalada_v6a_r2",
+      "estado_in_cumprido": 10,
+      "estado_out_cumprido": 6,
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "reacao_visivel": true,
+      "texto_na_tela": false,
+      "objetos_visiveis": [
+        "telefone branco com fio",
+        "almofadas brancas",
+        "dispositivo de piso preto e prateado",
+        "mangueiras enroladas",
+        "gancho e corrente",
+        "tambor de aço",
+        "barril enferrujado",
+        "vassoura",
+        "água refletiva"
+      ],
+      "objetos_sumidos": [
+        "telefone branco com fio",
+        "almofadas brancas",
+        "dispositivo de piso preto e prateado"
+      ],
+      "notas": "O início corresponde plenamente, mas no fim o tambor e TEO estão cortados, impedindo confirmar a placa do teto e as botas fora do piso."
+    }
+  ],
+  "media_estado_in": 2.5,
+  "media_estado_out": 1.5
+}

@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 6,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7006,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5"
+  ],
+  "video_length": "10s",
+  "output_filename": "operacao_ralo_exato_v4_c01_ligacao_v7_r2",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. Cool hard overhead light, short shadows, wet surfaces. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. TEO and JUCA are the only two main puppets: TEO stays at frame left and JUCA stays at frame right. The military client in olive uniform appears ONLY in the shot that names him, silent, no dialogue; no other people or animals appear. AT START: A tall mustached man stands empty-handed on the left while a shorter man on the right holds the handle of a metal bucket on a two-wheeled cart; a chain hook hangs before a rear curtain, with red-handled pipes and a telephone on the left wall, electrical boxes and a leaning broom on the right, caged lamps overhead, and grates and yellow lines on the wet reflective floor.. [Shot 1] Close insert of a white steel wall telephone box bolted at head height, its coiled cord hanging in a loose loop, and TEO's boots on the wet concrete below; at frame right the military client in his olive uniform steps in from behind the white curtain and holds out a folded paper work order, and TEO's hand takes it from below. [Shot 2] At 00:03.500, the camera cuts to a wide two-shot: TEO lifts the receiver and turns away, the cord snaps taut and the whole phone box is yanked off the wall and tumbles down onto the fallen steel grate, while JUCA steadies the wobbling bucket cart beside him with one hand and keeps walking. [Shot 3] At 00:07.000, the camera cuts to a tight two-shot: TEO still holds the receiver at his ear on a cord that now leads down to a telephone on the floor. He straightens his spine and raises one flat hand at chest height; JUCA sets the bucket cart square beside him and both look at the fallen phone box. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: phone box torn off the wall and lying on the fallen grate; receiver still in TEO's hand on the cord; the bay empty behind the curtain.\noverall_soundscape: A bakelite receiver clicks off its cradle, the coiled cord creaks as it tightens, and the steel phone box bangs down on the concrete and rings. TEO snorts one short nasal breath. JUCA exhales a long flat sigh.\nnon_diegetic_music: N/A For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.",
+  "image_start": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\operacao_ralo_exato_v4\\refs\\ancora_v7_abertura.png",
+  "image_prompt_type": "S"
+}
