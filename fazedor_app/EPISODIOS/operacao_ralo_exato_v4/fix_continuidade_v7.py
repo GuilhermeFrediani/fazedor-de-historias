@@ -81,25 +81,28 @@ C01_SHOTS = [
 C02_SHOTS = [
     ("[Shot 1] the opening tight two-shot held exactly from the previous shot: TEO at frame "
      "left holds the cream telephone receiver at his ear with the coiled cord running down to "
-     "the phone box lying face down on the floor beside the fallen steel grate; JUCA at frame "
-     "right keeps one hand on the bucket cart; both hold their positions for a beat, "
-     "breathing." + MOLHADO),
+     "the phone box lying face down ON TOP of the fallen steel grate at centre — the grate "
+     "stays under the box exactly where it fell; JUCA at frame right keeps one hand on the "
+     "bucket cart; both hold their positions for a beat, breathing." + MOLHADO),
     ("[Shot 2] At 00:01.200, the camera cuts to a close insert of the floor: JUCA's hands "
      "lift the galvanized bucket off the bucket cart and set it down upright on the wet "
      "concrete beside the drain - the bucket stays planted there and never moves again for "
      "the rest of the shot; then the black casters of the now-empty cart roll into frame and "
-     "the front caster rides straight OVER the cream phone box lying face down by the drain, "
-     "flattening and cracking the case under the wheel, and the cart keeps rolling." + CONTAGEM),
+     "the front caster rides straight OVER the cream phone box lying on the fallen grate, "
+     "flattening and cracking the case under the wheel, and the caster drags the fallen "
+     "grate free so it lies loose beside the drain, and the cart keeps rolling." + MOLHADO +
+     CONTAGEM),
     ("[Shot 3] At 00:04.500, the camera cuts to a wide shot: the empty cart tips over on its "
      "side with the flattened phone box pinned under it; the steel drum rolls off the cart "
      "bed, runs across the loose steel grate lying beside the drain, and the grate settles "
      "flat on top of the rolling drum; the galvanized bucket stays planted upright beside "
-     "the open drain; TEO straightens up and points at the hole a beat too late." + CONTAGEM),
+     "the open drain; TEO straightens up and points at the hole a beat too late." + MOLHADO +
+     CONTAGEM),
     ("[Shot 4] At 00:07.000, the camera cuts to a wide shot: the drum rolls to the right wall "
      "and stops there with the steel grate balanced flat on top; the galvanized bucket still "
      "sits planted upright beside the open drain; the crushed phone box juts out from under "
      "the toppled cart; and JUCA puts both hands on his knees and follows the drum with his "
-     "head." + CONTAGEM),
+     "head." + MOLHADO + CONTAGEM),
 ]
 
 MOLDES = {
