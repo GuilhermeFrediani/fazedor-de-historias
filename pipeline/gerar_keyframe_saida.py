@@ -31,8 +31,18 @@ def _head_do_prompt(prompt_base):
     return prompt_base[:i].strip() if i > 0 else prompt_base[:800]
 
 
-def gerar_keyframe(ancora_png, estado_in, estado_out, base_settings, slug, tentativas=2):
-    """Render draft 5 s do delta -> ultimo frame -> gate. Retorna (png|None, veredito_str)."""
+def gerar_keyframe(ancora_png, estado_in, estado_out, base_settings, slug, tentativas=2,
+                   props="", cliente=False):
+    """Render draft 5 s do delta -> ultimo frame -> gate. Retorna (png|None, veredito_str).
+
+    CONSERTO 9 (auditoria 21/11): o gate do keyframe era chamado SEM `props` nem
+    `cliente` — o enxame de regras (registro v2, ocupacao agendada, contagem) nao
+    vigorava no keyframe. Agora props e cliente entram na chamada.
+    NOTA (proximo passo, ainda pendente): o draft de 5 s e caro (~7 min de GPU) e nao
+    tem mascara de fundo; a saida ideal seria o edit de imagem (still do H3-Image com
+    mascara sobre a ancora) ou, no minimo, a validacao por SSIM do fundo entre o
+    keyframe e a propria ancora. A linha morta de "prompt" foi removida.
+    """
     base = json.loads(Path(base_settings).read_text(encoding="utf-8"))
     head = _head_do_prompt(base.get("prompt", ""))
     for tent in range(tentativas):
@@ -50,7 +60,7 @@ def gerar_keyframe(ancora_png, estado_in, estado_out, base_settings, slug, tenta
                         "(from [Shot 1]) is fully referenced."
                         + "\noverall_soundscape: " + str(base.get("overall_soundscape", "")).strip()
                         + "\nnon_diegetic_music: N/A")
-        st["prompt"] = " ".join(st["prompt"].split("\nintegrated")[:1]) if False else st["prompt"]
+        # (linha morta "if False else" removida no CONSERTO 9)
         sdf = AQUI.parent / "fazedor_app" / "EPISODIOS" / "_keyframes"
         sdf.mkdir(exist_ok=True)
         arq = sdf / (st["output_filename"] + "_settings.json")
@@ -70,7 +80,7 @@ def gerar_keyframe(ancora_png, estado_in, estado_out, base_settings, slug, tenta
                        capture_output=True)
         if not cand.exists():
             continue
-        j = qc_visao.gate_ancora(KEY, str(cand), estado_out)
+        j = qc_visao.gate_ancora(KEY, str(cand), estado_out, props=props, cliente=cliente)
         print("  GATE keyframe: %s — %s" % (j.get("veredito"), j.get("motivo", "")), flush=True)
         print("  extras=%s flutuantes=%s" % (j.get("personagens_extras"), j.get("objetos_flutuantes")), flush=True)
         if j.get("veredito") == "APROVADA":

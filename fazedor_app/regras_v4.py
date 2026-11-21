@@ -167,12 +167,25 @@ def _hora(seg):
     return "%02d:%06.3f" % (int(seg) // 60, seg % 60)
 
 
-def montar_prompt_v4(s, ep, blocos, musica=None):
+def montar_prompt_v4(s, ep, blocos, musica=None, cliente_autorizado=False,
+                    ancora_descricao=None):
     """Prompt no formato OFICIAL do H3 (guia base_en):
        1) estilo + composicao + sujeitos + cenario (curto, ~70 palavras)
        2) planos com corte datado: [Shot 1] ... [Shot 2] At 00:03.500, ...
        3) overall_soundscape (1-4 frases)  4) non_diegetic_music
-    Sem lista de negativos."""
+    Sem lista de negativos.
+
+    CONSERTO 5 (auditoria 21/11): cliente_autorizado=True → OCUPACAO AGENDADA
+    (o cliente militar de uniforme olive aparece so no plano que o nomeia) para os
+    clipes 1 e N; False → ocupacao absoluta nos clipes do meio. A ocupacao
+    absoluta em TODOS os clipes brigava com a lei v4 e com o gate de ancora.
+
+    CONSERTO 6 (auditoria 21/11): ancora_descricao (EN) forca planos[0] a
+    descrever EXATAMENTE o enquadramento da ancora (image_start). Sem isso, nos
+    clipes com image_start o modelo faz MORPH da ancora para o plano 1 dentro do
+    1o segundo — foi o ghost/double-exposure medido em 1 s no teste de 20 s.
+    Inserto (plano de close) jamais nasce em 0,0 s: vale o piso de 0,6 s.
+    """
     b = blocos or {}
     set_txt = (b.get("SET_OFICINA", "") if str(s.get("set", "historia")) == "oficina"
                else str(ep.get("set_historia") or s.get("set_historia") or "")).strip()
@@ -182,11 +195,32 @@ def montar_prompt_v4(s, ep, blocos, musica=None):
     if not planos:                        # compatibilidade com episodios antigos
         planos = [{"t": "00:00.000", "texto": str(s.get("action", ""))}]
 
+    # CONSERTO 6: planos[0] DESCREVE A ANCORA (image_start) — sem isso o modelo
+    # faz morph do enquadramento da ancora para o plano 1 no 1o segundo (ghost).
+    if ancora_descricao:
+        p0 = dict(planos[0]) if planos else {"t": "00:00.000"}
+        p0["t"] = "00:00.000"
+        p0["texto"] = str(ancora_descricao)
+        planos = [p0] + list(planos[1:])
+    # CONSERTO 6b: inserto datado em >= 0,6 s (nunca colado no 0,0 da ancora).
+    for p in planos[1:]:
+        t = str(p.get("t") or "").strip()
+        try:
+            seg = float(t.split(":")[-1])
+        except (ValueError, AttributeError):
+            continue
+        if 0 < seg < 0.6:
+            p["t"] = "00:00.600"
+
     cabeca = " ".join(x for x in (ESTILO_CURTO, set_txt, TEO_CURTO, JUCA_CURTO) if x)
-    # OCCUPAÇÃO POSITIVA (cfg 1 não tem ramo negativo — ocupa o quadro com a verdade):
-    # mata personagens extras alucinados (ex.: soldado-urso atrás da cortina).
-    ocupacao = ("Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA "
-                "stays at frame right; no other people or animals appear.")
+    # OCCUPACAO: AGENDADA (cliente autorizado nos clipes 1 e N) ou ABSOLUTA (meio).
+    # CONSERTO 5: a ocupacao absoluta em todo clipe apagava o cliente da lei v4.
+    ocupacao_absoluta = ("Exactly two clay puppets appear in the frame: TEO stays at frame left "
+                         "and JUCA stays at frame right; no other people or animals appear.")
+    ocupacao_agendada = ("TEO stays at frame left and JUCA stays at frame right. The military "
+                         "client in olive uniform appears ONLY in the shot that names him, "
+                         "silent, no dialogue; no other people or animals appear.")
+    ocupacao = ocupacao_agendada if cliente_autorizado else ocupacao_absoluta
     # CADEIA DE ESTADO (P0-2): o modelo precisa SABER como o mundo amanhece e como termina.
     estado_in = str(s.get("estado_in", "")).strip().rstrip(".")
     estado_out = str(s.get("estado_out", "")).strip().rstrip(".")
@@ -355,8 +389,10 @@ def validar_montagem(ep):
                    and int(p.get("plantado_no_clipe", 999)) <= int(i)
                    for p in plantados
                    for po in [str(p.get("objeto", "")).lower()]):
-            avisos.append("[%s] objeto_gag '%s' nao esta no registro objetos_plantados "
-                          "(com plantado <= %s) - objeto pode nascer do nada." % (i, og, i))
+            # CONSERTO 7 (auditoria 21/11): plantio era AVISO e nao bloqueava —
+            # promovido a ERRO: objeto que nasce do nada e defeito de contrato.
+            erros.append("[%s] objeto_gag '%s' nao esta no registro objetos_plantados "
+                         "(com plantado <= %s) - objeto pode nascer do nada." % (i, og, i))
 
     # i) callback + degrau_final no ULTIMO clipe (o fecho precisa existir)
     if shots:
@@ -366,8 +402,9 @@ def validar_montagem(ep):
         cb = str(ep.get("callback_object", "")).strip().lower()
         og_ult = str(ult.get("objeto_gag", "")).strip().lower()
         if cb and cb not in fecho and cb not in og_ult and og_ult not in cb:
-            avisos.append("callback_object '%s' nao aparece no ultimo clipe - o payoff "
-                          "da assinatura ficou no papel." % cb)
+            # CONSERTO 7: callback ausente era AVISO — promovido a ERRO (fecho).
+            erros.append("callback_object '%s' nao aparece no ultimo clipe - o payoff "
+                         "da assinatura ficou no papel." % cb)
         if not str(ep.get("degrau_final", "")).strip():
             erros.append("episodio sem degrau_final - a escada nao tem topo.")
 
@@ -384,14 +421,14 @@ def validar_montagem(ep):
             continue  # o primeiro clipe nao herda de ninguem
         hd = str(s.get("herda_de", "")).strip().lower()
         if not hd:
-            avisos.append("[%s] sem 'herda_de' - declare de qual objeto/estado do clipe "
+            erros.append("[%s] sem 'herda_de' - declare de qual objeto/estado do clipe "
                           "anterior esta gag nasce (causa visivel)." % i)
             continue
         ei = str(s.get("estado_in", "")).lower()
         og_prev = str(shots[idx - 1].get("objeto_gag", "")).lower()
         if hd in ei or hd in og_prev or og_prev in hd:
             continue
-        avisos.append("[%s] herda_de '%s' nao aparece nem no estado_in nem no objeto_gag "
+        erros.append("[%s] herda_de '%s' nao aparece nem no estado_in nem no objeto_gag "
                       "do clipe anterior - causa pode estar invisivel." % (i, hd))
 
     # l) ARCO: repeticao com variacao (a mesma gag/mecanismo volta escalando)
@@ -411,7 +448,7 @@ def validar_montagem(ep):
         if arc_ok:
             checks.append("arco de repeticao com variacao (mesmo objeto, fisica diferente)")
         else:
-            avisos.append("sem arco: nenhuma gag volta com fisica diferente - a serie e "
+            erros.append("sem arco: nenhuma gag volta com fisica diferente - a serie e "
                           "gambiarra que escala, nao acidente novo a cada clipe.")
 
     if nota < 7:

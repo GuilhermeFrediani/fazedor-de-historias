@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""cadeia_v7.py — EPISODIO INTEIRO (c01..c06) com os consertos do dossie:
+"""cadeia_v7.py — EPISODIO INTEIRO (c01..c06) com os consertos do dossie + auditoria 21/11:
   - ocupacao AGENDADA: cliente autorizado so no c01 (entrega) e c06 (fecho)
-  - registro v2 (cor/posse) no PROPS e no gate
+  - registro v2 (cor/posse/CONTAGEM) no PROPS e no gate — balde duplicado reprova
   - REDE DENSA DE CEU (scan_ceu) DENTRO do loop: reprova antes do gate semantico
-  - gate duplo (ancora f9.9 + meio f5.0) com estado real da ancora
+  - gate em 5 frames (9.9 + 5.0 + 3.0 + 2.0 + 0.8 EMENDA) com estado real da ancora
+  - enforcement completo no gate (ghost/extra/texto/flutuante/contagem) — nao so o prompt
   - 3 tentativas (seed+1), fallback controlado
 Saida: cadeia_v7_relatorio.json
 """
@@ -57,9 +58,12 @@ ANCORA_INI = EP / "refs" / "ancora_v7_abertura.png"
 TENTATIVAS = 3
 # (slug_base, tag, curto, cliente_autorizado, seed_base, tentativas)
 # c01 ja queimou 3 tentativas (7001-7003) — recomeca em 7004 com 5 tentativas
+# CONSERTO (auditoria 21/11): c01/c02 precisam ser RE-RENDERIZADOS (ghost de 1 s e
+# balde duplicado passaram pelo banco). Seeds novas + moldes novos (planos[0] =
+# ancora) = resultado novo mesmo com seed antiga. c03/c04 seguem bancados.
 CLIPES = [
-    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7006, 2),
-    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7005, 2),
+    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7010, 3),
+    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7010, 3),
     ("operacao_ralo_exato_v4_c03_primeira_falha_v2","V7_C03", "c03", False, 7002, 3),
     ("operacao_ralo_exato_v4_c04_jeitinho_v6a",     "V7_C04", "c04", False, 7102, 3),
     ("operacao_ralo_exato_v4_c05_escalada_v6a",     "V7_C05", "c05", False, 7200, 3),
@@ -78,13 +82,20 @@ SET_NOVO = (
     "walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; "
     "when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. "
     "Cool hard overhead light, short shadows, wet surfaces.")
-PROPS = ("white wall telephone box with handset and coiled cord, fallen steel grate, grey "
-         "steel drum, rubber test plug, white absorbent pads that swell into one pillow, white "
-         "paper sack, bucket cart with a galvanized metal bucket, squeegee, pressure hose reel, "
-         "red-wheel water valves, wall-mounted pressure gauges, electric cabinets with dials "
-         "on the right wall, two stacked steel drums at rear right, steel pipes along the "
-         "walls, chain with hook, white canvas curtain, broom, caged industrial lamps, wet "
-         "concrete floor with yellow safety lines, folded metal ruler, "
+# CONSERTO 8 (auditoria 21/11): registro v2 sem CONTAGEM deixou o 2o balde de 15 s
+# passar (nao era violacao de contrato). Agora toda grande peca declara QUANTAS
+# unidades existem — e o gate (gate_ancora/SYS_A) reprova divergencia de contagem.
+PROPS = ("white wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
+         "bay, fallen steel grate — EXACTLY ONE (lies face down beside the drain until the "
+         "drum carries it in c02; never migrates on its own), grey steel drum — the TWO "
+         "stacked drums at rear right stay stacked until exactly ONE empty drum rolls off in "
+         "c02, rubber test plug, white absorbent pads that swell into one pillow, white "
+         "paper sack, bucket cart with EXACTLY ONE galvanized metal bucket (never a second "
+         "bucket), squeegee, pressure hose reel, red-wheel water valves, wall-mounted "
+         "pressure gauges, electric cabinets with dials on the right wall, two stacked steel "
+         "drums at rear right, steel pipes along the walls, chain with hook, white canvas "
+         "curtain, broom, caged industrial lamps, wet concrete floor with yellow safety "
+         "lines, folded metal ruler, "
          "brass tape hook (loose on the drain rim), "
          "steel tape measure (JUCA's chest pocket - never TEO's hand), "
          "YELLOW carpenter pencil (TEO's working pencil; pinned through the hook eye in c05; "
@@ -181,15 +192,19 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real, cliente, see
         f02 = EP / "refs" / ("inicio_v7_" + curto + ".png")
         f20 = EP / "refs" / ("corte1_v7_" + curto + ".png")
         f30 = EP / "refs" / ("corte2_v7_" + curto + ".png")
-        for ts, dst in (("9.9", f99), ("5.0", f50), ("3.0", f30), ("2.0", f20), ("0.2", f02)):
+        f08 = EP / "refs" / ("emenda_v7_" + curto + ".png")
+        for ts, dst in (("9.9", f99), ("5.0", f50), ("3.0", f30), ("2.0", f20),
+                        ("0.8", f08), ("0.2", f02)):
             subprocess.run([FF, "-y", "-ss", ts, "-i", str(mp4), "-frames:v", "1", str(dst)],
                            capture_output=True)
         ps = psnr_png(f02, ancora_png)
         print("  f0.2 vs ancora_in = %s dB (informativo)"
               % ("%.1f" % ps if ps is not None else "parse?"), flush=True)
-        # gate em 4 frames: 9.9 (estado) + 5.0 + 3.0 + 2.0 (higiene de transicao/texto/props)
+        # gate em 5 frames: 9.9 (estado) + 5.0 + 3.0 + 2.0 + 0.8 (a EMENDA). O ghost de 1 s
+        # do teste dos 20 s morava entre 0 e 2 s e nao era amostrado — 0.8 pega o morph
+        # ancora->planos[0] exatamente onde ele nasce.
         planos = [("9.9", f99, estado_end, False), ("5.0", f50, "", False),
-                  ("3.0", f30, "", True), ("2.0", f20, "", True)]
+                  ("3.0", f30, "", True), ("2.0", f20, "", True), ("0.8", f08, "", True)]
         verds = {}
         for tg in range(15):
             try:
@@ -228,6 +243,12 @@ def render_com_gate(slug_base, tag, curto, ancora_png, estado_real, cliente, see
         print("  gate reprovou - retry seed+1", flush=True)
     return None, None, None, None, tentativas
 
+
+# FASE 1 (auditoria 21/11): --so20s re-renderiza SO os clipes 1-2 (a janela de
+# aceite do usuario: 0 ghost, 0 duplicado, 0 texto, cliente, >=8/>=8). c03..c06
+# ficam como estao (bancados/fallback) ate a fase do 60 s.
+if "--so20s" in sys.argv:
+    CLIPES = CLIPES[:2]
 
 if "--dry" in sys.argv:
     for slug_base, tag, curto, cliente, seed, _tt in CLIPES:

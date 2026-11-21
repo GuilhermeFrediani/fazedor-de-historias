@@ -21,10 +21,16 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import imageio_ffmpeg
 FF = imageio_ffmpeg.get_ffmpeg_exe()
 AQUI = Path(__file__).resolve().parent
+sys.path.insert(0, str(AQUI))
+import scan_ceu
+AQUI = Path(__file__).resolve().parent
 sys.path.insert(0, str(AQUI.parent / "fazedor_app"))
 GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 MODELOS = ["gemini-3.8-flash", "gemini-3-flash-preview", "gemini-3.6-flash", "gemini-2.5-flash"]
-TEMPOS = [0.2, 3.5, 7.0, 9.5]
+# CONSERTO (auditoria 20/11): 3.5/7.0 nao viam a EMENDA de ~1s (o ghost wide->insert
+# do clipes 1 e N passava). Amostragem: ponta (0.2) + emenda (1.0) + meio (5.0) + fim (9.5).
+# Nos clipes PONTE (image_start), 1.0 cai exatamente no morph ancora->planos[0].
+TEMPOS = [0.2, 1.0, 5.0, 9.5]
 
 
 def _chave():
@@ -244,6 +250,10 @@ def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
            "CONTRATO: a cor nao muda nunca (lapis amarelo jamais vira vermelho) e o portador "
            "so muda se o estado narrar a troca de maos; divergencia vai em 'props_violados' "
            "(ex.: 'lapis vermelho (registro: amarelo)', 'trena na mao do TEO (registro: JUCA)'); "
+           "a lista tambem declara QUANTAS unidades existem de cada objeto (ex.: 'exactly one "
+           "bucket', 'two stacked drums') - CONTE no frame e divergencia de contagem (dois "
+           "baldes, dois telefones, tres tambores) vai em 'contagem_divergente': item "
+           "DUPLICADO e defeito GRAVE de continuidade; "
            "5) INVARIANTE DE SET: este set e um GALPAO FECHADO de chapas de aco rebitadas, "
            "com TETO de aco e luminarias jauladas penduradas — NAO existe ceu aberto no teto. "
            "Se o TETO/topo do quadro mostrar ceu azul, nuvens ou abertura para fora no lugar "
@@ -266,6 +276,7 @@ def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
            '{"dois_bonecos": true/false, "personagens_extras": [], "objetos_flutuantes": [], '
            '"texto_na_tela": true/false, "objetos_presentes": [], "objetos_nao_plantados": [], '
            '"props_violados": [], "estado_divergente": [], "cenario_violado": [], "fantasmas": [], '
+           '"contagem_divergente": [], '
            '"veredito": "APROVADA" ou "REPROVADA", "motivo": "1 frase"}')
     if inserto:
         SYS += ("\n\nMODO INSERT (close de detalhe): este quadro e um close de insert e pode mostrar "
@@ -299,6 +310,29 @@ def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
     if j.get("cenario_violado"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "cenario violado: " + ", ".join(j["cenario_violado"][:3])
+    # ── CONSERTO 1 (auditoria 21/11): o SYS mandava reprovar, mas o CODIGO so forçava
+    #    REPROVADA em 4 campos — fantasmas/extras/texto/flutuante passavam soltos.
+    #    Foi exatamente assim que o ghost de 1s e o texto passaram no teste dos 20s.
+    # enforcement: ghost/duplicado/morph/double-exposure reprova
+    if j.get("fantasmas"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "ghost/morph/duplicado: " + ", ".join(j["fantasmas"][:3])
+    # enforcement: terceira figura completa reprova (ocupacao AGENDADA)
+    if j.get("personagens_extras"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "personagem extra: " + ", ".join(j["personagens_extras"][:3])
+    # enforcement: lei zero-texto
+    if j.get("texto_na_tela"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "texto na tela nao permitido (lei zero-texto)"
+    # enforcement: objeto flutuando sem apoio reprova
+    if j.get("objetos_flutuantes"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "objeto flutuante: " + ", ".join(j["objetos_flutuantes"][:3])
+    # enforcement: contagem de props (balde duplicado reprova — o 2o balde de 15s passou)
+    if j.get("contagem_divergente"):
+        j["veredito"] = "REPROVADA"
+        j["motivo"] = "contagem divergente: " + ", ".join(j["contagem_divergente"][:3])
     return j
 
 
@@ -335,12 +369,27 @@ def main():
 
     SYS_A = ("Voce e o juiz de continuidade de uma serie de comedia muda em claymation "
              "(2 bonecos fixos: TEO alto de gorro verde a esquerda; JUCA baixo de boina e "
-             "sueter mostarda a direita). Recebe 4 frames de UM clipe de 10 s (0.2s, 3.5s, "
-             "7.0s, 9.5s) e o estado que o clipe PROMETE no inicio (AT START) e no fim "
-             "(AT END). Julgue so o que ve. Responda JSON estrito: "
+             "sueter mostarda a direita). Recebe 4 frames de UM clipe de 10 s (0.2s, 1.0s - "
+             "a EMENDA entre a ancora e o plano 1, 5.0s, 9.5s) e o estado que o clipe "
+             "PROMETE no inicio (AT START) e no fim (AT END). Julgue so o que ve, com "
+             "rigor. Responda JSON estrito: "
              '{"estado_in_cumprido": 0-10, "estado_out_cumprido": 0-10, "dois_bonecos": true/false, '
              '"personagens_extras": [], "reacao_visivel": true/false, "texto_na_tela": true/false, '
-             '"objetos_visiveis": [], "objetos_sumidos": [], "notas": "1 frase"}')
+             '"fantasmas": [], "cenario_violado": [], "objetos_flutuantes": [], '
+             '"props_violados": [], "contagem_divergente": [], '
+             '"objetos_visiveis": [], "objetos_sumidos": [], "notas": "1 frase"}. '
+             "Regras: 1) fantasma/duplicado/morph/double-exposure entre frames vai em "
+             "'fantasmas'; 2) terceira figura completa (exceto o cliente militar agendado "
+             "no primeiro e no ultimo clipe) vai em 'personagens_extras'; 3) QUALQUER texto "
+             "legivel na tela (papel com escrita, letras, glifos, placas) faz "
+             "texto_na_tela=true - digitos de teclado de telefone/medidor NAO contam; "
+             "4) objeto no ar sem tocar nada vai em 'objetos_flutuantes' (objeto grudado "
+             "em boneco/corda/movel TEM apoio); 5) o set e galpao FECHADO de aco - ceu "
+             "azul, nuvens ou abertura no teto em 'cenario_violado' (a faixa clara "
+             "acima/atras da cortina branca NAO e violacao); 6) o registro de props (se "
+             "enviado abaixo) declara COR, POSSE e CONTAGEM: divergencia de cor/posse em "
+             "'props_violados', divergencia de CONTAGEM (dois baldes, dois telefones) em "
+             "'contagem_divergente'.")
 
     SYS_B = ("Voce e o juiz de continuidade e causalidade entre clipes. Recebe o PRIMEIRO frame "
              "de cada clipe de um episodio (na ordem) e a cadeia de estados prometida "
@@ -362,19 +411,56 @@ def main():
     por_clipe = []
     for c, slug in zip(clipes, slugs):
         fr = _frames(c, tmp, slug[:24])
+        # CONSERTO 11 (auditoria 21/11): scan deterministico de ceu por clipe (local,
+        # 0 API) - antes vivia solto, longe do gate por-clipe.
+        try:
+            sc = scan_ceu.escanear(c, passo=0.5, faixa=0.28, limiar=0.10)
+        except Exception as e:
+            sc = {"veredito": "?", "violacoes": [], "erro": str(e)[:120]}
         parts = [_img_part(f) for f in fr]
         st = cad.get(slug, {"in": "?", "out": "?"})
         parts.append({"type": "text", "text":
                       "AT START prometido: %s\nAT END prometido: %s" % (st["in"], st["out"])})
+        if a.props:
+            parts.append({"type": "text", "text":
+                          "Objetos PERMITIDOS neste set (registro + cenario fixo, com "
+                          "contagem): " + a.props})
         tx = _call(key, SYS_A, parts)
         try:
             j = _json_de(tx)
         except ValueError:
             j = {"notas": tx[:300]}
+        if sc.get("violacoes"):
+            j["cenario_violado"] = list(j.get("cenario_violado") or []) + [
+                "scan_ceu %.1f-%.1fs pico %.0f%%" % (v["ini_s"], v["fim_s"], v["pico"] * 100)
+                for v in sc["violacoes"][:3]]
+        # CONSERTO 3: enforcement no gate por-clipe (espelha gate_ancora) — so o
+        # prompt pedia; agora o CODIGO bloqueia.
+        motivos = []
+        if j.get("fantasmas"):
+            motivos.append("fantasmas=%s" % j["fantasmas"][:2])
+        if j.get("personagens_extras"):
+            motivos.append("extras=%s" % j["personagens_extras"][:2])
+        if j.get("texto_na_tela"):
+            motivos.append("texto")
+        if j.get("objetos_flutuantes"):
+            motivos.append("flutuantes=%s" % j["objetos_flutuantes"][:2])
+        if j.get("cenario_violado"):
+            motivos.append("cenario=%s" % j["cenario_violado"][:2])
+        if j.get("props_violados"):
+            motivos.append("props=%s" % j["props_violados"][:2])
+        if j.get("contagem_divergente"):
+            motivos.append("contagem=%s" % j["contagem_divergente"][:2])
+        if motivos:
+            j["reprovado"] = True
+            j["scan_ceu"] = sc
+            j["notas"] = (str(j.get("notas", "")) + " | BLOQUEADO: " + "; ".join(motivos)).strip(" |")
+            print("    BLOQUEADO: " + "; ".join(motivos), flush=True)
         por_clipe.append({"clipe": slug, **j})
-        print("[A] %-44s in=%s out=%s 2bonecos=%s texto=%s" % (
+        print("[A] %-44s in=%s out=%s 2bonecos=%s texto=%s%s" % (
             slug[:44], j.get("estado_in_cumprido", "?"), j.get("estado_out_cumprido", "?"),
-            j.get("dois_bonecos"), j.get("texto_na_tela")))
+            j.get("dois_bonecos"), j.get("texto_na_tela"),
+            " BLOQUEADO" if j.get("reprovado") else ""))
 
     # B) episodio (primeiro frame de cada clipe + cadeia)
     parts_b = []
@@ -406,6 +492,19 @@ def main():
     if resumo["media_estado_in"] is not None:
         print(">>> media estado_in cumprido: %s/10 · estado_out: %s/10" % (
             resumo["media_estado_in"], resumo["media_estado_out"]))
+    # CONSERTO 4 (auditoria 21/11): a nota virou PORTAO, nao comentario.
+    # exit != 0 trava o roteiro: nota < 8 ou qualquer clipe bloqueado reprova.
+    cont = ep.get("continuidade_visual") or 0
+    caus = ep.get("causalidade_narrativa") or 0
+    bloq = [p for p in por_clipe if p.get("reprovado")]
+    if cont < 8 or caus < 8 or bloq:
+        print("\n>>> PORTAO FECHADO: continuidade=%s causalidade=%s · %d/%d clipes BLOQUEADOS"
+              % (cont, caus, len(bloq), len(por_clipe)))
+        for p in bloq:
+            print("    XX %s: %s" % (p.get("clipe"), p.get("notas", "")[:160]))
+        return 1
+    print("\n>>> PORTAO ABERTO: continuidade=%s causalidade=%s · 0 clipes bloqueados" % (cont, caus))
+    return 0
 
 
 if __name__ == "__main__":

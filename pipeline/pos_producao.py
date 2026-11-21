@@ -11,7 +11,10 @@ e plano fixo. Esta camada faz, com ffmpeg, o que um editor faria:
   3. CORTA o ar morto do fim de cada clipe (onde os bonecos so ficam plantados);
   4. ABRE UM CORTE seco no meio do clipe (punch-in de 1,25x) - da ritmo sem regerar;
   5. MISTURA uma cama musical baixa (-26 dB) por baixo, se voce tiver um arquivo;
-  6. CONCATENA com xfade de 3 frames (o corte de massinha pede respiro de 1 quadro).
+  6. CONCATENA com CORTE SECO (concat demuxer). CONSERTO 10 (auditoria 21/11): a
+      docstring prometia "xfade de 3 frames" e o `montar()` sempre fez concat seco —
+      a divergencia doc/codigo foi alinhada para SECO de proposito: dissolve/ghost
+      nas emendas e justamente o defeito que o teste de 20 s reprovou em 1 s.
 
 Uso:
     python pos_producao.py --pasta CLIPES --saida EP_FINAL.mp4 [--musica bed.mp3] [--dry]
