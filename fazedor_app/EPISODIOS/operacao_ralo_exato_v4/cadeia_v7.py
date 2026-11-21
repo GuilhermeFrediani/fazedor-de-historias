@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """cadeia_v7.py — EPISODIO INTEIRO (c01..c06) com os consertos do dossie + auditoria 21/11:
   - ocupacao AGENDADA: cliente autorizado so no c01 (entrega) e c06 (fecho)
   - registro v2 (cor/posse/CONTAGEM) no PROPS e no gate — balde duplicado reprova
@@ -62,8 +62,8 @@ TENTATIVAS = 3
 # balde duplicado passaram pelo banco). Seeds novas + moldes novos (planos[0] =
 # ancora) = resultado novo mesmo com seed antiga. c03/c04 seguem bancados.
 CLIPES = [
-    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7012, 3),
-    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7012, 3),
+    ("operacao_ralo_exato_v4_c01_ligacao",          "V7_C01", "c01", True,  7014, 3),
+    ("operacao_ralo_exato_v4_c02_cadeia",           "V7_C02", "c02", False, 7014, 3),
     ("operacao_ralo_exato_v4_c03_primeira_falha_v2","V7_C03", "c03", False, 7002, 3),
     ("operacao_ralo_exato_v4_c04_jeitinho_v6a",     "V7_C04", "c04", False, 7102, 3),
     ("operacao_ralo_exato_v4_c05_escalada_v6a",     "V7_C05", "c05", False, 7200, 3),
@@ -76,7 +76,9 @@ SET_NOVO = (
     "floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate "
     "lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, "
     "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a "
-    "white canvas curtain on a ceiling rail at the back, a bare chain with a hook above the "
+    "white canvas curtain on a ceiling rail at the back hanging against the bay's OWN riveted "
+    "rear steel wall — behind the curtain there is only more riveted steel wall of the same "
+    "bay, never sky, never trees, never any exterior, a bare chain with a hook above the "
     "drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is "
     "fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel "
     "walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; "
@@ -86,14 +88,16 @@ SET_NOVO = (
 # passar (nao era violacao de contrato). Agora toda grande peca declara QUANTAS
 # unidades existem — e o gate (gate_ancora/SYS_A) reprova divergencia de contagem.
 PROPS = ("white wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
-         "bay, fallen steel grate — EXACTLY ONE loose grate beside the centre drain; the "
-         "centre drain itself stays OPEN and uncovered and does NOT count as a grate; the "
-         "loose grate settles in front of the drain and stays there until the drum carries "
-         "it in c02; never migrates on its own, steel drums standing at the rear (one drum "
-         "is visible; no count is declared for background drums — only the ONE empty drum "
-         "that rolls in c02 is counted); the steel drums carry a painted RING EMBLEM on "
-         "their side — a decorative mark, NOT text, never flag it as texto_na_tela, rubber "
-         "test plug, white absorbent pads that swell into one pillow, white "
+         "bay, fallen steel grate — EXACTLY ONE loose grate beside the centre drain. A grate "
+         "lying in front of or touching the edge of the drain IS that same single loose "
+         "grate (the drain partially behind it is never a second grate): there is never a "
+         "second loose grate anywhere in the shot; the loose grate settles by the drain and "
+         "stays there until the drum carries it in c02; never migrates on its own, steel "
+         "drums standing at the rear (one drum is visible; no count is declared for "
+         "background drums — only the ONE empty drum that rolls in c02 is counted); the "
+         "steel drums carry a painted RING EMBLEM on their side — a decorative mark, NOT "
+         "text, never flag it as texto_na_tela, rubber test plug, white absorbent pads that "
+         "swell into one pillow, white "
          "paper sack, bucket cart with EXACTLY ONE galvanized metal bucket (never a second "
          "bucket), squeegee, pressure hose reel, red-wheel water valves, wall-mounted "
          "pressure gauges, electric cabinets with dials on the right wall, steel pipes along "
@@ -323,3 +327,4 @@ print("\n>>> CADEIA V7: %d/%d clipes aprovados — relatorio: cadeia_v7_relatori
       % (n_ok, len(CLIPES)), flush=True)
 if n_ok + sum(1 for f in feitos if f.get("fallback")) == len(CLIPES):
     print(">>> proximo passo: montar_final_v7.py", flush=True)
+

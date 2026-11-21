@@ -192,7 +192,7 @@ def _filtro_clipe(c, idx, margem_morta=0.35, punch=True, cortar_meio=False, meio
 
 
 def montar(pasta, saida, musica=None, dry=False, padrao="*.mp4",
-           cortar_meio=False, meio_min=1.5):
+           cortar_meio=False, meio_min=1.5, punch=True):
     pasta = Path(pasta)
     clipes = sorted(pasta.glob(padrao))
     if not clipes:
@@ -203,7 +203,7 @@ def montar(pasta, saida, musica=None, dry=False, padrao="*.mp4",
     tmp.mkdir(exist_ok=True)
     preparados = []
     for i, c in enumerate(clipes, 1):
-        espec, dur = _filtro_clipe(c, i, cortar_meio=cortar_meio, meio_min=meio_min)
+        espec, dur = _filtro_clipe(c, i, punch=punch, cortar_meio=cortar_meio, meio_min=meio_min)
         out = tmp / ("p%02d.mp4" % i)
         base = [FFMPEG, "-y", "-i", str(c)] + espec
         r = _run(base + ["-c:v", "libx264", "-preset", "medium", "-crf", "18",
@@ -248,6 +248,11 @@ def main():
                          "quartil = beat seco)")
     ap.add_argument("--meio-min", type=float, default=1.5,
                     help="duracao minima (s) de bloco morto removivel no meio")
+    # CONSERTO (auditoria 21/11): o punch-in 1,25x em cima de CLOSE DE ROSTO recorta+upscale
+    # e vira borrao/smear no olho. O punch fica OPT-IN: a serie e feita de closes de reacao,
+    # entao o padrao agora e SEM punch; use --punch so em planos gerais.
+    ap.add_argument("--punch", action="store_true",
+                    help="liga o punch-in 1,25x no meio do clipe (evite em closes de rosto)")
     ap.add_argument("--json")
     a = ap.parse_args()
     if a.analisar:
@@ -259,7 +264,7 @@ def main():
         ap.print_help()
         return 2
     return montar(a.pasta, a.saida, a.musica, a.dry, a.padrao,
-                  cortar_meio=a.cortar_meio, meio_min=a.meio_min)
+                  cortar_meio=a.cortar_meio, meio_min=a.meio_min, punch=a.punch)
 
 
 if __name__ == "__main__":
