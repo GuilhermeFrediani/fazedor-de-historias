@@ -26,7 +26,7 @@ SETDIR = EP / "settings"
 MOLHADO = (" The wet concrete floor keeps its shallow puddles throughout the whole clip.")
 CONTAGEM = (" There is EXACTLY ONE galvanized bucket on the cart, ONE steel drum moving and "
             "ONE steel grate in this frame - no duplicate object ever appears, no second "
-            "bucket and no second telephone. The BLANK white sheet stays perfectly smooth "
+            "bucket and no second telephone. The RIBBED STEEL ROLL-UP DOOR stays fully closed the entire shot - nothing opens and the view stays inside the bay. The BLANK white sheet stays perfectly smooth "
             "with no writing, no lines and NO mark of any kind at any moment - no pen mark "
             "ever appears on it.")
 
@@ -86,7 +86,7 @@ C01_SHOTS = [
 
 C02_SHOTS = [
     ("[Shot 1] the opening tight two-shot held exactly from the previous shot: TEO at frame "
-     "left holds the cream telephone receiver at his ear with the coiled cord running down to "
+     "left holds the dark bakelite telephone receiver at his ear with the coiled cord running down to "
      "the phone box lying face down ON TOP of the fallen steel grate at centre — the grate "
      "stays under the box exactly where it fell; JUCA at frame right keeps one hand on the "
      "bucket cart; both hold their positions for a beat, breathing." + MOLHADO),
@@ -94,7 +94,7 @@ C02_SHOTS = [
      "lift the galvanized bucket off the bucket cart and set it down upright on the wet "
      "concrete beside the drain - the bucket stays planted there and never moves again for "
      "the rest of the shot; then the black casters of the now-empty cart roll into frame and "
-     "the front caster rides straight OVER the cream phone box lying on the fallen grate, "
+     "the front caster rides straight OVER the dark bakelite phone box lying on the fallen grate, "
      "flattening and cracking the case under the wheel, and the caster drags the fallen "
      "grate free so it lies loose beside the drain, and the cart keeps rolling." + MOLHADO +
      CONTAGEM),
@@ -126,4 +126,6 @@ for slug, shots in MOLDES.items():
     st["num_inference_steps"] = 8
     arq.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
     print("OK %s: %d planos regravados + steps=8" % (slug, len(shots)))
+
+
 
