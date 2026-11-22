@@ -272,6 +272,15 @@ E cada clipe declara, além dos campos v4:
 REGRA DE PREENCHIMENTO: `causa` e `herda_de` devem citar o MESMO objeto/estado; `efeito` deve
 aparecer no `estado_out`; `payoff` deve descrever o corpo (não "eles olham"); o último `payoff`
 e o `payoff_visual` devem citar o `callback_object`. A `escalada` nunca volta atrás.
+
+REGISTRO COMPLETO (o validador cobra linha por linha):
+- TODO `objeto_gag` de cada clipe entra em `objetos_plantados`: `plantado_no_clipe` = o
+  primeiro clipe em que o objeto aparece; `pago_no_clipe` = o último. NADA nasce do nada.
+- `herda_de` = o NOME CURTO do objeto/estado, verbatim como aparece no `estado_out` (ou no
+  `objeto_gag`) do clipe anterior — nunca uma frase descritiva.
+- ARCO DE ESCALADA: a MESMA família de `objeto_gag` volta em pelo menos 2 clipes com física
+  diferente (ex.: o rolo escorrega no c03; a bandeja dobra o MESMO painel no c04). Um objeto
+  diferente por clipe é acidente em série, não escalada — a série é gambiarra que cresce.
 """
 
 CHECKLIST = r"""

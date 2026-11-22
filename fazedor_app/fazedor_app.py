@@ -59,7 +59,7 @@ LIMITE_API_TIMEOUT = 600                      # s
 # ── TEMPLATE v2.1 (espelha exatamente os quadro_sX_settings.json validados) ──
 TEMPLATE_SETTINGS = {
     "model_type": "minimax_h3_fl2va_pruned",
-    "num_inference_steps": 6,
+    "num_inference_steps": 8,   # LoRA turbo e de 8 passos (medido: 6 passava curto)
     "resolution": "1152x640",
     "force_fps": 24,
     "seed": 7001,
@@ -148,6 +148,7 @@ def achatado(st, campo):
 
 # ── lógica de episódio ──
 def validar_episodio(ep):
+    ep = _normaliza_shots(ep)
     if ep_eh_dossie(ep):
         return validar_dossie(ep)
     mp = montar_prompts_mod()
@@ -432,6 +433,71 @@ def instrucoes_dossie():
     return regras_v4.PROMPT_MESTRE_V5
 
 
+def _normaliza_shots(ep):
+    """v5.1: a IA as vezes escreve n='c01', dur='10 s' ou plantado_no_clipe='c2'.
+    O motor converte para numero ANTES de validar/salvar/gerar settings — o render
+    e os checadores exigem inteiro, e a correção da IA não deve quebrar o app."""
+    if not isinstance(ep, dict):
+        return ep
+    novo = dict(ep)
+    ops = []
+    for o in (ep.get("objetos_plantados") or []):
+        if isinstance(o, dict):
+            o2 = dict(o)
+            for k in ("plantado_no_clipe", "pago_no_clipe"):
+                mo = re.search(r"\d+", str(o2.get(k, "")))
+                if mo:
+                    o2[k] = int(mo.group())
+            ops.append(o2)
+        else:
+            ops.append(o)
+    novo["objetos_plantados"] = ops
+    shots = []
+    for s in (ep.get("shots") or []):
+        if not isinstance(s, dict):
+            shots.append(s)
+            continue
+        s2 = dict(s)
+        mo = re.search(r"\d+", str(s2.get("n", "")))
+        s2["n"] = int(mo.group()) if mo else 0
+        mo = re.search(r"\d+", str(s2.get("dur", 10)))
+        s2["dur"] = int(mo.group()) if mo else 10
+        shots.append(s2)
+    novo["shots"] = shots
+    _completa_plantados(novo)
+    return novo
+
+
+def _completa_plantados(novo):
+    """v5.1: TODO objeto_gag declarado em um clipe entra no registro
+    objetos_plantados (plantio = 1a aparição como objeto_gag; pagamento = última).
+    E bookkeeping derivado do próprio JSON — nada é inventado; fecha a regra
+    do canon 'nenhum objeto aparece sem plantio' sem punir o formato da IA."""
+    vistos = {}
+    regs = [o for o in (novo.get("objetos_plantados") or []) if isinstance(o, dict)]
+    for o in regs:
+        if str(o.get("objeto", "")).strip():
+            vistos[str(o["objeto"]).strip().lower()] = o
+    for s in novo.get("shots") or []:
+        og = str(s.get("objeto_gag", "")).strip()
+        if not og:
+            continue
+        n = s.get("n", 0)
+        o = vistos.get(og.lower())
+        if o is None:
+            o = {"objeto": og, "plantado_no_clipe": n, "pago_no_clipe": n}
+            vistos[og.lower()] = o
+            novo.setdefault("objetos_plantados", []).append(o)
+        else:
+            try:
+                if int(n) < int(o.get("plantado_no_clipe", 999)):
+                    o["plantado_no_clipe"] = int(n)
+                if int(n) > int(o.get("pago_no_clipe", 0)):
+                    o["pago_no_clipe"] = int(n)
+            except Exception:
+                pass
+
+
 def reforcar_canon(mensagens):
     """Garante o CÉREBRO DE COMÉDIA no system de QUALQUER provedor.
 
@@ -693,6 +759,7 @@ def salvar_episodio(ep, sobrescrever=False):
 
 
 def gerar_settings(ep, sobrescrever=False):
+    ep = _normaliza_shots(ep)
     pasta = pasta_do_episodio(ep) / "settings"
     if pasta.exists() and not sobrescrever:
         raise FileExistsError(f"{pasta} já existe (489 sobrescrever=true para gravar por cima)")
@@ -1139,7 +1206,7 @@ class Fazedor(BaseHTTPRequestHandler):
 
     def _salvar(self):
         d = self._corpo()
-        ep = d.get("episodio")
+        ep = _normaliza_shots(d.get("episodio"))
         if not isinstance(ep, dict) or not ep.get("shots"):
             raise ValueError("episódio sem shots")
         val = validar_episodio(ep)
@@ -1151,7 +1218,7 @@ class Fazedor(BaseHTTPRequestHandler):
 
     def _settings(self):
         d = self._corpo()
-        ep = d.get("episodio")
+        ep = _normaliza_shots(d.get("episodio"))
         if not isinstance(ep, dict) or not ep.get("shots"):
             raise ValueError("episódio sem shots")
         return self._json(gerar_settings(ep, sobrescrever=d.get("sobrescrever", False)),

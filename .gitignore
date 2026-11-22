@@ -17,3 +17,7 @@ desktop.ini
 
 # backups de versao
 *.bak
+
+# logs de execucao local (nao versionar)
+fazedor_app/server_log.txt
+fazedor_app/autoepisodio_log.txt
