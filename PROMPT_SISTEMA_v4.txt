@@ -280,6 +280,13 @@ PERSONAGENS E LEIS DE FERRO
   "cara de ops". No fim, orgulho e aperto de mãos.
 - Todo clipe termina EM MOVIMENTO.
 
+CLIENTE (lei v4)
+- O cliente é mudo, no figurino do setor, e aparece no PRIMEIRO e no ÚLTIMO clipe (chegada e
+  nota fiscal). Sem isso o episódio não tem fecho.
+- Nos clipes 1 e N, ocupação AGENDADA: o cliente aparece só no plano que o nomeia.
+- Nos clipes do meio, ocupação ABSOLUTA: só TÉO e JUCA em quadro; o cliente não ancora.
+- Ele nunca fala, nunca ajuda, nunca atrapalha; o serviço termina entregue a ele.
+
 FÍSICA (o cardápio seguro)
 - Uma primitiva por clipe: cair/tombar, escorregar, quicar/viajar, encher/transbordar,
   dobrar/ceder, prensar/inflar, rolar. Varie; repetir a mesma física é tique.

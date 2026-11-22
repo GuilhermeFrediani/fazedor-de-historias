@@ -27,8 +27,9 @@ de continuidade/causalidade/payoff que os testes de render v4→v7 ensinaram.
   causa + um efeito + um payoff; causa visível/herda_de; estado_out(N) ==
   estado_in(N+1); registro de objetos com contagem, plantio e dono da posição;
   SET afirmativo e fechado (negativas viraram conceito em cfg 1); emenda/âncora
-  anti-ghost; TÉO mede à esquerda, JUCA executa à direita; zero fala/texto/música;
-  dano só material; física de uma primitiva; arco começo→meio→fim com payoff visual.
+  anti-ghost; TÉO mede à esquerda, JUCA executa à direita; cliente mudo abre e
+  fecha (ocupação agendada nos clipes 1 e N); zero fala/texto/música; dano só
+  material; física de uma primitiva; arco começo→meio→fim com payoff visual.
 - **`SCHEMA`** — campos novos do JSON: `canon`, `premissa_simples`,
   `solucao_errada`, `escalada`, `payoff_visual`, `otimismo_final`; por clipe:
   `causa`, `efeito`, `payoff`, `escala` (objeto|parede|piso|teto).
