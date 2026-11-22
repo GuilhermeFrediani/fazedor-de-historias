@@ -37,6 +37,7 @@ _HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent))
 import regras_v3
 import regras_v4  # v3: camada de RENDERIZABILIDADE (orcamento de fisica + ancoras curtas)
+import canon_comedia  # v5: CÉREBRO DE COMÉDIA permanente (Zeca e Joca + causa→efeito→payoff)
 
 APP_DIR = _HERE
 PARENT = APP_DIR.parent                      # "fazedor de histórias"
@@ -424,9 +425,30 @@ objeto_gag: "tijolo sobre espuma"
 
 
 def instrucoes_dossie():
-    """v3: prompt mestre com ORCAMENTO DE FISICA + regra dos dois corpos + reacao legivel.
-    A ancora visual continua fora daqui: o programa cola ancoras CURTAS (regras_v3)."""
-    return regras_v4.PROMPT_MESTRE_V4
+    """v5: prompt mestre + CÉREBRO DE COMÉDIA (canon zeca_joca_v1).
+    O cérebro junta a referência Zeca e Joca/Pat & Mat, a teoria do humor e o
+    contrato de continuidade/causalidade/payoff. A âncora visual continua fora
+    daqui: o programa cola âncoras CURTAS (regras_v3)."""
+    return regras_v4.PROMPT_MESTRE_V5
+
+
+def reforcar_canon(mensagens):
+    """Garante o CÉREBRO DE COMÉDIA no system de QUALQUER provedor.
+
+    O AgentRouter já recebe o cérebro por instrucoes_dossie(); Gemini/OpenAI e o
+    modo de correção não podem escapar dele. Se já houver a marca, não duplica.
+    """
+    msgs = [dict(m) for m in (mensagens or [])]
+    marca = canon_comedia.MARCA
+    bloco = canon_comedia.BLOCO_MESTRE
+    idx = next((i for i, m in enumerate(msgs) if m.get("role") == "system"), None)
+    if idx is None:
+        return [{"role": "system", "content": bloco}] + msgs
+    conteudo = str(msgs[idx].get("content", ""))
+    if marca not in conteudo:
+        msgs[idx]["content"] = (conteudo + "\n\n" + bloco).strip()
+    return msgs
+
 
 def ep_eh_dossie(ep):
     shots = ep.get("shots") or []
@@ -1047,7 +1069,11 @@ class Fazedor(BaseHTTPRequestHandler):
                     "dossie_md": memory_directive(),
                     "dossie_estagios": list(DOSSIE_ESTAGIOS.keys()),
                     "dossie_dur": DOSSIE_DUR,
-                    "matriz": DOSSIE_MATRIZ})
+                    "matriz": DOSSIE_MATRIZ,
+                    # v5: cérebro de comédia (referência + continuidade + schema + checklist)
+                    "comedia_versao": canon_comedia.VERSAO,
+                    "comedia_bloco": canon_comedia.BLOCO_MESTRE,
+                    "comedia_canon": canon_comedia.BLOCO_COMPLETO})
 
     def _fcfg(self):
         """Config padrão pré-carregada (chave de config_secret.json, se existir)."""
@@ -1077,6 +1103,8 @@ class Fazedor(BaseHTTPRequestHandler):
         mensagens = d.get("messages") or []
         if not mensagens:
             raise ValueError("caminho de mensagens vazio")
+        # v5: o cérebro de comédia vai em TODOS os provedores (não só AgentRouter).
+        mensagens = reforcar_canon(mensagens)
         txt, uso, dorsal, modelo = rodar_ia(api, mensagens)
         resumo, ep = extrair_json(txt)
         return self._json({"cru": txt, "resumo": resumo, "episodio": ep, "uso": uso,

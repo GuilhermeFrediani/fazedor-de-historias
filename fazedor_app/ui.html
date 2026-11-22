@@ -237,7 +237,7 @@
 "use strict";
 const $ = id => document.getElementById(id);
 const ESTAGIOS = ["LIGACAO","CHEGADA","DIAGNOSTICO_ERRADO","PRIMEIRA_FALHA","JEITINHO","PAUSA_COMICA","ESCALADA","CLIMAX","REACAO_EM_CORO","NOTA_FISCAL"];
-let PIECES = {sistema:"",exemplo:"",blocos:{},dossie_md:"",dossie_estagios:[],dossie_dur:10,matriz:{}};
+let PIECES = {sistema:"",exemplo:"",blocos:{},dossie_md:"",dossie_estagios:[],dossie_dur:10,matriz:{},comedia_versao:"",comedia_bloco:"",comedia_canon:""};
 let EPISODIO = null;              // objeto editável (fonte única)
 let PACOTE = "";                  // texto do modo cola
 let historicoAPI = [];            // mensagens p/ modo API
@@ -504,16 +504,19 @@ $("bCola").onclick = () => {
   const ideia = normaliza($("ideia").value);
   if(!ideia){ status("status1","escreva ou fale a ideia primeiro","var(--terracota)"); return; }
   $("secCola").classList.remove("oculto");
+  const CANON = PIECES.comedia_canon || PIECES.comedia_bloco || "";
   if(PIECES.dossie_md){
     PACOTE = "INSTRUÇÕES: abaixo está a MEMORY DIRECTIVE fixa do agente TÉO & JUCA (dossiê v1.0). Ela define formato, regras e o template de saída.\n" +
              "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio (30 clipes de 10 s). Nada depois do JSON.\n\n" +
              PIECES.dossie_md + "\n\n" +
+             CANON + "\n\n" +
              "=== IDEIA DO USUÁRIO ===\n" + ideia + "\n";
   } else {
     PACOTE = "INSTRUÇÕES: abaixo está o PROMPT DE SISTEMA completo do roteirista e, em seguida, UM EXEMPLO COMPLETO no exato formato de saída. Estude os dois.\n" +
              "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio. Nada depois do JSON.\n\n" +
              "=== INÍCIO DO PROMPT (sistema) ===\n" + PIECES.sistema + "\n" +
              "=== FIM DO PROMPT (sistema) ===\n\n" +
+             CANON + "\n\n" +
              "=== EXEMPLO COMPLETO (formato exato, use como gabarito) ===\n" + CF + "json\n" + PIECES.exemplo + "\n" + CF + "\n\n" +
              "=== IDEIA DO USUÁRIO ===\n" + ideia + "\n";
   }
@@ -633,7 +636,7 @@ async function lapidarComAPI(ideia){
   if(!cfgOk()) return false;
   const dados = cfgAPI(); dados.previous_id = undefined; PREV_ID = "";
   historicoAPI = [
-    {role:"system",content:(PIECES.dossie_md||PIECES.sistema)},
+    {role:"system",content:(PIECES.dossie_md||PIECES.sistema)+"\n\n"+(PIECES.comedia_canon||PIECES.comedia_bloco||"")},
     {role:"user",content:"IDEIA DO USUÁRIO:\n"+ideia+"\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco " + CF + "json" + CF + " no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. Nada depois do JSON."}
   ];
   const b = $("bApi"), a = $("bAuto");
@@ -678,7 +681,7 @@ async function corrigirComIA(){
     const av = ultimaValidacao.avisos&&ultimaValidacao.avisos.length ? ("\nAvisos (melhore, sem quebrar o resto): "+ultimaValidacao.avisos.join(" ; ")):"";
     const msg = "Seu JSON anterior falhou na validação do pipeline. Devolva O JSON COMPLETO corrigido (mesmo formato: RESUMO curto + um único bloco " + CF + "json" + CF + "), corrigindo:\n" +
                 erros.map((e,i)=>(i+1)+". "+e).join("\n") + av;
-    const mensagens = [{role:"system",content:PIECES.sistema}];
+    const mensagens = [{role:"system",content:PIECES.sistema+"\n\n"+(PIECES.comedia_canon||PIECES.comedia_bloco||"")}];
     if(semEstado){
       // provedores sem memória: reenvia a resposta anterior como histórico
       mensagens.push({role:"user",content:"(Sua resposta anterior está abaixo.)"},

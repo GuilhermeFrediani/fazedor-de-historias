@@ -34,6 +34,10 @@ prompts prontos para o pipeline de vídeo (MiniMax H3 via WanGP).
 | `DOSSIE_TEO_JUCA_v1.docx` | **Fonte canônica v1.0** — a MEMORY DIRECTIVE é extraída dele a cada boot |
 | `blocos_fixos.json` | Âncoras visuais dos personagens + estilo + negativos (verbatim em todo clipe) |
 | `montar_prompts.py` | Motor de validação/montagem do formato legado |
+| `fazedor_app/canon_comedia.py` | **Cérebro de comédia permanente** (canon `zeca_joca_v1`): Zeca e Joca / Pat & Mat + teoria do humor + causa→efeito→payoff + continuidade de objetos/cenário |
+| `fazedor_app/regras_v4.py` | `PROMPT_MESTRE_V5` = v4 + cérebro; validador cobra o arco e os campos do canon |
+| `CANON_COMEDIA_ZECA_JOCA.md` | Versão legível do cérebro (referência completa + contrato + checklist) |
+| `PROMPT_SISTEMA_v4.txt` | Prompt de sistema completo (v4 + cérebro) para colar em qualquer IA |
 | `fazedor_app/` | O app: servidor stdlib + UI (mic 🎙️, 🎲 autoepisódio, cartões, validação, settings) |
 | `fazedor_app/certificar_agentrouter.py` | Certifica os 3 modelos no fluxo real (lapidação → validação → correção) |
 

@@ -22,6 +22,11 @@ oficial do MiniMax H3 (com cortes datados dentro do próprio clipe).
 """
 import re
 
+try:                                      # o cérebro de comédia vive ao lado deste módulo
+    import canon_comedia
+except Exception:                         # nunca derrubar o pipeline por causa do canon
+    canon_comedia = None
+
 # ─────────────────────────────────────────────────────────────────────────────
 # 1. PROMPT MESTRE v4
 # ─────────────────────────────────────────────────────────────────────────────
@@ -142,6 +147,13 @@ Se um clipe nao tem corte, ele nao esta pronto.
 [ ] zero negativo na lista? zero papel com texto? zero fio rebocando peso?
 [ ] a mesma gag volta com variacao no minimo 2 vezes no episodio?
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1b. PROMPT MESTRE v5 = v4 + CÉREBRO DE COMÉDIA (canon zeca_joca_v1)
+#     O cérebro é injetado SEMPRE: prompt do roteirista, AgentRouter e /api/gerar.
+# ─────────────────────────────────────────────────────────────────────────────
+BLOCO_CANON = canon_comedia.BLOCO_MESTRE if canon_comedia else ""
+PROMPT_MESTRE_V5 = PROMPT_MESTRE_V4 + (("\n\n" + BLOCO_CANON) if BLOCO_CANON else "")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 2. ÂNCORAS ULTRA-COMPACTAS (~30 palavras: identidade sem roubar o clipe)
@@ -450,6 +462,54 @@ def validar_montagem(ep):
         else:
             erros.append("sem arco: nenhuma gag volta com fisica diferente - a serie e "
                           "gambiarra que escala, nao acidente novo a cada clipe.")
+
+    # ── CÉREBRO DE COMÉDIA (canon zeca_joca_v1) ──────────────────────────────
+    # m) começo/meio/fim + causa → efeito → payoff declarados e coerentes.
+    #    Legado (sem 'canon') recebe só aviso; o prompt v5 exige o canon em toda
+    #    geração nova. Com o canon declarado, os campos são CONTRATO (erro).
+    canon = str(ep.get("canon", "")).strip().lower()
+    versao_ok = bool(canon_comedia) and canon == canon_comedia.VERSAO
+    if not canon:
+        avisos.append("CANON: episódio sem 'canon: zeca_joca_v1' — o prompt v5 exige o "
+                      "cérebro de comédia declarado (premissa_simples, solucao_errada, "
+                      "escalada, payoff_visual, otimismo_final).")
+    elif not versao_ok:
+        erros.append("CANON: versão '%s' desconhecida — use canon: zeca_joca_v1." % canon)
+    else:
+        for campo in ("premissa_simples", "solucao_errada", "payoff_visual",
+                      "otimismo_final"):
+            if not str(ep.get(campo, "")).strip():
+                erros.append("CANON: campo '%s' ausente — o arco começo→meio→fim precisa "
+                             "declarar a tarefa, a solução errada, o payoff visual e o "
+                             "orgulho final." % campo)
+        esc = [str(x).strip().lower() for x in (ep.get("escalada") or [])
+               if str(x).strip()]
+        ordem_esc = {"objeto": 1, "parede": 2, "piso": 3, "teto": 4}
+        min_deg = 1 if n <= 6 else 3
+        if len(esc) < min_deg:
+            erros.append("CANON: 'escalada' precisa de %d degrau(s) para %d clipes "
+                         "(60 s: um degrau de superfície; 300 s: objeto→parede→piso→teto)."
+                         % (min_deg, n))
+        else:
+            vals = [ordem_esc.get(e) for e in esc]
+            if any(v is None for v in vals):
+                erros.append("CANON: 'escalada' usa só objeto|parede|piso|teto "
+                             "(recebido: %s)." % esc)
+            elif vals != sorted(vals):
+                erros.append("CANON: a escalada volta atrás (%s) — cada degrau deve "
+                             "herdar do anterior." % esc)
+        for s in shots:
+            i = s.get("n", "?")
+            for campo in ("causa", "efeito", "payoff", "escala"):
+                if not str(s.get(campo, "")).strip():
+                    erros.append("CANON [%s]: campo '%s' ausente — o clipe precisa da "
+                                 "corrente causa→efeito→payoff." % (i, campo))
+            e = str(s.get("escala", "")).strip().lower()
+            if e and e not in ordem_esc:
+                erros.append("CANON [%s]: escala '%s' inválida (objeto|parede|piso|teto)."
+                             % (i, e))
+        if versao_ok and not any("CANON" in x for x in erros):
+            checks.append("cérebro de comédia completo (causa→efeito→payoff + payoff visual)")
 
     if nota < 7:
         erros.append("NOTA DE MONTAGE %d/10: o episodio nao tem ritmo (minimo 7)." % nota)
