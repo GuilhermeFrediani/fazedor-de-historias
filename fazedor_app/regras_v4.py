@@ -355,8 +355,14 @@ def validar_montagem(ep):
         nota += 2; checks.append("som com corpo e som de boca")
     if plantou_ok == n:
         nota += 1; checks.append("objeto de gag nomeado")
-    cliente = any(RE_CLIENTE.search(str(p.get("texto", ""))) for p in (shots[0].get("planos") or []))
-    cliente_fim = any(RE_CLIENTE.search(str(p.get("texto", ""))) for p in (shots[-1].get("planos") or []))
+    # v5.2: o cliente nao e sempre o militar — o ep diz quem e (padre, sindico...).
+    palavras_cli = ["client", "cliente", "military boot", "uniformed"]
+    nome_cli = str(ep.get("cliente", "")).strip().lower()
+    palavras_cli += [w for w in re.split(r"[\s/]+", nome_cli) if len(w) >= 4]
+    RE_CLIENTE_EP = re.compile(
+        r"\b(" + "|".join(re.escape(w) for w in dict.fromkeys(palavras_cli)) + r")\b", re.I)
+    cliente = any(RE_CLIENTE_EP.search(str(p.get("texto", ""))) for p in (shots[0].get("planos") or []))
+    cliente_fim = any(RE_CLIENTE_EP.search(str(p.get("texto", ""))) for p in (shots[-1].get("planos") or []))
     if cliente and cliente_fim:
         nota += 1; checks.append("cliente abre e fecha o episodio")
     else:

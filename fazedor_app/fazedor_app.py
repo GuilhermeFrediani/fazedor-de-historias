@@ -747,9 +747,6 @@ def salvar_episodio(ep, sobrescrever=False):
         arq = pasta / f"shot_{int(s['n']):02d}.txt"
         arq.write_text(txt, encoding="utf-8")
         cam_shot.append(str(arq))
-        manifesto.append({"n": s["n"], "estagio": s.get("estagio", ""),
-                          "video_length": f"{s['duracao_s']}s", "inicio": s["inicio"],
-                          "set": s["set"], "chars": len(txt)})
     (pasta / "episodio.json").write_text(
         json.dumps(ep, ensure_ascii=False, indent=2), encoding="utf-8")
     (pasta / "manifest.json").write_text(
