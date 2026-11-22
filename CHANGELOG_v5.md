@@ -88,6 +88,27 @@ OK   clipe sem payoff é reprovado pelo canon
 OK   episódio legado recebe aviso (não quebra o passado)
 ```
 
+## Ajustes v5.1 — análise externa (22/11/2026)
+
+Um segundo agente analisou o canon sem acesso ao repositório. A parte útil que ainda não
+estava explícita entrou:
+
+- **ORIGINALIDADE**: a referência é a mecânica (tarefa → erro → escalada → desastre →
+  orgulho), nunca personagens, nomes, visuais, diálogos ou cenas de Pat & Mat e afins;
+  TÉO & JUCA são originais.
+- **NADA SE RESOLVE POR SORTE**: proibido deus ex machina, ajuda externa ou solução sem
+  custo visual; toda melhoria muda o problema de lugar.
+- **FICHA VISUAL IMUTÁVEL**: o programa cola as âncoras (TEO_CURTO/JUCA_CURTO,
+  blocos_fixos, set_historia, image_start); o roteirista não descreve aparência, roupa,
+  cor ou proporção.
+- **A GAG NASCE DA TAREFA**: o objeto que falha é o objeto do serviço, não um acidente
+  genérico.
+- Checklist do cérebro ampliado de 12 para 16 itens.
+
+Não adotado: cenas de 6 s / vertical (o pipeline é 10 s, 60/300 s, 1152×640), `prompt_video`
+gerado pela IA (bypassa as âncoras e a regra do SET afirmativo) e ficha visual escrita pela
+IA (as âncoras já são a fonte única).
+
 ## Custo
 
 0 GPU. Só texto: `PROMPT_SISTEMA_v4.txt` tem ~20,6 k chars e o bloco injetado

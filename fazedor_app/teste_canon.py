@@ -36,6 +36,9 @@ check("ZECA E JOCA" in bloco, "bloco cita Zeca e Joca / Pat & Mat")
 check("INCONGRU" in bloco and "ESCALADA" in bloco, "bloco traz a mecânica do riso")
 check("CAUSA -> EFEITO -> PAYOFF" in bloco, "bloco traz a corrente causa→efeito→payoff")
 check("REGISTRO DE OBJETOS" in bloco, "bloco traz o contrato anti-teleporte")
+check("ORIGINALIDADE" in bloco, "bloco traz a cláusula de originalidade")
+check("FICHA VISUAL IMUTÁVEL" in bloco, "bloco fixa a ficha visual nas âncoras")
+check("NADA SE RESOLVE POR SORTE" in bloco, "bloco proíbe solução por sorte")
 check("canon\": \"zeca_joca_v1" in bloco or "zeca_joca_v1" in bloco,
       "bloco declara o schema canon")
 check(canon_comedia.MARCA in regras_v4.PROMPT_MESTRE_V5,

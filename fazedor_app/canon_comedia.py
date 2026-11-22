@@ -88,6 +88,8 @@ caindo, uma máquina explodindo ou uma solução que transforma um pequeno defei
 - COMECE PEQUENO: um parafuso torto pode virar a destruição de uma casa inteira.
 - FAÇA O ERRO TER LÓGICA INTERNA: o personagem não é burro por acaso; ele segue uma
   racionalidade equivocada.
+- A GAG NASCE DA TAREFA: o objeto que falha é o objeto do serviço; nada de acidente
+  genérico que poderia acontecer em qualquer episódio.
 - USE OBJETOS COMO PERSONAGENS: uma escada, uma máquina, uma porta ou uma panela pode reagir de
   forma exagerada.
 - ADIE O ALÍVIO: quanto mais o problema cresce, maior é o riso quando ele explode.
@@ -126,6 +128,22 @@ imagem final que fecha a gag.
 """
 
 # ─────────────────────────────────────────────────────────────────────────────
+# 1b. ORIGINALIDADE (inspirar a mecânica, nunca copiar a obra)
+# ─────────────────────────────────────────────────────────────────────────────
+ORIGINALIDADE = r"""
+=== ORIGINALIDADE (inspirar a mecânica, nunca copiar a obra) ===
+- A referência é de MECÂNICA, não de superfície: tarefa simples -> solução errada ->
+  consequência -> escalada -> desastre -> orgulho. Nada além disso é emprestado.
+- Não copie personagens, nomes, rostos, roupas, cores, vozes, diálogos, sons, cenários
+  ou cenas específicas de Zeca e Joca / Pat & Mat, Tom e Jerry, Pica-Pau, Pantera
+  Cor-de-Rosa, Mr. Bean, Trapalhões, Zé Carioca, Wallace & Gromit ou qualquer obra
+  protegida.
+- TÉO & JUCA são originais deste projeto. O episódio não recria nem "homenageia" uma
+  cena existente: a gag é nova, a mecânica é a mesma família de humor.
+- Se uma ideia só funciona porque o público reconhece a obra original, ela não serve.
+"""
+
+# ─────────────────────────────────────────────────────────────────────────────
 # 2. A LÓGICA NARRATIVA E A CONTINUIDADE (o que os testes v4->v7 ensinaram)
 # ─────────────────────────────────────────────────────────────────────────────
 CONTINUIDADE = r"""
@@ -147,6 +165,9 @@ CAUSA -> EFEITO -> PAYOFF (a corrente de ouro)
   clipe, o payoff fecha a promessa do primeiro (callback_object) e entrega o serviço "errado".
 - NADA se resolve sozinho: o problema não "acaba", muda de lugar. O `estado_out` do clipe N é o
   `estado_in` do clipe N+1, palavra por palavra.
+- NADA SE RESOLVE POR SORTE: proibido corte mágico, ajuda externa, objeto que aparece
+  pronto, "deus ex machina" ou solução que não custa nada. Toda melhoria cria um custo
+  visual novo; o problema só muda de lugar.
 - Nenhum objeto aparece sem plantio, some sem ação, muda de mão/tamanho/cor entre quadros ou é
   duplicado.
 
@@ -169,6 +190,13 @@ CENÁRIO (o contrato do fundo)
   sala é fechado do chão ao teto; o interior preenche o quadro inteiro.
 - Objetos fixos (porta, cortina, painéis, tubos) ficam FECHADOS/PARADOS, a menos que a ação os
   mova; uma porta que "se abre para o exterior" é uma janela de erro.
+
+FICHA VISUAL IMUTÁVEL (o programa cola, o roteirista não reescreve)
+- Aparência, roupa, cor, proporção e cenário vêm das âncoras (TEO_CURTO/JUCA_CURTO,
+  blocos_fixos, set_historia, image_start). O roteirista escreve só AÇÃO, ESTADO, CÂMERA e
+  SOM; nunca descreve rosto, roupa, cor ou proporção, nem "melhora" o set.
+- A continuidade visual é responsabilidade do motor (âncora + prompt montado), não da
+  memória do modelo.
 
 EMENDA / ÂNCORA (anti-ghost)
 - O primeiro plano de cada clipe descreve o enquadramento EXATO da âncora (image_start).
@@ -260,6 +288,10 @@ CHECKLIST = r"""
 [ ] zero fala/texto/música; dano material; ninguém se machuca?
 [ ] a mesma gag/mecanismo volta com variação (repetição com física diferente)?
 [ ] o público vê o erro antes dos personagens?
+[ ] a gag nasce da tarefa (o objeto do gag é o objeto do serviço)?
+[ ] nenhuma solução veio de sorte, ajuda externa ou corte mágico?
+[ ] o texto não descreve aparência/roupa/cor (isso é da âncora)?
+[ ] a gag é original (mecânica emprestada, cena nova)?
 """
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -270,6 +302,7 @@ BLOCO_MESTRE = "\n\n".join([
     "Você não escreve piadas soltas: você constrói MECÂNICAS DE DESASTRE no espírito de "
     "Zeca e Joca / Pat & Mat. Leia o cérebro inteiro antes de planejar o episódio.",
     REFERENCIA.strip(),
+    ORIGINALIDADE.strip(),
     CONTINUIDADE.strip(),
     SCHEMA.strip(),
     CHECKLIST.strip(),
@@ -288,6 +321,8 @@ anterior (herda_de/causa); efeito material persistente; estado_out(N) == estado_
 objeto tem contagem, plantio e dono de posição (nada duplica, teleporta ou some); SET afirmativo
 e fechado (sem exterior); TÉO mede à esquerda, JUCA executa à direita; zero fala/texto/música;
 dano só material; o último clipe fecha com o callback e o payoff_visual.
+Originalidade: inspire a mecânica, não copie personagens/cenas; TÉO & JUCA são originais.
+Sem sorte: toda solução tem custo visual. Aparência/roupa/cor vêm da âncora; o roteirista não reescreve.
 JSON: canon=zeca_joca_v1, premissa_simples, solucao_errada, escalada[], payoff_visual,
 otimismo_final; por clipe: causa, efeito, payoff, escala (objeto|parede|piso|teto).
 """
