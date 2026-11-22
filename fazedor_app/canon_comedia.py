@@ -281,6 +281,9 @@ REGISTRO COMPLETO (o validador cobra linha por linha):
 - ARCO DE ESCALADA: a MESMA família de `objeto_gag` volta em pelo menos 2 clipes com física
   diferente (ex.: o rolo escorrega no c03; a bandeja dobra o MESMO painel no c04). Um objeto
   diferente por clipe é acidente em série, não escalada — a série é gambiarra que cresce.
+- `assinatura` = o FECHO DA SÉRIE: o texto DEVE citar "nota fiscal" sendo entregue ao
+  cliente (mesmo que seja um envelope, pasta ou folha — a palavra "nota fiscal" tem que
+  estar lá; é a assinatura que o público reconhece em todo episódio).
 """
 
 CHECKLIST = r"""

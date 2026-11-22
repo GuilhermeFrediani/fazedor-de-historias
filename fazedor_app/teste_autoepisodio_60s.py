@@ -149,7 +149,7 @@ def main():
     mensagens = mensagens_iniciais(pieces, normaliza(tema["ideia"]))
     episodio = None
     cru = None
-    for rodada in (1, 2, 3):
+    for rodada in (1, 2, 3, 4):
         j = gerar(pieces, fcfg, mensagens)
         cru = j.get("cru") or ""
         ep = j["episodio"]
@@ -186,7 +186,7 @@ def main():
         ]
 
     if episodio is None:
-        raise SystemExit("XX autoepisodio nao ficou valido em 3 rodadas (1 + 2 correções)")
+        raise SystemExit("XX autoepisodio nao ficou valido em 4 rodadas (1 + 3 correções)")
 
     st, salvo = _post("/api/salvar", {"episodio": episodio})
     if st not in (201, 202):
