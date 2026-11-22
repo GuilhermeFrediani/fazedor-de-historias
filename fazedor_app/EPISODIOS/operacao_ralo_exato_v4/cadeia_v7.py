@@ -71,23 +71,24 @@ CLIPES = [
 ]
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
+# CONSERTO RODADA 3c (causa-raiz do fundo-exterior): lista de NEGATIVOS no prompt em
+# cfg 1 vira CONCEITO — "never sky/never trees" MATERIALIZAVA ceu e arvores. O SET e
+# 100% AFIRMATIVO: so descreve o interior de aco que existe, sem um unico "nao".
 SET_NOVO = (
     "a small military vehicle-wash bay of riveted grey steel plates. Wet grey concrete "
     "floor, two faded yellow safety lines, one rectangular drain hole at centre with the grate "
     "lying face down beside it, red-wheel water valves and a coiled hose reel on the left wall, "
-    "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, a "
-    "a RIBBED STEEL ROLL-UP DOOR closed against the bay's rear steel wall - behind the door "
-    "there is only more riveted steel wall of the same bay, never sky, never trees, never "
-    "any exterior, a bare chain with a hook above the "
-    "drain, two caged industrial lamps hanging from the riveted steel ceiling. The bay is "
-    "fully ENCLOSED: the riveted steel ceiling spans the entire top of frame and solid steel "
-    "walls close every side - no sky, no clouds, no windows, no daylight openings anywhere; "
-    "when the camera looks up it sees only the steel ceiling, the caged lamps and the chain. "
+    "electric cabinets and a broom on the right wall, two stacked steel drums at rear right, "
+    "ONE RIBBED STEEL ROLL-UP DOOR closed against the bay's rear steel wall, a bare chain "
+    "with a hook above the drain, two caged industrial lamps hanging from the riveted steel "
+    "ceiling. The interior of the bay fills the entire frame edge to edge: riveted steel "
+    "walls and a riveted steel roof close the whole frame on every side and every top corner, "
+    "so the view shows steel plates, caged lamps and the chain from floor to roof. "
     "Cool hard overhead light, short shadows, wet surfaces.")
 # CONSERTO 8 (auditoria 21/11): registro v2 sem CONTAGEM deixou o 2o balde de 15 s
 # passar (nao era violacao de contrato). Agora toda grande peca declara QUANTAS
 # unidades existem — e o gate (gate_ancora/SYS_A) reprova divergencia de contagem.
-PROPS = ("dark charcoal BAKELITE wall telephone box with handset and coiled cord — EXACTLY ONE in the whole "
+PROPS = ("dark BAKELITE wall telephone box with handset and coiled cord (charcoal to dark green-grey - the shade the anchor photo establishes, and it NEVER changes within the episode) — EXACTLY ONE in the whole "
          "bay, fallen steel grate — EXACTLY ONE loose grate beside the centre drain. A grate "
          "lying in front of or touching the edge of the drain IS that same single loose "
          "grate (the drain partially behind it is never a second grate): there is never a "
@@ -327,6 +328,7 @@ print("\n>>> CADEIA V7: %d/%d clipes aprovados — relatorio: cadeia_v7_relatori
       % (n_ok, len(CLIPES)), flush=True)
 if n_ok + sum(1 for f in feitos if f.get("fallback")) == len(CLIPES):
     print(">>> proximo passo: montar_final_v7.py", flush=True)
+
 
 
 

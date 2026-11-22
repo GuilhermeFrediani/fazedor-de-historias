@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """fix_ancora_v7.py — nova ANCORA DE ABERTURA com a porta de aco (sem cortina).
 
 A ancora antiga (refs/ancora_v7_abertura.png) tem a cortina + a faixa de ceu — que era
@@ -39,7 +39,8 @@ ESTADO = ("TEO stands at frame left beside the wall telephone, JUCA stands at fr
           "corner, a RIBBED STEEL ROLL-UP DOOR is closed at the back against the riveted "
           "rear steel wall, the bare chain and hook hang above the central drain, the steel "
           "grate lies face down on the wet floor beside the drain, and the military client "
-          "is not visible yet.")
+          "is not visible yet. The bay interior fills the whole frame edge to edge with "
+          "riveted steel walls and roof.")
 PROMPT = (head + " AT START: " + ESTADO + ". [Shot 1] a static wide two-shot of the whole "
           "bay: TEO at frame left beside the wall telephone and JUCA at frame right with "
           "one hand on the bucket cart; both breathe and hold their positions. AT END: the "
@@ -51,7 +52,7 @@ PROMPT = (head + " AT START: " + ESTADO + ". [Shot 1] a static wide two-shot of 
 st = dict(base)
 st["output_filename"] = "ancora_v7_porta"
 st["video_length"] = "5s"
-st["seed"] = 7000
+st["seed"] = 7001
 st.pop("image_start", None)
 st["prompt"] = PROMPT
 sdf = EP / "settings" / "ancora_v7_porta_settings.json"

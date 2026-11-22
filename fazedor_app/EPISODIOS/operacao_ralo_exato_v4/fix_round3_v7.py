@@ -26,7 +26,9 @@ SETDIR = EP / "settings"
 MOLHADO = (" The wet concrete floor keeps its shallow puddles throughout the whole clip.")
 CONTAGEM = (" There is EXACTLY ONE galvanized bucket on the cart, ONE steel drum moving and "
             "ONE steel grate in this frame - no duplicate object ever appears, no second "
-            "bucket and no second telephone.")
+            "bucket and no second telephone. The BLANK white sheet stays perfectly smooth "
+            "with no writing, no lines and NO mark of any kind at any moment - no pen mark "
+            "ever appears on it.")
 
 
 def _quebrar(prompt):
@@ -64,7 +66,7 @@ C01_SHOTS = [
      "from frame right, arriving from the side of the closed ribbed steel roll-up door, and "
      "holds out a folded BLANK white sheet of paper (completely smooth, no writing, no "
      "lines, no marks of any kind); the closed ribbed steel door with the bay's own riveted "
-     "steel wall stays in the background, never sky, never trees, never any exterior; TEO "
+     "steel wall fills the background; TEO "
      "takes the sheet with both hands; the client points one finger down at the floor drain "
      "to mime the job, and TEO folds the blank sheet and tucks it into his flannel chest "
      "pocket before the client steps back out of frame; both heads stay fully inside the "
