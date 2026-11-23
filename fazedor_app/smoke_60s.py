@@ -408,7 +408,7 @@ def main():
     # ── FASE 1: cadeia de clipes ─────────────────────────────────────────────
     for i, f in enumerate(clipes, 1):
         curto = "c%02d" % i
-        slug_base = f.stem.replace("_settings.json", "")
+        slug_base = f.name[:-len("_settings.json")]   # stem tira o .json, nao o sufixo
         if curto in banco.get("clipes", {}):
             print("\n>>> %s BANCADO — pulando" % curto, flush=True)
             feitos.append(banco["clipes"][curto])
