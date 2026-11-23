@@ -36,6 +36,7 @@ PIPE = APP.parent / "pipeline"
 sys.path.insert(0, str(PIPE))
 import qc_visao, scan_ceu  # noqa: E402  (visao + varredura de ceu; escopo do MODULO)
 TENT_MAX = 3
+TENT_ANCORA = 5                        # a ancora e a fundacao: 5 tentativas
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
 
@@ -125,12 +126,19 @@ def contas_do_registro(e):
         except Exception:
             q = 1
         if nome and q == 1:
-            itens.append("EXACTLY ONE " + nome)
+            pos = str(o.get("posicao", "") or "").strip()
+            if pos:
+                itens.append("EXACTLY ONE %s (%s)" % (nome, pos))
+            else:
+                itens.append("EXACTLY ONE " + nome)
     if not itens:
         return ""
     return (" There is " + ", ".join(itens) + " in the whole frame - no second unit of any "
-            "of them ever appears, nothing duplicates and nothing teleports; every paper and "
-            "envelope stays perfectly blank with no writing, no lines and no marks; plain "
+            "of them ever appears, nothing duplicates, nothing teleports and every item "
+            "stands exactly at the place declared between parentheses, never in a hand that "
+            "the place does not name; every paper, page, envelope and cloth is perfectly "
+            "blank with no writing, no lines and no marks; the window glass is plain and "
+            "clear with no pattern, no cross, no symbols, no lettering anywhere; plain "
             "containers and cloths on the benches are background. ")
 
 
@@ -175,7 +183,7 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
               "whole bodies."
               "\noverall_soundscape: room tone of the enclosed set, water dripping slowly."
               "\nnon_diegetic_music: N/A")
-    for tent in range(TENT_MAX):
+    for tent in range(TENT_ANCORA):
         slug_a = slug + "_ancora" + ("" if tent == 0 else "_r%d" % tent)
         st = dict(st_c01)
         st["output_filename"] = slug_a
