@@ -208,9 +208,9 @@ def _consertar_json(t):
             corte = i
     if corte is None:
         return None
+    # base TERMINA sempre num limite estrutural (o corte e um fecha-colchete
+    # completo), entao nao ha string aberta para fechar: so fechar a pilha.
     base = t[:corte + 1].rstrip().rstrip(",:")
-    if dentro:
-        base += '"'
     pilha, dentro, esc = [], False, False
     for ch in base:
         if dentro:
@@ -234,9 +234,14 @@ def _consertar_json(t):
 
 def _json_de(txt):
     m = re.search(r"\{.*\}", txt, re.S)
-    if not m:
+    if m:
+        bruto = m.group(0)
+    else:
+        # resposta TRUNCADA: nao ha '}' final - pega do primeiro '{' em diante
+        i = txt.find("{")
+        bruto = txt[i:] if i >= 0 else ""
+    if not bruto:
         raise ValueError("sem JSON na resposta: " + txt[:200])
-    bruto = m.group(0)
     try:
         return json.loads(bruto)
     except Exception:
