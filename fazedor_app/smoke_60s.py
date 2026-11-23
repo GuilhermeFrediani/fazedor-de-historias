@@ -34,6 +34,7 @@ EPISODIOS = APP / "EPISODIOS"
 META = EPISODIOS / "_smoke_meta.json"
 PIPE = APP.parent / "pipeline"
 sys.path.insert(0, str(PIPE))
+import qc_visao, scan_ceu  # noqa: E402  (visao + varredura de ceu; escopo do MODULO)
 TENT_MAX = 3
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
@@ -312,7 +313,6 @@ def main():
     sys.stderr = _Tee(sys.stderr, log)
     print("\n===== SMOKE 60 s · %s · largada %s ====="
           % (slug, time.strftime("%Y-%m-%d %H:%M:%S")), flush=True)
-    import qc_visao, scan_ceu  # noqa: E402
     KEY = qc_visao._chave()
     shots = e.get("shots") or []
     total = len(shots)
@@ -339,9 +339,15 @@ def main():
             json.dumps(feitos, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # ── FASE 0: ancora de abertura ───────────────────────────────────────────
+    ancora_existente = ep_dir / "refs" / "ancora_smoke.png"
     if "ancora" in banco:
         ancora = Path(banco["ancora"])
         print("\n>>> ANCORA BANCADA: %s" % ancora, flush=True)
+    elif ancora_existente.exists():
+        ancora = ancora_existente
+        print("\n>>> ANCORA EXISTENTE reaproveitada (ja renderizada): %s" % ancora, flush=True)
+        banco["ancora"] = str(ancora)
+        banco_f.write_text(json.dumps(banco, ensure_ascii=False, indent=2), encoding="utf-8")
     else:
         st_c01 = json.loads(clipes[0].read_text(encoding="utf-8"))
         estado0 = str(shots[0].get("estado_in") or "").strip()
