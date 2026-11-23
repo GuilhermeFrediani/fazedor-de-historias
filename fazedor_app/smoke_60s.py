@@ -176,9 +176,11 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
     refs.mkdir(exist_ok=True)
     head = st_c01["prompt"][:st_c01["prompt"].find("AT START:")].rstrip()
     PROMPT = (head + " AT START: " + estado_planejado + ". "
-              "[Shot 1] the opening wide frame exactly as established: TEO at frame left, "
-              "JUCA at frame right, all props in place; both puppets hold their positions, "
-              "breathing." + contas + " AT END: the same wide frame, unchanged. They do not speak and "
+              "[Shot 1] the opening wide frame holding EXACTLY the state above: every "
+              "person and every item at the place the state names, nothing moved and "
+              "nothing added; if the state names the client, he stands in frame at that "
+              "place; the puppets hold their positions, breathing."
+              + contas + " AT END: the same wide frame, unchanged. They do not speak and "
               "their mouths do not move, but they breathe, swallow and react with their "
               "whole bodies."
               "\noverall_soundscape: room tone of the enclosed set, water dripping slowly."
