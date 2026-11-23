@@ -207,7 +207,30 @@ def _consertar_json(t):
                 return t[:i + 1]
             corte = i
     if corte is None:
-        return None
+        # nenhum fechamento depois do '{': corta na ULTIMA virgula de topo
+        # (o membro incompleto vai embora, os completos ficam)
+        prof, dentro, esc, ultima_virgula = 0, False, False, None
+        for i, ch in enumerate(t):
+            if dentro:
+                if esc:
+                    esc = False
+                elif ch == "\\":
+                    esc = True
+                elif ch == '"':
+                    dentro = False
+                continue
+            if ch == '"':
+                dentro = True
+            elif ch in "{[":
+                prof += 1
+            elif ch in "}]":
+                prof -= 1
+            elif ch == "," and prof == 1:
+                ultima_virgula = i
+        if ultima_virgula is None:
+            return None
+        base = t[:ultima_virgula]
+        return base + "}"
     # base TERMINA sempre num limite estrutural (o corte e um fecha-colchete
     # completo), entao nao ha string aberta para fechar: so fechar a pilha.
     base = t[:corte + 1].rstrip().rstrip(",:")
