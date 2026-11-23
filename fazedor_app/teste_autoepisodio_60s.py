@@ -191,7 +191,7 @@ def main():
     st, salvo = _post("/api/salvar", {"episodio": episodio})
     if st not in (201, 202):
         raise SystemExit("XX salvar recusou (HTTP %s): %s" % (st, str(salvo)[:400]))
-    slug = salvo.get("slug") or salvo.get("nome") or ""
+    slug = salvo.get("slug") or salvo.get("nome") or Path(salvo.get("pasta") or "").name
     pasta = salvo.get("pasta") or ""
     print(">>> SALVO: %s (%s)" % (slug, pasta))
 

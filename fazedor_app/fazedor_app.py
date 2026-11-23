@@ -444,6 +444,9 @@ def _normaliza_shots(ep):
     for o in (ep.get("objetos_plantados") or []):
         if isinstance(o, dict):
             o2 = dict(o)
+            # a IA alterna entre 'objeto' e 'nome' — o motor padroniza em 'objeto'
+            if not str(o2.get("objeto", "")).strip() and str(o2.get("nome", "")).strip():
+                o2["objeto"] = o2["nome"]
             for k in ("plantado_no_clipe", "pago_no_clipe"):
                 mo = re.search(r"\d+", str(o2.get(k, "")))
                 if mo:
@@ -469,15 +472,28 @@ def _normaliza_shots(ep):
 
 
 def _completa_plantados(novo):
-    """v5.1: TODO objeto_gag declarado em um clipe entra no registro
+    """v5.2: TODO objeto_gag declarado em um clipe entra no registro
     objetos_plantados (plantio = 1a aparição como objeto_gag; pagamento = última).
-    E bookkeeping derivado do próprio JSON — nada é inventado; fecha a regra
-    do canon 'nenhum objeto aparece sem plantio' sem punir o formato da IA."""
+    É bookkeeping derivado do próprio JSON — nada é inventado; fecha a regra
+    do canon 'nenhum objeto aparece sem plantio' sem punir o formato da IA.
+    A IA às vezes escreve 'nome' em vez de 'objeto' e repete entradas — o motor
+    funde primeiro (fica a entrada mais rica) e só depois completa."""
     vistos = {}
-    regs = [o for o in (novo.get("objetos_plantados") or []) if isinstance(o, dict)]
-    for o in regs:
-        if str(o.get("objeto", "")).strip():
-            vistos[str(o["objeto"]).strip().lower()] = o
+    regs = []
+    for o in (novo.get("objetos_plantados") or []):
+        if not isinstance(o, dict):
+            continue
+        if not str(o.get("objeto", "")).strip() and str(o.get("nome", "")).strip():
+            o["objeto"] = o["nome"]
+        chave = str(o.get("objeto", "")).strip().lower()
+        if not chave:
+            continue
+        if chave in vistos:
+            if len(o) > len(vistos[chave]):
+                vistos[chave] = o
+        else:
+            vistos[chave] = o
+            regs.append(o)
     for s in novo.get("shots") or []:
         og = str(s.get("objeto_gag", "")).strip()
         if not og:
@@ -487,7 +503,7 @@ def _completa_plantados(novo):
         if o is None:
             o = {"objeto": og, "plantado_no_clipe": n, "pago_no_clipe": n}
             vistos[og.lower()] = o
-            novo.setdefault("objetos_plantados", []).append(o)
+            regs.append(o)
         else:
             try:
                 if int(n) < int(o.get("plantado_no_clipe", 999)):
@@ -496,7 +512,7 @@ def _completa_plantados(novo):
                     o["pago_no_clipe"] = int(n)
             except Exception:
                 pass
-
+    novo["objetos_plantados"] = regs
 
 def reforcar_canon(mensagens):
     """Garante o CÉREBRO DE COMÉDIA no system de QUALQUER provedor.
