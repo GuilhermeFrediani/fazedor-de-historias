@@ -98,9 +98,40 @@ def props_do_episodio(e):
                       % e.get("callback_object"))
     partes.append("the BLANK work-order sheet stays perfectly blank (no writing, no lines, "
                   "no marks of any kind at any moment)")
+    set_his = str(e.get("set_historia", "") or "").strip()
+    if set_his:
+        partes.append("BACKGROUND FIXTURES of the set, declared by the episode and never "
+                      "becoming gags, never moving on their own and never duplicating: "
+                      + set_his)
+    partes.append("plain small background containers, cloths and tools (bucket, cloth, broom, "
+                  "papers on a bench) never register as unplanted - only the registry objects "
+                  "and big furniture count")
+    partes.append("puppet-attached props are part of the puppets and are never unplanted: the "
+                  "YELLOW pencil behind JUCA's right ear stays with him")
     return ("PROPS REGISTRY for this episode — background furniture may exist but never "
             "becomes a gag, never moves on its own and never duplicates; the registry: "
             + "; ".join(partes) + ".")
+
+
+def contas_do_registro(e):
+    """Linha de CONTAGEM explicita (a tecnica que fechou balde/grelha no v7):
+    EXACTLY ONE <objeto> para tudo que o registro declara - o prompt do clipe/da
+    ancora ganha a guarda antes de o juiz contar."""
+    itens = []
+    for o in (e.get("objetos_plantados") or []):
+        nome = str(o.get("objeto") or o.get("nome") or "").strip()
+        try:
+            q = int(o.get("contagem", 1) or 1)
+        except Exception:
+            q = 1
+        if nome and q == 1:
+            itens.append("EXACTLY ONE " + nome)
+    if not itens:
+        return ""
+    return (" There is " + ", ".join(itens) + " in the whole frame - no second unit of any "
+            "of them ever appears, nothing duplicates and nothing teleports; every paper and "
+            "envelope stays perfectly blank with no writing, no lines and no marks; plain "
+            "containers and cloths on the benches are background. ")
 
 
 def descrever_ancora(key, png):
@@ -131,14 +162,15 @@ def _ok(j, ins=False):
             and (j.get("dois_bonecos") is not False or ins))
 
 
-def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cliente):
+def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cliente,
+                  contas=""):
     refs = ep_dir / "refs"
     refs.mkdir(exist_ok=True)
     head = st_c01["prompt"][:st_c01["prompt"].find("AT START:")].rstrip()
     PROMPT = (head + " AT START: " + estado_planejado + ". "
               "[Shot 1] the opening wide frame exactly as established: TEO at frame left, "
               "JUCA at frame right, all props in place; both puppets hold their positions, "
-              "breathing. AT END: the same wide frame, unchanged. They do not speak and "
+              "breathing." + contas + " AT END: the same wide frame, unchanged. They do not speak and "
               "their mouths do not move, but they breathe, swallow and react with their "
               "whole bodies."
               "\noverall_soundscape: room tone of the enclosed set, water dripping slowly."
@@ -178,7 +210,7 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
 
 
 def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado_real,
-                    cliente, seed_base, props, estado_end):
+                    cliente, seed_base, props, estado_end, contas=""):
     st_base = json.loads((setdir / (slug_base + "_settings.json")).read_text(encoding="utf-8"))
     curto = "c%02d" % n
     refs = ep_dir / "refs"
@@ -194,7 +226,7 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
         st["image_prompt_type"] = "S"
         st["prompt"] = (re.sub(r"AT START: (.+?)\. \[Shot",
                                "AT START: " + estado_real.replace("\\", "") + ". [Shot",
-                               st_base["prompt"], count=1, flags=16) + ALINHA)
+                               st_base["prompt"], count=1, flags=16) + contas + ALINHA)
         sdf = setdir / (slug + "_settings.json")
         sdf.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
         print("\n=== %s · tentativa %d/%d · seed %d · cliente=%s ==="
@@ -321,7 +353,9 @@ def main():
         raise SystemExit("XX settings esperados %d, encontrados %d em %s"
                          % (total, len(clipes), setdir))
     props = props_do_episodio(e)
+    CONTAS = contas_do_registro(e)
     print("PROPS: %s" % props, flush=True)
+    print("CONTAS: %s" % CONTAS, flush=True)
 
     if "--dry" in sys.argv:
         for i, f in enumerate(clipes, 1):
@@ -355,7 +389,8 @@ def main():
             mo = re.search(r"AT START: (.+?)\. \[Shot", st_c01["prompt"])
             estado0 = mo.group(1) if mo else "TEO at frame left and JUCA at frame right"
         cliente0 = bool(re.search(r"client|cliente", estado0, re.I))
-        ancora = render_ancora(KEY, ep_dir, setdir, slug, st_c01, estado0, props, cliente0)
+        ancora = render_ancora(KEY, ep_dir, setdir, slug, st_c01, estado0, props,
+                               cliente0, contas=CONTAS)
         if not ancora:
             raise SystemExit("XX ancora reprovada nas 3 tentativas — cadeia cancelada.")
         banco["ancora"] = str(ancora)
@@ -379,7 +414,7 @@ def main():
         mp4, f99, tentativas = render_com_gate(
             KEY, ep_dir, setdir, slug_base, i, total, ancora, est_real,
             cliente=(i in (1, total)), seed_base=8000 + 100 * i, props=props,
-            estado_end=estado_end)
+            estado_end=estado_end, contas=CONTAS)
         if not mp4:
             fb = ep_dir / "refs" / ("ancora_smoke_%s.png" % curto)
             mp_fb = next((t["mp4"] for t in reversed(tentativas) if t.get("mp4")), None)
