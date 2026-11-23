@@ -108,7 +108,9 @@ def _call_ar(system, parts, max_tokens=8000):
     sist = system
     if dados:
         sist += "\n\n=== DADOS DA TAREFA ===\n" + "\n".join(dados)
-    sist += ("\n\nDevolva SOMENTE o JSON pedido, compacto, comecando imediatamente.")
+    sist += ("\n\nDevolva SOMENTE o JSON pedido, compacto, comecando imediatamente. "
+            "Seja ECONOMICO: motivo em UMA frase curta; objetos_presentes no maximo "
+            "12 itens; nao repita o estado.")
     entrada.append({"type": "input_text", "text": "ok"})
     ult = None
     for mdl in AR_MODELOS:
@@ -134,7 +136,7 @@ def _call_ar(system, parts, max_tokens=8000):
     raise RuntimeError("AgentRouter falhou em todos os modelos: " + str(ult))
 
 
-def _call(key, system, parts, max_tokens=2500):
+def _call(key, system, parts, max_tokens=16000):
     """1 chamada multimodal → texto. PRIMEIRO AgentRouter (GPT, proxy do usuario);
     Gemini (Interactions API) fica como RESERVA em caso de queda do proxy."""
     try:
@@ -149,7 +151,7 @@ def _call(key, system, parts, max_tokens=2500):
             # API ("not supported for this model") — campo omitido para sobreviver a
             # rotacoes de modelo; o contrato do gate nao depende dele.
             "store": False,
-            "input": parts + [{"type": "text", "text": "Responda SOMENTE o JSON pedido."}]}
+            "input": parts + [{"type": "text", "text": "Responda SOMENTE o JSON pedido, compacto e economico (motivo em 1 frase; objetos_presentes no maximo 12 itens)."}]}
     ult = None
     for mdl in MODELOS:
         corp["model"] = mdl
@@ -177,11 +179,76 @@ def _call(key, system, parts, max_tokens=2500):
     raise SystemExit("Gemini falhou em todos os modelos: " + str(ult))
 
 
+def _consertar_json(t):
+    """Juiz verboso as vezes estoura o orcamento no meio do objetos_presentes.
+    Corta no ultimo membro completo e fecha os colchetes - os campos que decidem
+    o veredito (extras/flutuante/texto/contagem/cenario) ficam no INICIO do JSON."""
+    t = t[t.find("{"):]
+    if not t.startswith("{"):
+        return None
+    dentro, esc, pilha, corte = False, False, [], None
+    for i, ch in enumerate(t):
+        if dentro:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                dentro = False
+            continue
+        if ch == '"':
+            dentro = True
+        elif ch in "{[":
+            pilha.append(ch)
+        elif ch in "}]":
+            if pilha:
+                pilha.pop()
+            if not pilha:
+                return t[:i + 1]
+            corte = i
+    if corte is None:
+        return None
+    base = t[:corte + 1].rstrip().rstrip(",:")
+    if dentro:
+        base += '"'
+    pilha, dentro, esc = [], False, False
+    for ch in base:
+        if dentro:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                dentro = False
+            continue
+        if ch == '"':
+            dentro = True
+        elif ch in "{[":
+            pilha.append(ch)
+        elif ch in "}]":
+            if pilha:
+                pilha.pop()
+    fechos = "".join("}" if c == "{" else "]" for c in reversed(pilha))
+    return base + fechos
+
+
 def _json_de(txt):
     m = re.search(r"\{.*\}", txt, re.S)
     if not m:
         raise ValueError("sem JSON na resposta: " + txt[:200])
-    return json.loads(m.group(0))
+    bruto = m.group(0)
+    try:
+        return json.loads(bruto)
+    except Exception:
+        consertado = _consertar_json(bruto)
+        if consertado:
+            try:
+                j = json.loads(consertado)
+                j["_truncado"] = True
+                return j
+            except Exception:
+                pass
+    raise ValueError("sem JSON na resposta: " + txt[:200])
 
 
 def _img_part(png):
@@ -287,7 +354,7 @@ def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
     parts.append({"type": "text", "text": "CLIENTE AUTORIZADO neste clipe: " + ("SIM" if cliente else "NAO")})
     # 19/11: sem thinking_level, o modelo pensa e o thinking come o orcamento —
     # 1200 truncava o JSON; 3500 da folga para pensar + responder completo
-    tx = _call(key, SYS, parts, max_tokens=3500)
+    tx = _call(key, SYS, parts, max_tokens=16000)
     j = _json_de(tx)
     # enforcement: objeto grande fora do registro reprova a ancora
     if j.get("objetos_nao_plantados"):
@@ -324,10 +391,20 @@ def gate_ancora(key, png, estado="", props="", cliente=False, inserto=False):
     if j.get("objetos_flutuantes"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "objeto flutuante: " + ", ".join(j["objetos_flutuantes"][:3])
-    # enforcement: contagem de props (balde duplicado reprova — o 2o balde de 15s passou)
+    # enforcement: contagem de props (balde duplicado reprova - o 2o balde de 15s passou)
     if j.get("contagem_divergente"):
         j["veredito"] = "REPROVADA"
         j["motivo"] = "contagem divergente: " + ", ".join(j["contagem_divergente"][:3])
+    # resposta truncada antes do 'veredito': deriva dos campos que chegaram
+    if not str(j.get("veredito", "")).strip():
+        falhas = (j.get("personagens_extras") or j.get("objetos_flutuantes")
+                  or j.get("fantasmas") or j.get("cenario_violado")
+                  or j.get("contagem_divergente") or j.get("estado_divergente")
+                  or j.get("objetos_nao_plantados") or j.get("props_violados"))
+        j["veredito"] = "REPROVADA" if falhas else "APROVADA"
+        j["motivo"] = ("veredito derivado dos campos (resposta do juiz truncada): "
+                       + (", ".join(str(x) for x in falhas[:3]) if falhas
+                          else "nenhuma violacao nos campos recebidos"))
     return j
 
 

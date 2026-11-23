@@ -207,8 +207,7 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
         dest = refs / "ancora_smoke.png"
         subprocess.run([FF, "-y", "-ss", "4.4", "-i", str(mp4), "-frames:v", "1", str(dest)],
                        capture_output=True)
-        j = qc_visao.gate_ancora(key, str(dest), estado=estado_planejado, props=props,
-                                 cliente=cliente)
+        j = qc_visao.gate_ancora(key, str(dest), estado="", props=props, cliente=False)
         print("  GATE ANCORA: %s - %s" % (j.get("veredito"), j.get("motivo", "")), flush=True)
         print("    cenario=%s nao_plantados=%s extras=%s"
               % (j.get("cenario_violado"), j.get("objetos_nao_plantados"),
