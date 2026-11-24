@@ -232,7 +232,8 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
               "person and every item at the place the state names, nothing moved and "
               "nothing added; if the state names the client, he stands in frame at that "
               "place; the puppets hold their positions, breathing."
-              + contas + trava_set(e) + posse_no_clipe(e, 1)
+              + trava_set(e) + posse_no_clipe(e, 1)
+              + contas
               + " AT END: the same wide frame, unchanged. They do not speak and "
               "their mouths do not move, but they breathe, swallow and react with their "
               "whole bodies."
@@ -287,8 +288,9 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
         st["image_start"] = str(ancora_png)
         st["image_prompt_type"] = "S"
         st["prompt"] = (re.sub(r"AT START: (.+?)\. \[Shot",
-                               "AT START: " + estado_real.replace("\\", "") + ". [Shot",
-                               st_base["prompt"], count=1, flags=16) + contas + trava_set(e) + posse_no_clipe(e, n) + ALINHA)
+                               "AT START: " + estado_real.replace("\\", "") + ". "
+                               + trava_set(e) + posse_no_clipe(e, n) + " [Shot",
+                               st_base["prompt"], count=1, flags=16) + contas + ALINHA)
         sdf = setdir / (slug + "_settings.json")
         sdf.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
         print("\n=== %s · tentativa %d/%d · seed %d · cliente=%s ==="
