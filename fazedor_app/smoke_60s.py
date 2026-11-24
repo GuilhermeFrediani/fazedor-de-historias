@@ -306,7 +306,10 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
                                "falha": "render"})
             continue
         mp4 = max(cand, key=lambda p: p.stat().st_mtime)
-        sc = scan_ceu.escanear(mp4, passo=0.5, faixa=0.28, limiar=0.10)
+        # limiar 0.15: a rede caça BANDA DE CEU (as violacoes do v7 eram 40-100% do topo).
+        # 10% por 0,5 s é tom de vidro fosco fechado — falso-positivo que custava 16 min
+        # por tentativa. A janela desta sala é FOSCA (fechada): o azul dela não é exterior.
+        sc = scan_ceu.escanear(mp4, passo=0.5, faixa=0.28, limiar=0.15)
         print("  SCAN CEU: %s%s" % (sc["veredito"], "" if not sc["violacoes"] else
               " " + "; ".join("%.1f-%.1fs pico %.0f%%" % (v["ini_s"], v["fim_s"],
                                                           v["pico"] * 100)
