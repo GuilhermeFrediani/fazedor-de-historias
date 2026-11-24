@@ -223,7 +223,7 @@ def _com_max_ram(st):
 
 
 def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cliente,
-                  contas=""):
+                  contas="", e=None):
     refs = ep_dir / "refs"
     refs.mkdir(exist_ok=True)
     head = st_c01["prompt"][:st_c01["prompt"].find("AT START:")].rstrip()
@@ -454,7 +454,7 @@ def main():
             estado0 = mo.group(1) if mo else "TEO at frame left and JUCA at frame right"
         cliente0 = bool(re.search(r"client|cliente", estado0, re.I))
         ancora = render_ancora(KEY, ep_dir, setdir, slug, st_c01, estado0, props,
-                               cliente0, contas=CONTAS)
+                               cliente0, contas=CONTAS, e=e)
         if not ancora:
             raise SystemExit("XX ancora reprovada nas 3 tentativas — cadeia cancelada.")
         banco["ancora"] = str(ancora)
