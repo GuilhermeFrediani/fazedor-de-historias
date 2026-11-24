@@ -272,7 +272,7 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
 
 
 def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado_real,
-                    cliente, seed_base, props, estado_end, contas=""):
+                    cliente, seed_base, props, estado_end, contas="", e=None):
     st_base = json.loads((setdir / (slug_base + "_settings.json")).read_text(encoding="utf-8"))
     curto = "c%02d" % n
     refs = ep_dir / "refs"
@@ -476,7 +476,7 @@ def main():
         mp4, f99, tentativas = render_com_gate(
             KEY, ep_dir, setdir, slug_base, i, total, ancora, est_real,
             cliente=(i in (1, total)), seed_base=8000 + 100 * i, props=props,
-            estado_end=estado_end, contas=CONTAS)
+            estado_end=estado_end, contas=CONTAS, e=e)
         if not mp4:
             fb = ep_dir / "refs" / ("ancora_smoke_%s.png" % curto)
             mp_fb = next((t["mp4"] for t in reversed(tentativas) if t.get("mp4")), None)
