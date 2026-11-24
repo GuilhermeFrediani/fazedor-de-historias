@@ -170,6 +170,47 @@ def _ok(j, ins=False):
             and (j.get("dois_bonecos") is not False or ins))
 
 
+def trava_set(e):
+    """Fecho AFIRMATIVO do set (licao v7: em cfg 1 o modelo materializa o que
+    DESCREVE - janela de capela vira ceu atras). O set e fechado por dentro:
+    nichos rasos, vidro FOSCO, paredes macicas - nada de abertura com vista."""
+    return (" The room is fully enclosed: solid stone walls and a vaulted stone ceiling close "
+            "the whole frame edge to edge on every side; the only openings in the walls are "
+            "shallow arched niches and small windows with FROSTED OPAQUE panes - solid "
+            "milk-white glass, never transparent, with no blue, no sky, no clouds, no trees "
+            "and no view outside of any kind. The folding ruler shows blank smooth faces "
+            "with no numbers, no graduation marks and no lettering of any kind; every paper, "
+            "page and envelope stays perfectly blank. ")
+
+
+def posse_no_clipe(e, n):
+    """Frase de POSSE por clipe, derivada do proprio registro (a faixa 'c1-c4' do
+    objeto) - o render insiste em por o envelope na mao do TEO no c01."""
+    linhas = []
+    for o in (e.get("objetos_plantados") or []):
+        nome = str(o.get("objeto") or o.get("nome") or "").strip()
+        pos = str(o.get("posicao", "") or "").strip()
+        if not nome or not pos:
+            continue
+        seg = None
+        for parte in pos.split(";"):
+            parte = parte.strip()
+            mo = re.search(r"c(\d+)(?:\s*-\s*c?(\d+))?", parte, re.I)
+            if mo:
+                a_, b_ = int(mo.group(1)), int(mo.group(2) or mo.group(1))
+                if a_ <= n <= b_:
+                    seg = re.sub(r"\s*n[oa]\s*c?\d+(\s*-\s*c?\d+)?", "", parte,
+                                 flags=re.I).strip()
+                    break
+        if seg is None:
+            seg = re.sub(r"\s*n[oa]\s*c?\d+(\s*-\s*c?\d+)?", "", pos, flags=re.I).strip()
+        linhas.append("In THIS clip the %s must be: %s" % (nome, seg))
+    if not linhas:
+        return ""
+    return (" " + "; ".join(linhas)
+            + " - never anywhere else and NEVER in a different hand. ")
+
+
 def _com_max_ram(st):
     """Garante --max-ram 24 no _cli_extra (orçamento de RAM do WanGP v20.12:
     sem ele o load do encoder estoura o commit da maquina)."""
@@ -191,7 +232,8 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
               "person and every item at the place the state names, nothing moved and "
               "nothing added; if the state names the client, he stands in frame at that "
               "place; the puppets hold their positions, breathing."
-              + contas + " AT END: the same wide frame, unchanged. They do not speak and "
+              + contas + trava_set(e) + posse_no_clipe(e, 1)
+              + " AT END: the same wide frame, unchanged. They do not speak and "
               "their mouths do not move, but they breathe, swallow and react with their "
               "whole bodies."
               "\noverall_soundscape: room tone of the enclosed set, water dripping slowly."
@@ -246,7 +288,7 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
         st["image_prompt_type"] = "S"
         st["prompt"] = (re.sub(r"AT START: (.+?)\. \[Shot",
                                "AT START: " + estado_real.replace("\\", "") + ". [Shot",
-                               st_base["prompt"], count=1, flags=16) + contas + ALINHA)
+                               st_base["prompt"], count=1, flags=16) + contas + trava_set(e) + posse_no_clipe(e, n) + ALINHA)
         sdf = setdir / (slug + "_settings.json")
         sdf.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
         print("\n=== %s · tentativa %d/%d · seed %d · cliente=%s ==="
