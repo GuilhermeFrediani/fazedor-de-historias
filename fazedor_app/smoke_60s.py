@@ -170,6 +170,17 @@ def _ok(j, ins=False):
             and (j.get("dois_bonecos") is not False or ins))
 
 
+def _com_max_ram(st):
+    """Garante --max-ram 24 no _cli_extra (orçamento de RAM do WanGP v20.12:
+    sem ele o load do encoder estoura o commit da maquina)."""
+    extra = list(st.get("_cli_extra", []) or [])
+    if "--max-ram" in extra:
+        return st
+    st = dict(st)
+    st["_cli_extra"] = extra + ["--max-ram", "24"]
+    return st
+
+
 def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cliente,
                   contas=""):
     refs = ep_dir / "refs"
@@ -187,7 +198,7 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
               "\nnon_diegetic_music: N/A")
     for tent in range(TENT_ANCORA):
         slug_a = slug + "_ancora" + ("" if tent == 0 else "_r%d" % tent)
-        st = dict(st_c01)
+        st = _com_max_ram(dict(st_c01))
         st["output_filename"] = slug_a
         st["video_length"] = "5s"
         st["seed"] = 8001 + tent
@@ -228,7 +239,7 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
     for tent in range(TENT_MAX):
         sufixo = "_sm" + ("" if tent == 0 else "_r%d" % tent)
         slug = slug_base + sufixo
-        st = dict(st_base)
+        st = _com_max_ram(dict(st_base))
         st["output_filename"] = slug
         st["seed"] = seed_base + tent
         st["image_start"] = str(ancora_png)

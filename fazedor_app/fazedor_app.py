@@ -70,7 +70,10 @@ TEMPLATE_SETTINGS = {
     "activated_loras": ["https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"],
     "loras_multipliers": "1.0",
     "config": "gguf_q4_k_m",
-    "_cli_extra": ["--profile", "5"],
+    # v5.3: --max-ram 24 — orçamento de RAM do Wan2GP (WanGP v20.12 / mmgp 4.6.3).
+    # Sem ele, o load do encoder de 32B estoura o commit (page file fixo 32 GB ->
+    # WinError 1455). Medido no smoke de 2 s pos-update (24/11/2026).
+    "_cli_extra": ["--profile", "5", "--max-ram", "24"],
 }
 DIR_GEN_TEST = r"C:\Users\Guilherme\Documents\Projeto Padrão"
 PYTHON_GEN = r"C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe"
