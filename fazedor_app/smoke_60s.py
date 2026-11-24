@@ -35,7 +35,8 @@ META = EPISODIOS / "_smoke_meta.json"
 PIPE = APP.parent / "pipeline"
 sys.path.insert(0, str(PIPE))
 import qc_visao, scan_ceu  # noqa: E402  (visao + varredura de ceu; escopo do MODULO)
-TENT_MAX = 3
+TENT_MAX = 1  # time-box: 1 tentativa por clipe; o melhor e bancado como fallback
+              # controlado e a cadeia SEGUE (sem loops de 3x16 min = sem 5 horas)
 TENT_ANCORA = 5                        # a ancora e a fundacao: 5 tentativas
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")
@@ -178,7 +179,11 @@ def trava_set(e):
             "the whole frame edge to edge on every side; the only openings in the walls are "
             "shallow arched niches and small windows with FROSTED OPAQUE panes - solid "
             "milk-white glass, never transparent, with no blue, no sky, no clouds, no trees "
-            "and no view outside of any kind. The folding ruler shows blank smooth faces "
+            "and no view outside of any kind. The interior curtain hangs fully closed from "
+            "a wooden rod fixed flush against the solid stone wall; behind the curtain "
+            "stands a closed wooden sacristy door in that same stone wall, and above the "
+            "rod the stone wall rises unbroken to the vaulted ceiling. "
+            "The folding ruler shows blank smooth faces "
             "with no numbers, no graduation marks and no lettering of any kind; every paper, "
             "page and envelope stays perfectly blank. ")
 
