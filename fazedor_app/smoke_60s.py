@@ -181,8 +181,7 @@ def trava_set(e):
             "stone; the only recesses are shallow arched niches carved into that stone and "
             "sealed at the back by the same solid stone - BLIND ARCHES filled with solid "
             "stone blocks, dense stone behind every recess, and the stone wall continues "
-            "unbroken above and around them; the room has no glass, no window and no view "
-            "outside of any kind. The interior curtain hangs fully closed from "
+            "unbroken above and around them. The interior curtain hangs fully closed from "
             "a wooden rod fixed flush against the solid stone wall; behind the curtain "
             "stands a closed wooden sacristy door in that same stone wall, and above the "
             "rod the stone wall rises unbroken to the vaulted ceiling. "
@@ -449,7 +448,7 @@ def main():
 
     # ── FASE 0: ancora de abertura ───────────────────────────────────────────
     ancora_existente = ep_dir / "refs" / "ancora_smoke.png"
-    if "ancora" in banco:
+    if "ancora" in banco and Path(banco["ancora"]).exists():
         ancora = Path(banco["ancora"])
         print("\n>>> ANCORA BANCADA: %s" % ancora, flush=True)
     elif ancora_existente.exists():
