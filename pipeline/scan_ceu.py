@@ -21,14 +21,25 @@ import tempfile, os
 
 
 def _frame_rgb(mp4, ts, w=320):
-    """Extrai 1 frame pequeno em RGB numpy (320 de largura — medida, nao beleza)."""
+    """Extrai 1 frame pequeno em RGB numpy (320 de largura — medida, nao beleza).
+    ts alem do fim do video -> ffmpeg escreve PNG vazio (WanGP 20.12 gera 10,23 s,
+    nao 10,1): retorna None e quem chama ignora a amostra."""
     tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
     tmp.close()
-    subprocess.run([FF, "-y", "-ss", str(ts), "-i", str(mp4), "-frames:v", "1",
-                    "-vf", "scale=%d:-1" % w, tmp.name], capture_output=True)
-    arr = np.asarray(Image.open(tmp.name).convert("RGB"), dtype=np.int16)
-    os.unlink(tmp.name)
-    return arr
+    try:
+        subprocess.run([FF, "-y", "-ss", str(ts), "-i", str(mp4), "-frames:v", "1",
+                        "-vf", "scale=%d:-1" % w, tmp.name], capture_output=True)
+        if os.path.getsize(tmp.name) <= 0:
+            return None
+        arr = np.asarray(Image.open(tmp.name).convert("RGB"), dtype=np.int16)
+        return arr
+    except Exception:
+        return None
+    finally:
+        try:
+            os.unlink(tmp.name)
+        except Exception:
+            pass
 
 
 def _fracao_ceu(arr, faixa):
@@ -50,7 +61,11 @@ def escanear(mp4, passo=0.5, faixa=0.28, limiar=0.02, dur_max=None):
         dur = min(dur, dur_max)
     ts, vals, viol = 0.1, [], []
     while ts < dur - 0.05:
-        f = _fracao_ceu(_frame_rgb(mp4, ts, 320), faixa)
+        arr = _frame_rgb(mp4, ts, 320)
+        if arr is None:
+            ts += passo          # frame vazio (ts além do ultimo frame): amostra neutra
+            continue
+        f = _fracao_ceu(arr, faixa)
         vals.append((round(ts, 1), round(f, 4)))
         ts += passo
     # agrega em faixas contiguas de violacao
