@@ -138,9 +138,9 @@ def contas_do_registro(e):
             "of them ever appears, nothing duplicates, nothing teleports and every item "
             "stands exactly at the place declared between parentheses, never in a hand that "
             "the place does not name; every paper, page, envelope and cloth is perfectly "
-            "blank with no writing, no lines and no marks; every window pane is FROSTED "
-            "MILK-WHITE and fully opaque, uniform like white opal glass, with no pattern, "
-            "no cross, no sky, no stars, no symbols and no lettering anywhere; plain "
+            "blank with no writing, no lines and no marks; the stone is plain and uniform "
+            "with no pattern, no cross, no sky, no stars, no symbols and no lettering "
+            "anywhere; plain "
             "containers and cloths on the benches are background. ")
 
 
@@ -177,10 +177,12 @@ def trava_set(e):
     DESCREVE - janela de capela vira ceu atras). O set e fechado por dentro:
     nichos rasos, vidro FOSCO, paredes macicas - nada de abertura com vista."""
     return (" The room is fully enclosed: solid stone walls and a vaulted stone ceiling close "
-            "the whole frame edge to edge on every side; the only openings in the walls are "
-            "shallow arched niches and small windows with FROSTED OPAQUE panes - solid "
-            "milk-white glass, never transparent, with no blue, no sky, no clouds, no trees "
-            "and no view outside of any kind. The interior curtain hangs fully closed from "
+            "the whole frame edge to edge on every side; the walls are continuous solid "
+            "stone; the only recesses are shallow arched niches carved into that stone and "
+            "sealed at the back by the same solid stone - BLIND ARCHES filled with solid "
+            "stone blocks, dense stone behind every recess, and the stone wall continues "
+            "unbroken above and around them; the room has no glass, no window and no view "
+            "outside of any kind. The interior curtain hangs fully closed from "
             "a wooden rod fixed flush against the solid stone wall; behind the curtain "
             "stands a closed wooden sacristy door in that same stone wall, and above the "
             "rod the stone wall rises unbroken to the vaulted ceiling. "
