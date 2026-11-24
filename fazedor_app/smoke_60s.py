@@ -138,8 +138,9 @@ def contas_do_registro(e):
             "of them ever appears, nothing duplicates, nothing teleports and every item "
             "stands exactly at the place declared between parentheses, never in a hand that "
             "the place does not name; every paper, page, envelope and cloth is perfectly "
-            "blank with no writing, no lines and no marks; the window glass is plain and "
-            "clear with no pattern, no cross, no symbols, no lettering anywhere; plain "
+            "blank with no writing, no lines and no marks; every window pane is FROSTED "
+            "MILK-WHITE and fully opaque, uniform like white opal glass, with no pattern, "
+            "no cross, no sky, no stars, no symbols and no lettering anywhere; plain "
             "containers and cloths on the benches are background. ")
 
 
