@@ -1,0 +1,1053 @@
+{
+  "clipes": {
+    "c01": {
+      "slug": "brilho-de-ultima-hora_c01_ligacao",
+      "curto": "c01",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c01_ligacao_sm(7).mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c01.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c01_ligacao_sm",
+          "seed": 8100,
+          "dur_min": 16.2,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c01_ligacao_sm(7).mp4",
+          "psnr_f02": 20.65638,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c01_ligacao_sm(7).mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "folha de ordem em branco",
+              "suporte votivo de latão",
+              "estação de lavagem manual",
+              "cabeça de esponja",
+              "cabo telescópico",
+              "solução de limpeza",
+              "lápis azul-escuro",
+              "cortina interna",
+              "recipiente com tampa",
+              "tigela",
+              "panos"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [
+              "lápis azul-escuro (registro: amarelo)"
+            ],
+            "estado_divergente": [
+              "TEO segura uma folha aberta, não a régua dobrável",
+              "suporte votivo coberto de cera branca, não de fuligem",
+              "cabeça de esponja ensaboada, não seca e clipada sobre a bacia"
+            ],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [],
+            "veredito": "REPROVADA",
+            "motivo": "estado divergente: TEO segura uma folha aberta, não a régua dobrável, suporte votivo coberto de cera branca, não de fuligem, cabeça de esponja ensaboada, não seca e clipada sobre a bacia"
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "folha de ordem em branco",
+                "suporte votivo de latão",
+                "estação de lavagem manual",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "solução de limpeza",
+                "lápis azul-escuro",
+                "cortina interna",
+                "recipiente com tampa",
+                "tigela",
+                "panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [
+                "lápis azul-escuro (registro: amarelo)"
+              ],
+              "estado_divergente": [
+                "TEO segura uma folha aberta, não a régua dobrável",
+                "suporte votivo coberto de cera branca, não de fuligem",
+                "cabeça de esponja ensaboada, não seca e clipada sobre a bacia"
+              ],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "estado divergente: TEO segura uma folha aberta, não a régua dobrável, suporte votivo coberto de cera branca, não de fuligem, cabeça de esponja ensaboada, não seca e clipada sobre a bacia"
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "relógio de bolso",
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "carga de solução de limpeza",
+                "envelope selado",
+                "lápis amarelo",
+                "balde",
+                "panos",
+                "cortina"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Há dois bonecos e o set registrado, sem extras, texto, flutuação, duplicação ou fantasmas."
+            },
+            "3.0": {
+              "dois_bonecos": false,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "cortina interna"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert da cortina interna sem defeitos visíveis."
+            },
+            "2.0": {
+              "dois_bonecos": false,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "relógio de bolso",
+                "mão de TEO"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert válido com um único relógio apoiado na mão."
+            },
+            "0.8": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "relógio de bolso",
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "envelope lacrado",
+                "lápis amarelo"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Os dois bonecos e os props visíveis respeitam o registro, sem texto nem anomalias."
+            }
+          }
+        }
+      ]
+    },
+    "c02": {
+      "slug": "brilho-de-ultima-hora_c02_chegada",
+      "curto": "c02",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c02_chegada_sm(3).mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c02.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c02_chegada_sm",
+          "seed": 8200,
+          "dur_min": 16.4,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c02_chegada_sm(3).mp4",
+          "psnr_f02": 19.856785,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c02_chegada_sm(3).mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "estação de lavagem",
+              "cabeça de esponja",
+              "cabo telescópico",
+              "suporte votivo de latão",
+              "régua dobrável",
+              "solução de limpeza",
+              "envelope fechado",
+              "lápis amarelo",
+              "pia fixa",
+              "cortina"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [],
+            "estado_divergente": [],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [],
+            "veredito": "APROVADA",
+            "motivo": "Dois bonecos, objetos apoiados e nenhuma violação visível."
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "solução de limpeza",
+                "envelope fechado",
+                "lápis amarelo",
+                "pia fixa",
+                "cortina"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Dois bonecos, objetos apoiados e nenhuma violação visível."
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "relógio de bolso",
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "carga de solução de limpeza",
+                "envelope de fatura",
+                "papel com traço",
+                "lápis amarelo",
+                "carrinho com rodízios"
+              ],
+              "objetos_nao_plantados": [
+                "carrinho com rodízios"
+              ],
+              "props_violados": [
+                "folha de ordem com traço (deveria estar em branco)"
+              ],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "3.0": {
+              "dois_bonecos": false,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "régua dobrável",
+                "estação manual de lavagem",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "2.0": {
+              "dois_bonecos": false,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "régua dobrável graduada",
+                "suporte votivo de latão",
+                "estação manual de lavagem com rodízios"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "0.8": {
+              "dois_bonecos": false,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "régua dobrável",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            }
+          }
+        }
+      ]
+    },
+    "c03": {
+      "slug": "brilho-de-ultima-hora_c03_primeira-falha",
+      "curto": "c03",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c03_primeira-falha_sm(3).mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c03.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c03_primeira-falha_sm",
+          "seed": 8300,
+          "dur_min": 16.3,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c03_primeira-falha_sm(3).mp4",
+          "psnr_f02": 17.483779,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c03_primeira-falha_sm(3).mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "estação manual de lavagem",
+              "cabeça de esponja",
+              "solução de limpeza",
+              "cabo telescópico",
+              "suporte votivo de latão",
+              "régua dobrável",
+              "envelope de fatura selado",
+              "lápis amarelo",
+              "cortina interna"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [],
+            "estado_divergente": [
+              "envelope está na mão de TEO, não na prateleira",
+              "cabo telescópico está com JUCA, sem encaixe visível na estação",
+              "faixa limpa estreita não visível no suporte votivo"
+            ],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [
+              "relógio de bolso ausente (registro: exatamente um)"
+            ],
+            "veredito": "REPROVADA",
+            "motivo": "contagem divergente: relógio de bolso ausente (registro: exatamente um)"
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "solução de limpeza",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "envelope de fatura selado",
+                "lápis amarelo",
+                "cortina interna"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [
+                "envelope está na mão de TEO, não na prateleira",
+                "cabo telescópico está com JUCA, sem encaixe visível na estação",
+                "faixa limpa estreita não visível no suporte votivo"
+              ],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [
+                "relógio de bolso ausente (registro: exatamente um)"
+              ],
+              "veredito": "REPROVADA",
+              "motivo": "contagem divergente: relógio de bolso ausente (registro: exatamente um)"
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "folha de ordem em branco",
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "lápis amarelo de JUCA",
+                "cortina interna",
+                "bancos laterais"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Dois bonecos e props coerentes, sem texto, extras, flutuação ou duplicação."
+            },
+            "3.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "carga de solução de limpeza",
+                "folha de ordem em branco"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "2.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "régua dobrável",
+                "folha de ordem em branco",
+                "carga de solução de limpeza",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert sem violações visíveis de continuidade."
+            },
+            "0.8": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "papel de ordem em branco",
+                "régua dobrável",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "estação manual de lavagem",
+                "carga de solução de limpeza",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            }
+          }
+        }
+      ]
+    },
+    "c04": {
+      "slug": "brilho-de-ultima-hora_c04_jeitinho",
+      "curto": "c04",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c04_jeitinho_sm.mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c04.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c04_jeitinho_sm",
+          "seed": 8400,
+          "dur_min": 16.1,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c04_jeitinho_sm.mp4",
+          "psnr_f02": 17.764724,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c04_jeitinho_sm.mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "relógio de bolso",
+              "estação manual de lavagem",
+              "cabeça de esponja",
+              "cabo telescópico",
+              "suporte votivo de latão",
+              "régua dobrável",
+              "solução de limpeza",
+              "envelope de fatura selado",
+              "lápis amarelo",
+              "cortina interna"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [],
+            "estado_divergente": [],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [],
+            "veredito": "APROVADA",
+            "motivo": "TEO, JUCA, os props e o cenário mantêm a continuidade visível."
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "relógio de bolso",
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "solução de limpeza",
+                "envelope de fatura selado",
+                "lápis amarelo",
+                "cortina interna"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "TEO, JUCA, os props e o cenário mantêm a continuidade visível."
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "carga de solução de limpeza",
+                "papel branco com linha",
+                "lápis amarelo",
+                "recipientes",
+                "panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [
+                "papel com linha visível (deveria estar totalmente em branco)"
+              ],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "3.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "régua dobrável",
+                "carga de solução de limpeza"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "2.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "envelope de fatura selado",
+                "régua dobrável",
+                "cabo telescópico",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "0.8": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "régua dobrável",
+                "cabeça de esponja",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "papel branco"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert com apenas TEO e JUCA, sem violações visíveis."
+            }
+          }
+        }
+      ]
+    },
+    "c05": {
+      "slug": "brilho-de-ultima-hora_c05_escalada",
+      "curto": "c05",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c05_escalada_sm.mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c05.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c05_escalada_sm",
+          "seed": 8500,
+          "dur_min": 16.3,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c05_escalada_sm.mp4",
+          "psnr_f02": 23.022201,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c05_escalada_sm.mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "domo de espuma",
+              "estação de lavagem manual",
+              "cabo telescópico",
+              "envelope de fatura selado",
+              "régua dobrável",
+              "cortina interna fechada",
+              "lápis amarelo",
+              "panos"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [],
+            "estado_divergente": [
+              "régua dobrável na prateleira direita, não na esquerda"
+            ],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [],
+            "veredito": "REPROVADA",
+            "motivo": "estado divergente: régua dobrável na prateleira direita, não na esquerda"
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "domo de espuma",
+                "estação de lavagem manual",
+                "cabo telescópico",
+                "envelope de fatura selado",
+                "régua dobrável",
+                "cortina interna fechada",
+                "lápis amarelo",
+                "panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [
+                "régua dobrável na prateleira direita, não na esquerda"
+              ],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "estado divergente: régua dobrável na prateleira direita, não na esquerda"
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": true,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "espuma de solução de limpeza",
+                "cabo telescópico",
+                "régua dobrável",
+                "papel branco com linha vermelha",
+                "lápis amarelo de JUCA",
+                "cortina interna",
+                "panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "texto na tela nao permitido (lei zero-texto)"
+            },
+            "3.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "espuma",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert sem infrações visíveis."
+            },
+            "2.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert sem violações visíveis de continuidade."
+            },
+            "0.8": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "suporte votivo de latão"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert sem violações visíveis."
+            }
+          }
+        }
+      ]
+    },
+    "c06": {
+      "slug": "brilho-de-ultima-hora_c06_climax",
+      "curto": "c06",
+      "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c06_climax_sm.mp4",
+      "aprovado": false,
+      "fallback": true,
+      "ancora_out": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke_c06.png",
+      "tentativas": [
+        {
+          "slug": "brilho-de-ultima-hora_c06_climax_sm",
+          "seed": 8600,
+          "dur_min": 16.1,
+          "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c06_climax_sm.mp4",
+          "psnr_f02": 18.156196,
+          "scan_ceu": {
+            "clipe": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\brilho-de-ultima-hora_c06_climax_sm.mp4",
+            "dur_s": 10.2,
+            "passo_s": 0.5,
+            "faixa_topo": 0.28,
+            "limiar": 0.15,
+            "amostras": 20,
+            "violacoes": [],
+            "veredito": "APROVADA"
+          },
+          "gate_ancora": {
+            "dois_bonecos": true,
+            "personagens_extras": [],
+            "objetos_flutuantes": [],
+            "texto_na_tela": false,
+            "objetos_presentes": [
+              "estação manual de lavagem",
+              "cabeça de esponja",
+              "suporte votivo de latão",
+              "envelope de fatura selado",
+              "espuma",
+              "lápis amarelo",
+              "cortina",
+              "bancos de madeira",
+              "recipiente",
+              "panos"
+            ],
+            "objetos_nao_plantados": [],
+            "props_violados": [
+              "envelope de fatura com JUCA (esperado: cliente)"
+            ],
+            "estado_divergente": [
+              "JUCA segura o envelope destinado ao cliente"
+            ],
+            "cenario_violado": [],
+            "fantasmas": [],
+            "contagem_divergente": [],
+            "veredito": "REPROVADA",
+            "motivo": "estado divergente: JUCA segura o envelope destinado ao cliente"
+          },
+          "gate_frames": {
+            "9.9": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja",
+                "suporte votivo de latão",
+                "envelope de fatura selado",
+                "espuma",
+                "lápis amarelo",
+                "cortina",
+                "bancos de madeira",
+                "recipiente",
+                "panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [
+                "envelope de fatura com JUCA (esperado: cliente)"
+              ],
+              "estado_divergente": [
+                "JUCA segura o envelope destinado ao cliente"
+              ],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "REPROVADA",
+              "motivo": "estado divergente: JUCA segura o envelope destinado ao cliente"
+            },
+            "5.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "estação manual de lavagem",
+                "cabeça de esponja amarela",
+                "cabo telescópico",
+                "suporte votivo de latão",
+                "envelope de fatura selado",
+                "espuma de limpeza",
+                "lápis amarelo de JUCA",
+                "cortina interna",
+                "bancos laterais com panos"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Dois bonecos e props visíveis mantêm a continuidade no interior fechado."
+            },
+            "3.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "espuma de limpeza",
+                "cabeça de esponja",
+                "cortina interna",
+                "varão de cortina"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Close sem violações visíveis de continuidade."
+            },
+            "2.0": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "espuma de limpeza"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Insert sem violações visíveis."
+            },
+            "0.8": {
+              "dois_bonecos": true,
+              "personagens_extras": [],
+              "objetos_flutuantes": [],
+              "texto_na_tela": false,
+              "objetos_presentes": [
+                "envelope de fatura lacrado",
+                "cabo telescópico",
+                "cabeça de esponja com espuma",
+                "carga de solução de limpeza",
+                "lápis amarelo",
+                "suporte votivo fixo"
+              ],
+              "objetos_nao_plantados": [],
+              "props_violados": [],
+              "estado_divergente": [],
+              "cenario_violado": [],
+              "fantasmas": [],
+              "contagem_divergente": [],
+              "veredito": "APROVADA",
+              "motivo": "Dois bonecos, props e cenário estão conformes."
+            }
+          }
+        }
+      ]
+    }
+  },
+  "ancora": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\brilho-de-ultima-hora\\refs\\ancora_smoke.png",
+  "aprovado_usuario": {
+    "data": "2026-11-25",
+    "frase": "Esta muito bom, pode prosseguir para producao.",
+    "video": "brilho-de-ultima-hora_SMOKE60.mp4",
+    "duracao_s": 61.8
+  }
+}
