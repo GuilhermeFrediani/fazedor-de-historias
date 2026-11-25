@@ -1,0 +1,129 @@
+{
+  "mp4": "C:\\pinokio\\api\\wan2gp-amd\\app\\outputs\\bench_h3_2step_480_lora.mp4",
+  "aprovado": false,
+  "frames": {
+    "9.9": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "envelope de fatura selado",
+        "suporte votivo de latão",
+        "estação manual de lavagem",
+        "cabeça de esponja",
+        "cabo telescópico",
+        "bacia com solução de limpeza",
+        "cortina interna fechada",
+        "prateleira baixa",
+        "recipientes de fundo"
+      ],
+      "objetos_nao_plantados": [],
+      "props_violados": [
+        "régua dobrável ausente da mão de TEO",
+        "lápis amarelo ausente da orelha direita de JUCA"
+      ],
+      "estado_divergente": [
+        "TEO segura o envelope em vez da régua dobrável",
+        "envelope fora da prateleira esquerda",
+        "suporte votivo sem camada de fuligem visível"
+      ],
+      "cenario_violado": [],
+      "fantasmas": [],
+      "contagem_divergente": [
+        "régua dobrável: 0 visível (esperado 1)",
+        "relógio de bolso: 0 visível (esperado 1)"
+      ],
+      "veredito": "REPROVADA",
+      "motivo": "contagem divergente: régua dobrável: 0 visível (esperado 1), relógio de bolso: 0 visível (esperado 1)"
+    },
+    "5.0": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "relógio de bolso",
+        "estação manual de lavagem",
+        "cabeça de esponja",
+        "cabo telescópico",
+        "suporte votivo de latão",
+        "régua dobrável",
+        "solução de limpeza",
+        "envelope selado",
+        "folha de ordem em branco",
+        "lápis de JUCA",
+        "balde",
+        "cortina"
+      ],
+      "objetos_nao_plantados": [],
+      "props_violados": [],
+      "estado_divergente": [],
+      "cenario_violado": [],
+      "fantasmas": [],
+      "contagem_divergente": [],
+      "veredito": "APROVADA",
+      "motivo": "Frame coerente com dois bonecos, props únicos e set fechado, sem texto nem artefatos."
+    },
+    "3.0": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "suporte votivo de latão",
+        "cortina interna"
+      ],
+      "objetos_nao_plantados": [],
+      "props_violados": [],
+      "estado_divergente": [],
+      "cenario_violado": [],
+      "fantasmas": [],
+      "contagem_divergente": [],
+      "veredito": "APROVADA",
+      "motivo": "Insert com TEO e JUCA parciais, sem violações visíveis."
+    },
+    "2.0": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "relógio de bolso",
+        "cabo telescópico",
+        "suporte votivo de latão"
+      ],
+      "objetos_nao_plantados": [],
+      "props_violados": [],
+      "estado_divergente": [],
+      "cenario_violado": [],
+      "fantasmas": [],
+      "contagem_divergente": [],
+      "veredito": "APROVADA",
+      "motivo": "Insert com cliente autorizado, relógio único apoiado e sem falhas visíveis."
+    },
+    "0.8": {
+      "dois_bonecos": true,
+      "personagens_extras": [],
+      "objetos_flutuantes": [],
+      "texto_na_tela": false,
+      "objetos_presentes": [
+        "relógio de bolso",
+        "estação manual de lavagem",
+        "cabeça de esponja",
+        "cabo telescópico",
+        "suporte votivo de latão",
+        "carga de solução de limpeza",
+        "lápis amarelo"
+      ],
+      "objetos_nao_plantados": [],
+      "props_violados": [],
+      "estado_divergente": [],
+      "cenario_violado": [],
+      "fantasmas": [],
+      "contagem_divergente": [],
+      "veredito": "APROVADA",
+      "motivo": "Dois bonecos e props coerentes, sem defeitos visíveis."
+    }
+  }
+}
