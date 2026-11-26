@@ -1,0 +1,243 @@
+{
+  "titulo": "O QUARTO BROTO",
+  "logline": "Para liberar o corredor de uma capela de gelo, TÉO marca uma poda rente e JUCA prensa a murta com um rolo molhado. A passagem fica livre; até a tesoura entra no herbário.",
+  "canon": "zeca_joca_v1",
+  "setor": "Jardinagem ornamental",
+  "servico": "Podar os três brotos de murta que ultrapassam o limite da floreira e avançam sobre o corredor.",
+  "cliente": "Zelador idoso da capela de gelo.",
+  "premissa_simples": "Três brotos precisam de um corte para que o zelador passe sem roçar nas folhas.",
+  "mecanismo": "TÉO mede a borda fixa da floreira em vez da projeção dos brotos. JUCA segue sua mão espalmada: em vez de cortar no plano indicado, achata tudo que encontra nesse plano.",
+  "solucao_errada": "JUCA deixa a tesoura fechada e usa a face larga de um rolo de espuma molhado. A água espremida entre as folhas e o zinco gelado faz a poda sem corte parecer eficaz.",
+  "escalada": [
+    "objeto"
+  ],
+  "degrau_final": "objeto",
+  "callback_object": "tesoura de poda",
+  "payoff_visual": "Sob uma lâmina contínua de gelo há quatro pontas alinhadas. Três têm folhas; a quarta tem duas argolas de aço na base.",
+  "otimismo_final": "O zelador passa com a nota na mão, sem encostar na murta. A dupla lhe faz uma mesura pelo serviço entregue.",
+  "set_historia": "SET: Claymation interior of a small ice chapel. Amber light grazes a ribbed ice vault, an arched prayer niche and pews carved along a grooved ice aisle. The inner vestibule faces a single myrtle planter; a short vestry passage joins the aisle at back left. The myrtle fans across a chilled zinc backplate at the side of the niche. Three leafy shoots project toward the aisle. A dry lip at the left marks the clearance plane. Below the shoots, a shallow zinc catch ledge has a tool groove on the right. Old rime picks out the edges of the metal.",
+  "continuidade": [
+    "TÉO permanece à esquerda, com o pager preso à cintura e uma única nota fiscal dobrada, sem escrita, identificada pela borda picotada e pelo selo em relevo. O papel fica do lado seco.",
+    "JUCA chega à direita com uma tesoura de poda de argolas e um rolo de espuma molhado, um em cada mão. É ele quem apoia as duas ferramentas na aba de zinco.",
+    "Os mesmos três brotos permanecem ligados à murta. Toda a água nova vem do rolo; ela só se espalha onde a espuma encosta ou diretamente abaixo desse contato.",
+    "O piso, os bancos e a abóbada já são de gelo. O conjunto da poda é a última parte móvel da instalação a gelar. O zelador só entra no clipe 5, pela passagem da sacristia."
+  ],
+  "assinatura": "TÉO entrega a nota fiscal ao cliente idoso com a mesma mão que marcou o corte; a sombra da mesura de JUCA passa sobre a tesoura intacta.",
+  "objetos_plantados": [
+    {
+      "objeto": "tesoura de poda",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 6
+    },
+    {
+      "objeto": "nota fiscal",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 6
+    },
+    {
+      "objeto": "rolo de espuma",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 5
+    }
+  ],
+  "shots": [
+    {
+      "n": 1,
+      "dur": 10,
+      "estagio": "LIGACAO",
+      "estado_in": "TEO left and JUCA right are alone at the inner threshold. TEO carries a folded invoice and a clipped service pager; JUCA holds closed pruning snips and a wet foam roller. Three myrtle shoots project toward the aisle above the empty zinc catch ledge.",
+      "estado_out": "TEO left and JUCA right stand inside the vestibule facing the planter. The service pager is quiet on its clip; TEO holds the folded invoice. JUCA holds the closed pruning snips beside the wet foam roller. Three shoots project above the empty zinc catch ledge.",
+      "herda_de": "service pager",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Wide from the aisle. TEO crosses the inner threshold on the left with the folded slip; JUCA steps in on the right carrying a tool in each hand. A sprig-and-snips pictogram pulses on the pager at TEO's hip."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "Medium on the same axis. TEO cups the rattling pager with his free hand and taps the lit sprig. JUCA raises the closed pruning snips to match the little blades on the pager. His other forearm comes up in the same salute and the wet roller's axle ticks against the steel."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Back wide as the pictogram goes dark. TEO angles the folded invoice toward the three projecting shoots. JUCA parts the tools by a thumb's width and pivots toward the planter with both handles still held high."
+        }
+      ],
+      "gag": "A chamada pede uma tesoura; JUCA presta continência com as duas ferramentas.",
+      "objeto_gag": "tesoura de poda",
+      "fisica": "vibrar",
+      "reacao": "TÉO recolhe o cotovelo para abafar o pager; JUCA apruma a coluna e emparelha os antebraços na continência.",
+      "som": "Solas de borracha roçam o gelo em dois passos; a carcaça do pager vibra seca contra a presilha; TÉO inspira de leve pelo nariz antes do toque; o eixo do rolo tine uma vez contra a tesoura; a dobra do papel estala baixinho ao virar.",
+      "overall_soundscape": "Rubber soles brush ribbed ice twice on entry; the pager casing rattles briskly against its steel clip; TEO takes a short nasal breath before the tap; the roller axle ticks once against the steel snips; folded paper crackles softly on the turn.",
+      "non_diegetic_music": "Quiet pizzicato viola marks two short beats and leaves the next beat empty.",
+      "causa": "O pager vibra exibindo o pictograma de poda. JUCA levanta a tesoura em resposta e ergue o outro punho junto.",
+      "efeito": "A chamada se apaga sob o dedo de TÉO. As duas ferramentas se tocam, se separam e seguem erguidas até a floreira.",
+      "payoff": "A tesoura certa chega anunciada por um tinido da ferramenta errada.",
+      "escala": "objeto"
+    },
+    {
+      "n": 2,
+      "dur": 10,
+      "estagio": "CHEGADA",
+      "estado_in": "TEO left and JUCA right stand inside the vestibule facing the planter. The service pager is quiet on its clip; TEO holds the folded invoice. JUCA holds the closed pruning snips beside the wet foam roller. Three shoots project above the empty zinc catch ledge.",
+      "estado_out": "TEO stands left of the planter with the folded invoice at the dry depth lip. JUCA stands right with the wet foam roller upright. The closed pruning snips rest point up in the right groove; one white-rimmed bead touches a steel loop. All three shoots still project.",
+      "herda_de": "folded invoice",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Track their two steps to the planter from the aisle side. TEO brings the paper to the dry left lip; JUCA lowers the two handles on the right. Seen obliquely, the shoots stand a finger beyond the lip."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "In a three-quarter medium shot TEO holds the long edge of the folded invoice against the lip. He closes two fingers like blades, then shows a flat palm at the cut line. JUCA props the closed snips point up in the right groove and presents the broad side of the roller to that palm."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Frame the upright sleeve and the paper edge side by side: they are the same length. A drop runs off the foam down one steel loop to the zinc. A white rim forms on the bead while TEO squares his wrist to the paper."
+        }
+      ],
+      "gag": "TÉO indica onde cortar; JUCA escolhe a ferramenta que combina com a largura da nota.",
+      "objeto_gag": "nota fiscal",
+      "fisica": "encaixar",
+      "reacao": "TÉO apruma o punho junto à aresta; JUCA abre os ombros e apresenta o rolo na palma como um instrumento de precisão.",
+      "som": "Duas passadas curtas raspam o gelo estriado; a borda do papel raspa de leve no zinco seco; as argolas batem no sulco com um clique; JUCA solta um resfolego satisfeito ao erguer o rolo; uma gota toca o zinco num pingo fino.",
+      "overall_soundscape": "Rubber soles scuff the ridged ice in two short strides; the paper edge rasps lightly against dry zinc; steel handles click once into the groove; JUCA gives a small satisfied huff behind the raised roller; water taps the zinc faintly beside the loop.",
+      "non_diegetic_music": "Two soft bass clarinet notes climb a third. A single viola pluck lands on the choice.",
+      "causa": "A borda reta da nota fiscal marca o plano de corte. Quando TÉO espalma a mão nesse plano, JUCA lhe oferece uma superfície larga em vez de duas lâminas.",
+      "efeito": "A tesoura fica fechada no sulco; o rolo fica na mão de JUCA. A primeira gota da espuma ganha um aro branco ao tocar o zinco.",
+      "payoff": "Lá em cima, papel e espuma combinam à perfeição. Lá embaixo, a tesoura já serve de aparador de pingos.",
+      "escala": "objeto"
+    },
+    {
+      "n": 3,
+      "dur": 10,
+      "estagio": "PRIMEIRA_FALHA",
+      "estado_in": "TEO stands left of the planter with the folded invoice at the dry depth lip. JUCA stands right with the wet foam roller upright. The closed pruning snips rest point up in the right groove; one white-rimmed bead touches a steel loop. All three shoots still project.",
+      "estado_out": "TEO left holds the folded invoice at the dry lip. JUCA right holds the upright roller clear of the middle shoot. All three shoots project again; a white leaf print remains on the cold zinc backplate. The closed pruning snips stand in the right groove beside the white-rimmed bead.",
+      "herda_de": "wet foam roller",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Hold the oblique aisle view. TEO sights down the straight edge of the invoice. JUCA eases the upright roller in front of the middle shoot, leaving the other two tips clear."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "Cut lower along the cut line. TEO slides one fingertip down the paper edge. JUCA presses the wet sleeve against the middle shoot until its leaves touch the backplate. As TEO lifts his marking hand, JUCA eases the roller away. The uncut stem springs back toward the aisle, leaving a wet leaf print on the zinc."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "In a raking two-shot the print goes pale along its veins. Above the slip TEO and JUCA give each other one neat bow. Below it the middle leaf bobs twice in front of its own print."
+        }
+      ],
+      "gag": "Os dois aprovam o teste com uma mesura; o ramo devolve duas e continua no caminho.",
+      "objeto_gag": "rolo de espuma",
+      "fisica": "flexão elástica",
+      "reacao": "TÉO recolhe o antebraço e inclina a coluna uma vez; JUCA dobra os joelhos numa reverência curta por cima da nota.",
+      "som": "O dedo de TÉO roça seco na borda de papel; JUCA puxa o ar pelo nariz antes da pressão; a espuma molhada chia brevemente ao ceder; as folhas batem macio no zinco; duas folhas se roçam ao voltar.",
+      "overall_soundscape": "A fingertip rasps softly down the folded paper; JUCA draws a short nasal breath before the press; wet foam squishes briefly under pressure; myrtle leaves pat the zinc in a soft cluster; two leaf tips brush twice on the rebound.",
+      "non_diegetic_music": "Muted viola sustains one short note, then picks out two light offbeats.",
+      "causa": "O rolo de espuma molhado empurra o ramo sem cortá-lo. No toque curto, só o desenho de água adere ao metal frio.",
+      "efeito": "O broto elástico volta ao corredor; sua impressão fica branca na placa.",
+      "payoff": "A cópia da folha obedeceu à ordem de ficar rente. A original ainda balança.",
+      "escala": "objeto"
+    },
+    {
+      "n": 4,
+      "dur": 10,
+      "estagio": "JEITINHO",
+      "estado_in": "TEO left holds the folded invoice at the dry lip. JUCA right holds the upright roller clear of the middle shoot. All three shoots project again; a white leaf print remains on the cold zinc backplate. The closed pruning snips stand in the right groove beside the white-rimmed bead.",
+      "estado_out": "TEO left holds the folded invoice above the dry lip. JUCA right holds the roller crosswise at the foot of three flattened shoots. Thin ice seams pin the shoots to the backplate over the leaf print. A wet ridge touches the roller; the closed pruning snips stand in the right groove beside the rimmed bead.",
+      "herda_de": "upright roller",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Stay on the aisle axis as the middle leaf settles. TEO spreads three fingers above the slip and brings them level. JUCA raises his elbows with the narrow upright sleeve still in front of the row."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "Medium across the zinc. TEO turns the folded invoice a quarter turn and holds its long edge across the air above the three tips. JUCA turns the roller axle horizontal to match and rolls the whole row down in one slow stroke. All three shoots bend against the plate; water squeezes from the foam around their leaves."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Low oblique view. The sleeve reaches the foot of the row. Above it the leaves hold flat, their wet margins whitening against the zinc. A ridge of water gathers against the foam while TEO gives the paper one tiny leveling twist."
+        }
+      ],
+      "gag": "Um quarto de volta na régua de papel e JUCA passa de uma poda individual a uma poda por atacado.",
+      "objeto_gag": "nota fiscal",
+      "fisica": "rolar",
+      "reacao": "TÉO mantém o cotovelo alto para nivelar a nota; JUCA baixa os dois ombros numa passada só, com os joelhos bem plantados.",
+      "som": "O vinco do papel crepita ao girar; JUCA solta um resfolego curto na virada do punho; o eixo de aço range uma vez sob carga; as folhas tocam o zinco em três batidas leves; a espuma encharcada chia grave ao pé da placa.",
+      "overall_soundscape": "The paper crease crackles lightly as it turns; JUCA gives a short nasal huff on the wrist turn; the steel axle squeaks once under the slow stroke; wet leaves pat the zinc in three soft taps; soaked foam gives a low squelch at the foot of the plate.",
+      "non_diegetic_music": "Soft marimba links three notes into one descending roll, then leaves a beat of space.",
+      "causa": "Com o rolo em pé, só o broto do meio coube no teste. Ao sinal dos três, JUCA deita o eixo e mantém a pressão pela passada inteira.",
+      "efeito": "A água espremida sob as folhas endurece nas margens e segura os três brotos contra a placa. O excesso se junta junto ao rolo.",
+      "payoff": "A murta inteira cabe atrás da espessura da nota. Não caiu uma apara sequer.",
+      "escala": "objeto"
+    },
+    {
+      "n": 5,
+      "dur": 10,
+      "estagio": "ESCALADA",
+      "estado_in": "TEO left holds the folded invoice above the dry lip. JUCA right holds the roller crosswise at the foot of three flattened shoots. Thin ice seams pin the shoots to the backplate over the leaf print. A wet ridge touches the roller; the closed pruning snips stand in the right groove beside the rimmed bead.",
+      "estado_out": "TEO left holds the dry folded invoice; JUCA right has released the roller onto the catch ledge against the loops of the closed pruning snips. Three pinned shoots and the upright snips share a thin wet skin down to the ledge. Its rims are white. The elderly caretaker is one step behind TEO at back left.",
+      "herda_de": "closed pruning snips",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Widen along the same axis. TEO runs his finger along the paper until it lines up with the far edge of the plate. That edge is one shoot-width past the leaves. The closed blades occupy the extra strip."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "Medium from the aisle. TEO traces one last downward stroke in the air over the right groove, his head angled along the paper. JUCA rocks the foam into the wet ridge, lifts it one place to the right and rolls down the flat of the closed snips. Water coats the blades and joins the bead at the loops."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Pull back as JUCA beds the roller across the catch ledge with one foam end touching the loops, then opens his hands. A white rim forms along the wet ledge. Behind TEO the elderly caretaker comes along the vestry passage in two unhurried steps, palms ready for the slip."
+        }
+      ],
+      "gag": "TÉO mede até acabar a placa, não até acabar a murta. Sobra uma passada para a tesoura.",
+      "objeto_gag": "rolo de espuma",
+      "fisica": "escorrer",
+      "reacao": "TÉO estende o indicador mais uma largura de broto; JUCA abre os braços de mãos vazias, satisfeito por ter coberto a faixa inteira.",
+      "som": "A espuma suga a crista de água num gole curto; o rolo roça o aço fechado com um chiado leve; o filete pinga duas vezes no zinco; JUCA expira pelo nariz ao pousar o rolo; as solas do zelador raspam o gelo em dois passos.",
+      "overall_soundscape": "Wet foam slurps softly off the ridge; the sleeve rubs along closed steel with a short hiss; runoff ticks twice into the zinc ledge; JUCA lets out a small nasal breath as the roller settles; the caretaker's soles rasp quietly over ribbed ice in two steps.",
+      "non_diegetic_music": "Pizzicato bass slips a quiet fourth note into the three-note pattern.",
+      "causa": "A tesoura fechada está em pé no sulco direito, dentro da largura da placa que TÉO continua medindo. O gesto final leva o rolo até essa faixa.",
+      "efeito": "A mesma película de água cobre a tesoura e desce às argolas. JUCA pousa o rolo em contato com elas e com a aba molhada.",
+      "payoff": "A fileira ganha uma quarta ponta, tão bem assentada quanto as três que têm folhas.",
+      "escala": "objeto"
+    },
+    {
+      "n": 6,
+      "dur": 10,
+      "estagio": "CLIMAX",
+      "estado_in": "TEO left holds the dry folded invoice; JUCA right has released the roller onto the catch ledge against the loops of the closed pruning snips. Three pinned shoots and the upright snips share a thin wet skin down to the ledge. Its rims are white. The elderly caretaker is one step behind TEO at back left.",
+      "estado_out": "TEO left has empty hands and his clipped pager. The elderly caretaker holds the folded invoice in the cleared strip of aisle; JUCA right has both hands free. All three uncut shoots, the upright closed pruning snips, the foam roller and the zinc ledge are locked to the backplate under one continuous glaze.",
+      "herda_de": "thin wet skin",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Hold the aisle view. The caretaker takes the remaining step toward TEO on the left. TEO turns the embossed seal toward him. JUCA draws his elbows back on the right, leaving the whole wet assembly in the raking light."
+        },
+        {
+          "t": "00:03.500",
+          "texto": "In a raking medium shot TEO offers the folded invoice on his upturned palm. JUCA sweeps one arm toward the slip and bows. Behind their forearms the white rims meet across the thin film around the shoots, closed steel and foam. One last bead sets halfway over the ledge with its neck still stretched."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Follow the moving slip as the caretaker takes it, TEO opens his fingers and the caretaker steps through the cleared strip. Rack focus to the ice relief: three leafy points and a fourth with two steel loops. The shadow of JUCA's bow travels across all four."
+        }
+      ],
+      "gag": "O corredor está livre, o herbário está pronto e o único broto de aço continua com a tesoura fechada.",
+      "objeto_gag": "tesoura de poda",
+      "fisica": "solidificar",
+      "reacao": "TÉO estende o antebraço como uma bandeja; JUCA dobra a coluna em direção à nota, de costas para o relevo que acabou de produzir.",
+      "som": "A sola do zelador raspa de leve no último passo de aproximação; o vinco da nota estala ao virar; JUCA solta um suspiro curto na mesura; a película de gelo dá um estalo fino junto ao aço; o papel roça seco nos dedos do zelador; a sola desliza macio pelo trecho livre.",
+      "overall_soundscape": "The caretaker's sole scuffs ice lightly on approach; the paper crease crackles once as it turns; JUCA gives a soft sigh on the bow; thin ice ticks once against steel as its rims meet; dry paper rasps gently between the caretaker's fingers; a rubber sole brushes the cleared groove on departure.",
+      "non_diegetic_music": "Viola and bass clarinet settle softly onto a short unison, leaving the handoff a clear beat.",
+      "causa": "A película de água é contínua e fina sobre o zinco gelado. As bordas já brancas se encontram até na última gota, sem que o gelo precise saltar um intervalo seco.",
+      "efeito": "Todo o conjunto da poda fica preso numa crosta só. A passagem permanece livre e a nota fiscal passa diretamente da mão de TÉO à do zelador.",
+      "payoff": "O zelador passa levando a nota. Sua sombra e a da mesura ainda se movem; na placa, a tesoura de poda é o único dos quatro brotos com duas argolas.",
+      "escala": "objeto"
+    }
+  ]
+}
