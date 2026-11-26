@@ -152,12 +152,16 @@ def main():
     cru = None
     for rodada in (1, 2, 3, 4):
         j = gerar(pieces, fcfg, mensagens)
+        (EPISODIOS / "_ultima_geracao.json").write_text(
+            json.dumps(j, ensure_ascii=False, indent=2), encoding="utf-8")
         cru = j.get("cru") or ""
         ep = j["episodio"]
         n = len(ep.get("shots") or [])
         print("\nRESUMO DA IA:\n%s" % (j.get("resumo") or "")[:1200])
         print("\n>>> episodio: %s | %d clipes | rodada %d" % (ep.get("titulo"), n, rodada))
         ok, val, erros, av_clipe = avaliar(ep)
+        (EPISODIOS / "_ultima_validacao.json").write_text(
+            json.dumps(val, ensure_ascii=False, indent=2), encoding="utf-8")
         if ok and n == 6:
             episodio = ep
             break
@@ -195,6 +199,13 @@ def main():
     slug = salvo.get("slug") or salvo.get("nome") or Path(salvo.get("pasta") or "").name
     pasta = salvo.get("pasta") or ""
     print(">>> SALVO: %s (%s)" % (slug, pasta))
+    destino = Path(pasta)
+    if destino.exists():
+        destino.joinpath("geracao_v6.json").write_text(
+            json.dumps(j, ensure_ascii=False, indent=2), encoding="utf-8")
+        destino.joinpath("validacao_v6.json").write_text(
+            json.dumps(val, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(">>> respostas brutas salvas: geracao_v6.json + validacao_v6.json", flush=True)
 
     st, cfgs = _post("/api/settings", {"episodio": episodio})
     if st != 201:

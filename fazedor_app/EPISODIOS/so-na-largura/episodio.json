@@ -1,0 +1,243 @@
+{
+  "titulo": "SÓ NA LARGURA",
+  "logline": "Um professor pede uma tampa que enrole e a mestra da oficina pede uma superfície inteiriça. TÉO tira uma única medida, e JUCA cola no quadro elétrico a única placa da bancada que não faz curva.",
+  "setor": "Elétrica industrial em oficina de ensino",
+  "servico": "Refazer a vedação contra pó da tampa de enrolar de um quadro elétrico didático, preservando o acesso aos comandos.",
+  "cliente": "Professor de eletrotécnica e mestra responsável pela oficina.",
+  "mecanismo": "O calibre aceita tanto a borracha quanto o gesso. Na parte plana os dois servem; na curva do tambor, cada junta móvel parte o gesso em mais um pedaço.",
+  "degrau_final": "objeto",
+  "callback_object": "calibre em U",
+  "set_historia": "SET: Industrial electrical teaching bay. Strip lights rake across a steel bench and its unplugged demonstration switch bank; the loose plug rests in a cradle. Four loosely linked aluminum slats form a dust shutter with a tack pad on each slat and a push tab on the leading slat. It runs over a rubber nose drum into a vertical front guide facing the camera. A captive rear pin limits its travel. The drum has a ribbed steel flange on the right. A brass call bell and folded invoice rest on the left ledge. A rubber sheet droops beside a rigid mesh-backed plaster sheet on the right ledge. Both sheets span the shutter. The service side is behind the bench; the top masks the front guide from there.",
+  "continuidade": [
+    "Professor no canto esquerdo da bancada, mestra no direito. Entre eles, TÉO trabalha à esquerda e JUCA à direita, sempre do lado de serviço.",
+    "Quatro réguas, três juntas, uma placa de gesso sobre tela. As rachaduras permanecem na placa mesmo quando suas bordas voltam a se encostar.",
+    "A folha de borracha fica na aba direita. A nota fiscal fica dobrada junto à campainha na aba esquerda até a entrega; só o verso liso aparece.",
+    "O quadro permanece desligado. Ninguém contorna a bancada para ver a guia frontal; bocas imóveis durante todo o serviço."
+  ],
+  "assinatura": "Com uma mão no calibre em U assentado sobre o vão, TÉO entrega a nota fiscal dobrada ao professor com a outra. JUCA apresenta o quadro acima dos quatro pedaços de vedação.",
+  "objetos_plantados": [
+    {
+      "objeto": "tampa de enrolar",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 6
+    },
+    {
+      "objeto": "calibre em U",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 6
+    },
+    {
+      "objeto": "placa de gesso",
+      "plantado_no_clipe": 1,
+      "pago_no_clipe": 6
+    }
+  ],
+  "canon": "zeca_joca_v1",
+  "premissa_simples": "A mesma tampa deve descobrir as chaves para a aula e cobrir todas as frestas quando o quadro estiver guardado.",
+  "solucao_errada": "JUCA prensa gesso telado nos quatro apoios adesivos em vez de usar a folha de borracha. TÉO conferiu a largura, não a flexibilidade.",
+  "payoff_visual": "Três rachaduras de borda a borda deixam a vedação pendurada em quatro pedaços. Logo acima, o calibre abraça o ar e dá o mesmo resultado de antes.",
+  "otimismo_final": "O professor recebe o quadro aberto, a mestra já viu a tampa fechar lisa e a dupla tem uma medida impecável para mostrar.",
+  "escalada": [
+    "objeto"
+  ],
+  "shots": [
+    {
+      "n": 1,
+      "dur": 10,
+      "estagio": "LIGACAO",
+      "estado_in": "The closed four-slat shutter covers the unplugged switch bank. The professor stands at the left corner and the forewoman at the right. TEO holds the U gauge one step back on the left; JUCA waits one step back on the right. The bell, folded invoice and both sheets are on the ledges.",
+      "estado_out": "The flat shutter covers all the switches again, four tack pads up. The professor and forewoman hold curved and flat palms above it. TEO with the U gauge and JUCA lean forward one step behind them, left and right. Both sheets, the bell and the folded invoice are on the ledges.",
+      "herda_de": "closed four-slat shutter",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Wide frontal view with both ledges in frame. TEO waits left and JUCA right, one pace behind the clients. The professor nudges the push tab towards the front drum; one slat dips and he presents the first row of switches with his free hand."
+        },
+        {
+          "t": "00:03.300",
+          "texto": "Come closer on the same axis. The forewoman catches the rear edge of the shutter and draws it back along the rails until the switches disappear. She runs a fingernail across the three joints and holds her palm flat above them. TEO hugs the U gauge to his chest; JUCA bends both knees as the professor curls one hand to match the drum."
+        },
+        {
+          "t": "00:07.200",
+          "texto": "Frontal medium view. The professor taps the call bell with his free hand. His curved palm and the forewoman's flat palm remain side by side above the shutter. TEO and JUCA tip forward on their toes."
+        }
+      ],
+      "gag": "O professor mal apresenta a primeira fila de chaves e a mestra já guardou a aula.",
+      "objeto_gag": "tampa de enrolar",
+      "fisica": "deslizar no trilho",
+      "reacao": "TÉO apruma a coluna e recolhe o calibre ao peito; JUCA dobra os joelhos, pronto para partir antes da chamada.",
+      "som": "Réguas de alumínio raspam brevemente no aço ao abrir; o tambor de borracha roça baixo no alumínio na volta; a unha dá três toques leves nas juntas; a campainha de latão soa uma vez sob o dedo do professor; JUCA inspira curto pelo nariz ao se inclinar.",
+      "overall_soundscape": "Aluminum slats rasp briefly against steel on opening; the rubber drum rubs aluminum softly on the return; a fingernail ticks lightly across three joints in succession; the brass bell rings once under the professor's finger; JUCA takes a quick nasal breath as he leans in.",
+      "non_diegetic_music": "A quiet clarinet curls through three eighth notes; muted viola answers with one long level note.",
+      "causa": "A tampa de enrolar fechada esconde as chaves que o professor quer mostrar, mas deixa à vista as três juntas que a mestra quer cobrir.",
+      "efeito": "Os clientes abrem e fecham a mesma tampa antes de chamar a dupla à bancada.",
+      "payoff": "Sobre a tampa parada ficam duas instruções incompatíveis: uma mão em curva e outra em linha reta.",
+      "escala": "objeto"
+    },
+    {
+      "n": 2,
+      "dur": 10,
+      "estagio": "CHEGADA",
+      "estado_in": "The flat shutter covers all the switches again, four tack pads up. The professor and forewoman hold curved and flat palms above it. TEO with the U gauge and JUCA lean forward one step behind them, left and right. Both sheets, the bell and the folded invoice are on the ledges.",
+      "estado_out": "JUCA holds the rigid plaster sheet mesh down above the four tack pads. TEO holds the U gauge clear on the left. Both are at the bench; the shutter is flat, the rubber sheet droops on the right ledge and the folded invoice rests by the bell on the left.",
+      "herda_de": "flat shutter",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Frontal wide view. The clients draw their hands aside. TEO and JUCA take one step to the bench in their own lanes. TEO fits his plain U gauge across the flat shutter; JUCA brings both hands to the sheets on the right ledge."
+        },
+        {
+          "t": "00:03.200",
+          "texto": "At rail height, TEO lifts the U gauge straight up and holds its jaws over the shutter. JUCA brushes the rubber with one knuckle; it flaps back against the ledge. He picks up the rigid plaster sheet instead and brings its square edge between the jaws. TEO lets them skim both sides while JUCA holds the sheet level."
+        },
+        {
+          "t": "00:07.300",
+          "texto": "Tight front-quarter view. TEO lifts the gauge clear. JUCA holds the plaster mesh down a finger above the tack pads, parallel to the forewoman's flat palm. The rubber still curls over the ledge beside his elbow."
+        }
+      ],
+      "gag": "No exame de TÉO, borracha e gesso só têm uma propriedade: largura.",
+      "objeto_gag": "calibre em U",
+      "fisica": "encaixar entre garras",
+      "reacao": "TÉO ergue o cotovelo para liberar a peça aprovada; JUCA abre os braços sob a placa para apresentá-la bem reta.",
+      "som": "Solas de borracha roçam curtas no cimento à chegada; o calibre de aço toca de leve o alumínio na medição; a folha de borracha bate mole na aba ao voltar; a quina de gesso raspa seca entre as garras; TÉO solta um suspiro curto quando a placa passa.",
+      "overall_soundscape": "Rubber soles scuff concrete briefly on arrival; the steel gauge taps aluminum lightly at the fit; rubber slaps the ledge softly on the rebound; plaster rasps faintly between steel jaws on entry; TEO lets out a small nasal sigh as the sheet passes.",
+      "non_diegetic_music": "Quiet pizzicato cello marks two measured quarters. Bassoon holds a single note across the fit.",
+      "causa": "Com a tampa de novo plana, TÉO tira só a largura; a placa que já fica reta sozinha preenche o calibre tão bem quanto a borracha.",
+      "efeito": "JUCA deixa a borracha na aba e posiciona o gesso sobre os quatro apoios adesivos.",
+      "payoff": "A placa rígida reproduz a palma da mestra enquanto a folha certa faz a curva do professor, esquecida no canto.",
+      "escala": "objeto"
+    },
+    {
+      "n": 3,
+      "dur": 10,
+      "estagio": "PRIMEIRA_FALHA",
+      "estado_in": "JUCA holds the rigid plaster sheet mesh down above the four tack pads. TEO holds the U gauge clear on the left. Both are at the bench; the shutter is flat, the rubber sheet droops on the right ledge and the folded invoice rests by the bell on the left.",
+      "estado_out": "One slat hangs over the nose. The plaster is bonded to all four slats; a full-width split crosses the first joint on intact mesh. The push tab sits below the lip. JUCA has lifted his palm at right; TEO holds the U gauge above the left rail.",
+      "herda_de": "rigid plaster sheet",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Medium view over the front rail. JUCA lowers the plaster onto the four tack pads and presses along it from back to front. A bead of tack bulges against the mesh at the side of each slat. TEO holds the gauge clear."
+        },
+        {
+          "t": "00:03.400",
+          "texto": "From the front quarter, JUCA pushes the exposed side tab towards the drum. TEO traces its short travel in the air above the opposite rail. The leading slat tips away from its neighbor, each carrying a tack pad. On the outside of the bend the plaster splits across the first joint; the cloth mesh keeps both sides attached."
+        },
+        {
+          "t": "00:07.100",
+          "texto": "Cut low across the drum. A dark crooked gap opens towards the camera below the lip. The tab dips with the slat; JUCA lifts an empty palm to present a single row of switches. The ribbed flange remains within reach at his right."
+        }
+      ],
+      "gag": "JUCA apresenta a primeira abertura do quadro; logo abaixo, a vedação também ganhou uma abertura.",
+      "objeto_gag": "placa de gesso",
+      "fisica": "fletir até fissurar",
+      "reacao": "TÉO traça o curso curto com o braço esticado; JUCA vira a palma vazia para cima e apresenta uma única fileira com toda a pompa.",
+      "som": "Palmas batem de leve no gesso ao assentá-lo; os apoios adesivos chiam abafados contra a tela em quatro pressões; a lingueta de alumínio raspa um trecho curto de aço; o gesso dá um estalo fino sob a borda; JUCA solta o ar pelo nariz ao erguer a mão.",
+      "overall_soundscape": "Palms pat dry plaster softly as the sheet goes down; tack pads squish against cloth in four muted pulses; the aluminum tab scrapes a short stroke along steel; dry plaster gives one fine tick below the lip; JUCA gives a short nasal huff as his hand lifts.",
+      "non_diegetic_music": "Muted marimba plays four soft even notes, leaving a rest at the first bend.",
+      "causa": "A placa rígida de gesso está presa dos dois lados de uma junta que muda de ângulo; a primeira régua desce sem que a vizinha a acompanhe.",
+      "efeito": "A vedação racha de uma borda à outra na primeira junta. A tela segura o gesso e a lingueta de empurrar fica abaixo do tampo.",
+      "payoff": "Na parte de cima há uma fileira impecável de chaves; na face que só o público vê há uma fresta inteira.",
+      "escala": "objeto"
+    },
+    {
+      "n": 4,
+      "dur": 10,
+      "estagio": "JEITINHO",
+      "estado_in": "One slat hangs over the nose. The plaster is bonded to all four slats; a full-width split crosses the first joint on intact mesh. The push tab sits below the lip. JUCA has lifted his palm at right; TEO holds the U gauge above the left rail.",
+      "estado_out": "The shutter is flat again. A crooked hairline remains in the plaster at the first joint. JUCA grips the ribbed flange at right; TEO holds the U gauge level above the left rail. The rubber sheet and the folded invoice remain on their ledges.",
+      "herda_de": "push tab",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Keep the low front axis. JUCA's open hand stops at the lip above the sunken tab. The forewoman repeats her flat-palm request. Rather than put his hand on the new facing, JUCA bends his wrist down beside the ribbed flange."
+        },
+        {
+          "t": "00:03.100",
+          "texto": "Frame the drum and both workers from the front quarter. TEO levels the straight back of his U gauge above the rail. JUCA cups the exposed flange like a steering wheel and turns it backwards. The drum lifts the hanging slat into line with its neighbor; the edges of the split press together until only a crooked hairline shows."
+        },
+        {
+          "t": "00:07.200",
+          "texto": "Sight across the flat top. A narrow nick stays dark in the raking light. The forewoman levels her palm with the gauge. JUCA squares his shoulders at his little steering wheel, one elbow cocked out."
+        }
+      ],
+      "gag": "Ao dar marcha a ré na tampa, JUCA consegue dar marcha a ré na aparência do estrago.",
+      "objeto_gag": "placa de gesso",
+      "fisica": "aproximar as bordas por compressão",
+      "reacao": "JUCA empina um cotovelo como um motorista; TÉO nivela o antebraço e a mestra alinha a palma ao calibre.",
+      "som": "JUCA dá um grunhido nasal baixo ao ficar sem pega; os dedos tamborilam de leve no aro de aço ao agarrá-lo; o tambor de borracha chia curto na volta; as bordas de gesso rangem baixinho ao se encostar; a régua de alumínio bate surda no limite do trilho.",
+      "overall_soundscape": "JUCA gives a low nasal grunt as his reach stops at the lip; fingertips tap the ribbed steel lightly on taking hold; the rubber drum squeaks once on the reverse turn; plaster edges grate faintly as the split closes; aluminum seats against the rail stop with a low tap.",
+      "non_diegetic_music": "A quiet bassoon plays the opening clarinet figure backwards over two slow viola beats.",
+      "causa": "Com a lingueta abaixo da borda e a mestra pedindo o tampo liso, JUCA usa o aro exposto do tambor para devolver a régua sem tocar no acabamento.",
+      "efeito": "A tampa volta à posição plana. A primeira fissura se fecha até virar um risco, mas o gesso continua partido.",
+      "payoff": "A mestra ganha sua superfície lisa e JUCA ganha um volante.",
+      "escala": "objeto"
+    },
+    {
+      "n": 5,
+      "dur": 10,
+      "estagio": "ESCALADA",
+      "estado_in": "The shutter is flat again. A crooked hairline remains in the plaster at the first joint. JUCA grips the ribbed flange at right; TEO holds the U gauge level above the left rail. The rubber sheet and the folded invoice remain on their ledges.",
+      "estado_out": "Two slats hang in the front guide and two remain level. Two full-width cracks mark the plaster on intact mesh. The last intact joint is one slat from the nose. JUCA holds the flange at right; TEO holds the U gauge at left beside the folded invoice.",
+      "herda_de": "ribbed flange",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Wide on the same axis. The professor sweeps his curved hand along the full rail this time. TEO raises four fingers beside the U gauge. At right JUCA shifts his grip to turn the flange the other way."
+        },
+        {
+          "t": "00:03.200",
+          "texto": "Track a little closer to the nose. JUCA rolls the ribbed flange forwards; the first plaster joint opens along its old break. TEO folds down a finger for each slat that turns. The second slat dips after the first, pulling its patch of mesh around the drum until a fresh split runs from rail to rail above the first one."
+        },
+        {
+          "t": "00:07.300",
+          "texto": "Low frontal view. The hanging pair settle under their own weight, dark mesh showing between jagged edges. Above the lip, TEO has two fingers left up. JUCA eases his grip with two slats still level and their shared joint coming next."
+        }
+      ],
+      "gag": "TÉO conta réguas que abrem; do lado do público, a mesma contagem serve para as rachaduras.",
+      "objeto_gag": "tampa de enrolar",
+      "fisica": "rolar em sequência",
+      "reacao": "TÉO recolhe os dedos um por vez com o cotovelo firme; JUCA embala o giro com o ombro e alivia o pulso na metade do curso.",
+      "som": "A palma roça baixo no aço estriado ao trocar a pega; o tambor de borracha esfrega curto no alumínio ao avançar; as bordas antigas de gesso se soltam com um tique leve; o gesso inteiro estala mais forte na segunda junta; TÉO inspira curto pelo nariz com dois dedos recolhidos.",
+      "overall_soundscape": "Skin brushes ribbed steel softly as the grip changes; rubber scuffs aluminum in a quick pulse on the forward turn; old plaster edges click apart lightly at the nose; fresh plaster cracks sharply as the next joint tips; TEO draws a short nasal breath with two fingers folded.",
+      "non_diegetic_music": "Soft pizzicato violin repeats a pair of eighth notes, a little quicker on the second pass.",
+      "causa": "Com o aro estriado na mão, JUCA agora pode fazer o curso pedido pelo professor. No avanço, a primeira fissura apenas reabre; a junta seguinte precisa romper gesso inteiro.",
+      "efeito": "Duas réguas descem, duas rachaduras atravessam a vedação e a única junta intacta fica a uma régua da curva.",
+      "payoff": "Os dois dedos ainda erguidos de TÉO fazem par com os dois pedaços já pendurados do outro lado.",
+      "escala": "objeto"
+    },
+    {
+      "n": 6,
+      "dur": 10,
+      "estagio": "CLIMAX",
+      "estado_in": "Two slats hang in the front guide and two remain level. Two full-width cracks mark the plaster on intact mesh. The last intact joint is one slat from the nose. JUCA holds the flange at right; TEO holds the U gauge at left beside the folded invoice.",
+      "estado_out": "All four slats hang in the front guide on the captive rear pin. Three full-width cracks divide the plaster into four pieces retained on the mesh. TEO holds the U gauge across the bare rails above the exposed switches. The professor holds the folded invoice at left; JUCA presents the panel at right. The rubber sheet stays on the right ledge.",
+      "herda_de": "last intact joint",
+      "planos": [
+        {
+          "t": "00:00.000",
+          "texto": "Front medium view with two slats up and two down. TEO brings the U gauge over the opening from the left. The professor extends an empty hand beside the folded paper. JUCA sets his thumb against the flange to finish the travel."
+        },
+        {
+          "t": "00:03.100",
+          "texto": "Keep the lip and both workers in frame as JUCA turns the flange. The third slat tips away from the fourth and the last plaster bridge splits from rail to rail. The rear pin meets its stop, leaving four pieces hanging on the mesh. TEO lowers the U gauge over the bare rails above the switches; the jaws fit just as well around air."
+        },
+        {
+          "t": "00:07.000",
+          "texto": "Widen on the same axis, keeping all three crooked cracks in the lower frame. With his free hand TEO lifts the folded invoice and places it in the professor's palm. The professor closes his fingers on it. JUCA bows from the waist and presents the open panel with one arm."
+        }
+      ],
+      "gag": "O calibre em U dá ao vazio a mesma aprovação que deu ao gesso.",
+      "objeto_gag": "calibre em U",
+      "fisica": "partir de borda a borda sob flexão",
+      "reacao": "TÉO sustenta a medida com um braço e entrega a nota com o outro; JUCA dobra a cintura numa reverência acima dos quatro pedaços.",
+      "som": "O polegar roça de leve no aço ao retomar o giro; a última ponte de gesso se parte num estalo nítido; o pino de aço bate curto no limite da guia; o calibre tine de leve nos trilhos nus; TÉO solta um suspiro nasal ao obter a medida; o papel dobrado raspa baixo na palma do professor na entrega.",
+      "overall_soundscape": "Skin rubs steel softly as JUCA turns the flange again; dry plaster parts with one crisp crack at the last joint; the steel pin meets its stop with a short clack; the steel gauge ticks lightly against the bare rails; TEO releases a soft nasal sigh at the fit; folded paper rasps softly against the professor's palm at the handoff.",
+      "non_diegetic_music": "Muted viola holds the forewoman's long note. A soft clarinet resolves its three-note curl on the same pitch.",
+      "causa": "A última junta intacta chega à curva enquanto a régua de trás ainda está plana. Os dois apoios puxam a placa para ângulos diferentes.",
+      "efeito": "A terceira rachadura atravessa a placa inteira. A vedação fica em quatro pedaços presos à tela, o quadro fica aberto e a nota passa à mão do professor.",
+      "payoff": "Embaixo, tudo o que foi vedado rachou. Em cima, TÉO enquadra o ar entre os trilhos e entrega a nota sem tirar o calibre do lugar.",
+      "escala": "objeto"
+    }
+  ]
+}

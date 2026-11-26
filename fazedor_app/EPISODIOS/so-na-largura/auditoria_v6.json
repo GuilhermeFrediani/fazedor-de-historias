@@ -1,0 +1,212 @@
+{
+  "auditoria": {
+    "status": "REPROVADO",
+    "nota_geral": 6.8,
+    "notas": {
+      "estetica": 7.5,
+      "personagens": 8.5,
+      "acting_gags": 7.5,
+      "continuidade": 7,
+      "causalidade": 4.5,
+      "ritmo": 8
+    },
+    "falhas_criticas": 3,
+    "falhas_altas": 3,
+    "falhas_medias": 0,
+    "falhas_baixas": 1
+  },
+  "problemas": [
+    {
+      "clipe": 2,
+      "severidade": "ALTO",
+      "campo": "causa / planos[1].texto",
+      "problema": "A escolha do gesso é visível, mas o gag afirma que o calibre aceita as duas folhas sem demonstrar o encaixe da borracha.",
+      "evidencia": "Às 00:03.200, JUCA toca a borracha com o nó do dedo e ela volta à aba; só o gesso passa entre as garras.",
+      "correcao_sugerida": "Mostrar as duas bordas da borracha, sem esticá-la, encostando nas garras. Devolvê-la à aba e repetir o encaixe com o gesso.",
+      "campos_dependentes": [
+        "mecanismo",
+        "gag e payoff do clipe 2",
+        "estado_out do clipe 2 e estado_in do clipe 3: preservar a borracha na aba"
+      ]
+    },
+    {
+      "clipe": 4,
+      "severidade": "CRITICO",
+      "campo": "set_historia / planos[1].texto",
+      "problema": "Não está demonstrado como o giro do aro arrasta a tampa. A passagem das réguas sobre o tambor estabelece contato, mas não mostra o que transmite o movimento na ré e na partida com a tampa plana.",
+      "evidencia": "Às 00:03.100, JUCA gira o aro e o tambor ergue a régua. No clipe 5, o mesmo giro inicia o avanço com todas as réguas planas, sem mostrar um ponto de tração já em contato.",
+      "correcao_sugerida": "Definir um engate reversível sob a extremidade direita das réguas. Mostrá-lo ao revelar o aro, durante a ré e ainda engatado na posição plana.",
+      "campos_dependentes": [
+        "set_historia",
+        "planos[2].texto do clipe 3",
+        "causa, efeito e planos dos clipes 4–6"
+      ]
+    },
+    {
+      "clipe": 6,
+      "severidade": "CRITICO",
+      "campo": "planos[1].texto / estado_out",
+      "problema": "Falta mostrar a passagem da quarta régua pela curva antes de o pino deter a tampa.",
+      "evidencia": "Às 00:03.100, a terceira régua inclina em relação à quarta, ainda plana, e rompe a última ponte de gesso. O plano passa ao pino no batente; o estado final já traz as quatro réguas na guia vertical.",
+      "correcao_sugerida": "Após o estalo, manter o giro em quadro até a quarta régua entrar na guia. Só então mostrar o pino assentando no batente.",
+      "campos_dependentes": [
+        "set_historia: posição do batente",
+        "fisica e efeito do clipe 6",
+        "som e overall_soundscape do clipe 6: sincronizar o impacto",
+        "estado_out do clipe 6: preservar as quatro réguas na guia"
+      ]
+    },
+    {
+      "clipe": 6,
+      "severidade": "ALTO",
+      "campo": "planos[1].texto / payoff",
+      "problema": "O callback troca as bordas da peça pelos trilhos sem estabelecer uma referência comum. O calibre aparece sobre o vão, mas o mesmo encaixe não fica demonstrado.",
+      "evidencia": "No clipe 2, as garras roçam as bordas da placa; no clipe 6, elas assentam nos trilhos nus. O cenário não especifica faces de apoio com a mesma abertura.",
+      "correcao_sugerida": "Plantar dois rebaixos opostos nos trilhos, à largura da tampa. Mostrar o calibre assentando neles com a tampa fechada no clipe 2 e repetir o gesto sobre o vão aberto no clipe 6.",
+      "campos_dependentes": [
+        "set_historia",
+        "planos[0].texto do clipe 2",
+        "payoff_visual",
+        "assinatura"
+      ]
+    },
+    {
+      "clipe": 3,
+      "severidade": "ALTO",
+      "campo": "STATE_LEDGER.episode_state.persistent_consequences",
+      "problema": "O histórico de continuidade não registra o dano acumulado, embora os estados dos clipes o preservem.",
+      "evidencia": "A lista está vazia. A primeira fissura surge no clipe 3, permanece justaposta no 4, reabre no 5 e chega ao final somada a outras duas.",
+      "correcao_sugerida": "Registrar a progressão das fissuras e a integridade da tela no histórico, sem alterar os pares de estados consecutivos.",
+      "campos_dependentes": [
+        "estado_out dos clipes 3–6",
+        "estado_in dos clipes 4–6"
+      ]
+    },
+    {
+      "clipe": 1,
+      "severidade": "CRITICO",
+      "campo": "som / overall_soundscape dos clipes 1–6",
+      "problema": "Há som humano não verbal nos seis clipes, mas a faixa de render o especifica como nasal, sem o evento bucal obrigatório.",
+      "evidencia": "Os seis eventos são descritos, respectivamente, como 'nasal breath', 'nasal sigh', 'nasal huff', 'nasal grunt', 'nasal breath' e 'nasal sigh'.",
+      "correcao_sugerida": "Trocar apenas esses eventos por respiração ou sopro audível pela boca já entreaberta, sem voz nem articulação, no mesmo gesto.",
+      "campos_dependentes": [
+        "som e overall_soundscape dos clipes 1–6",
+        "continuidade: manter as bocas sem articulação de fala"
+      ]
+    },
+    {
+      "clipe": 4,
+      "severidade": "BAIXO",
+      "campo": "som / overall_soundscape",
+      "problema": "O áudio acrescenta um impacto específico no batente que o plano não encena.",
+      "evidencia": "Às 00:03.100, a régua se alinha à vizinha e as bordas de gesso se encostam; não se mostra a régua batendo no limite do trilho.",
+      "correcao_sugerida": "Retirar a batida no batente e manter o ruído do tambor e o ranger das bordas.",
+      "campos_dependentes": [
+        "som e overall_soundscape do clipe 4"
+      ]
+    }
+  ],
+  "correcoes": [
+    {
+      "clipe": 4,
+      "campo": "set_historia",
+      "valor_corrigido": "SET: Industrial electrical teaching bay. Strip lights rake across a steel bench and its unplugged demonstration switch bank; the loose plug rests in a cradle. Four loosely linked aluminum slats form a dust shutter with a tack pad on each slat and a push tab on the leading slat. It runs over a rubber nose drum into a vertical front guide facing the camera. The captive rear pin reaches its stop only when the fourth slat stands upright in the front guide. The drum has a ribbed steel flange on the right. Teeth on its inner rim engage captive drive pins below the right ends of the slats throughout the stroke, including when the shutter is flat. Two shallow notches in the upper rail lips seat the U gauge's jaws at the shutter's width with the cover open or closed. A brass call bell and folded invoice rest on the left ledge. A rubber sheet droops beside a rigid mesh-backed plaster sheet on the right ledge. Both sheets span the shutter. The service side is behind the bench; the top masks the front guide from there."
+    },
+    {
+      "clipe": 2,
+      "campo": "planos[0].texto",
+      "valor_corrigido": "Frontal wide view. The clients draw their hands aside. TEO and JUCA take one step to the bench in their own lanes. TEO seats his plain U gauge in the two upper rail notches across the flat shutter. JUCA brings both hands to the sheets on the right ledge."
+    },
+    {
+      "clipe": 2,
+      "campo": "planos[1].texto",
+      "valor_corrigido": "At rail height, TEO lifts the gauge straight up. JUCA lifts the rubber without stretching it until its two side edges touch the jaws, then lets it flop back onto the ledge. He picks up the rigid plaster and slides both side edges between the same jaws, holding the sheet level."
+    },
+    {
+      "clipe": 3,
+      "campo": "planos[2].texto",
+      "valor_corrigido": "Cut low across the drum from the right front. A dark crooked gap opens towards the camera below the lip. The tab dips with the slat; JUCA lifts an empty palm to present a single row of switches. The ribbed flange remains within reach at his right, with a drive pin visible between its inner teeth."
+    },
+    {
+      "clipe": 4,
+      "campo": "planos[1].texto",
+      "valor_corrigido": "Frame the drum and both workers from the front quarter. TEO levels the straight back of his U gauge above the rail. JUCA cups the flange like a steering wheel and turns it backwards. Its inner teeth lift the captive drive pin and feed the hanging slat back into line. The split edges meet, leaving a crooked hairline. A drive pin remains engaged with the shutter flat."
+    },
+    {
+      "clipe": 5,
+      "campo": "planos[1].texto",
+      "valor_corrigido": "Track a little closer to the nose. JUCA rolls the ribbed flange forwards; the engaged teeth feed the captive pins toward the guide, and the first plaster joint opens along its old break. TEO folds down a finger for each slat that turns. The second slat dips after the first, pulling its patch of mesh around the drum until a fresh split runs from rail to rail above the first one."
+    },
+    {
+      "clipe": 6,
+      "campo": "planos[1].texto",
+      "valor_corrigido": "Hold a front-quarter view with the lip, the guide and both workers in frame. JUCA turns the flange. The third slat tips away from the fourth and the last plaster bridge splits from rail to rail. JUCA keeps turning until the fourth slat rounds the drum and stands upright in the guide; only then does the rear pin hit its stop. Four pieces hang on the mesh. TEO seats the gauge in the same two rail notches above the exposed switches, with empty space between the jaws."
+    },
+    {
+      "clipe": 3,
+      "campo": "STATE_LEDGER.episode_state.persistent_consequences[0]",
+      "valor_corrigido": "C3: fissura transversal na junta 1. C4: bordas da fissura 1 se encostam, sem reparo. C5: fissura 1 reaberta e fissura 2 nova. C6: fissura 3 nova; quatro pedaços retidos na tela, que permanece íntegra durante todo o curso."
+    },
+    {
+      "clipe": 1,
+      "campo": "som (evento humano)",
+      "valor_corrigido": "JUCA inspira brevemente pela boca entreaberta, sem voz, ao se inclinar."
+    },
+    {
+      "clipe": 1,
+      "campo": "overall_soundscape (evento humano)",
+      "valor_corrigido": "JUCA takes a short unvoiced breath through parted lips as he leans in."
+    },
+    {
+      "clipe": 2,
+      "campo": "som (evento humano)",
+      "valor_corrigido": "TÉO solta um sopro breve pela boca entreaberta, sem voz, quando o gesso passa."
+    },
+    {
+      "clipe": 2,
+      "campo": "overall_soundscape (evento humano)",
+      "valor_corrigido": "TEO exhales softly through parted lips, without voicing, as the plaster passes."
+    },
+    {
+      "clipe": 3,
+      "campo": "som (evento humano)",
+      "valor_corrigido": "JUCA solta o ar pela boca entreaberta, sem voz, ao erguer a palma."
+    },
+    {
+      "clipe": 3,
+      "campo": "overall_soundscape (evento humano)",
+      "valor_corrigido": "JUCA gives a short unvoiced puff through parted lips as he lifts his palm."
+    },
+    {
+      "clipe": 4,
+      "campo": "som",
+      "valor_corrigido": "JUCA solta um sopro curto pela boca entreaberta, sem voz, quando a mão para acima da borda; os dedos tamborilam de leve no aro de aço ao agarrá-lo; o tambor de borracha chia curto na volta; as bordas de gesso rangem baixinho ao se encostar."
+    },
+    {
+      "clipe": 4,
+      "campo": "overall_soundscape",
+      "valor_corrigido": "JUCA exhales through parted lips, without voicing, as his hand stops above the lip; fingertips tap the ribbed steel on taking hold; the rubber drum squeaks on the reverse turn; plaster edges grate softly as they meet."
+    },
+    {
+      "clipe": 5,
+      "campo": "som (evento humano)",
+      "valor_corrigido": "TÉO inspira brevemente pela boca entreaberta, sem voz, ao baixar o segundo dedo."
+    },
+    {
+      "clipe": 5,
+      "campo": "overall_soundscape (evento humano)",
+      "valor_corrigido": "TEO takes a short unvoiced breath through parted lips as he folds down his second finger."
+    },
+    {
+      "clipe": 6,
+      "campo": "som (evento humano)",
+      "valor_corrigido": "TÉO solta o ar de leve pela boca entreaberta, sem voz, quando o calibre assenta."
+    },
+    {
+      "clipe": 6,
+      "campo": "overall_soundscape (evento humano)",
+      "valor_corrigido": "TEO lets out a soft unvoiced breath through parted lips as the gauge seats."
+    }
+  ],
+  "resumo": "JSON válido: seis clipes de 10 s, três planos cronológicos por clipe e cinco pares de estados literalmente iguais. A abertura e a volta do clipe 1 preparam os gestos dos clientes; a prensagem e a curva demonstram a primeira fissura no clipe 3. A ré dá uma falsa vitória e prepara a progressão de uma a três fissuras sem sair da escala objeto. A trilha é instrumental e não há diálogo. Não liberar ao render até demonstrar o arraste das réguas e o curso final, estabelecer a referência do calibre, registrar o dano persistente e adequar o som bucal."
+}

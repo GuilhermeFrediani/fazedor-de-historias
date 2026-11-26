@@ -880,7 +880,7 @@ def ler_chave_agentrouter():
         return ""
 
 
-def agentrouter_responses(key, model, messages, max_tokens):
+def agentrouter_responses(key, model, messages, max_tokens, sistema=None):
     """Responses API com STREAMING. Descobertas 2026-11-05:
     - WAF do painel bloqueia imperativos de geração no input ('Gere...', 'Responda:',
       'Prosseguia.') → TODO o conteúdo vai em `instructions` e o input é só 'ok'.
@@ -892,7 +892,7 @@ def agentrouter_responses(key, model, messages, max_tokens):
     partes = []
     # FORÇAMENTO: o dossiê (MD + LEI DE FERRO) manda SEMPRE que existir,
     # ignorando qualquer system vindo do cliente — sem fala, sem texto, sem trilha.
-    sist = instrucoes_dossie() or "\n\n".join(m["content"] for m in messages if m["role"] == "system")
+    sist = sistema or instrucoes_dossie() or "\n\n".join(m["content"] for m in messages if m["role"] == "system")
     if sist:
         partes.append("=== INSTRUÇÕES DO SISTEMA ===\n" + sist)
     hist = [m for m in messages if m["role"] != "system"]
@@ -1037,9 +1037,11 @@ def gemini_transcrever(key, model, b64, mime, temperature=0.0):
     raise RuntimeError((ult or "falha Gemini") + " · todos os modelos tentados")
 
 
-def rodar_ia(api, messages):
+def rodar_ia(api, messages, sistema=None):
     """Resolve o modelo: kind interactions (Gemini, com fallback+previous_id)
     ou openai (compatível).  → (texto, uso, dorsal_id, modelo_usado)"""
+    if sistema and not any(m.get("role") == "system" for m in messages):
+        messages = [{"role": "system", "content": sistema}] + list(messages)
     if api.get("kind") == "interactions":
         key = api.get("key", "") or ler_chave()
         if not key:
@@ -1092,7 +1094,7 @@ def rodar_ia(api, messages):
             try:
                 # temperatura não suportada por estes modelos — intencionalmente não enviada
                 txt, uso, rid = agentrouter_responses(
-                    key, mdl, messages, orcamento)
+                    key, mdl, messages, orcamento, sistema=sistema)
                 return txt, uso, rid, mdl
             except urllib.error.HTTPError as e:
                 detalhe = e.read().decode("utf-8", "replace")[:400]
@@ -1236,15 +1238,21 @@ class Fazedor(BaseHTTPRequestHandler):
             if outros and (not api.get("model") or api.get("model") == criador):
                 api["model"] = outros[0]
         mensagens = [
-            {"role": "system", "content": auditor_v6.PROMPT_AUDITOR_V6},
             {"role": "user", "content": auditor_v6.mensagem_usuario(
                 ep, d.get("state_ledger"))},
         ]
         # SEM reforcar_canon: o auditor não cria; ele já traz o contrato V6.
-        txt, uso, dorsal, modelo = rodar_ia(api, mensagens)
+        txt, uso, dorsal, modelo = rodar_ia(
+            api, mensagens, sistema=auditor_v6.PROMPT_AUDITOR_V6)
         resumo, relatorio = extrair_json(txt)
         if not isinstance(relatorio, dict) or "auditoria" not in relatorio:
-            raise ValueError("o auditor não devolveu um relatório JSON válido")
+            try:
+                (EPISODIOS_DIR / "_ultimo_auditor_cru.txt").write_text(
+                    txt or "", encoding="utf-8")
+            except Exception:
+                pass
+            raise ValueError("o auditor não devolveu um relatório JSON válido | "
+                             "cru (600): " + str(txt or "")[:600])
         return self._json({"cru": txt, "resumo": resumo, "relatorio": relatorio,
                            "uso": uso, "interaction_id": dorsal, "modelo": modelo})
 
