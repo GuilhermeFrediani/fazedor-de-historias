@@ -73,7 +73,7 @@ CLIPES = [
     ("operacao_ralo_exato_v4_c03_primeira_falha_v2","V8_C03", "c03", False, 7002, 3),
     ("operacao_ralo_exato_v4_c04_jeitinho_v6a",     "V8_C04", "c04", False, 7102, 3),
     ("operacao_ralo_exato_v4_c05_escalada_v6a",     "V8_C05", "c05", False, 7200, 3),
-    ("operacao_ralo_exato_v4_c06_climax_v6a",       "V8_C06", "c06", True,  7200, 3),
+    ("operacao_ralo_exato_v4_c06_climax_v6a",       "V8_C06", "c06", True,  7201, 3),
 ]
 ALINHA = (" For the target video, at 0.00 seconds into the target video, <Picture 1> "
           "(from [Shot 1]) is fully referenced.")

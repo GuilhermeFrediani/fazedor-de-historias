@@ -13,7 +13,7 @@ Abre sozinho no navegador em `http://127.0.0.1:8756`. Fechar = `Ctrl+C` na janel
 ## Motor de lapidação (fixo): AgentRouter
 
 - Provedor único: **AgentRouter** (`https://agentrouter.org/v1/responses`, OpenAI Responses API).
-- Modelos: `gpt-6.1-sol` · `gpt-6-astra` · `gpt-5.6-sol` (lista oficial via `GET /v1/models`).
+- Modelos: `gpt-6.2-astra → gpt-6.2-sol` (lista oficial via `GET /v1/models`).
 - Chave em `config_secret.json` (`agentrouter_key`) — pré-carregada no app automaticamente.
 - Obstáculos que o app resolve sozinho: o WAF do painel só aceita UA de agente
   (usamos o do Codex CLI); os modelos **raciocinam** (esforço low, orçamento 96k
@@ -80,5 +80,5 @@ Abre sozinho no navegador em `http://127.0.0.1:8756`. Fechar = `Ctrl+C` na janel
 
 ## Certificação
 
-`python certificar_agentrouter.py` (com o servidor ligado) — roda os 3 modelos no
+`python certificar_agentrouter.py` (com o servidor ligado) - roda os 2 modelos no
 fluxo real (lapidação → validação → correção) e imprime o placar por modelo.

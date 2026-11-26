@@ -27,6 +27,12 @@ try:                                      # o cérebro de comédia vive ao lado 
 except Exception:                         # nunca derrubar o pipeline por causa do canon
     canon_comedia = None
 
+# v6: a trilha e OBRIGATORIA no contrato H3. Nunca N/A, nunca vocal.
+MUSICA_INSTRUMENTAL_PADRAO = (
+    "A quiet solo cello and soft brushed percussion keep a steady pulse under the "
+    "physical action, restrained and instrumental, with no vocals and no singing."
+)
+
 # ─────────────────────────────────────────────────────────────────────────────
 # 1. PROMPT MESTRE v4
 # ─────────────────────────────────────────────────────────────────────────────
@@ -67,7 +73,8 @@ Todo clipe declara 4 a 6 eventos de som CONCRETOS, na ordem em que acontecem:
   material + verbo + intensidade. Ex.: "steel grate slaps the concrete, hard".
 E todo clipe tem 2 sons humanos nao-verbais (resfolego, suspiro, estalo de lingua,
 assobio baixo) - um no plano B, outro no plano C.
-PROIBIDO: som de maquina sem corpo (hum, drone, buzz) e trilha genérica.
+PROIBIDO: som de maquina sem corpo (hum, drone, buzz). A musica e instrumental,
+discreta e SEMPRE presente (non_diegetic_music nunca vazio, nunca N/A, nunca vocal).
 
 === O QUE FAZ RIR EM CLAYMATION (usa isto, e so isto) ===
 a) ESCALA ABSURDA: o esforco e enorme para um resultado minimo (ou o contrario).
@@ -127,7 +134,8 @@ shots[]: n, dur (10), estagio, estado_in (EN, 1 linha), estado_out (EN, 1 linha)
   gag (PT, 1 linha), objeto_gag, fisica, reacao (PT, o corpo todo),
   som (PT: 4-6 eventos + 2 sons de boca),
   overall_soundscape (EN, 2-4 frases corridas),
-  non_diegetic_music (EN 1-2 frases curtas de instrumento E ritmo, ou N/A).
+  non_diegetic_music (EN 1-2 frases curtas de instrumento E ritmo — sempre presente,
+  nunca N/A, nunca vocal).
 NAO escreva lista de negativos: o modelo roda em cfg 1, sem ramo negativo, e a
 lista acaba virando conceito (foi o que trouxe "cartoon outlines" para o render).
 
@@ -180,7 +188,7 @@ def _hora(seg):
 
 
 def montar_prompt_v4(s, ep, blocos, musica=None, cliente_autorizado=False,
-                    ancora_descricao=None):
+                    ancora_descricao=None, exigir_cortes=False):
     """Prompt no formato OFICIAL do H3 (guia base_en):
        1) estilo + composicao + sujeitos + cenario (curto, ~70 palavras)
        2) planos com corte datado: [Shot 1] ... [Shot 2] At 00:03.500, ...
@@ -204,6 +212,11 @@ def montar_prompt_v4(s, ep, blocos, musica=None, cliente_autorizado=False,
     set_txt = set_txt.replace("SET:", "").strip()
 
     planos = s.get("planos") or []
+    if exigir_cortes and len(planos) < 2:
+        # v6: barreira de producao — clipe sem corte nao chega ao render.
+        raise ValueError(
+            "[clipe %s] %d plano(s): a v4/v6 exige 2-3 planos com corte datado."
+            % (s.get("n", "?"), len(planos)))
     if not planos:                        # compatibilidade com episodios antigos
         planos = [{"t": "00:00.000", "texto": str(s.get("action", ""))}]
 
@@ -257,7 +270,9 @@ def montar_prompt_v4(s, ep, blocos, musica=None, cliente_autorizado=False,
     som = str(s.get("overall_soundscape", "")).strip()
     if som:
         p_out += "\noverall_soundscape: " + som
-    mus = musica or str(s.get("non_diegetic_music", "")).strip() or "N/A"
+    mus = musica or str(s.get("non_diegetic_music", "")).strip()
+    if not mus or mus.upper() == "N/A":   # v6: N/A é erro; trilha instrumental sempre
+        mus = MUSICA_INSTRUMENTAL_PADRAO
     p_out += "\nnon_diegetic_music: " + mus
     return p_out
 

@@ -21,6 +21,7 @@ import re
 import subprocess
 import sys
 import time
+import os
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -35,6 +36,7 @@ META = EPISODIOS / "_smoke_meta.json"
 PIPE = APP.parent / "pipeline"
 sys.path.insert(0, str(PIPE))
 import qc_visao, scan_ceu  # noqa: E402  (visao + varredura de ceu; escopo do MODULO)
+import regras_v4  # noqa: E402  (v6: trilha instrumental obrigatoria no H3)
 TENT_MAX = 1  # time-box: 1 tentativa por clipe; o melhor e bancado como fallback
               # controlado e a cadeia SEGUE (sem loops de 3x16 min = sem 5 horas)
 TENT_ANCORA = 5                        # a ancora e a fundacao: 5 tentativas
@@ -62,6 +64,21 @@ class _Tee:
                 f.flush()
             except Exception:
                 pass
+
+
+def heartbeat(ep_dir, etapa, **extra):
+    """Sinal de vida atômico para o render_supervisor (fora da sessão)."""
+    try:
+        reg = ep_dir / "automation"
+        reg.mkdir(parents=True, exist_ok=True)
+        obj = {"em": time.strftime("%Y-%m-%d %H:%M:%S"), "etapa": etapa,
+               "pid": os.getpid()}
+        obj.update(extra)
+        tmp = reg / "heartbeat.json.tmp"
+        tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+        os.replace(tmp, reg / "heartbeat.json")
+    except Exception:
+        pass
 
 
 def carregar():
@@ -233,6 +250,11 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
                   contas="", e=None):
     refs = ep_dir / "refs"
     refs.mkdir(exist_ok=True)
+    som0 = str(st_c01.get("overall_soundscape") or "").strip() or (
+        "room tone of the enclosed set, water dripping slowly")
+    mus0 = str(st_c01.get("non_diegetic_music") or "").strip()
+    if not mus0 or mus0.upper() == "N/A":   # v6: N/A é erro no contrato H3
+        mus0 = regras_v4.MUSICA_INSTRUMENTAL_PADRAO
     head = st_c01["prompt"][:st_c01["prompt"].find("AT START:")].rstrip()
     PROMPT = (head + " AT START: " + estado_planejado + ". "
               "[Shot 1] the opening wide frame holding EXACTLY the state above: every "
@@ -244,8 +266,8 @@ def render_ancora(key, ep_dir, setdir, slug, st_c01, estado_planejado, props, cl
               + " AT END: the same wide frame, unchanged. They do not speak and "
               "their mouths do not move, but they breathe, swallow and react with their "
               "whole bodies."
-              "\noverall_soundscape: room tone of the enclosed set, water dripping slowly."
-              "\nnon_diegetic_music: N/A")
+              "\noverall_soundscape: " + som0
+              + "\nnon_diegetic_music: " + mus0)
     for tent in range(TENT_ANCORA):
         slug_a = slug + "_ancora" + ("" if tent == 0 else "_r%d" % tent)
         st = _com_max_ram(dict(st_c01))
@@ -286,6 +308,7 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
     refs = ep_dir / "refs"
     refs.mkdir(exist_ok=True)
     tentativas = []
+    raw_f = refs / ("raw_%s.json" % curto)   # checkpoint ANTES do gate
     for tent in range(TENT_MAX):
         sufixo = "_sm" + ("" if tent == 0 else "_r%d" % tent)
         slug = slug_base + sufixo
@@ -302,17 +325,39 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
         sdf.write_text(json.dumps(st, indent=2, ensure_ascii=False), encoding="utf-8")
         print("\n=== %s · tentativa %d/%d · seed %d · cliente=%s ==="
               % (slug, tent + 1, TENT_MAX, st["seed"], "SIM" if cliente else "NAO"), flush=True)
-        t0 = time.time()
-        r = subprocess.run([PY, GEN, "--settings", str(sdf), "--tag", "SMOKE_C%02d" % n],
-                           cwd=CWD)
-        dur = (time.time() - t0) / 60
-        cand = [p for p in OUT.glob(slug + "*.mp4") if p.stat().st_mtime >= t0 - 5]
-        print("  render rc=%d · %.1f min" % (r.returncode, dur), flush=True)
-        if r.returncode != 0 or not cand:
-            tentativas.append({"slug": slug, "seed": st["seed"], "rc": r.returncode,
-                               "falha": "render"})
-            continue
-        mp4 = max(cand, key=lambda p: p.stat().st_mtime)
+        raw = None
+        if tent == 0 and raw_f.exists():
+            try:
+                raw = json.loads(raw_f.read_text(encoding="utf-8"))
+            except Exception:
+                raw = None
+        if raw and raw.get("mp4") and Path(raw["mp4"]).exists():
+            mp4 = Path(raw["mp4"])
+            dur = float(raw.get("dur_min") or 0.0)
+            print("  RAW REAPROVEITADO: %s (%.1f min) — gate sem re-render"
+                  % (mp4.name, dur), flush=True)
+        else:
+            t0 = time.time()
+            try:
+                r = subprocess.run([PY, GEN, "--settings", str(sdf),
+                                    "--tag", "SMOKE_C%02d" % n], cwd=CWD, timeout=2100)
+            except subprocess.TimeoutExpired:
+                tentativas.append({"slug": slug, "seed": st["seed"],
+                                   "falha": "timeout_render"})
+                continue
+            dur = (time.time() - t0) / 60
+            cand = [p for p in OUT.glob(slug + "*.mp4") if p.stat().st_mtime >= t0 - 5]
+            print("  render rc=%d · %.1f min" % (r.returncode, dur), flush=True)
+            if r.returncode != 0 or not cand:
+                tentativas.append({"slug": slug, "seed": st["seed"], "rc": r.returncode,
+                                   "falha": "render"})
+                continue
+            mp4 = max(cand, key=lambda p: p.stat().st_mtime)
+        # checkpoint: se o processo morrer no gate, o restart re-gateia este mp4
+        raw_f.write_text(json.dumps({
+            "slug": slug, "curto": curto, "seed": st["seed"], "mp4": str(mp4),
+            "dur_min": round(dur, 2), "salvo_em": time.strftime("%Y-%m-%d %H:%M:%S"),
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
         # limiar 0.15: a rede caça BANDA DE CEU (as violacoes do v7 eram 40-100% do topo).
         # 10% por 0,5 s é tom de vidro fosco fechado — falso-positivo que custava 16 min
         # por tentativa. A janela desta sala é FOSCA (fechada): o azul dela não é exterior.
@@ -367,8 +412,16 @@ def render_com_gate(key, ep_dir, setdir, slug_base, n, total, ancora_png, estado
                            "mp4": str(mp4), "psnr_f02": ps, "scan_ceu": sc,
                            "gate_ancora": j99, "gate_frames": dict(verds)})
         if all(_ok(verds[t], ins) for t, _d, _e, ins in planos):
+            try:
+                raw_f.unlink()      # gate aprovou: checkpoint cumpriu o papel
+            except Exception:
+                pass
             return mp4, f99, tentativas
         print("  gate reprovou - retry seed+1", flush=True)
+    try:
+        raw_f.unlink()              # sem aprovação: não reaproveitar este mp4
+    except Exception:
+        pass
     return None, None, tentativas
 
 
@@ -441,6 +494,7 @@ def main():
     banco_f = ep_dir / "smoke_bancados.json"
     banco = json.loads(banco_f.read_text(encoding="utf-8")) if banco_f.exists() else {}
     feitos = []
+    heartbeat(ep_dir, "iniciando")
 
     def salvar_relatorio():
         (ep_dir / "smoke_relatorio.json").write_text(
@@ -470,15 +524,19 @@ def main():
         banco["ancora"] = str(ancora)
         banco_f.write_text(json.dumps(banco, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    heartbeat(ep_dir, "ancora", ancora=str(ancora))
+
     # ── FASE 1: cadeia de clipes ─────────────────────────────────────────────
     for i, f in enumerate(clipes, 1):
         curto = "c%02d" % i
         slug_base = f.name[:-len("_settings.json")]   # stem tira o .json, nao o sufixo
+        heartbeat(ep_dir, curto + "_inicio")
         if curto in banco.get("clipes", {}):
             print("\n>>> %s BANCADO — pulando" % curto, flush=True)
             feitos.append(banco["clipes"][curto])
             ancora = Path(banco["clipes"][curto]["ancora_out"])
             salvar_relatorio()
+            heartbeat(ep_dir, curto + "_bancado", pulado=True)
             continue
         st_base = json.loads(f.read_text(encoding="utf-8"))
         mo_end = re.search(r"AT END: (.+?)\.?(?:\n|$)", st_base["prompt"])
@@ -503,6 +561,7 @@ def main():
                 banco_f.write_text(json.dumps(banco, ensure_ascii=False, indent=2),
                                    encoding="utf-8")
                 salvar_relatorio()
+                heartbeat(ep_dir, curto + "_fallback", aprovado=False)
                 continue
             print("XX %s nao aprovado e sem fallback — cadeia para aqui." % slug_base,
                   flush=True)
@@ -516,16 +575,19 @@ def main():
         banco.setdefault("clipes", {})[curto] = feitos[-1]
         banco_f.write_text(json.dumps(banco, ensure_ascii=False, indent=2), encoding="utf-8")
         salvar_relatorio()
+        heartbeat(ep_dir, curto + "_aprovado", aprovado=True)
 
     salvar_relatorio()
     n_ok = sum(1 for f in feitos if f.get("aprovado"))
     print("\n>>> CADEIA SMOKE: %d/%d clipes aprovados" % (n_ok, total), flush=True)
+    heartbeat(ep_dir, "montagem", aprovados=n_ok, total=total)
 
     # ── FASE 2: montagem final ───────────────────────────────────────────────
     saida = fase_final(ep_dir, slug, feitos, total)
     print("\n===== SMOKE 60 s FIM %s =====" % time.strftime("%Y-%m-%d %H:%M:%S"), flush=True)
     if not saida:
         sys.exit(3)
+    heartbeat(ep_dir, "concluido", final=str(saida))
 
 
 if __name__ == "__main__":

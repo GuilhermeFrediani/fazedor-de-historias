@@ -37,8 +37,11 @@ prompts prontos para o pipeline de vídeo (MiniMax H3 via WanGP).
 | `fazedor_app/canon_comedia.py` | **Cérebro de comédia permanente** (canon `zeca_joca_v1`): Zeca e Joca / Pat & Mat + teoria do humor + causa→efeito→payoff + continuidade de objetos/cenário |
 | `fazedor_app/regras_v4.py` | `PROMPT_MESTRE_V5` = v4 + cérebro; validador cobra o arco e os campos do canon |
 | `CANON_COMEDIA_ZECA_JOCA.md` | Versão legível do cérebro (referência completa + contrato + checklist) |
-| `PROMPT_SISTEMA_v4.txt` | Prompt de sistema completo (v4 + cérebro) para colar em qualquer IA |
+| `PROMPT_SISTEMA_v6.txt` / `fazedor_app/regras_v6.py` | **Prompt canônico atual (v6)** — comédia + causalidade + continuidade, com o mesmo contrato JSON da v4. `instrucoes_dossie()` aponta para ele |
+| `PROMPT_SISTEMA_v4.txt` | Prompt v4/v5 (histórico) — v4 + cérebro, para referência/rollback |
 | `fazedor_app/` | O app: servidor stdlib + UI (mic 🎙️, 🎲 autoepisódio, cartões, validação, settings) |
+| `fazedor_app/auditor_v6.py` | **AUDITOR_V6** — segundo agente independente (por padrão o outro modelo do par); exposto em `/api/auditar` |
+| `fazedor_app/benchmark_v6.py` | Benchmark Astra × Sol: 5 tarefas + auditoria cruzada. `python benchmark_v6.py --dry` (padrão) / `--run` (chama as APIs) |
 | `fazedor_app/certificar_agentrouter.py` | Certifica os 3 modelos no fluxo real (lapidação → validação → correção) |
 
 ## Rodar

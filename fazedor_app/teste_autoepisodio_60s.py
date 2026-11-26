@@ -98,14 +98,15 @@ def gerar(pieces, fcfg, mensagens):
 
 
 def mensagens_iniciais(pieces, ideia):
+    v6 = pieces.get("v6") or ""          # v6 já traz o cérebro embutido
+    base = v6 or pieces.get("dossie_md") or pieces.get("sistema") or ""
+    extra = "" if v6 else ("\n\n" + (pieces.get("comedia_canon") or ""))
     return [
-        {"role": "system",
-         "content": (pieces.get("dossie_md") or pieces.get("sistema") or "")
-                    + "\n\n" + (pieces.get("comedia_canon") or "")},
+        {"role": "system", "content": base + extra},
         {"role": "user",
          "content": ("IDEIA DO USUÁRIO:\n" + ideia +
                      "\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco "
-                     "```json``` no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. "
+                     "```json``` no formato PROMPT_MESTRE_V6 (planos/estado/som/música). "
                      "Nada depois do JSON.")},
     ]
 

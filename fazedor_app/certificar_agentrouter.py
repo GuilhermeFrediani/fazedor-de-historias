@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """CERTIFICADOR AGENTROUTER — prova que os 3 modelos conhecem o pipeline.
 
-Para cada modelo (gpt-6.1-sol, gpt-6-astra, gpt-5.6-sol):
+Para cada modelo (gpt-6.2-astra, gpt-6.2-sol):
   1. monta o historico EXATAMENTE como a UI (sistema 14 regras + exemplo + ideia)
   2. POST /api/gerar (rota real do app → kind responses → /v1/responses)
   3. POST /api/validar (as 14 regras do montar_prompts.py)
@@ -13,8 +13,8 @@ import json, io, sys, time, urllib.request
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 BASE = "http://127.0.0.1:8756"
 AR_ENDPOINT = "https://agentrouter.org/v1/responses"
-MODELOS = ("gpt-6.1-sol", "gpt-6-astra", "gpt-5.6-sol")
-if len(sys.argv) > 1:                      # ex.: python certificar_agentrouter.py gpt-6.1-sol
+MODELOS = ("gpt-6.2-astra", "gpt-6.2-sol")
+if len(sys.argv) > 1:                      # ex.: python certificar_agentrouter.py gpt-6.2-astra
     MODELOS = tuple(sys.argv[1:])
 CF = "```"
 IDEIA = ("Contratados para tirar as cracas do casco de um navio encalhado na praia. "
@@ -35,13 +35,13 @@ def post(url, obj, timeout=3600):
 
 
 def historico(sistema, exemplo, ideia):
-    """Dossiê v1.0: MEMORY DIRECTIVE como system + ideia. Sem exemplo (o template
-    já está dentro da directive; o exemplo antigo é de outro formato)."""
+    """V6: PROMPT_MESTRE_V6 como system + ideia. Sem exemplo (o contrato
+    já está dentro do prompt; o exemplo antigo é de outro formato)."""
     return [
         {"role": "system", "content": sistema},
         {"role": "user", "content": "IDEIA DO USUÁRIO:\n" + ideia +
                                     "\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco "
-                                    + CF + "json" + CF + " no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. "
+                                    + CF + "json" + CF + " no formato PROMPT_MESTRE_V6 (planos/estado/som/música). "
                                     "Nada depois do JSON."},
     ]
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     if not key:
         print("SEM agentrouter_key em config_secret.json — abortando")
         sys.exit(2)
-    hist = historico(p.get("dossie_md") or p["sistema"], p["exemplo"], IDEIA)
+    hist = historico(p.get("v6") or p.get("dossie_md") or p["sistema"], p["exemplo"], IDEIA)
     print(f"ideia: {IDEIA}\n")
     placar = {}
     for m in MODELOS:

@@ -106,7 +106,7 @@
         <button id="bApi" class="primary" title="A IA transforma a ideia da caixa acima no roteiro completo — leva 5–15 min">🤖 Lapidar esta ideia (IA)</button>
         <button id="bConf">⚙️ Config</button>
         <span style="flex:1"></span>
-        <button id="bCola" class="teal" title="PLANO B sem API: monta o pacote da MEMORY DIRECTIVE para colar num chat gratuito (GLM/Gemini/ChatGPT) e trazer a resposta de volta">📦 Pacote p/ chat externo (sem API)</button>
+        <button id="bCola" class="teal" title="PLANO B sem API: monta o pacote do PROMPT_MESTRE_V6 para colar num chat gratuito (GLM/Gemini/ChatGPT) e trazer a resposta de volta">📦 Pacote p/ chat externo (sem API)</button>
         <button id="bLimpa">🧹 limpar</button>
       </div>
       <div class="status" id="status1"></div>
@@ -149,11 +149,11 @@
     <div>
       <label>Provedor</label>
       <select id="apiProv">
-        <option value="agentrouter" selected>AgentRouter — gpt-6.1-sol / gpt-6-astra / gpt-5.6-sol (fixo e validado)</option>
+        <option value="agentrouter" selected>AgentRouter — gpt-6.2-astra / gpt-6.2-sol (fixo e validado)</option>
       </select>
       <label>Endpoint</label>
       <input type="text" id="apiUrl">
-      <label>Modelo (ex.: gemini-3.8-flash · gpt-6.1-sol · gpt-6-astra · gpt-5.6-sol)</label>
+      <label>Modelo (ex.: gemini-3.8-flash · gpt-6.2-astra · gpt-6.2-sol)</label>
       <input type="text" id="apiModel" list="dlModelos">
       <datalist id="dlModelos"></datalist>
       <label>Nível de pensamento (Gemini, thinking)</label>
@@ -197,12 +197,14 @@
   <h2><span class="num">5</span>Validação (as 14 regras do pipeline)</h2>
   <div class="linha">
     <button id="bValidar" class="teal">▶ validar episódio</button>
+    <button id="bAuditar" class="teal" title="Auditor independente: usa o OUTRO modelo para procurar falhas de causalidade e continuidade">🔎 auditar (outro modelo)</button>
     <button id="bCorrApi">🧠 corrigir com a IA (API)</button>
     <span style="flex:1"></span>
     <span id="valSum" class="pill">—</span>
   </div>
   <ul class="uls" id="valLista"></ul>
   <div class="status" id="status5"></div>
+  <pre id="audRelatorio" class="espreita" style="white-space:pre-wrap;font-family:Consolas,monospace;max-height:340px;overflow:auto"></pre>
 </section>
 
 <!-- 6 · SAÍDA -->
@@ -237,7 +239,7 @@
 "use strict";
 const $ = id => document.getElementById(id);
 const ESTAGIOS = ["LIGACAO","CHEGADA","DIAGNOSTICO_ERRADO","PRIMEIRA_FALHA","JEITINHO","PAUSA_COMICA","ESCALADA","CLIMAX","REACAO_EM_CORO","NOTA_FISCAL"];
-let PIECES = {sistema:"",exemplo:"",blocos:{},dossie_md:"",dossie_estagios:[],dossie_dur:10,matriz:{},comedia_versao:"",comedia_bloco:"",comedia_canon:""};
+let PIECES = {sistema:"",exemplo:"",blocos:{},v6:"",dossie_md:"",dossie_estagios:[],dossie_dur:10,matriz:{},comedia_versao:"",comedia_bloco:"",comedia_canon:""};
 let EPISODIO = null;              // objeto editável (fonte única)
 let PACOTE = "";                  // texto do modo cola
 let historicoAPI = [];            // mensagens p/ modo API
@@ -505,7 +507,12 @@ $("bCola").onclick = () => {
   if(!ideia){ status("status1","escreva ou fale a ideia primeiro","var(--terracota)"); return; }
   $("secCola").classList.remove("oculto");
   const CANON = PIECES.comedia_canon || PIECES.comedia_bloco || "";
-  if(PIECES.dossie_md){
+  if(PIECES.v6){
+    PACOTE = "INSTRUÇÕES: abaixo está o PROMPT_MESTRE_V6 (canônico). Ele já contém o cérebro de comédia e o contrato JSON completo.\n" +
+             "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio no formato V6 (planos/estado/som/música — sem beats e sem action). Nada depois do JSON.\n\n" +
+             PIECES.v6 + "\n\n" +
+             "=== IDEIA DO USUÁRIO ===\n" + ideia + "\n";
+  } else if(PIECES.dossie_md){
     PACOTE = "INSTRUÇÕES: abaixo está a MEMORY DIRECTIVE fixa do agente TÉO & JUCA (dossiê v1.0). Ela define formato, regras e o template de saída.\n" +
              "Depois receba a IDEIA DO USUÁRIO e produza EXATAMENTE: (1) o RESUMO em português (máx. 8 linhas) e (2) um único bloco " + CF + "json com o episódio (30 clipes de 10 s). Nada depois do JSON.\n\n" +
              PIECES.dossie_md + "\n\n" +
@@ -539,9 +546,9 @@ $("bCopCorrecao").onclick = () => copiar(PACOTE_CORRECAO);
 
 /* ── 3 · API ── */
 const ENDPOINTS = {agentrouter:"https://agentrouter.org/v1/responses"};
-const MODELOS = {agentrouter:"gpt-5.6-sol"};
+const MODELOS = {agentrouter:"gpt-6.2-astra"};
 const KIND = {agentrouter:"responses"};
-const AR_MODELOS = ["gpt-6.1-sol","gpt-6-astra","gpt-5.6-sol"];
+const AR_MODELOS = ["gpt-6.2-astra","gpt-6.2-sol"];
 const KEYS_SERVIDOR = {};   // chave pré-carregada pelo /api/fcfg
 let PREV_ID = "";
 $("bConf").onclick=()=>{ $("secApi").classList.toggle("aberto"); };
@@ -567,7 +574,7 @@ async function configInicial(){
     $("apiProv").value="agentrouter";
     const salvouAr = prefs.url && prefs.url.includes("agentrouter");
     $("apiUrl").value = salvouAr ? prefs.url : (f.ar_endpoint||ENDPOINTS.agentrouter);
-    $("apiModel").value = f.model_ar || "gpt-5.6-sol";   // sempre o rápido certificado por padrão
+    $("apiModel").value = f.model_ar || "gpt-6.2-astra";   // sempre o certificado por padrão
     const chaveSalva = (prefs.key && salvouAr) ? prefs.key : "";
     $("apiChave").value = chaveSalva || KEYS_SERVIDOR.agentrouter || "";
     $("apiTemp").value = prefs.temp || "0.8"; $("tempVal").textContent = $("apiTemp").value;
@@ -635,9 +642,11 @@ function _paraCrono(origApi, origAuto){
 async function lapidarComAPI(ideia){
   if(!cfgOk()) return false;
   const dados = cfgAPI(); dados.previous_id = undefined; PREV_ID = "";
+  const sysBase = PIECES.v6 || PIECES.dossie_md || PIECES.sistema;
+  const sysExtra = PIECES.v6 ? "" : "\n\n" + (PIECES.comedia_canon || PIECES.comedia_bloco || "");
   historicoAPI = [
-    {role:"system",content:(PIECES.dossie_md||PIECES.sistema)+"\n\n"+(PIECES.comedia_canon||PIECES.comedia_bloco||"")},
-    {role:"user",content:"IDEIA DO USUÁRIO:\n"+ideia+"\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco " + CF + "json" + CF + " no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. Nada depois do JSON."}
+    {role:"system",content:sysBase + sysExtra},
+    {role:"user",content:"IDEIA DO USUÁRIO:\n"+ideia+"\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco " + CF + "json" + CF + " no formato PROMPT_MESTRE_V6 (planos/estado/som/música — sem beats e sem action). Nada depois do JSON."}
   ];
   const b = $("bApi"), a = $("bAuto");
   const origApi=b.textContent, origAuto=a.textContent;
@@ -649,7 +658,7 @@ async function lapidarComAPI(ideia){
     const s = Math.floor((Date.now()-t0)/1000);
     const mm = String(Math.floor(s/60)).padStart(2,"0"), ss = String(s%60).padStart(2,"0");
     let msg = "🧠 a IA está escrevendo o roteiro completo… "+mm+":"+ss+" (normal levar 5–15 min — os modelos raciocinam antes de escrever)";
-    if(s > 1200) msg += " — DICA: passou de 20 min. Recarregue (F5), confira se o campo Modelo está gpt-5.6-sol (o mais rápido) e gere de novo";
+    if(s > 1200) msg += " — DICA: passou de 20 min. Recarregue (F5), confira se o campo Modelo está gpt-6.2-astra e gere de novo";
     status("status1", msg, "var(--mostarda)");
   }, 1000);
   let ok=false;
@@ -679,9 +688,11 @@ async function corrigirComIA(){
   const b = $("bCorrApi"); b.disabled=true; const orig=b.textContent; b.textContent="🧠 corrigindo…";
   try{
     const av = ultimaValidacao.avisos&&ultimaValidacao.avisos.length ? ("\nAvisos (melhore, sem quebrar o resto): "+ultimaValidacao.avisos.join(" ; ")):"";
-    const msg = "Seu JSON anterior falhou na validação do pipeline. Devolva O JSON COMPLETO corrigido (mesmo formato: RESUMO curto + um único bloco " + CF + "json" + CF + "), corrigindo:\n" +
+    const msg = "Seu JSON anterior falhou na validação do pipeline. Devolva O JSON COMPLETO corrigido (mesmo formato PROMPT_MESTRE_V6: RESUMO curto + um único bloco " + CF + "json" + CF + ", com planos/estado/som/música), corrigindo:\n" +
                 erros.map((e,i)=>(i+1)+". "+e).join("\n") + av;
-    const mensagens = [{role:"system",content:PIECES.sistema+"\n\n"+(PIECES.comedia_canon||PIECES.comedia_bloco||"")}];
+    const sistemaV6 = PIECES.v6 || PIECES.sistema;
+    const extraSistema = PIECES.v6 ? "" : ("\n\n"+(PIECES.comedia_canon||PIECES.comedia_bloco||""));
+    const mensagens = [{role:"system",content:sistemaV6+extraSistema}];
     if(semEstado){
       // provedores sem memória: reenvia a resposta anterior como histórico
       mensagens.push({role:"user",content:"(Sua resposta anterior está abaixo.)"},
@@ -822,6 +833,26 @@ function camposLigar(s){
 
 /* ── 5 · validar ── */
 $("bValidar").onclick = ()=>validar();
+$("bAuditar").onclick = async ()=>{
+  if(!EPISODIO) return status("status5","carregue um episódio primeiro","var(--terracota)");
+  if(!cfgOk())return;
+  const b=$("bAuditar"), orig=b.textContent;
+  b.disabled=true; b.textContent="🔎 auditando…";
+  status("status5","auditor analisando o episódio (usa o outro modelo)…","var(--mostarda)");
+  try{
+    const api = cfgAPI(); delete api.previous_id;   // auditoria independente da conversa de criação
+    const j = await jpost("/api/auditar",{api:api, episodio:EPISODIO,
+                         modelo_criador:$("apiModel").value.trim(),
+                         state_ledger:EPISODIO.state_ledger||null});
+    const r=j.relatorio||{}, a=r.auditoria||{};
+    $("audRelatorio").textContent = JSON.stringify(r,null,2);
+    $("audRelatorio").classList.remove("espreita");
+    status("status5","auditoria "+esc(a.status||"?")+" · nota "+esc(a.nota_geral||0)+
+          " · críticas "+(a.falhas_criticas||0)+" · altas "+(a.falhas_altas||0)+
+          " · modelo "+esc(j.modelo||""),"#9fd9a2");
+  }catch(e){ status("status5","auditoria falhou: "+e.message,"var(--terracota)"); }
+  b.disabled=false; b.textContent=orig;
+};
 $("bCorrApi").onclick = ()=>corrigirComIA();
 async function validar(){
   if(!EPISODIO){ status("status5","carregue um episódio primeiro","var(--terracota)"); return null; }

@@ -208,8 +208,9 @@ PERSONAGENS E LEIS DE FERRO
 - TÉO à esquerda: mede, planeja, confia no método; erra por excesso de precisão.
 - JUCA à direita: executa com convicção total; erra por pressa e por força.
 - Quem mede nunca executa; quem executa nunca confere — o erro nasce do intervalo entre os dois.
-- ZERO fala, ZERO texto legível, ZERO música. O som é foley diegético nomeado + 1 som não-verbal
-  por clipe (resfolego, suspiro, assobio baixo).
+- ZERO fala, ZERO texto legível. ÁUDIO V6 = foley diegético nomeado + música instrumental
+  discreta (non_diegetic_music SEMPRE presente: nunca vazio, nunca N/A, nunca vocal) +
+  pelo menos 1 som bucal não-verbal por clipe (resfolego, suspiro, assobio baixo).
 - DANO SÓ MATERIAL: ninguém se machuca, sem dor, sem sangue, sem animal machucado, sem crueldade.
 - Reação subdimensionada: eles registram o desastre e voltam ao trabalho; nunca pânico, nunca
   "cara de ops". No fim, orgulho e aperto de mãos.
@@ -297,7 +298,7 @@ CHECKLIST = r"""
 [ ] o fundo é o mesmo em todos os clipes e o SET é afirmativo/fechado?
 [ ] a escalada herda do degrau anterior e termina no payoff visual?
 [ ] o último clipe entrega o serviço errado + callback + orgulho?
-[ ] zero fala/texto/música; dano material; ninguém se machuca?
+[ ] zero fala/texto legível; música instrumental discreta (nunca N/A); dano material; ninguém se machuca?
 [ ] a mesma gag/mecanismo volta com variação (repetição com física diferente)?
 [ ] o público vê o erro antes dos personagens?
 [ ] a gag nasce da tarefa (o objeto do gag é o objeto do serviço)?
@@ -331,7 +332,8 @@ vê o erro antes deles; o riso nasce da seriedade deles diante do desastre.
 Contrato: UM clipe = UM objeto + UMA causa + UM efeito + UM payoff. Causa visível no clipe
 anterior (herda_de/causa); efeito material persistente; estado_out(N) == estado_in(N+1); cada
 objeto tem contagem, plantio e dono de posição (nada duplica, teleporta ou some); SET afirmativo
-e fechado (sem exterior); TÉO mede à esquerda, JUCA executa à direita; zero fala/texto/música;
+e fechado (sem exterior); TÉO mede à esquerda, JUCA executa à direita; zero fala/texto legível;
+música instrumental discreta (non_diegetic_music nunca N/A) + som bucal não-verbal por clipe;
 dano só material; o último clipe fecha com o callback e o payoff_visual.
 Originalidade: inspire a mecânica, não copie personagens/cenas; TÉO & JUCA são originais.
 Sem sorte: toda solução tem custo visual. Aparência/roupa/cor vêm da âncora; o roteirista não reescreve.

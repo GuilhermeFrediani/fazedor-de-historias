@@ -49,7 +49,7 @@ def _chave():
 # - `temperature` nao e suportado; modelos RACIOCINAM (reasoning low + orcamento folgado)
 # - sincrono estoura 504 do ALB → stream obrigatorio
 AR_BASE = "https://agentrouter.org/v1"
-AR_MODELOS = ["gpt-5.6-sol", "gpt-6.1-sol", "gpt-6-astra"]
+AR_MODELOS = ["gpt-6.2-astra", "gpt-6.2-sol"]
 AR_UA = "codex_cli_rs/0.42.0 (Windows 11; x86_64) windows"
 
 

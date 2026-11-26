@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Teste do 🎲 Autoepisódio: sorteia tema (matriz do dossiê) e lapida pelo caminho real.
-Espelha EXATAMENTE o payload que a UI envia (system = MEMORY DIRECTIVE, user = ideia)."""
+Espelha EXATAMENTE o payload que a UI envia (system = PROMPT_MESTRE_V6, user = ideia)."""
 import json, io, sys, time, random, urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -42,16 +42,16 @@ print("IDEIA:", ideia)
 print()
 
 mensagens = [
-    {"role": "system", "content": p["dossie_md"] or p["sistema"]},
+    {"role": "system", "content": p.get("v6") or p["dossie_md"] or p["sistema"]},
     {"role": "user", "content": "IDEIA DO USUÁRIO:\n" + ideia +
                                 "\n\nResponda com RESUMO (máx 8 linhas, PT) + um único bloco "
-                                + CF + "json" + CF + " no TEMPLATE DE SAÍDA da MEMORY DIRECTIVE. "
+                                + CF + "json" + CF + " no formato PROMPT_MESTRE_V6 (planos/estado/som/música). "
                                 "Nada depois do JSON."},
 ]
 t0 = time.time()
 j = post(BASE + "/api/gerar", {"api": {"kind": "responses", "endpoint":
         "https://agentrouter.org/v1/responses", "key": pega(BASE + "/api/fcfg")["ar_key"],
-        "model": "gpt-5.6-sol", "temperature": 0.8, "max_tokens": 96000,
+        "model": "gpt-6.2-astra", "temperature": 0.8, "max_tokens": 96000,
         "na_fallback": True}, "messages": mensagens})
 print("LAPIDAÇÃO: %.1fs · modelo=%s · cru=%d chars" %
       (time.time() - t0, j.get("modelo"), len(j.get("cru", ""))))

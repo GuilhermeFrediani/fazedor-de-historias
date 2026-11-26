@@ -38,6 +38,14 @@ sys.path.insert(0, str(_HERE.parent))
 import regras_v3
 import regras_v4  # v3: camada de RENDERIZABILIDADE (orcamento de fisica + ancoras curtas)
 import canon_comedia  # v5: CÉREBRO DE COMÉDIA permanente (Zeca e Joca + causa→efeito→payoff)
+try:                      # v6: prompt canônico compatibilizado (rollback: ver instrucoes_dossie)
+    import regras_v6
+except Exception:         # nunca derrubar o app por causa do prompt novo
+    regras_v6 = None
+try:                      # v6: auditor independente (segundo modelo)
+    import auditor_v6
+except Exception:
+    auditor_v6 = None
 
 APP_DIR = _HERE
 PARENT = APP_DIR.parent                      # "fazedor de histórias"
@@ -429,10 +437,11 @@ objeto_gag: "tijolo sobre espuma"
 
 
 def instrucoes_dossie():
-    """v5: prompt mestre + CÉREBRO DE COMÉDIA (canon zeca_joca_v1).
-    O cérebro junta a referência Zeca e Joca/Pat & Mat, a teoria do humor e o
-    contrato de continuidade/causalidade/payoff. A âncora visual continua fora
-    daqui: o programa cola âncoras CURTAS (regras_v3)."""
+    """v6: prompt canônico = Arquitetura de Comédia, Causalidade e Continuidade.
+    ROLLBACK (1 linha): troque o return por `return regras_v4.PROMPT_MESTRE_V5`.
+    O cérebro (canon_comedia) continua injetado por reforcar_canon() em todo provedor."""
+    if regras_v6 is not None:
+        return regras_v6.PROMPT_MESTRE_V6
     return regras_v4.PROMPT_MESTRE_V5
 
 
@@ -549,11 +558,12 @@ def _action_ja_completa(act):
     return "claymation plasticine" in a or "handcrafted modelling clay" in a
 
 
-def prompt_dossie(s, ep):
+def prompt_dossie(s, ep, exigir_cortes=False):
     """v3: ACTION primeiro, ancoras CURTAS no meio, estilo/negativos no fim.
     Motivo: o modelo le o comeco do prompt. No v2 a acao ficava depois de ~3.900
     chars de roupa, e o video renderizava a roupa e ignorava a piada."""
-    return regras_v4.montar_prompt_v4(s, ep, blocos_fixos())
+    return regras_v4.montar_prompt_v4(s, ep, blocos_fixos(),
+                                      exigir_cortes=exigir_cortes)
 
 
 FORMATOS = {
@@ -670,8 +680,14 @@ def _validar_dossie_v2(ep):
             erros.append(f"[{i}] overall_soundscape vazio (o som e o punchline)")
         elif not SOM_NOMEADO.search(som):
             erros.append(f"[{i}] soundscape sem evento nomeado (material + verbo)")
-        if str(s.get("non_diegetic_music", "N/A")).strip().upper() != "N/A":
-            erros.append(f"[{i}] non_diegetic_music deve ser 'N/A' (zero trilha)")
+        mus = str(s.get("non_diegetic_music", "")).strip()
+        if not mus or mus.upper() == "N/A":
+            erros.append(f"[{i}] non_diegetic_music vazio/N/A - a V6 exige musica "
+                         f"instrumental discreta em todo clipe")
+        elif re.search(r"\b(vocal|vocals|voice|voices|choir|chorus|lyric|lyrics|sing|"
+                       r"sings|singing|singer|spoken|speech)\b", mus, re.I):
+            erros.append(f"[{i}] non_diegetic_music com vocal/fala - a V6 exige musica "
+                         f"instrumental (sem voz)")
         if not 3 <= len(beats) <= 4:
             avisos.append(f"[{i}] beats: {len(beats)} - o dossie pede 3 ou 4")
         if int(s.get("dur", 0) or 0) != DOSSIE_DUR:
@@ -774,8 +790,15 @@ def salvar_episodio(ep, sobrescrever=False):
             "episodio_json": str(pasta / "episodio.json")}
 
 
-def gerar_settings(ep, sobrescrever=False):
+def gerar_settings(ep, sobrescrever=False, forcar=False):
     ep = _normaliza_shots(ep)
+    # v6: BARREIRA DE PRODUCAO — settings só nascem de episódio aprovado.
+    if not forcar:
+        rel = validar_episodio(ep)
+        if rel.get("erros"):
+            raise ValueError(
+                "episódio reprovado (%d erro(s)); settings NÃO gerados. Primeiro erro: %s"
+                % (len(rel["erros"]), rel["erros"][0]))
     pasta = pasta_do_episodio(ep) / "settings"
     if pasta.exists() and not sobrescrever:
         raise FileExistsError(f"{pasta} já existe (489 sobrescrever=true para gravar por cima)")
@@ -793,7 +816,7 @@ def gerar_settings(ep, sobrescrever=False):
         if dossie:
             dur = int(s.get("dur", DOSSIE_DUR) or DOSSIE_DUR)
             cfg["video_length"] = f"{dur}s"
-            cfg["prompt"] = prompt_dossie(s, ep)
+            cfg["prompt"] = prompt_dossie(s, ep, exigir_cortes=True)
             cfg["output_filename"] = f"{slug}_c{n:02d}_{est}"
             total += dur
         else:
@@ -839,12 +862,11 @@ GEMINI_PENSAMENTO = {"minimo": "minimal", "baixo": "low", "medio": "medium", "al
 
 # ── AgentRouter (proxy OpenAI-compatível, /v1/responses) ──
 AR_BASE = "https://agentrouter.org/v1"
-AR_MODELOS = ["gpt-5.6-sol", "gpt-6.1-sol", "gpt-6-astra"]
+AR_MODELOS = ["gpt-6.2-astra", "gpt-6.2-sol"]
 # Sequência de orçamentos por modelo (canais aceitam tetos diferentes; o astra
 # costuma abortar o stream no meio com orçamentos grandes — response.failed).
-AR_ORCAMENTOS = {"gpt-5.6-sol": (96000, 64000, 48000),
-                 "gpt-6.1-sol": (96000, 64000, 48000),
-                 "gpt-6-astra": (64000, 48000, 32000, 24000)}
+AR_ORCAMENTOS = {"gpt-6.2-astra": (64000, 48000, 32000, 24000),
+                 "gpt-6.2-sol": (96000, 64000, 48000)}
 # O WAF do painel só libera clientes "agent" — UA do Codex CLI passa (testado 2026-11-05);
 # UA genérico recebe 401 "unauthorized client detected".
 AR_UA = "codex_cli_rs/0.42.0 (Windows 11; x86_64) windows"
@@ -880,11 +902,14 @@ def agentrouter_responses(key, model, messages, max_tokens):
             quem = "USUÁRIO" if m["role"] == "user" else "ASSISTENTE"
             partes.append(quem + ":\n" + str(m["content"]))
     partes.append("=== TAREFA ===\nAtenda à última mensagem do USUÁRIO acima, seguindo "
-                  "as instruções do sistema. Comece imediatamente, sem perguntas. "
-                  "Escreva o bloco de json COMPACTO (sem indentação, sem espaços "
-                  "desnecessários) para caber no orçamento de saída — o episódio tem "
-                  "30 clipes e é longo. Cada overall_soundscape usa eventos nomeados "
-                  "(material + verbo, ex.: 'shell barnacles crackle against steel').")
+                  "as instruções do sistema (PROMPT_MESTRE_V6). Comece imediatamente, "
+                  "sem perguntas. Escreva o bloco de json COMPACTO (sem indentação, sem "
+                  "espaços desnecessários) para caber no orçamento de saída. Siga "
+                  "exatamente a quantidade de clipes pedida e a contagem de estágios do "
+                  "contrato V6 (3, 6 ou 30 clipes) — não assuma 30 por padrão. Cada "
+                  "overall_soundscape usa eventos nomeados (material + verbo, ex.: "
+                  "'shell barnacles crackle against steel') com som bucal não-verbal, "
+                  "e non_diegetic_music é sempre música instrumental discreta, nunca N/A.")
     corpo = {"model": model,
              "instructions": "\n\n".join(partes),
              "input": [{"role": "user", "content": "ok"}],
@@ -1120,6 +1145,7 @@ class Fazedor(BaseHTTPRequestHandler):
 
     def do_POST(self):
         rotas = {"/api/gerar": self._gerar, "/api/validar": self._validar,
+                 "/api/auditar": self._auditar,
                  "/api/salvar": self._salvar, "/api/settings": self._settings,
                  "/api/transcrever": self._transcrever,
                  "/api/abrir_mic_settings": self._abrir_mic}
@@ -1149,6 +1175,7 @@ class Fazedor(BaseHTTPRequestHandler):
     def _pieces(self):
         self._json({"sistema": sistema_texto(), "exemplo": exemplo_texto(),
                     "blocos": blocos_fixos(),
+                    "v6": regras_v6.PROMPT_MESTRE_V6 if regras_v6 else "",
                     "dossie_md": memory_directive(),
                     "dossie_estagios": list(DOSSIE_ESTAGIOS.keys()),
                     "dossie_dur": DOSSIE_DUR,
@@ -1192,6 +1219,34 @@ class Fazedor(BaseHTTPRequestHandler):
         resumo, ep = extrair_json(txt)
         return self._json({"cru": txt, "resumo": resumo, "episodio": ep, "uso": uso,
                            "interaction_id": dorsal, "modelo": modelo})
+
+    def _auditar(self):
+        """v6: auditor independente. Por padrão usa o OUTRO modelo do par
+        (Astra cria → Sol audita), para ninguém validar o próprio trabalho."""
+        d = self._corpo()
+        api = dict(d.get("api") or {})
+        ep = d.get("episodio")
+        if not isinstance(ep, dict) or not ep.get("shots"):
+            raise ValueError("episódio sem shots")
+        if auditor_v6 is None:
+            raise ValueError("auditor_v6 indisponível")
+        criador = str(d.get("modelo_criador") or "").strip()
+        if api.get("kind") == "responses" and criador and not d.get("mesmo_modelo"):
+            outros = [m for m in AR_MODELOS if m != criador]
+            if outros and (not api.get("model") or api.get("model") == criador):
+                api["model"] = outros[0]
+        mensagens = [
+            {"role": "system", "content": auditor_v6.PROMPT_AUDITOR_V6},
+            {"role": "user", "content": auditor_v6.mensagem_usuario(
+                ep, d.get("state_ledger"))},
+        ]
+        # SEM reforcar_canon: o auditor não cria; ele já traz o contrato V6.
+        txt, uso, dorsal, modelo = rodar_ia(api, mensagens)
+        resumo, relatorio = extrair_json(txt)
+        if not isinstance(relatorio, dict) or "auditoria" not in relatorio:
+            raise ValueError("o auditor não devolveu um relatório JSON válido")
+        return self._json({"cru": txt, "resumo": resumo, "relatorio": relatorio,
+                           "uso": uso, "interaction_id": dorsal, "modelo": modelo})
 
     def _validar(self):
         ep = self._corpo().get("episodio")
@@ -1237,7 +1292,8 @@ class Fazedor(BaseHTTPRequestHandler):
         ep = _normaliza_shots(d.get("episodio"))
         if not isinstance(ep, dict) or not ep.get("shots"):
             raise ValueError("episódio sem shots")
-        return self._json(gerar_settings(ep, sobrescrever=d.get("sobrescrever", False)),
+        return self._json(gerar_settings(ep, sobrescrever=d.get("sobrescrever", False),
+                                         forcar=d.get("forcar", False)),
                           201)
 
 
@@ -1307,7 +1363,8 @@ def validar_dossie(ep):
     # v4 substitui tres regras da v2: trilha obrigatoria (nao N/A), montagem em planos
     # (nao 'beats') e prompt curto (nao 300-900 chars de acao corrida).
     if any(s.get("planos") for s in (ep_med.get("shots") or [])):
-        base["erros"] = [e for e in base["erros"] if "non_diegetic_music" not in e]
+        # v6: o erro de musica NAO e mais suprimido — non_diegetic_music instrumental
+        # passou a ser obrigatorio. So as regras de forma do formato v2 caem.
         base["avisos"] = [a for a in base["avisos"]
                           if "beats:" not in a and "alvo v2: 300-900" not in a]
     render = regras_v3.validar_renderizavel(ep_med)
