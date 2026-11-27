@@ -49,16 +49,13 @@ def main():
     fcfg = _get("/api/fcfg")
     criador = fcfg["model_ar"]
 
-    ledger = {"episode_state": {
-        "objects": episodio.get("objetos_plantados") or [],
-        "character_positions": {"teo": "left", "juca": "right"},
-        "persistent_consequences": [],
-    }}
+    # NAO fabricamos state_ledger: um ledger com posicoes fixas e consequencias
+    # vazias induz o auditor a erro de continuidade e esconde o ledger real do
+    # episodio (mensagem_usuario() so usa o episodio quando NAO vem ledger).
     corpo = {
         "api": {"kind": "responses", "endpoint": fcfg["ar_endpoint"], "model": criador},
         "episodio": episodio,
         "modelo_criador": criador,
-        "state_ledger": ledger,
     }
     print("=" * 78)
     print("AUDITORIA CRUZADA | criador=%s -> auditor=%s (o outro modelo)"
