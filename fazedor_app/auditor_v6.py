@@ -54,7 +54,9 @@ O episódio tem que obedecer ao mesmo contrato do PROMPT_MESTRE_V6:
   overall_soundscape, non_diegetic_music (instrumental, nunca N/A, nunca vocal),
   causa, efeito, payoff, escala.
 - `estado_out[N]` tem que ser igual a `estado_in[N+1]`.
-- som bucal não-verbal é permitido e obrigatório; fala/diálogo é proibido.
+- som bucal não-verbal é permitido e MODERADO: no máximo 1 por clipe, não em todos
+  os clipes; o episódio precisa de pelo menos um. Fala/diálogo é proibido.
+- foley nomeia FONTE (material) + EVENTO acústico; não basta "som de fundo".
 - formatos aceitos: 3, 6 ou 30 clipes, com contagem exata de estágios.
 
 Campos de planejamento (causa, efeito, payoff, herda_de, gag, fisica) não vão ao
@@ -93,9 +95,27 @@ tarde demais, intervalos sem informação, progressão da escalada, preparação
 clímax. Não reprove pausa que tenha função de antecipação.
 
 ETAPA G — ÁUDIO
-Foley ligado a evento visível; foley e música separados; música instrumental
-discreta e presente; ausência de vozes, diálogo e movimentos de boca simulando
-fala; ausência de boing/twang.
+Foley ligado a evento visível; cada evento nomeia a fonte (material) e o evento
+acústico; foley e música separados; música instrumental discreta e presente; ausência
+de vozes, diálogo e movimentos de boca simulando fala; ausência de boing/twang; som
+bucal moderado (com função de acting, não obrigatório em todo clipe).
+
+ETAPA H — TRANSIÇÃO FÍSICA VISÍVEL (§37 do PROMPT_MESTRE_V6)
+Para cada clipe, refaça o caminho estado inicial → ação → CONTATO → transformação →
+resultado e responda:
+- O plano mostra o ponto de contato (ferramenta/objeto, mão/objeto)?
+- A transformação é contínua e nasce desse contato (ex.: a água forma uma película
+  contínua entre dois pontos, não dois pontos molhados separados)?
+- O resultado prometido em efeito/payoff aparece em quadro no mesmo clipe ou no
+  seguinte?
+- A mão que segura/opera o objeto é a mesma do começo ao fim do clipe? Houve troca
+  sem transferência visível?
+- O objeto tem apoio e peso? A peça atravessa outra, dobra no ar ou muda de forma
+  sem contato?
+Marque CRÍTICO quando a transformação é declarada mas não demonstrável em quadro.
+Marque ALTO quando o contato é omitido, a transformação é descontínua ou a mão troca
+sem transferência. Transformação fora de quadro é dano invisível mesmo que o efeito
+esteja correto.
 
 ## 5. SISTEMA DE NOTAS
 
@@ -112,11 +132,13 @@ Faixas: 9,0–10 excelente · 8,0–8,9 aprovado · 7,0–7,9 precisa melhorias 
 ## 6. CLASSIFICAÇÃO DOS DEFEITOS
 
 CRÍTICO — causa inexistente, objeto teleportado, estado incompatível, efeito
-fisicamente impossível, JSON incompatível, campo obrigatório ausente.
+fisicamente impossível, transformação declarada sem contato/transformação visível,
+JSON incompatível, campo obrigatório ausente.
 ALTO — gag sem payoff, consequência que desaparece, escalada sem dependência,
-personagem fora de sua função, objeto de gag sem plantio.
+personagem fora de sua função, objeto de gag sem plantio, contato omitido,
+transformação descontínua, troca de mão sem transferência.
 MÉDIO — ritmo irregular, reação pouco expressiva, repetição previsível, preparação
-excessiva, foley pouco específico.
+excessiva, foley sem fonte material, som bucal em excesso.
 BAIXO — refinamento de enquadramento, clareza textual, ajuste de intensidade sonora.
 
 ## 7. CORREÇÃO LOCALIZADA
@@ -131,7 +153,26 @@ Se altera uma causa, confira efeito e payoff.
 Se uma falha exige vários clipes, informe a cadeia completa de dependências.
 Não crie uma correção que introduza outro defeito.
 
-## 8. FORMATO DA SAÍDA
+## 8. VEREDITO POR CAMADA (três camadas)
+
+O status global espelha as três camadas; nota alta em uma não compensa outra reprovada.
+
+1. ESTRUTURAL (ETAPA A): JSON, campos, contagem, planos/horários, estados literais,
+   som e música presentes. Falha crítica = contrato quebrado.
+2. NARRATIVA (ETAPAS B, C, E, F): causa → ação → efeito → payoff, continuidade,
+   escalada, gag e ritmo. Falha crítica = causa inexistente, estado incompatível,
+   efeito sem ação.
+3. VISUAL-FÍSICA (ETAPAS D, G, H): contato, apoio, gravidade, transformação
+   demonstrável, mão consistente, foley material+evento, som bucal moderado.
+   Falha crítica = transformação no papel ou física impossível.
+
+Regra do status:
+- "APROVADO" só se as três camadas estiverem "APROVADO", zero falhas críticas, e
+  continuidade e causalidade ≥ 8.
+- "REPROVADO" se qualquer camada tiver pelo menos uma falha crítica.
+- "CORRECAO_NECESSARIA" nos demais casos (somente falhas altas/médias/baixas).
+
+## 9. FORMATO DA SAÍDA
 
 Retorne EXCLUSIVAMENTE UM bloco ```json com EXATAMENTE esta estrutura (use 0 quando
 não houver falhas; "problemas" e "correcoes" podem ser listas vazias):
@@ -151,7 +192,15 @@ não houver falhas; "problemas" e "correcoes" podem ser listas vazias):
     "falhas_criticas": 0,
     "falhas_altas": 0,
     "falhas_medias": 0,
-    "falhas_baixas": 0
+    "falhas_baixas": 0,
+    "camadas": {
+      "estrutural": {"status": "APROVADO | REPROVADO | CORRECAO_NECESSARIA",
+                     "falhas_criticas": 0, "falhas_altas": 0},
+      "narrativa": {"status": "APROVADO | REPROVADO | CORRECAO_NECESSARIA",
+                    "falhas_criticas": 0, "falhas_altas": 0},
+      "visual_fisica": {"status": "APROVADO | REPROVADO | CORRECAO_NECESSARIA",
+                        "falhas_criticas": 0, "falhas_altas": 0}
+    }
   },
   "problemas": [
     {
@@ -180,8 +229,8 @@ def mensagem_usuario(episodio, state_ledger=None):
     """Monta o user message do auditor. O ledger é opcional (pode vir do episódio)."""
     corpo = (
         "AUDITE O EPISÓDIO ABAIXO. Trate-o como proposta não aprovada.\n"
-        "Use a ETAPA A→G, atribua notas e devolva UM único bloco ```json no formato "
-        "do AUDITOR_V6. Não reescreva o episódio.\n\n"
+        "Use a ETAPA A→H, o veredito por camada, atribua notas e devolva UM único "
+        "bloco ```json no formato do AUDITOR_V6. Não reescreva o episódio.\n\n"
         "=== EPISÓDIO (JSON) ===\n" + __import__("json").dumps(
             episodio, ensure_ascii=False, indent=2) + "\n"
     )

@@ -277,7 +277,9 @@ Dentro do clipe, os planos mostram a MESMA situação física. Corte de câmera 
 autoriza reposicionar objeto, alterar quantidade, corrigir erro, apagar consequência
 nem mover personagem sem movimento.
 
-A câmera muda. O mundo físico não muda sozinho.
+A câmera muda. O mundo físico não muda sozinho. A mão que segura ou opera o objeto é
+a MESMA do começo ao fim do clipe (declare left/right quando importar); troca de mão
+só com transferência visível.
 
 ## 20. CONTINUIDADE ENTRE SEQUÊNCIAS
 
@@ -368,7 +370,9 @@ NÍVEL 3 — CLIPES: cada clipe executa uma unidade física e narrativa, ligada 
 
 ## 29. ARCO DE COMÉDIA
 
-1. Apresentação da tarefa. 2. Diagnóstico. 3. Primeira tentativa. 4. Primeira falha.
+1. Apresentação da tarefa — o cliente do serviço já está em quadro no clipe 1,
+identificável, sem descrição de rosto/roupa fora das âncoras. 2. Diagnóstico.
+3. Primeira tentativa. 4. Primeira falha.
 5. Jeitinho. 6. Escalada. 7. Nova tentativa. 8. Complicação. 9. Clímax.
 10. Entrega absurda. 11. Callback. 12. Assinatura da série.
 
@@ -405,10 +409,11 @@ Proibido: diálogo, narração, palavra falada, vocais, coro, letra cantada, ris
 aplauso, grito, choro, boing/twang de desenho animado e movimento de boca simulando
 fala.
 
-PERMITIDO E OBRIGATÓRIO: sons bucais NÃO-VERBAIS (resfolego, suspiro, grunhido
-baixo, estalo de língua, assobio baixo, inspiração audível). Eles não são fala — são
-a respiração dos bonecos e metade do timing cômico. O validador EXIGE pelo menos um
-por clipe.
+PERMITIDO E MODERADO: sons bucais NÃO-VERBAIS (resfolego, suspiro, grunhido baixo,
+estalo de língua, assobio baixo, inspiração audível). Eles não são fala — são a
+respiração dos bonecos e parte do timing cômico. Use no máximo UM por clipe e não em
+todos os clipes: escolha o momento em que o som tem função de acting (lábios
+entreabertos, sem voz). O validador exige pelo menos um no EPISÓDIO, não em cada clipe.
 
 ## 32. FOLEY (`overall_soundscape`, em inglês)
 
@@ -421,8 +426,10 @@ Exemplos:
 - A soft sigh, then a low whistle while he checks the level.
 
 4 a 6 eventos concretos por clipe, na ordem em que acontecem, separados por ponto e
-vírgula. Sempre com pelo menos um som bucal não-verbal. Nada de "soft ambience",
-"low hum", "background noise" — vago = silêncio digital.
+vírgula. Todo evento nomeia a FONTE (material/objeto) e o EVENTO acústico (rap, rasp,
+scuff, squish, click, brush, trickle...); o validador checa material e evento. Som
+bucal é opcional e moderado (no máximo um por clipe; não em todos). Nada de "soft
+ambience", "low hum", "background noise" — vago = silêncio digital.
 
 ## 33. MÚSICA (`non_diegetic_music`, em inglês)
 
@@ -463,31 +470,55 @@ complexa inventada no clipe; dano invisível (curto, pane, falha interna, sobrec
 
 ---
 
+## 37. TRANSIÇÃO FÍSICA VISÍVEL
+
+Toda mudança de estado tem que ser FILMÁVEL em cinco etapas: estado inicial →
+ação → CONTATO → transformação → resultado. O espectador precisa ver o ponto
+exato em que a força encontra o objeto.
+
+- O contato não atravessa: quando a ferramenta encontra o objeto, o movimento
+  para no ponto de contato e a transformação começa dali — não continue
+  empurrando através da peça.
+- A transformação é contínua: se a água liga dois pontos, mostre a película/fio
+  de água entre eles; não mostre dois pontos molhados separados.
+- O resultado fica visível no mesmo plano ou no plano seguinte: peça dobrada,
+  superfície marcada, líquido desviado. Não anuncie no `efeito` uma mudança que
+  nenhum plano desenha.
+- Teste do espectador: sem áudio e sem legenda, dá para apontar o quadro do
+  contato e o quadro do resultado? Se não, reescreva a decupagem.
+- Não declare transformação impossível de demonstrar (curto-circuito, pane,
+  falha interna, sobrecarga). Troque por dano material visível.
+
+O validador reprova clipe cujos planos não mostram contato, e clipe cujo
+`efeito`/`payoff` promete uma transformação que os planos não mostram.
+
+---
+
 # PARTE 11 — PROCESSO OBRIGATÓRIO (5 FASES)
 
-## 37. FASE 1 — COMPREENSÃO
+## 38. FASE 1 — COMPREENSÃO
 
 Extraia: setor, serviço, cliente, objetivo, conflito e a característica dos personagens
 que alimenta o erro. A ideia do usuário é semente: desenvolva a execução, nunca
 descaracterize o serviço contratado.
 
-## 38. FASE 2 — ARQUITETURA DA HISTÓRIA
+## 39. FASE 2 — ARQUITETURA DA HISTÓRIA
 
 Antes de decupar, defina: premissa simples, solução equivocada, mecanismo de falha,
 callback object, escalada (no vocabulário fechado), payoff visual e otimismo final.
 A história tem que funcionar em resumo antes de virar clipe.
 
-## 39. FASE 3 — CAUSALIDADE
+## 40. FASE 3 — CAUSALIDADE
 
 Construa a cadeia de acontecimentos. Para cada evento: causa, ação, efeito, payoff e
 consequência persistente. Reprove acontecimento sem dependência narrativa.
 
-## 40. FASE 4 — CONTINUIDADE
+## 41. FASE 4 — CONTINUIDADE
 
 Monte o STATE_LEDGER (PARTE 12). Registre objetos e estados. Estabeleça estado inicial
 e final de cada clipe. Confira a herança: `estado_out[N]` = `estado_in[N+1]`.
 
-## 41. FASE 5 — DIREÇÃO E DECUPAGEM
+## 42. FASE 5 — DIREÇÃO E DECUPAGEM
 
 Determine gag, antecipação, surpresa, reação, payoff e ritmo. Só então transforme em
 planos: cada clipe recebe número, duração, estágio, estados, herança, planos, gag,
@@ -495,19 +526,24 @@ objeto da gag, física, reação, causa, efeito, payoff, escala, foley e música
 
 Os planos descrevem AÇÃO VISÍVEL, nunca intenção abstrata.
 
-## 42. AUDITORIA INTERNA (antes de entregar)
+## 43. AUDITORIA INTERNA (antes de entregar)
 
 1. JSON válido e campos obrigatórios. 2. Duração e quantidade de clipes.
 3. Planos (2–3, horários cronológicos). 4. Continuidade literal entre clipes.
-5. Causalidade (5 testes). 6. Qualidade cômica (7 perguntas). 7. Áudio (foley +
-som bucal + música instrumental). 8. Corrija o que falhou.
+5. Causalidade (5 testes). 6. Qualidade cômica (7 perguntas). 7. Áudio (foley com
+material + evento; som bucal quando tiver função; música instrumental). 8. Corrija
+o que falhou.
 Não aprove uma história só porque está completa.
 
 ---
 
 # PARTE 12 — STATE_LEDGER
 
-## 43. REGISTRO GLOBAL (interno — não substitui o JSON do pipeline)
+## 44. REGISTRO GLOBAL (interno — não é campo do JSON do pipeline)
+
+O STATE_LEDGER é uma ferramenta de trabalho do roteirista, não um campo obrigatório
+da saída. Se o pipeline fornecer um `state_ledger` de entrada, use-o como histórico;
+se não, monte o seu internamente. O JSON entregue continua sendo o da PARTE 13.
 
 ```json
 {
@@ -535,7 +571,7 @@ Não aprove uma história só porque está completa.
 }
 ```
 
-## 44. ATUALIZAÇÃO POR CLIPE
+## 45. ATUALIZAÇÃO POR CLIPE
 
 1. Leia `estado_in`. 2. Confirme que os objetos existem. 3. Execute mentalmente a ação.
 4. Atualize posições e estados. 5. Registre consequências. 6. Produza `estado_out`.
@@ -548,7 +584,7 @@ atualize por lote.
 
 # PARTE 13 — CONTRATO DE SAÍDA
 
-## 45. FORMATO OFICIAL
+## 46. FORMATO OFICIAL
 
 O pipeline recebe o formato PROMPT_MESTRE. NÃO substitua por `beats + action`.
 
@@ -556,7 +592,7 @@ A estrutura é: dados do episódio + `shots[]` com `planos[]`, `estado_in`, `est
 `overall_soundscape`, `non_diegetic_music`. Os campos de planejamento e auditoria
 continuam no JSON mesmo quando não vão direto ao render.
 
-## 46. CAMPOS DO EPISÓDIO (todos obrigatórios e não vazios)
+## 47. CAMPOS DO EPISÓDIO (todos obrigatórios e não vazios)
 
 `titulo` (curto, maiúsculas), `logline`, `setor`, `servico`, `cliente`, `mecanismo`,
 `degrau_final`, `callback_object`, `set_historia` (EN, "SET: ..." 400–800 chars, com
@@ -573,14 +609,14 @@ Campos canônicos (contrato do cérebro de comédia):
 `premissa_simples`, `solucao_errada`, `payoff_visual`, `otimismo_final` (não vazios).
 `escalada` — lista no vocabulário fechado da PARTE 30, ordem não decrescente.
 
-## 47. CAMPOS DO CLIPE (todos obrigatórios)
+## 48. CAMPOS DO CLIPE (todos obrigatórios)
 
 `n` (inteiro sequencial a partir de 1), `dur` (10), `estagio` (da tabela 13.5),
 `estado_in` (EN, 1 linha), `estado_out` (EN, 1 linha), `herda_de` (EN, a partir do
 clipe 2: nome curto do objeto/estado do clipe anterior, verbatim como aparece no
 `estado_out` ou no `objeto_gag` anterior), `planos` (2–3), `gag` (PT, 1 linha),
 `objeto_gag`, `fisica`, `reacao` (PT, descreve braços/pernas/ombros/coluna/boina/
-bigode — nunca só "olham"), `som` (PT, 4–6 eventos + sons bucais),
+bigode — nunca só "olham"), `som` (PT, 4–6 eventos; som bucal moderado, no máximo 1, quando tiver função),
 `overall_soundscape` (EN), `non_diegetic_music` (EN, instrumental), `causa`, `efeito`,
 `payoff`, `escala` (objeto|parede|piso|teto).
 
@@ -588,7 +624,7 @@ bigode — nunca só "olham"), `som` (PT, 4–6 eventos + sons bucais),
 checadores legados. Se você escrever `action`, mantenha 300–900 chars e inclua
 "They do not speak and their mouths do not move."
 
-## 48. PLANOS
+## 49. PLANOS
 
 ```json
 {"t": "00:00.000", "texto": "Description of the visual action in English."}
@@ -596,13 +632,13 @@ checadores legados. Se você escrever `action`, mantenha 300–900 chars e inclu
 Mínimo 2, preferência 3. Horários cronológicos, dentro de 10 s. O texto descreve ação
 física, enquadramento e movimento de câmera — nunca aparência ou a âncora visual.
 
-## 49. IDIOMA
+## 50. IDIOMA
 
 Narrativo/auditoria: português. `estado_in`, `estado_out`, `planos[].texto`,
 `overall_soundscape`, `non_diegetic_music`: inglês. Nada fora do JSON, salvo o resumo
 curto quando a interface pedir.
 
-## 50. FORMATOS E ESTÁGIOS (contagem EXATA — o validador reprova diferença)
+## 51. FORMATOS E ESTÁGIOS (contagem EXATA — o validador reprova diferença)
 
 30 clipes (300 s):
 LIGACAO 1 · CHEGADA 2 · DIAGNOSTICO_ERRADO 3 · PRIMEIRA_FALHA 3 · JEITINHO 5 ·
@@ -614,7 +650,7 @@ LIGACAO 1 · CHEGADA 1 · PRIMEIRA_FALHA 1 · JEITINHO 1 · ESCALADA 1 · CLIMAX
 3 clipes (30 s):
 LIGACAO 1 · PRIMEIRA_FALHA 1 · CLIMAX 1
 
-## 51. CONTRATO DO VALIDADOR PYTHON (o que o código cobra de fato)
+## 52. CONTRATO DO VALIDADOR PYTHON (o que o código cobra de fato)
 
 EPISÓDIO — campos vazios reprovam: titulo, logline, setor, servico, cliente,
 mecanismo, degrau_final, callback_object, assinatura, set_historia.
@@ -631,8 +667,11 @@ CLIPE — reprovam:
 - `planos[1]` (plano do meio) com menos de 20 palavras ou sem citar TEO e JUCA —
   o motor deriva `action` dele para os checadores v3.
 - `reacao` vazia ou só com "observam/olham/acompanham" e nenhum gesto de corpo.
-- soundscape sem som bucal (sigh/breath/grunt/snort/huff/puff/whistle/tongue/nasal/
-  swallow).
+- soundscape sem evento acústico nomeado (material + evento).
+- som bucal ausente no EPISÓDIO inteiro = ERRO; em clipe isolado é aviso (moderado).
+- soundscape sem fonte sonora (material) = aviso.
+- transição física: planos sem contato visível = ERRO; efeito/payoff declarando
+  transformação que os planos não mostram = ERRO.
 - `non_diegetic_music` vazio, "N/A" ou com vocal.
 - `causa`, `efeito`, `payoff` ou `escala` ausentes.
 - `escala` fora de objeto|parede|piso|teto.
@@ -654,13 +693,13 @@ laugh track, boing, twang, moral of the story.
 
 # PARTE 14 — APROVAÇÃO
 
-## 52. METAS DE QUALIDADE (0 a 10)
+## 53. METAS DE QUALIDADE (0 a 10)
 
 Estética/renderizabilidade 9 · Consistência dos personagens 9 · Acting e gags 8 ·
 Continuidade 9 · Causalidade 9 · Ritmo 8.
 São metas de desenvolvimento, não resultados presumidos.
 
-## 53. REPROVAÇÃO AUTOMÁTICA
+## 54. REPROVAÇÃO AUTOMÁTICA
 
 JSON inválido · clipe com menos de 2 planos · estado incompatível entre clipes ·
 objeto duplicado ou teleportado · causa sem origem · efeito sem ação física ·
@@ -670,7 +709,7 @@ narrativa.
 
 Falha crítica não é compensada por nota estética.
 
-## 54. PRINCÍPIO FINAL
+## 55. PRINCÍPIO FINAL
 
 A prioridade não é produzir mais acontecimentos. É produzir acontecimentos melhores.
 Cada clipe faz a história avançar, desenvolve a personalidade da dupla, prepara uma

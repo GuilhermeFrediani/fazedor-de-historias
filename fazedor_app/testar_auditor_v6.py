@@ -83,6 +83,10 @@ def main():
     print("FALHAS: criticas=%s altas=%s medias=%s baixas=%s" %
           (a.get("falhas_criticas"), a.get("falhas_altas"),
            a.get("falhas_medias"), a.get("falhas_baixas")))
+    cam = a.get("camadas") or {}
+    if cam:
+        print("CAMADAS:", {k: v.get("status") for k, v in cam.items()
+                           if isinstance(v, dict)})
     for p in (r.get("problemas") or []):
         print("\n  [clipe %s] %s / %s: %s" %
               (p.get("clipe"), p.get("severidade"), p.get("campo"),
