@@ -304,6 +304,22 @@ RE_PARADO = re.compile(
 
 RE_NOMEBRA = re.compile(r"\b(no text|no logo|no watermark|nothing legible)\b", re.I)
 
+# v6 §48: som bucal é MODERADO — máx. 1 por clipe e NUNCA em todos. Termos PT+EN;
+# manter em sincronia com regras_v4.RE_SOM_BOCA (camada montage usa a mesma lista).
+RE_SOM_BOCA_V6 = ("snort", "sigh", "breath", "exhale", "grunt", "huff", "puff",
+                  "whistle", "tongue", "nasal", "swallow",
+                  "suspiro", "resfolego", "resfôlego", "grunhido", "bufo", "assobio",
+                  "estalo de lingua", "estalo de língua", "engole", "engolir",
+                  "sopro", "inspira", "expira")
+
+# v6: "reação legível" = gesto de corpo visível no campo `reacao` (PT), mesma
+# família de partes de corpo que a camada montage (regras_v4) já aceita.
+RE_GESTO_CORPO = re.compile(
+    r"\b(bra[çc]o|antebra[çc]o|m[ãa]o|ombro|joelho|coluna|boina|bigode|cabe[çc]a|"
+    r"bota|cotovelo|punho|dedo|peito|p[ée]s|passo|quadril|nuca|nariz|sobrancelha|"
+    r"queixo|l[áa]bio|boca|dorso|palma|pesco[çc]o|pulinho|agacha|inclina|dobra a "
+    r"cintura|estufa|apruna|recua|estende|ergue|abaixa|gira|vira)\b", re.I)
+
 
 def _palavras(txt):
     return len(re.findall(r"[A-Za-zÀ-ÿ']+", str(txt)))
@@ -317,6 +333,7 @@ def validar_renderizavel(ep):
         return {"erros": ["sem shots"], "avisos": [], "nota": 0, "checks": checks}
 
     orcamento_ok = dois_corpos_ok = reacao_ok = continuidade_ok = ordem_ok = 0
+    boca_clipes = 0
     fisicas = []
     anterior_out = None
     v6 = any(s.get("planos") for s in shots)
@@ -388,16 +405,35 @@ def validar_renderizavel(ep):
             dois_corpos_ok += 1
 
         # f) reação + som não-verbal
+        # v6 (§48): o som bucal é MODERADO — máx. 1 por clipe e NUNCA em todos.
+        # Cobrar som de boca em n-1 clipes obrigava o criador a encher o episódio
+        # de resfôlegos e depois o auditor reprova "ruído humano em cada clipe".
+        # No V6: reação legível = gesto de corpo no campo `reacao`; o bucal é
+        # verificado no EPISÓDIO (alvo ≥ 1 a cada 3 clipes, igual à montage v4).
         reac = str(s.get("reacao", "")).strip()
-        som = str(s.get("overall_soundscape", "")).lower()
-        tem_som_boca = any(k in som for k in ("sigh", "grunt", "breath", "snort", "whistle",
-                                              "tongue", "huff", "puff", "click of the tongue"))
-        if not reac:
-            avisos.append("[%s] sem campo 'reacao' - a reação é a piada." % i)
-        elif tem_som_boca:
-            reacao_ok += 1
+        if v6:
+            if not reac:
+                avisos.append("[%s] sem campo 'reacao' - a reação é a piada." % i)
+            elif RE_GESTO_CORPO.search(reac.lower()):
+                reacao_ok += 1
+            else:
+                avisos.append("[%s] reação sem gesto de corpo ('%s') - em plano geral "
+                              "isso não aparece." % (i, reac[:50]))
+            som_clip = (str(s.get("som", "")) + " ; "
+                        + str(s.get("overall_soundscape", ""))).lower()
+            if any(k in som_clip for k in RE_SOM_BOCA_V6):
+                boca_clipes += 1
         else:
-            avisos.append("[%s] reação sem som não-verbal (suspiro/resfôlego) no soundscape." % i)
+            som = str(s.get("overall_soundscape", "")).lower()
+            tem_som_boca = any(k in som for k in ("sigh", "grunt", "breath", "snort",
+                                                  "whistle", "tongue", "huff", "puff",
+                                                  "click of the tongue"))
+            if not reac:
+                avisos.append("[%s] sem campo 'reacao' - a reação é a piada." % i)
+            elif tem_som_boca:
+                reacao_ok += 1
+            else:
+                avisos.append("[%s] reação sem som não-verbal (suspiro/resfôlego) no soundscape." % i)
 
         # g) continuidade de estado
         ei = str(s.get("estado_in", "")).strip()
@@ -425,7 +461,21 @@ def validar_renderizavel(ep):
     if dois_corpos_ok == n:
         nota += 2
         checks.append("os dois corpos agem")
-    if reacao_ok >= max(1, n - 1):
+    if v6:
+        # v6: +2 = gesto de corpo em TODOS + som bucal moderado no episódio
+        # (≥ 1 a cada 3 clipes). Nunca exige bucal em todos — o auditor §3/§48
+        # reprova "ruído humano de atuação em cada clipe".
+        boca_alvo = max(1, n // 3)
+        if reacao_ok == n and boca_clipes >= boca_alvo:
+            nota += 2
+            checks.append("reação legível com corpo + som bucal moderado (%d/%d clipes)"
+                          % (boca_clipes, n))
+        elif reacao_ok < n:
+            avisos.append("reação sem gesto de corpo em %d/%d clipes." % (n - reacao_ok, n))
+        elif boca_clipes < boca_alvo:
+            avisos.append("som bucal em %d/%d clipes - alvo moderado: pelo menos %d "
+                          "(não precisa ser em todos)." % (boca_clipes, n, boca_alvo))
+    elif reacao_ok >= max(1, n - 1):
         nota += 2
         checks.append("reação legível com som não-verbal")
     if continuidade_ok == n:

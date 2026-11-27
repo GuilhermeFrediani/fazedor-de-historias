@@ -245,7 +245,8 @@ def mensagem_correcao_auditoria(rel):
         "10 s. Preserve a continuidade: se mudar estado_out, ajuste estado_in do proximo; "
         "se mudar posicao/mao de objeto, ajuste o registro; toda transicao fisica mostra "
         "CONTATO -> transformacao -> resultado; a mao que opera o objeto e a mesma no "
-        "clipe; o cliente/zelador aparece no clipe 1; som bucal moderado; nada de N/A na "
+        "clipe; o cliente/zelador aparece no clipe 1; som bucal MODERADO (no maximo 1 "
+        "por clipe, em 2-5 dos 6 clipes - NUNCA em todos, NUNCA zero); nada de N/A na "
         "musica.\n\nPROBLEMAS DO AUDITOR:\n" + "\n".join(linhas) +
         "\n\nRESUMO DO AUDITOR: " + str(r.get("resumo", ""))[:1200])
 
