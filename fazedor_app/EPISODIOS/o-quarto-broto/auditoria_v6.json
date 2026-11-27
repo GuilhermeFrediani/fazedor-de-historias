@@ -1,178 +1,60 @@
 {
-  "auditoria": {
-    "status": "REPROVADO",
-    "nota_geral": 7.9,
-    "notas": {
-      "estetica": 8.5,
-      "personagens": 9,
-      "acting_gags": 8.6,
-      "continuidade": 7.8,
-      "causalidade": 6.6,
-      "ritmo": 8.4
+  "cru": "```json\n{\"auditoria\":{\"status\":\"APROVADO\",\"nota_geral\":9.45,\"notas\":{\"estetica\":9.2,\"personagens\":9,\"acting_gags\":9.2,\"continuidade\":10,\"causalidade\":9.6,\"ritmo\":9},\"falhas_criticas\":0,\"falhas_altas\":0,\"falhas_medias\":0,\"falhas_baixas\":0,\"camadas\":{\"estrutural\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"narrativa\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"visual_fisica\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0}}},\"problemas\":[],\"correcoes\":[],\"resumo\":\"JSON válido: seis clipes de 10 s, um por estágio, com três planos cronológicos por clipe. As cinco transições de estado são literalmente idênticas, e o estado final confere com o ledger. A cadeia aparece em quadro: no 1, o pictograma motiva a continência, o eixo bate na tesoura e o toque apaga o pager; no 2, a mão espalmada leva JUCA a escolher o rolo, cuja gota alcança a argola apoiada no sulco; no 3, o broto volta ao corredor e deixa a impressão na placa; no 4, a passada transversal fixa os três brotos e alimenta a crista de água; no 5, o contato da espuma com o zinco liga essa crista à gota nas argolas; no 6, a película contínua congela, a nota muda de mão em quadro e o zelador comprova que a passagem está livre. A escalada de um broto para três e depois para o quarto de aço nasce da própria tarefa. Foley ligado às ações, música instrumental discreta e um som bucal não verbal nos clipes 1, 2, 3, 5 e 6, nenhum no 4. Nenhuma falha verificável.\"}\n```",
+  "resumo": "",
+  "relatorio": {
+    "auditoria": {
+      "status": "APROVADO",
+      "nota_geral": 9.45,
+      "notas": {
+        "estetica": 9.2,
+        "personagens": 9,
+        "acting_gags": 9.2,
+        "continuidade": 10,
+        "causalidade": 9.6,
+        "ritmo": 9
+      },
+      "falhas_criticas": 0,
+      "falhas_altas": 0,
+      "falhas_medias": 0,
+      "falhas_baixas": 0,
+      "camadas": {
+        "estrutural": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "narrativa": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "visual_fisica": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        }
+      }
     },
-    "falhas_criticas": 1,
-    "falhas_altas": 2,
-    "falhas_medias": 1,
-    "falhas_baixas": 2
+    "problemas": [],
+    "correcoes": [],
+    "resumo": "JSON válido: seis clipes de 10 s, um por estágio, com três planos cronológicos por clipe. As cinco transições de estado são literalmente idênticas, e o estado final confere com o ledger. A cadeia aparece em quadro: no 1, o pictograma motiva a continência, o eixo bate na tesoura e o toque apaga o pager; no 2, a mão espalmada leva JUCA a escolher o rolo, cuja gota alcança a argola apoiada no sulco; no 3, o broto volta ao corredor e deixa a impressão na placa; no 4, a passada transversal fixa os três brotos e alimenta a crista de água; no 5, o contato da espuma com o zinco liga essa crista à gota nas argolas; no 6, a película contínua congela, a nota muda de mão em quadro e o zelador comprova que a passagem está livre. A escalada de um broto para três e depois para o quarto de aço nasce da própria tarefa. Foley ligado às ações, música instrumental discreta e um som bucal não verbal nos clipes 1, 2, 3, 5 e 6, nenhum no 4. Nenhuma falha verificável."
   },
-  "problemas": [
-    {
-      "clipe": 4,
-      "severidade": "ALTO",
-      "campo": "planos",
-      "problema": "O plano não mostra a costura de gelo assumir a carga antes que o rolo libere os brotos.",
-      "evidencia": "No clipe 3, o broto rebate assim que a espuma recua. No clipe 4, as margens só aparecem embranquecendo às 00:07.000, quando a espuma já chega ao pé da fileira.",
-      "correcao_sugerida": "Mostrar uma breve pausa sob pressão: as margens embranquecem com os três brotos ainda comprimidos, e só então o rolo segue.",
-      "campos_dependentes": [
-        "causa e efeito do clipe 4",
-        "estado_out do clipe 4",
-        "estado_in do clipe 5"
-      ]
+  "uso": {
+    "input_tokens": 21638,
+    "input_tokens_details": {
+      "cache_write_tokens": 8834,
+      "cached_tokens": 0,
+      "cache_write_tokens_details": {
+        "ttl_30m_tokens": 8834,
+        "ttl_12h_tokens": 0
+      }
     },
-    {
-      "clipe": 5,
-      "severidade": "CRITICO",
-      "campo": "planos",
-      "problema": "A película comum aos brotos e à tesoura aparece no estado final sem que os planos demonstrem a ligação entre as duas áreas molhadas.",
-      "evidencia": "Às 00:03.500, JUCA ergue o rolo da crista e molha a tesoura até a gota nas argolas. Às 00:07.000, vê-se um bordo branco na aba, mas não a água unindo a crista dos brotos à gota. O clipe 6 depende dessa ligação para a crosta única.",
-      "correcao_sugerida": "No pouso, mostrar a espuma sobrepor a crista ainda ligada aos brotos e tocar as argolas ao mesmo tempo. Mostrar a faixa de água se fechar no contato com o zinco antes de embranquecer.",
-      "campos_dependentes": [
-        "planos[2].texto do clipe 4",
-        "causa, efeito e estado_out do clipe 5",
-        "estado_in, causa, efeito e payoff do clipe 6",
-        "continuidade da água no episódio"
-      ]
+    "output_tokens": 13187,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
     },
-    {
-      "clipe": 6,
-      "severidade": "ALTO",
-      "campo": "STATE_LEDGER.episode_state.persistent_consequences",
-      "problema": "O histórico fornecido não registra as consequências persistentes do clímax.",
-      "evidencia": "A lista está vazia, embora o estado final mantenha os três brotos presos à placa e as duas ferramentas imobilizadas.",
-      "correcao_sugerida": "Registrar as consequências no histórico de saída, após validar a ligação da película. Se a lista vazia for o estado inicial, identificá-la como tal.",
-      "campos_dependentes": [
-        "estado_out do clipe 6",
-        "registro global de continuidade"
-      ]
-    },
-    {
-      "clipe": 6,
-      "severidade": "BAIXO",
-      "campo": "planos[0].texto",
-      "problema": "A entrega da nota é visível, mas não se estabelece que TÉO a oferece com a mão que marcou o corte, como exige a assinatura do episódio.",
-      "evidencia": "No clipe 2, TÉO segura o papel enquanto sinaliza com a outra mão. No clipe 6, ele vira o selo e oferece a nota sem que a troca de mão apareça.",
-      "correcao_sugerida": "Identificar a mão livre no clipe 2 e mostrar a passagem da nota para essa mão antes da oferta no clipe 6.",
-      "campos_dependentes": [
-        "planos[1].texto do clipe 2",
-        "planos[1].texto do clipe 6",
-        "assinatura"
-      ]
-    },
-    {
-      "clipe": 6,
-      "severidade": "BAIXO",
-      "campo": "otimismo_final",
-      "problema": "O texto promete uma mesura dos dois, mas o clímax só encena a de JUCA.",
-      "evidencia": "Às 00:03.500, TÉO oferece a nota na palma e JUCA inclina o tronco. O plano final retoma apenas a sombra da mesura de JUCA.",
-      "correcao_sugerida": "Descrever a entrega de TÉO e a mesura de JUCA, sem acrescentar uma ação ao clímax.",
-      "campos_dependentes": [
-        "planos e reacao do clipe 6",
-        "assinatura"
-      ]
-    },
-    {
-      "clipe": 1,
-      "severidade": "MEDIO",
-      "campo": "overall_soundscape",
-      "problema": "Nos clipes 1, 3, 4 e 5, o único som humano especificado é nasal, sem o evento bucal não verbal exigido.",
-      "evidencia": "Os campos usam 'nasal breath' ou 'nasal huff'. Não há fala; falta explicitar o som produzido pela boca.",
-      "correcao_sugerida": "Trocar apenas esses eventos por inspirações ou expirações audíveis pelos lábios, nos mesmos pontos da ação.",
-      "campos_dependentes": [
-        "som do clipe 1",
-        "som e overall_soundscape dos clipes 3 e 5",
-        "som e overall_soundscape do clipe 4"
-      ]
-    }
-  ],
-  "correcoes": [
-    {
-      "clipe": 4,
-      "campo": "planos[1].texto",
-      "valor_corrigido": "Medium across the zinc. TEO turns the folded invoice a quarter turn and holds its long edge above the three tips. JUCA turns the roller axle horizontal to match and starts one slow downward stroke. He pauses with all three shoots pressed to the zinc. Water squeezes around the leaves, and thin white seams form at their exposed edges before he rolls on."
-    },
-    {
-      "clipe": 4,
-      "campo": "planos[2].texto",
-      "valor_corrigido": "Low oblique view. The sleeve reaches the foot of the row. The white seams hold all three shoots flat. A narrow trail of runoff leads straight down from the lower leaf edges into the wet ridge touching the foam. TEO gives the paper one tiny leveling twist."
-    },
-    {
-      "clipe": 5,
-      "campo": "planos[2].texto",
-      "valor_corrigido": "Low at the catch ledge, JUCA sets the roller down crosswise. The foam overlaps the remaining wet ridge and touches the loops seated in the groove. An unbroken strip of water joins the ridge to the bead at the loops along the foam's contact with the zinc. As the rim whitens and JUCA opens his hands, pull back to include the elderly caretaker taking two steps in from the vestry behind TEO, palms ready for the slip."
-    },
-    {
-      "clipe": 5,
-      "campo": "efeito",
-      "valor_corrigido": "A água reveste as lâminas e alcança a gota nas argolas. No pouso, a espuma espreme água sobre a aba de zinco e liga essa gota à crista que desce dos brotos, formando uma película contínua antes do branqueamento."
-    },
-    {
-      "clipe": 6,
-      "campo": "STATE_LEDGER.episode_state.persistent_consequences",
-      "valor_corrigido": [
-        "Três brotos intactos permanecem presos à placa, deixando o corredor livre.",
-        "A tesoura fechada permanece no sulco e o rolo na aba, ambos retidos pela mesma crosta de gelo."
-      ]
-    },
-    {
-      "clipe": 2,
-      "campo": "planos[1].texto",
-      "valor_corrigido": "In a three-quarter medium shot TEO holds the long edge of the folded invoice against the lip with his left hand. With his free right hand he closes two fingers like blades, then shows a flat palm at the cut line. JUCA props the closed snips point up in the right groove and presents the broad side of the roller to that palm."
-    },
-    {
-      "clipe": 6,
-      "campo": "planos[0].texto",
-      "valor_corrigido": "Hold the aisle view. The caretaker takes the remaining step toward TEO on the left. TEO shifts the folded invoice from his left hand onto the open right palm that marked the cut, turning the embossed seal toward the caretaker. JUCA draws his elbows back on the right, leaving the wet assembly in the raking light."
-    },
-    {
-      "clipe": 6,
-      "campo": "otimismo_final",
-      "valor_corrigido": "TÉO entrega a nota fiscal e JUCA faz a mesura; o zelador passa com a nota na mão, sem encostar na murta."
-    },
-    {
-      "clipe": 1,
-      "campo": "som",
-      "valor_corrigido": "Solas de borracha roçam o gelo em dois passos; a carcaça do pager vibra seca contra a presilha; TÉO inspira de leve pelos lábios entreabertos antes do toque; o eixo do rolo tine uma vez contra a tesoura; a dobra do papel estala baixinho ao virar."
-    },
-    {
-      "clipe": 1,
-      "campo": "overall_soundscape",
-      "valor_corrigido": "Rubber soles brush ribbed ice twice on entry; the pager casing rattles briskly against its steel clip; TEO takes a short breath through parted lips before the tap; the roller axle ticks once against the steel snips; folded paper crackles softly on the turn."
-    },
-    {
-      "clipe": 3,
-      "campo": "som",
-      "valor_corrigido": "O dedo de TÉO roça seco na borda de papel; JUCA puxa o ar pela boca antes da pressão; a espuma molhada chia brevemente ao ceder; as folhas batem macio no zinco; duas folhas se roçam ao voltar."
-    },
-    {
-      "clipe": 3,
-      "campo": "overall_soundscape",
-      "valor_corrigido": "A fingertip rasps softly down the folded paper; JUCA draws a short breath through parted lips before the press; wet foam squishes briefly under pressure; myrtle leaves pat the zinc in a soft cluster; two leaf tips brush twice on the rebound."
-    },
-    {
-      "clipe": 4,
-      "campo": "overall_soundscape",
-      "valor_corrigido": "The paper crease crackles lightly as it turns; JUCA gives a short huff through parted lips on the wrist turn; the steel axle squeaks once under the slow stroke; wet leaves pat the zinc in three soft taps; soaked foam gives a low squelch at the foot of the plate."
-    },
-    {
-      "clipe": 5,
-      "campo": "som",
-      "valor_corrigido": "A espuma suga a crista de água num gole curto; o rolo roça o aço fechado com um chiado leve; o filete pinga duas vezes no zinco; JUCA expira de leve pela boca ao pousar o rolo; as solas do zelador raspam o gelo em dois passos."
-    },
-    {
-      "clipe": 5,
-      "campo": "overall_soundscape",
-      "valor_corrigido": "Wet foam slurps softly off the ridge; the sleeve rubs along closed steel with a short hiss; runoff ticks twice into the zinc ledge; JUCA lets out a small breath through parted lips as the roller settles; the caretaker's soles rasp quietly over ribbed ice in two steps."
-    }
-  ],
-  "resumo": "A: JSON válido, seis clipes de 10 s com estágios, horários e escala conformes. B–D: os cinco pares de estados coincidem literalmente. O pictograma motiva a continência no clipe 1; a mão espalmada motiva a escolha do rolo no 2; a pressão seguida de soltura produz a impressão e o rebote no 3. O clipe 4 precisa mostrar a pega sob pressão. A ponte de água não demonstrada no 5 bloqueia a crosta única do 6, embora a entrega e a passagem estejam encenadas. E–F: as gags nascem da poda e progridem do teste de um broto ao quarto de aço. G: foley e música instrumental estão separados, sem fala, boing ou twang; falta explicitar o som bucal nos clipes indicados. Reauditar a ligação 4→5→6 antes do render."
+    "total_tokens": 34825
+  },
+  "interaction_id": "resp_2c6e2c245EU_0ss5lB3vS--AGuiHvcbnn-ugWaCd19tEiyxUuwngcqDy5SPtKWVcgViM5cNJtVOtXIuBNJHTFvMDyPVvdbdfZZdULsTZ8drPGmTDa91Ht22rOK3C0QUgv5oogAHkMjgBbH2vAHafPzW4TQTrbAWZtY-wyhWt64PJxdZTTyRtsQlgZQV8_QMl3_8_odkpW0ViLQShq",
+  "modelo": "gpt-6.2-sol"
 }

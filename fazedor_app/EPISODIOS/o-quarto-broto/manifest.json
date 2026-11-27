@@ -3,36 +3,36 @@
     "n": 1,
     "estagio": "LIGACAO",
     "video_length": "10s",
-    "chars": 3004
+    "chars": 3018
   },
   {
     "n": 2,
     "estagio": "CHEGADA",
     "video_length": "10s",
-    "chars": 3045
+    "chars": 3089
   },
   {
     "n": 3,
     "estagio": "PRIMEIRA_FALHA",
     "video_length": "10s",
-    "chars": 2996
+    "chars": 3039
   },
   {
     "n": 4,
     "estagio": "JEITINHO",
     "video_length": "10s",
-    "chars": 3149
+    "chars": 3234
   },
   {
     "n": 5,
     "estagio": "ESCALADA",
     "video_length": "10s",
-    "chars": 3192
+    "chars": 3348
   },
   {
     "n": 6,
     "estagio": "CLIMAX",
     "video_length": "10s",
-    "chars": 3261
+    "chars": 3476
   }
 ]
