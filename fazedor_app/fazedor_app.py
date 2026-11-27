@@ -188,7 +188,9 @@ DOSSIE_MATRIZ = {
     "cliente": ["síndico", "militar", "médico", "professor", "padre/pastor",
                 "fazendeiro", "noivo", "motorista", "criança", "idoso"],
     "degrau": ["alaga", "desaba", "pega fogo (contido)", "tomba", "transborda",
-               "racha", "despenca", "entra em curto", "congela", "sai voando"],
+               "racha", "despenca", "entorta", "congela", "sai voando"],
+    # v6: "entra em curto" saiu da matriz — dano invisível (DANO_INVISIVEL) não
+    # é piada e o validador reprova; o degrau precisa ser DANO MATERIAL VISÍVEL.
 }
 DOSSIE_ESTAGIOS = {"LIGACAO": 1, "CHEGADA": 2, "DIAGNOSTICO_ERRADO": 3, "PRIMEIRA_FALHA": 3,
                    "JEITINHO": 5, "PAUSA_COMICA": 1, "ESCALADA": 5, "CLIMAX": 5,

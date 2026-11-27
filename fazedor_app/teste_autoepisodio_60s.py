@@ -240,14 +240,22 @@ def mensagem_correcao_auditoria(rel):
         linhas = ["- o auditor reprovou sem lista; corrija causalidade/fisica pelo resumo."]
     return (
         "O AUDITOR INDEPENDENTE (SOL) REPROVOU este episodio. Corrija APENAS os "
-        "problemas abaixo, sem reescrever o resto. Devolva O JSON COMPLETO no formato "
-        "PROMPT_MESTRE_V6 (RESUMO curto + um unico bloco ```json```), com 6 clipes de "
-        "10 s. Preserve a continuidade: se mudar estado_out, ajuste estado_in do proximo; "
-        "se mudar posicao/mao de objeto, ajuste o registro; toda transicao fisica mostra "
-        "CONTATO -> transformacao -> resultado; a mao que opera o objeto e a mesma no "
-        "clipe; o cliente/zelador aparece no clipe 1; som bucal MODERADO (no maximo 1 "
-        "por clipe, em 2-5 dos 6 clipes - NUNCA em todos, NUNCA zero); nada de N/A na "
-        "musica.\n\nPROBLEMAS DO AUDITOR:\n" + "\n".join(linhas) +
+        "problemas abaixo, sem reescrever o resto — preservar o render vale tanto "
+        "quanto corrigir: a versao auditada ja passou no validador com render >= 7. "
+        "Devolva O JSON COMPLETO no formato PROMPT_MESTRE_V6 (RESUMO curto + um unico "
+        "bloco ```json```), com 6 clipes de 10 s.\n"
+        "LEIS QUE A CORRECAO NAO PODE VIOLAR:\n"
+        "- Continuidade: se mudar estado_out, ajuste estado_in do proximo; se mudar "
+        "posicao/mao de objeto, ajuste o registro.\n"
+        "- Transicao fisica: CONTATO -> transformacao -> resultado nos planos.\n"
+        "- Dois corpos em acao fisica em TODOS os planos: quem nao executa interfere "
+        "(empurra, segura, trava, corrige). PROIBIDO nos planos e reacoes: stays, "
+        "waits, watches, stands by, looks on, observa, acompanha, espera — isso "
+        "derruba a nota de render e reprova o episodio.\n"
+        "- Som bucal MODERADO: no maximo 1 por clipe, em 2-5 dos 6 clipes — NUNCA em "
+        "todos, NUNCA zero.\n"
+        "- Nada de N/A na musica.\n\n"
+        "PROBLEMAS DO AUDITOR:\n" + "\n".join(linhas) +
         "\n\nRESUMO DO AUDITOR: " + str(r.get("resumo", ""))[:1200])
 
 
@@ -359,12 +367,20 @@ def main():
         if not ok or len(ep.get("shots") or []) != 6:
             lista = "\n".join("%d. %s" % (i + 1, e) for i, e in enumerate(erros[:14])) \
                 or "- o JSON deve ter EXATAMENTE 6 objetos em shots (c01..c06), dur 10"
+            # avisos que derrubam a nota de render (ex.: "alguem parece parado")
+            # precisam entrar na re-correcao — so os erros nao bastam.
+            extra = ""
+            if av_clipe:
+                extra = ("\n\nAVISOS QUE DERRUBAM O RENDER — corrija tambem:\n"
+                         + "\n".join("- " + a for a in av_clipe[:8]))
             mensagens = mensagens + [
                 {"role": "assistant", "content": (cru or "")[:60000]},
                 {"role": "user", "content": (
                     "A correcao do auditor quebrou o contrato do validador. Devolva O "
                     "JSON COMPLETO corrigido, preservando as correcoes de causalidade/"
-                    "fisica e resolvendo:\n" + lista)},
+                    "fisica e resolvendo:\n" + lista + extra +
+                    "\nLembre: em todo plano os DOIS corpos agem fisicamente (nunca "
+                    "stays/waits/watches); som bucal moderado (2-5 de 6 clipes).")},
             ]
             j = gerar(pieces, fcfg, mensagens)
             (EPISODIOS / "_ultima_geracao.json").write_text(
