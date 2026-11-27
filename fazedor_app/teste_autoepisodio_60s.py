@@ -165,6 +165,7 @@ def _registra_gate(slug, rel):
         "nota_geral": a.get("nota_geral"),
         "causalidade": (a.get("notas") or {}).get("causalidade"),
         "criticas": a.get("falhas_criticas"),
+        "altas": a.get("falhas_altas"),
         "quando": datetime.now().isoformat(timespec="seconds"),
     }]
     g["consecutivas"] = min(3, int(g.get("consecutivas", 0)) + 1)
@@ -201,7 +202,15 @@ def auditar(ep, fcfg):
 
 
 def auditoria_aprovada(rel):
-    """Critério do gate: APROVADO + causalidade >= 8 + zero críticas + camadas OK."""
+    """Critério do gate (calibrado 27/11 com o usuário).
+
+    O Sol é o dono de CRITICAS e ALTAS de causalidade — médias e baixas são
+    ajuste fino e não bloqueiam o render. O gate aceita:
+      - status APROVADO ou CORRECAO_NECESSARIA;
+      - zero críticas e zero altas (campos E lista de problemas);
+      - causalidade >= 8;
+      - as 3 camadas presentes e NENHUMA REPROVADO.
+    """
     a = (rel.get("relatorio") or {}).get("auditoria") or {}
     notas = a.get("notas") or {}
     try:
@@ -212,19 +221,26 @@ def auditoria_aprovada(rel):
         criticas = int(a.get("falhas_criticas", 1) or 0)
     except Exception:
         criticas = 1
+    try:
+        altas = int(a.get("falhas_altas", 1) or 0)
+    except Exception:
+        altas = 1
     probs = (rel.get("relatorio") or {}).get("problemas") or []
-    tem_critico = any(str(p.get("severidade", "")).upper().startswith("CRIT")
-                      for p in probs)
+    severidades = [str(p.get("severidade", "")).upper() for p in probs]
+    tem_critico = any(s.startswith("CRIT") for s in severidades)
+    tem_alto = any(s.startswith("ALTO") for s in severidades)
     camadas = a.get("camadas") or {}
     # exige as 3 camadas reais: all() sobre dict vazio seria verdade por vacuidade
     # e liberaria o smoke sem o veredito por camada.
     esperadas = ("estrutural", "narrativa", "visual_fisica")
     chaves_ok = all(k in camadas for k in esperadas)
-    camadas_ok = chaves_ok and all(
-        str((camadas.get(k) or {}).get("status", "")).upper() == "APROVADO"
+    nenhuma_reprovada = chaves_ok and all(
+        str((camadas.get(k) or {}).get("status", "")).upper() != "REPROVADO"
         for k in esperadas)
-    return (str(a.get("status", "")).upper() == "APROVADO" and causalidade >= 8.0
-            and criticas == 0 and not tem_critico and camadas_ok)
+    status = str(a.get("status", "")).upper()
+    return (status in ("APROVADO", "CORRECAO_NECESSARIA") and causalidade >= 8.0
+            and criticas == 0 and altas == 0 and not tem_critico and not tem_alto
+            and nenhuma_reprovada)
 
 
 def mensagem_correcao_auditoria(rel):
