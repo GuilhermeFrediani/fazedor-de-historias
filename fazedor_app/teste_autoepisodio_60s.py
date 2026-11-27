@@ -345,13 +345,16 @@ def main():
         if auditoria_aprovada(rel):
             aprovado = True
             break
-        if a_rodada == 3:
-            break
-        print("\n--- auditoria REPROVOU: Astra corrige (rodada %d/2) ---" % a_rodada,
-              flush=True)
+        # mostra os problemas SEMPRE (inclusive na ultima rodada, quando o loop
+        # quebra — sem isso o veredito final fica sem diagnostico no log)
+        print("\n--- auditoria REPROVOU (%s) ---"
+              % ("ultima rodada" if a_rodada == 3 else "Astra corrige rodada %d/2"
+                 % a_rodada), flush=True)
         for p in ((rel.get("relatorio") or {}).get("problemas") or [])[:10]:
             print("  [clipe %s] %s / %s: %s" % (p.get("clipe"), p.get("severidade"),
                   p.get("campo"), str(p.get("problema"))[:180]), flush=True)
+        if a_rodada == 3:
+            break
         mensagens = mensagens + [
             {"role": "assistant", "content": (cru or "")[:60000]},
             {"role": "user", "content": mensagem_correcao_auditoria(rel)},
