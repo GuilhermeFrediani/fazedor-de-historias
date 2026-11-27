@@ -199,14 +199,40 @@ PALAVRAS_VEDADAS = ("freeze", "stare", "handheld", "whip pan", "crash zoom",
                     "says", "shouts", "whispers", "narrator", "subtitle",
                     "caption", "text on screen", "laugh track", "boing", "twang",
                     "moral of the story")
+# v6.1 — SOM: o check antigo aceitava só um verbo de som de uma lista estreita e
+# recusava o vocabulário real das histórias (rap, rasp, scuff, squish, brush,
+# trickle, peel, crease...). Agora são dois checks: EVENTO acústico nomeado e
+# FONTE (material) que o produz. Foley = material + evento; som bucal é separado.
 SOM_NOMEADO = re.compile(
     r"\b(hit|fall|creak|scatter|pour|hiss|rattle|knock|click|buzz|clank|slide|drip|tap|snap|"
     r"pop|squeak|tremble|roll|spray|spark|shatter|stretch|scrape|sizzle|whoosh|thud|bang|"
     r"ring|squeal|flap|whir|chime|slosh|crack|crumple|swish|grind|patter|crackle|clatter|"
     r"groan|hum|lap|slap|rumble|thump|tick|clink|rustle|splash|bump|whistle|sputter|clang|"
-    r"blare|blast|chug|clop|clump|jangle|sway|fizz|drip|echo|vibrat|wheeze|sniff|chomp|"
-    r"scritch|shuffl|whizz|zing|tonk|tock|creek|creak)"
+    r"blare|blast|chug|clop|clump|jangle|fizz|echo|vibrat|wheeze|sniff|chomp|"
+    r"scritch|shuffl|whizz|zing|tonk|tock|creek|creak|"
+    r"rap|pat|rasp|scuff|scratch|flick|grunt|sigh|breath|huff|puff|gasp|pant|snort|"
+    r"peel|trickle|squish|squelch|slurp|gulp|gurgle|bubble|bloop|plop|splosh|splat|plip|"
+    r"brush|crease|clap|smack|crunch|munch|chirp|screech|thrum|plink|plunk|scrunch|"
+    r"tinkle|jingle|ding|bong|beep|blip|clack|cluck|stomp|stamp|thunk|clomp|whump|wham|bam|"
+    r"sough|burr|whirr|purr|roar|howl|beat|scrub|wipe)"
     r"(?:s|es|ed|ing)?\b", re.I)
+
+# Material/fonte do som. "can", "lip", "slip" e "nail" ficam de fora: são verbos/
+# partes ambíguas e deixariam um som só de boca passar como foley de objeto.
+SOM_MATERIAL = re.compile(
+    r"\b(steel|metal|iron|zinc|tin|aluminium|aluminum|brass|copper|chrome|"
+    r"wood|wooden|timber|plank|board|cardboard|paper|card|envelope|invoice|"
+    r"rubber|plastic|foam|sponge|putty|clay|plaster|mesh|cloth|fabric|canvas|"
+    r"glass|ceramic|porcelain|tile|tiles|enamel|concrete|cement|stone|brick|"
+    r"water|runoff|silt|mud|sludge|ice|frost|ash|dust|sand|grit|"
+    r"cord|rope|string|wire|cable|chain|hose|tube|pipe|coil|"
+    r"leather|boot|boots|sole|soles|heel|heels|skin|knuckle|knuckles|fingernail|"
+    r"pager|bell|switch|switches|lever|handle|hinge|axle|roller|sleeve|blade|blades|"
+    r"snips|scissors|shears|squeegee|caliper|gauge|ruler|brush|"
+    r"jar|bucket|pail|trough|gutter|drum|rail|rails|ledge|slot|sill|"
+    r"curtain|shutter|slat|slats|panel|door|drawer|shelf|shelves|visor|"
+    r"wall|floor|ceiling|roof|step|steps|stairs|table|bench|desk|chair)"
+    r"(?:s|es|ed)?\b", re.I)
 
 _DOSSIE_CACHE = None
 
@@ -581,6 +607,20 @@ VERBOS_GAG = ("escorrega", "escorreg", "desliza", "tomba", "voa", "voou", "quica
               "derruba", "salta", "estufa", "suga", "chupa", "espirra", "entorna", "treme",
               "cusp", "jorra", "vira", "tomb", "estica", "encolhe", "desaba", "afunda",
               "quica", "desliz", "explode", "vibra", "rasga", "enrosca", "trav", "sobe")
+# v6.1 — o canon V6 escreve os planos em EN e a gag pode estar em PT. O check de
+# piada física precisa ler os DOIS idiomas; antes só lia PT e reprovava clipe válido.
+VERBOS_GAG_EN = ("slip", "slide", "topple", "tip", "dip", "fall", "drop", "roll", "bend",
+                 "bow", "buckle", "sag", "bounce", "spill", "overflow", "swell", "burst",
+                 "squirt", "flip", "wobble", "collapse", "sink", "snag", "rip", "tear",
+                 "lift", "yank", "wedge", "press", "squeeze", "crush", "fold", "nudge",
+                 "catch", "hold", "tap", "brush", "rub", "scrape", "spread", "smear",
+                 "wipe", "pin", "clamp", "grip", "twist", "turn", "crank", "pump",
+                 "thread", "hook", "peel", "daub", "knead", "jam", "lock", "stick",
+                 "seal", "whiten", "crack", "split", "flatten", "stretch", "shrink",
+                 "freeze", "melt", "stain", "soak", "dry", "wet", "blacken", "flare",
+                 "short", "tilt", "droop", "crumble", "part", "pivot", "swing", "open",
+                 "close", "settle", "level", "square", "slap", "stamp", "scuff", "rasp",
+                 "scrape", "scatter", "pour", "drip", "spray", "scoop", "scrape")
 VERBOS_PROCESSO = ("mede", "medir", "confere", "conferir", "verifica", "aprova", "calcula",
                    "planeja", "reposiciona", "acompanha", "estima", "define", "registra",
                    "continua trabalhando", "continuam trabalhando", "troca um olhar")
@@ -588,6 +628,11 @@ DANO_INVISIVEL = ("entra em curto", "em curto", "curto-circuito", "curto circuit
                   "sobrecarga", "pane", "falha interna", "infraestrutura",
                   "sistema elétrico", "sistema eletrico", "colapso interno",
                   "sobrecarga elétrica", "sobrecarga eletrica", "queimad")
+# "pane" dentro de "panel" era falso positivo (planos V6 são em EN). Casa por
+# palavra inteira; "queimad" continua como radical (queimado/queimada/queimar).
+RE_DANO_INVISIVEL = re.compile(
+    r"\b(entra em curto|em curto|curto[- ]circuito|sobrecarga(?: el[eé]trica)?|pane|"
+    r"falha interna|infraestrutura|sistema el[eé]trico|colapso interno|queimad\w*)\b", re.I)
 FORA_DE_QUADRO = ("longe dos dois", "atrás deles", "atras deles", "fora de quadro",
                   "em outra sala", "longe dos trabalhadores", "à distância", "a distancia")
 GESTOS = ("ajeita a boina", "bate o lápis", "bate o lapis", "polegar", "alisa o bigode",
@@ -652,34 +697,45 @@ def _validar_dossie_v2(ep):
         erros.append("achou 'Theo' - o nome correto e TEO (nunca Theo)")
 
     sem_gag, so_processo, dano_invis, fora_quadro = [], [], [], []
+    v6 = any(s.get("planos") for s in shots)
     for s in shots:
         i = s.get("n", "?")
         act = str(s.get("action", ""))
         gag = str(s.get("gag", "")).strip()
         beats = s.get("beats") or []
-        if not act.strip():
-            erros.append(f"[{i}] action vazia"); continue
-        if len(act) > 7000:
-            erros.append(f"[{i}] action com {len(act)} chars - teto absoluto e 7000")
-        if _action_ja_completa(act):
-            if not 2000 <= len(act) <= 4500:
-                avisos.append(f"[{i}] action com {len(act)} chars - alvo: 2.500-3.500")
-            if "They do not speak" not in act:
-                erros.append(f"[{i}] action sem 'They do not speak and their mouths do not move.'")
-        else:
-            if not 250 <= len(act) <= 1200:
-                avisos.append(f"[{i}] action com {len(act)} chars - alvo v2: 300-900 (so a acao)")
-            if not str(s.get("camera", "")).strip() and "camera" in act.lower():
-                avisos.append(f"[{i}] camera dentro do action - use o campo camera")
-        baixo = act.lower()
+        planos = s.get("planos") or []
+        texto_prompt = " ".join(str(p.get("texto", "")) for p in planos).strip()
+
+        # v6: o prompt do clipe é planos[].texto. 'action' é só um espelho de
+        # planos[1] para os checadores legados — não é texto de dossiê v2.
+        if not act.strip() and not texto_prompt:
+            erros.append(f"[{i}] action/planos vazios"); continue
+        if not v6:
+            if len(act) > 7000:
+                erros.append(f"[{i}] action com {len(act)} chars - teto absoluto e 7000")
+            if _action_ja_completa(act):
+                if not 2000 <= len(act) <= 4500:
+                    avisos.append(f"[{i}] action com {len(act)} chars - alvo: 2.500-3.500")
+                if "They do not speak" not in act:
+                    erros.append(f"[{i}] action sem 'They do not speak and their mouths do not move.'")
+            else:
+                if not 250 <= len(act) <= 1200:
+                    avisos.append(f"[{i}] action com {len(act)} chars - alvo v2: 300-900 (so a acao)")
+                if not str(s.get("camera", "")).strip() and "camera" in act.lower():
+                    avisos.append(f"[{i}] camera dentro do action - use o campo camera")
+        alvo_texto = texto_prompt if v6 else act
+        baixo = alvo_texto.lower()
         for w in PALAVRAS_VEDADAS:
             if w in baixo:
-                erros.append(f"[{i}] termo vedado no action: '{w}'")
+                erros.append(f"[{i}] termo vedado no prompt: '{w}'")
         som = str(s.get("overall_soundscape", ""))
         if not som.strip():
             erros.append(f"[{i}] overall_soundscape vazio (o som e o punchline)")
         elif not SOM_NOMEADO.search(som):
             erros.append(f"[{i}] soundscape sem evento nomeado (material + verbo)")
+        elif not SOM_MATERIAL.search(som):
+            avisos.append(f"[{i}] soundscape sem fonte sonora (material) - nomeie o "
+                          f"material que produz o som")
         mus = str(s.get("non_diegetic_music", "")).strip()
         if not mus or mus.upper() == "N/A":
             erros.append(f"[{i}] non_diegetic_music vazio/N/A - a V6 exige musica "
@@ -688,27 +744,41 @@ def _validar_dossie_v2(ep):
                        r"sings|singing|singer|spoken|speech)\b", mus, re.I):
             erros.append(f"[{i}] non_diegetic_music com vocal/fala - a V6 exige musica "
                          f"instrumental (sem voz)")
-        if not 3 <= len(beats) <= 4:
+        if not v6 and not 3 <= len(beats) <= 4:
             avisos.append(f"[{i}] beats: {len(beats)} - o dossie pede 3 ou 4")
         if int(s.get("dur", 0) or 0) != DOSSIE_DUR:
             erros.append(f"[{i}] dur={s.get('dur')} - clipe e de {DOSSIE_DUR} s")
 
-        corpo = " ".join([gag] + [str(x) for x in beats]) + " " + act
+        if v6:
+            corpo = " ".join([gag, str(s.get("fisica", "")), texto_prompt,
+                              str(s.get("causa", "")), str(s.get("efeito", "")),
+                              str(s.get("payoff", ""))])
+            corpo_visivel = texto_prompt
+        else:
+            corpo = " ".join([gag] + [str(x) for x in beats]) + " " + act
+            corpo_visivel = corpo
         if not gag:
             sem_gag.append(i)
-        elif not _tem(gag, VERBOS_GAG):
+        elif not v6 and not _tem(gag, VERBOS_GAG):
             avisos.append(f"[{i}] gag sem verbo fisico - descreva o que se MOVE")
-        fisico = _tem(" ".join([gag] + [str(x) for x in beats]), VERBOS_GAG)
+        if v6:
+            if not str(s.get("fisica", "")).strip():
+                avisos.append(f"[{i}] sem campo 'fisica' - declare a primitiva fisica do clipe")
+            fisico = (bool(str(s.get("fisica", "")).strip())
+                      or bool(_tem(corpo, VERBOS_GAG))
+                      or bool(_tem(corpo, VERBOS_GAG_EN)))
+        else:
+            fisico = _tem(" ".join([gag] + [str(x) for x in beats]) + " " + act, VERBOS_GAG)
         if not fisico:
             so_processo.append(i)
-        di = _tem(corpo, DANO_INVISIVEL)
+        di = RE_DANO_INVISIVEL.search(corpo_visivel)
         if di:
             dano_invis.append(i)
-            erros.append(f"[{i}] dano invisivel ('{di[0]}') - troque por dano material visivel")
-        if str(s.get("estagio", "")).upper() == "CLIMAX" and _tem(corpo, FORA_DE_QUADRO):
+            erros.append(f"[{i}] dano invisivel ('{di.group(0)}') - troque por dano material visivel")
+        if str(s.get("estagio", "")).upper() == "CLIMAX" and _tem(corpo_visivel, FORA_DE_QUADRO):
             fora_quadro.append(i)
             erros.append(f"[{i}] climax fora de quadro - o publico precisa VER o desastre")
-        if _tem(corpo, ("longe dos dois", "atrás deles", "atras deles")) and str(
+        if _tem(corpo_visivel, ("longe dos dois", "atrás deles", "atras deles")) and str(
                 s.get("estagio", "")).upper() in ("CLIMAX", "ESCALADA"):
             if i not in fora_quadro:
                 avisos.append(f"[{i}] acao acontecendo fora de quadro no pico")

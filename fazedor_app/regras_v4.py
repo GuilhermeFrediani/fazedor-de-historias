@@ -285,12 +285,67 @@ RE_AR_MORTO = re.compile(
     r"look at each other|olham um para o outro|fica ao lado|espera\w*)\b", re.I)
 
 RE_SOM_BOCA = ("snort", "sigh", "breath", "exhale", "grunt", "huff", "puff", "whistle",
-               "tongue", "nasal", "swallow")
+               "tongue", "nasal", "swallow",
+               "suspiro", "resfolego", "resfôlego", "grunhido", "bufo", "assobio",
+               "estalo de lingua", "estalo de língua", "engole", "engolir")
 
 RE_CLIENTE = re.compile(r"\b(client|cliente|military boot|uniformed)\b", re.I)
 
 RE_NEGATIVO = re.compile(r"\b(no text|no logo|no watermark|no cartoon outlines|no anime eyes|"
                          r"no plastic gloss|no extra fingers)\b", re.I)
+
+# v6 §37 — TRANSIÇÃO FÍSICA VISÍVEL: o plano precisa mostrar o CONTATO que
+# produz a TRANSFORMAÇÃO (estado inicial → ação → contato → transformação →
+# resultado). Sem isso a mudança de estado existe no papel e não no vídeo.
+# Listas PT+EN porque o canon V6 escreve planos em EN e causa/efeito em PT.
+RE_CONTATO_FISICO = re.compile(
+    r"\b(touch|touches|touching|press|presses|pressed|pressing|pinch|pinches|pinched|"
+    r"grip|grips|gripped|clamp|clamps|clamped|pin|pins|pinned|wedge|wedges|wedged|"
+    r"jam|jams|jammed|slide|slides|slid|drag|drags|dragged|wipe|wipes|wiped|"
+    r"smear|smears|smeared|spread|spreads|roll|rolls|rolled|lift|lifts|lifted|"
+    r"drop|drops|dropped|strike|strikes|struck|hit|hits|land|lands|landed|meet|meets|met|"
+    r"seat|seats|seated|squeeze|squeezes|squeezed|crush|crushes|crushed|fold|folds|folded|"
+    r"bend|bends|bent|pour|pours|poured|drip|drips|dripped|spray|sprays|sprayed|"
+    r"brush|brushes|brushed|scrape|scrapes|scraped|pat|pats|patted|rub|rubs|rubbed|"
+    r"push|pushes|pushed|pull|pulls|pulled|hook|hooks|hooked|lock|locks|locked|"
+    r"tap|taps|tapped|knead|kneads|kneaded|daub|daubs|daubed|coat|coats|coated|"
+    r"cover|covers|covered|wrap|wraps|wrapped|thread|threads|threaded|slap|slaps|"
+    r"toca|encosta|aperta|prende|empurra|puxa|desliza|arrasta|esfrega|espalha|"
+    r"dobra|enrola|levanta|solta|bate|encaixa|rosqueia|veda|cobre|poisa|pousa|"
+    r"segura|passa|passam|pressiona|comprime|aproxima|liga|encosta)\b", re.I)
+
+RE_TRANSFORMACAO = re.compile(
+    r"\b(whiten|whitens|whitened|darken|darkens|darkened|crack|cracks|cracked|"
+    r"split|splits|tear|tears|tore|burst|bursts|spill|spills|spilled|overflow|"
+    r"overflows|overflowed|flatten|flattens|flattened|stretch|stretches|stretched|shrink|"
+    r"shrinks|shrank|freeze|freezes|froze|melt|melts|melted|stain|stains|stained|soak|soaks|"
+    r"soaked|dry|dries|dried|wet|wets|wetted|blacken|blackens|flare|flares|flared|"
+    r"lock|locks|locked|stick|sticks|stuck|seal|seals|sealed|"
+    r"swell|swells|swelled|collapse|collapses|collapsed|buckle|buckles|buckled|"
+    r"rip|rips|ripped|pop|pops|popped|snap|snaps|snapped|peel|peels|peeled|"
+    r"crumble|crumbles|crumbled|droop|droops|drooped|tilt|tilts|tilted|bend|bends|bent|"
+    r"bow|bows|bowed|sag|sags|sagged|fall|falls|fell|drop|drops|dropped|"
+    r"bounce|bounces|bounced|stamp|stamps|stamped|stamping|pack|packs|packed|"
+    r"appear|appears|appeared|vanish|vanishes|emerge|emerges|form|forms|formed|"
+    r"gather|gathers|gathered|bulge|bulges|bulged|scar|scars|scarred|"
+    r"dim|dims|dimmed|glow|glows|glowed|shine|shines|shone|drain|drains|drained|"
+    r"fill|fills|filled|clear|clears|cleared|clean|cleans|cleaned|"
+    r"flap|flaps|flapped|dip|dips|dipped|tip|tips|tipped|draw|draws|drew|fit|fits|fitted|"
+    r"curl|curls|curled|part|parts|parted|pivot|pivots|pivoted|swing|swings|swung|"
+    r"turn|turns|turned|twist|twists|twisted|open|opens|opened|close|closes|closed|"
+    r"settle|settles|settled|level|levels|leveled|square|squares|squared|"
+    r"embranquece|entorta|cede|racha|estala|rasga|estoura|transborda|derrama|achata|"
+    r"estica|encolhe|congela|derrete|mancha|molha|seca|escurece|queima|prende|trava|"
+    r"incha|desaba|cai|quica|amassa|afunda|escorre|escorrega|tomba|voa|rola|dobra|liga)\b",
+    re.I)
+
+
+def _conta_eventos_som(txt):
+    """Conta eventos acústicos por separador de frase (v6 usa ponto e ponto-e-vírgula)."""
+    t = str(txt or "").strip().rstrip(".; ")
+    if not t:
+        return 0
+    return t.count(";") + t.count(".") + 1
 
 
 def validar_montagem(ep):
@@ -301,6 +356,7 @@ def validar_montagem(ep):
         return {"erros": ["sem shots"], "avisos": [], "nota": 0, "checks": checks}
 
     cortes_ok = reacao_ok = som_ok = plantou_ok = 0
+    boca_ok = transicao_ok = 0
     for s in shots:
         i = s.get("n", "?")
         planos = s.get("planos") or []
@@ -330,19 +386,42 @@ def validar_montagem(ep):
             reacao_ok += 1
 
         # c) som com corpo (conta nos DOIS campos: 'som' em PT e soundscape em EN)
+        # v6: som bucal é MODERADO — não é obrigatório em todo clipe. O que todo
+        # clipe precisa é de eventos concretos (foley material + ação). O bucal é
+        # verificado no episódio (abaixo), com função de acting.
         som_pt = str(s.get("som", ""))
         som_en = str(s.get("overall_soundscape", ""))
         som = (som_pt + " ; " + som_en).lower()
         n_boca = sum(1 for k in RE_SOM_BOCA if k in som)
-        n_eventos = max(som_pt.count(";") + 1 if som_pt else 0,
-                        som_en.count(";") + 1 if som_en else 0)
-        if n_boca < 1:
-            erros.append("[%s] soundscape sem som de boca (resfolego/suspiro) - "
-                         "e o gatilho do riso." % i)
-        elif n_eventos < 3:
+        n_eventos = max(_conta_eventos_som(som_pt), _conta_eventos_som(som_en))
+        if n_eventos < 3:
             avisos.append("[%s] so %d evento(s) de som - alvo 4-6 concretos." % (i, n_eventos))
         else:
             som_ok += 1
+        if n_boca >= 1:
+            boca_ok += 1
+
+        # c2) TRANSIÇÃO FÍSICA VISÍVEL (v6 §37)
+        # Contato e transformação precisam estar nos PLANOS (o que a câmera vê).
+        # Se o efeito/payoff declara uma mudança que os planos não desenham, é
+        # transformação no papel — o espectador não vê.
+        if planos:
+            textos_plano = " ".join(str(p.get("texto", "")) for p in planos)
+            declarado = " ".join([str(s.get("efeito", "")), str(s.get("payoff", ""))])
+            tem_contato = bool(RE_CONTATO_FISICO.search(textos_plano))
+            tem_transf = bool(RE_TRANSFORMACAO.search(textos_plano))
+            transf_declarada = bool(RE_TRANSFORMACAO.search(declarado))
+            if not tem_contato:
+                erros.append("[%s] TRANSICAO FISICA: os planos nao mostram o contato que "
+                             "produz a mudanca (acao sem contato = transformacao magica)." % i)
+            elif transf_declarada and not tem_transf:
+                erros.append("[%s] TRANSICAO FISICA: o resultado e declarado em efeito/payoff "
+                             "mas os planos nao mostram a transformacao (nao da para filmar)." % i)
+            elif not tem_transf:
+                avisos.append("[%s] TRANSICAO FISICA: sem transformacao visivel nos planos - "
+                              "pode virar clipe de medicao." % i)
+            else:
+                transicao_ok += 1
 
         # d) ar morto no texto dos planos
         for p in planos:
@@ -361,13 +440,25 @@ def validar_montagem(ep):
                          "a lista vira conceito." % i)
 
     n = len(shots)
+
+    # som bucal MODERADO: não é obrigatório em todo clipe, mas o episódio não pode
+    # ficar sem nenhum (é o gatilho do riso). Alvo: pelo menos 1 a cada 3 clipes.
+    if boca_ok == 0:
+        erros.append("som bucal: nenhum clipe tem suspiro/resfolego/grunhido - "
+                     "o gatilho do riso nao existe no episodio.")
+    elif boca_ok < max(1, n // 3):
+        avisos.append("som bucal em %d/%d clipes - alvo moderado: pelo menos 1 a cada 3 "
+                      "(nao precisa ser em todos)." % (boca_ok, n))
+    if transicao_ok == n:
+        checks.append("transicao fisica com contato + transformacao nos planos")
+
     nota = 0
     if cortes_ok == n:
         nota += 4; checks.append("corte datado dentro de todos os clipes")
     if reacao_ok == n:
         nota += 2; checks.append("reacao de corpo inteiro em todos")
     if som_ok >= max(1, n - 1):
-        nota += 2; checks.append("som com corpo e som de boca")
+        nota += 2; checks.append("som com corpo (eventos concretos)")
     if plantou_ok == n:
         nota += 1; checks.append("objeto de gag nomeado")
     # v5.2: o cliente nao e sempre o militar — o ep diz quem e (padre, sindico...).

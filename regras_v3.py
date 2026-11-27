@@ -319,12 +319,17 @@ def validar_renderizavel(ep):
     orcamento_ok = dois_corpos_ok = reacao_ok = continuidade_ok = ordem_ok = 0
     fisicas = []
     anterior_out = None
+    v6 = any(s.get("planos") for s in shots)
 
     for s in shots:
         i = s.get("n", "?")
         act = str(s.get("action", ""))
+        planos = s.get("planos") or []
+        # v6: os planos são o prompt real; o action é só o espelho de planos[1].
+        # Para corpo/física impossível vale o clipe inteiro, não só o plano do meio.
+        corpo = " ".join(str(p.get("texto", "")) for p in planos) if (v6 and planos) else act
         beats = s.get("beats") or []
-        baixo = act.lower()
+        baixo = corpo.lower()
 
         # a) orçamento de física
         cadeia = len(RE_CADEIA.findall(act))
@@ -335,7 +340,7 @@ def validar_renderizavel(ep):
             avisos.append("[%s] 1 conector causal - confira se não são 2 efeitos." % i)
         else:
             orcamento_ok += 1
-        if len(beats) > 3:
+        if not v6 and len(beats) > 3:
             erros.append("[%s] %d beats (v3: 2, no máximo 3)." % (i, len(beats)))
 
         # b) tamanho do action
@@ -349,29 +354,34 @@ def validar_renderizavel(ep):
 
         # c) física impossível
         for rx, motivo in FISICA_IMPOSSIVEL:
-            m = re.search(rx, act, re.I)
+            m = re.search(rx, corpo, re.I)
             if m:
                 erros.append("[%s] FÍSICA IRREPRODUZÍVEL (%s): '%s'" % (i, motivo, m.group(0)[:60]))
         if s.get("fisica"):
             f = str(s["fisica"]).lower().strip()
             fisicas.append(f)
-            if f not in PRIMITIVAS:
+            # v6 descreve a física em linguagem própria (ex.: "fletir até fissurar");
+            # o cardápio de 7 é do legado e não deve acusar falso positivo.
+            if f not in PRIMITIVAS and not v6:
                 avisos.append("[%s] fisica '%s' fora do cardápio de 7." % (i, f))
 
-        # d) objeto móvel no começo
-        primeira = re.split(r"(?<=[.!?])\s", act.strip())[0] if act.strip() else ""
-        if not RE_ACTION_MOVEL.search(primeira):
-            avisos.append("[%s] o verbo físico não está na 1ª frase - "
-                          "o modelo pode ignorar o fim." % i)
-        else:
-            ordem_ok += 1
+        # d) objeto móvel no começo (regra do action corrido legado; o V6 tem
+        #    planos datados e não precisa do verbo físico na 1ª frase do plano do meio)
+        if not v6:
+            primeira = re.split(r"(?<=[.!?])\s", act.strip())[0] if act.strip() else ""
+            if not RE_ACTION_MOVEL.search(primeira):
+                avisos.append("[%s] o verbo físico não está na 1ª frase - "
+                              "o modelo pode ignorar o fim." % i)
+            else:
+                ordem_ok += 1
 
-        # e) dois corpos
+        # e) dois corpos (v6: presença no clipe inteiro; idle no plano do meio)
         tem_teo = "teo" in baixo or "téo" in baixo
         tem_juca = "juca" in baixo
+        acao_media = act.lower()
         if not (tem_teo and tem_juca):
             erros.append("[%s] falta TEO ou JUCA em cena - os dois corpos têm que agir." % i)
-        elif RE_PARADO.search(act) and len(RE_ACTION_MOVEL.findall(act)) < 3:
+        elif RE_PARADO.search(acao_media) and len(RE_ACTION_MOVEL.findall(acao_media)) < 3:
             avisos.append("[%s] alguém parece parado ('stays/waits/watches') - "
                           "dê uma interferência física a ele." % i)
         else:
