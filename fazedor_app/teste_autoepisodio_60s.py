@@ -18,6 +18,7 @@ import random
 import re
 import sys
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -25,6 +26,7 @@ BASE = "http://127.0.0.1:8756"
 APP = Path(__file__).resolve().parent
 EPISODIOS = APP / "EPISODIOS"
 META = EPISODIOS / "_smoke_meta.json"
+GATE = EPISODIOS / "_gate_v6.json"
 
 
 def _get(caminho):
@@ -137,6 +139,117 @@ def avaliar(ep):
     return (not erros), val, erros, avisos_clipe
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# GATE FINAL: auditoria independente (Sol) + correção do Astra
+# ─────────────────────────────────────────────────────────────────────────────
+def _reset_gate(motivo):
+    """Uma história reprovada zera a sequência: o smoke exige 3 aprovadas seguidas."""
+    try:
+        GATE.write_text(json.dumps(
+            {"consecutivas": 0, "historias": [], "reset_motivo": motivo,
+             "quando": datetime.now().isoformat(timespec="seconds")},
+            ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception as e:
+        print("  (!) nao consegui gravar o gate:", e, flush=True)
+
+
+def _registra_gate(slug, rel):
+    try:
+        g = json.loads(GATE.read_text(encoding="utf-8"))
+    except Exception:
+        g = {"consecutivas": 0, "historias": []}
+    a = (rel.get("relatorio") or {}).get("auditoria") or {}
+    g["historias"] = (g.get("historias") or [])[-2:] + [{
+        "slug": slug,
+        "status": a.get("status"),
+        "nota_geral": a.get("nota_geral"),
+        "causalidade": (a.get("notas") or {}).get("causalidade"),
+        "criticas": a.get("falhas_criticas"),
+        "quando": datetime.now().isoformat(timespec="seconds"),
+    }]
+    g["consecutivas"] = min(3, int(g.get("consecutivas", 0)) + 1)
+    g.pop("reset_motivo", None)
+    GATE.write_text(json.dumps(g, ensure_ascii=False, indent=2), encoding="utf-8")
+    return g
+
+
+def auditar(ep, fcfg):
+    """Chama /api/auditar (Sol). Exige relatório JSON válido; tenta 2x.
+
+    NÃO inventamos state_ledger: um ledger com posições fixas (ex.: "teo":
+    "left" sempre) induziria o auditor a marcar continuidade falsa quando o
+    episódio move os personagens. O campo é opcional — o próprio episódio já
+    carrega objetos_plantados/estado_in/estado_out, que é o que importa.
+    """
+    corpo = {
+        "api": {"kind": "responses", "endpoint": fcfg["ar_endpoint"],
+                "model": fcfg["model_ar"]},
+        "episodio": ep,
+        "modelo_criador": fcfg["model_ar"],
+    }
+    ultimo = ""
+    for tent in (1, 2):
+        print(">>> auditoria independente (Sol) - tentativa %d/2 (~3 min)..." % tent,
+              flush=True)
+        st, j = _post("/api/auditar", corpo, timeout=2400)
+        if (st == 200 and isinstance(j.get("relatorio"), dict)
+                and isinstance(j["relatorio"].get("auditoria"), dict)):
+            return j
+        ultimo = "HTTP %s: %s" % (st, str(j)[:400])
+        print("  (!) auditoria invalida: %s" % ultimo, flush=True)
+    raise RuntimeError("auditoria sem relatorio JSON valido (%s)" % ultimo)
+
+
+def auditoria_aprovada(rel):
+    """Critério do gate: APROVADO + causalidade >= 8 + zero críticas + camadas OK."""
+    a = (rel.get("relatorio") or {}).get("auditoria") or {}
+    notas = a.get("notas") or {}
+    try:
+        causalidade = float(notas.get("causalidade", 0) or 0)
+    except Exception:
+        causalidade = 0.0
+    try:
+        criticas = int(a.get("falhas_criticas", 1) or 0)
+    except Exception:
+        criticas = 1
+    probs = (rel.get("relatorio") or {}).get("problemas") or []
+    tem_critico = any(str(p.get("severidade", "")).upper().startswith("CRIT")
+                      for p in probs)
+    camadas = a.get("camadas") or {}
+    # exige as 3 camadas reais: all() sobre dict vazio seria verdade por vacuidade
+    # e liberaria o smoke sem o veredito por camada.
+    esperadas = ("estrutural", "narrativa", "visual_fisica")
+    chaves_ok = all(k in camadas for k in esperadas)
+    camadas_ok = chaves_ok and all(
+        str((camadas.get(k) or {}).get("status", "")).upper() == "APROVADO"
+        for k in esperadas)
+    return (str(a.get("status", "")).upper() == "APROVADO" and causalidade >= 8.0
+            and criticas == 0 and not tem_critico and camadas_ok)
+
+
+def mensagem_correcao_auditoria(rel):
+    r = rel.get("relatorio") or {}
+    probs = r.get("problemas") or []
+    linhas = []
+    for p in probs[:14]:
+        linhas.append("- clipe %s | %s | %s: %s | correcao: %s | dependentes: %s" % (
+            p.get("clipe"), p.get("severidade"), p.get("campo"),
+            str(p.get("problema", ""))[:400], str(p.get("correcao_sugerida", ""))[:400],
+            p.get("campos_dependentes")))
+    if not linhas:
+        linhas = ["- o auditor reprovou sem lista; corrija causalidade/fisica pelo resumo."]
+    return (
+        "O AUDITOR INDEPENDENTE (SOL) REPROVOU este episodio. Corrija APENAS os "
+        "problemas abaixo, sem reescrever o resto. Devolva O JSON COMPLETO no formato "
+        "PROMPT_MESTRE_V6 (RESUMO curto + um unico bloco ```json```), com 6 clipes de "
+        "10 s. Preserve a continuidade: se mudar estado_out, ajuste estado_in do proximo; "
+        "se mudar posicao/mao de objeto, ajuste o registro; toda transicao fisica mostra "
+        "CONTATO -> transformacao -> resultado; a mao que opera o objeto e a mesma no "
+        "clipe; o cliente/zelador aparece no clipe 1; som bucal moderado; nada de N/A na "
+        "musica.\n\nPROBLEMAS DO AUDITOR:\n" + "\n".join(linhas) +
+        "\n\nRESUMO DO AUDITOR: " + str(r.get("resumo", ""))[:1200])
+
+
 def main():
     pieces = _get("/api/pieces")
     fcfg = _get("/api/fcfg")
@@ -184,14 +297,95 @@ def main():
                          "aparece, pago_no_clipe = o último); herda_de = NOME CURTO verbatim "
                          "do estado_out/objeto_gag do clipe anterior (nunca uma frase); "
                          "a MESMA família de objeto_gag volta em 2+ clipes com física "
-                         "diferente (arco); gag com verbo físico na 1a frase do action; "
-                         "nada de 'precisely'; action 35-70 palavras com os dois corpos "
-                         "agitando; som com 4-6 eventos nomeados + 1 som não-verbal; "
+                         "diferente (arco); gag/planos com verbo físico visível; "
+                         "nada de 'precisely'; planos[1] com 20-95 palavras e os dois "
+                         "corpos agitando; som com 4-6 eventos (material + evento), som "
+                         "bucal opcional (no máximo 1, quando tiver função); "
                          "gesto-assinatura no máximo 3x no episódio inteiro.")},
         ]
 
     if episodio is None:
+        _reset_gate("autoepisodio nao ficou valido em 4 rodadas")
         raise SystemExit("XX autoepisodio nao ficou valido em 4 rodadas (1 + 3 correções)")
+
+    # ── GATE FINAL: auditoria independente (Sol) ─────────────────────────────
+    print("\n" + "=" * 78)
+    print(">>> AUDITORIA INDEPENDENTE (Sol) — o criador nao aprova o proprio trabalho")
+    print("=" * 78, flush=True)
+    rel = None
+    aprovado = False
+    a_rodada = 0
+    for a_rodada in (1, 2, 3):
+        try:
+            rel = auditar(episodio, fcfg)
+        except Exception as e:
+            _reset_gate("auditoria indisponivel: %s" % str(e)[:200])
+            raise SystemExit("XX auditoria indisponivel - settings/smoke NAO foram "
+                             "gerados: %s" % e)
+        (EPISODIOS / "_ultima_auditoria.json").write_text(
+            json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")
+        a = (rel.get("relatorio") or {}).get("auditoria") or {}
+        cam = a.get("camadas") or {}
+        print("\nAUDITORIA %d: %s | nota %s | causalidade %s | criticas %s"
+              % (a_rodada, a.get("status"), a.get("nota_geral"),
+                 (a.get("notas") or {}).get("causalidade"), a.get("falhas_criticas")),
+              flush=True)
+        if cam:
+            print("CAMADAS:", {k: (v or {}).get("status") for k, v in cam.items()
+                               if isinstance(v, dict)}, flush=True)
+        if auditoria_aprovada(rel):
+            aprovado = True
+            break
+        if a_rodada == 3:
+            break
+        print("\n--- auditoria REPROVOU: Astra corrige (rodada %d/2) ---" % a_rodada,
+              flush=True)
+        for p in ((rel.get("relatorio") or {}).get("problemas") or [])[:10]:
+            print("  [clipe %s] %s / %s: %s" % (p.get("clipe"), p.get("severidade"),
+                  p.get("campo"), str(p.get("problema"))[:180]), flush=True)
+        mensagens = mensagens + [
+            {"role": "assistant", "content": (cru or "")[:60000]},
+            {"role": "user", "content": mensagem_correcao_auditoria(rel)},
+        ]
+        j = gerar(pieces, fcfg, mensagens)
+        (EPISODIOS / "_ultima_geracao.json").write_text(
+            json.dumps(j, ensure_ascii=False, indent=2), encoding="utf-8")
+        cru = j.get("cru") or ""
+        ep = j["episodio"]
+        ok, val, erros, av_clipe = avaliar(ep)
+        (EPISODIOS / "_ultima_validacao.json").write_text(
+            json.dumps(val, ensure_ascii=False, indent=2), encoding="utf-8")
+        if not ok or len(ep.get("shots") or []) != 6:
+            lista = "\n".join("%d. %s" % (i + 1, e) for i, e in enumerate(erros[:14])) \
+                or "- o JSON deve ter EXATAMENTE 6 objetos em shots (c01..c06), dur 10"
+            mensagens = mensagens + [
+                {"role": "assistant", "content": (cru or "")[:60000]},
+                {"role": "user", "content": (
+                    "A correcao do auditor quebrou o contrato do validador. Devolva O "
+                    "JSON COMPLETO corrigido, preservando as correcoes de causalidade/"
+                    "fisica e resolvendo:\n" + lista)},
+            ]
+            j = gerar(pieces, fcfg, mensagens)
+            (EPISODIOS / "_ultima_geracao.json").write_text(
+                json.dumps(j, ensure_ascii=False, indent=2), encoding="utf-8")
+            cru = j.get("cru") or ""
+            ep = j["episodio"]
+            ok, val, erros, av_clipe = avaliar(ep)
+            (EPISODIOS / "_ultima_validacao.json").write_text(
+                json.dumps(val, ensure_ascii=False, indent=2), encoding="utf-8")
+        if not ok or len(ep.get("shots") or []) != 6:
+            _reset_gate("correcao do auditor nao passou no validador")
+            raise SystemExit("XX a correcao do auditor nao passou no validador - "
+                             "settings/smoke NAO foram gerados")
+        episodio = ep
+
+    if not aprovado:
+        _reset_gate("auditoria reprovou apos 1 auditoria + 2 correcoes")
+        aa = ((rel.get("relatorio") or {}).get("auditoria") or {}) if rel else {}
+        raise SystemExit("XX auditoria nao aprovou (status=%s, causalidade=%s) - "
+                         "settings/smoke NAO foram gerados"
+                         % (aa.get("status"),
+                            (aa.get("notas") or {}).get("causalidade")))
 
     st, salvo = _post("/api/salvar", {"episodio": episodio})
     if st not in (201, 202):
@@ -205,18 +399,36 @@ def main():
             json.dumps(j, ensure_ascii=False, indent=2), encoding="utf-8")
         destino.joinpath("validacao_v6.json").write_text(
             json.dumps(val, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(">>> respostas brutas salvas: geracao_v6.json + validacao_v6.json", flush=True)
+        destino.joinpath("auditoria_v6.json").write_text(
+            json.dumps(rel, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(">>> respostas brutas salvas: geracao_v6.json + validacao_v6.json + "
+              "auditoria_v6.json", flush=True)
 
     st, cfgs = _post("/api/settings", {"episodio": episodio})
     if st != 201:
         raise SystemExit("XX settings falhou (HTTP %s): %s" % (st, str(cfgs)[:400]))
     print(">>> SETTINGS gerados (total %s s)" % cfgs.get("total_s"))
 
+    a_final = (rel.get("relatorio") or {}).get("auditoria") or {}
     META.write_text(json.dumps({"slug": slug, "pasta": pasta, "tema": tema["tema"],
-                                "resumo": tema["resumo"], "ideia": tema["ideia"]},
+                                "resumo": tema["resumo"], "ideia": tema["ideia"],
+                                "auditoria": {
+                                    "status": a_final.get("status"),
+                                    "nota_geral": a_final.get("nota_geral"),
+                                    "causalidade": (a_final.get("notas") or {}).get(
+                                        "causalidade"),
+                                    "falhas_criticas": a_final.get("falhas_criticas"),
+                                    "rodadas": a_rodada,
+                                    "modelo": rel.get("modelo"),
+                                }},
                                ensure_ascii=False, indent=2), encoding="utf-8")
     print(">>> meta para a cadeia: %s" % META)
-    print("\n>>> TESTE DO MOTOR OK — episódio válido com o cérebro de comédia v5.")
+    g = _registra_gate(slug, rel)
+    print(">>> GATE V6: %d/3 historias aprovadas consecutivas%s"
+          % (g.get("consecutivas", 0),
+             " - SMOKE LIBERADO" if g.get("consecutivas", 0) >= 3 else ""))
+    print("\n>>> TESTE DO MOTOR OK — episódio válido (3 camadas) + auditoria Sol "
+          "aprovada.")
 
 
 if __name__ == "__main__":

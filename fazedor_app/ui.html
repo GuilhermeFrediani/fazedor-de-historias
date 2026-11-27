@@ -730,17 +730,37 @@ async function processaResposta(txt, ehApi){
   status("status1","episódio carregado ✓ ("+ep.shots.length+" planos) — valide, ajuste e salve","#9fd9a2");
 }
 function campo(t){ return t==null?"":String(t); }
+function ehV6(ep){
+  return !!ep && Array.isArray(ep.shots) &&
+    ep.shots.some(s=>Array.isArray(s.planos) && s.planos.length);
+}
 function ehDossie(ep){
-  return !!ep && !!ep.shots && !!ep.shots.length &&
+  return !!ep && !!ep.shots && !!ep.shots.length && !ehV6(ep) &&
     (Array.isArray(ep.objetos_plantados) || ("dur" in ep.shots[0]) ||
      String(ep.shots[0].estagio||"").toUpperCase()==="LIGACAO");
 }
 function durDe(s){ return Number(s.duracao_s || s.dur || 0); }
 function renderEp(resumo){
-  const ep = EPISODIO; const dos = ehDossie(ep);
+  const ep = EPISODIO; const dos = ehDossie(ep); const v6 = ehV6(ep);
   $("epTitulo").textContent = "— " + (ep.titulo||"(sem título)");
   $("epResumo").classList.toggle("oculto", !resumo); $("epResumo").textContent = resumo||"";
-  if(dos){
+  if(v6){
+    const canon = [
+      ep.canon&&"canon: "+ep.canon,
+      ep.premissa_simples&&"premissa: "+ep.premissa_simples,
+      ep.solucao_errada&&"solução errada: "+ep.solucao_errada,
+      ep.payoff_visual&&"payoff visual: "+ep.payoff_visual,
+      ep.otimismo_final&&"otimismo final: "+ep.otimismo_final,
+      Array.isArray(ep.escalada)&&ep.escalada.length&&"escalada: "+ep.escalada.join(" → ")
+    ].filter(Boolean);
+    const partes = [ep.logline,
+      ep.setor&&"setor: "+ep.setor, ep.servico&&"serviço: "+ep.servico,
+      ep.cliente&&"cliente: "+ep.cliente, ep.mecanismo&&"mecanismo: "+ep.mecanismo,
+      ep.degrau_final&&"degrau final: "+ep.degrau_final,
+      (ep.objetos_plantados||[]).length&&"objetos: "+ep.objetos_plantados.map(o=>`${o.objeto} (clipe ${o.plantado_no_clipe}→${o.pago_no_clipe})`).join(" · "),
+      ep.assinatura&&"assinatura: "+ep.assinatura].filter(Boolean).concat(canon);
+    $("epMec").textContent = partes.map(p=>esc(p)).join("\n");
+  } else if(dos){
     const partes = [ep.logline,
       ep.setor&&"setor: "+ep.setor, ep.servico&&"serviço: "+ep.servico,
       ep.cliente&&"cliente: "+ep.cliente, ep.mecanismo&&"mecanismo: "+ep.mecanismo,
@@ -758,7 +778,11 @@ function renderEp(resumo){
     return `<div class="tag st-${s.estagio||"TAG"}" style="width:${largura}%;height:100%;">${s.n}</div>`+(corte?"<div style='width:3px;background:#0006'></div>":"");
   }).join("");
   Array.from($("tl").children).forEach((el,i)=>{ el.onclick=()=>document.getElementById("card_"+(i+1))?.scrollIntoView({behavior:"smooth"}); });
-  if(dos){
+  if(v6){
+    const sem = ep.shots.filter(s=>!String(s.non_diegetic_music||"").trim()||
+      String(s.non_diegetic_music||"").trim().toUpperCase()==="N/A").length;
+    $("epStats").innerHTML = esc(`${ep.shots.length} clipes · ${tot}s (V6, 3 camadas) · estados emendados · música N/A ${sem}/${ep.shots.length} · TÉO mede · JUCA executa`);
+  } else if(dos){
     $("epStats").innerHTML = esc(`${ep.shots.length} clipes · ${tot}s (dossiê v1.0) · TÉO ⟂esquerda mede · JUCA ⟂direita executa · est. geração ~${(tot*80/3600).toFixed(1)} h`);
   } else {
     const cortes = ep.shots.filter(s=>s.inicio==="texto").length;
@@ -771,6 +795,46 @@ function renderEp(resumo){
 function renderCard(s){
   const i = s.n;
   const f = (nome,lbl,cls,mono) => `<label>${lbl}</label><textarea ${mono?"class='mono'":""} id="f_${nome}_${i}" data-nte="${nome}" data-nn="${i}">${esc(campo(s[nome]))}</textarea>`;
+  if(ehV6(EPISODIO)){
+    const estSel = `<select id="f_estagio_${i}" data-nte="estagio" data-nn="${i}">` +
+      ESTAGIOS.map(e=>`<option value="${e}" ${e===s.estagio?"selected":""}>${e}</option>`).join("") + `</select>`;
+    const planosTxt = (s.planos||[]).map(p=>`${p.t||"00:00.000"} | ${p.texto||""}`).join("\n");
+    return `<div class="card" id="card_${i}">
+      <div class="topo">
+        <b>#${i}</b> <span class="tag st-${s.estagio||"TAG"}">${s.estagio||"—"}</span>
+        ${estSel}
+        <input type="text" id="f_dur_${i}" data-nte="dur" data-nn="${i}" value="${esc(campo(s.dur))}" style="width:50px" title="clipe de 10 s">
+        <span class="pill" id="chars_${i}">…</span>
+        <span style="flex:1"></span>
+      </div>
+      <label>planos (EN — um por linha: t | texto; 2–3 planos datados)</label>
+      <textarea class="mono" id="f_planos_txt_${i}" data-nte="planos_txt" data-nn="${i}" rows="6">${esc(planosTxt)}</textarea>
+      <div class="grid2">
+        <div>${f("estado_in","estado_in (EN, 1 linha)")}</div>
+        <div>${f("estado_out","estado_out (EN, 1 linha)")}</div>
+      </div>
+      <div class="grid2">
+        <div>${f("herda_de","herda_de (EN — objeto/estado do clipe anterior)")}</div>
+        <div>${f("fisica","física (a primitiva do clipe)")}</div>
+      </div>
+      ${f("gag","gag (PT, 1 linha — o que se MOVE)")}
+      <div class="grid2">
+        <div>${f("objeto_gag","objeto_gag")}</div>
+        <div>${f("reacao","reação (PT — corpo inteiro)")}</div>
+      </div>
+      ${f("causa","causa (PT)")}
+      <div class="grid2">
+        <div>${f("efeito","efeito (PT — mudança física)")}</div>
+        <div>${f("payoff","payoff (PT — o que o público VÊ)")}</div>
+      </div>
+      <div class="grid2">
+        <div>${f("som","som (PT — 4–6 eventos material + evento; bucal moderado)")}</div>
+        <div>${f("overall_soundscape","overall_soundscape (EN — material + evento)")}</div>
+      </div>
+      ${f("non_diegetic_music","non_diegetic_music (EN — instrumental, nunca N/A)")}
+      ${f("escala","escala (objeto|parede|piso|teto)")}
+    </div>`;
+  }
   if(ehDossie(EPISODIO)){
     const estSel = `<select id="f_estagio_${i}" data-nte="estagio" data-nn="${i}">` +
       ESTAGIOS.map(e=>`<option value="${e}" ${e===s.estagio?"selected":""}>${e}</option>`).join("") + `</select>`;
@@ -819,6 +883,15 @@ function camposLigar(s){
     el.onchange = () => {
       const nome=el.getAttribute("data-nte"), i=Number(el.getAttribute("data-nn"));
       let v;
+      if(nome==="planos_txt"){
+        EPISODIO.shots[i-1].planos = el.value.split("\n").map(x=>x.trim())
+          .filter(Boolean).map(linha=>{
+            const k = linha.indexOf("|");
+            if(k < 0) return {t:"00:00.000", texto:linha};
+            return {t:linha.slice(0,k).trim(), texto:linha.slice(k+1).trim()};
+          });
+        return;
+      }
       if(nome==="dur"||nome==="duracao_s") v = Number(el.value)||0;
       else if(nome==="beats") v = el.value.split("\n").map(x=>x.trim()).filter(Boolean);
       else v = el.value.trim();
