@@ -1,0 +1,11 @@
+# FAZEDOR — corrente de geração
+# Episódio: SERVIÇO REDONDO
+# 6 planos · 60s · estimado 1.3 h @ 80 s/s
+# Rodar: powershell -ExecutionPolicy Bypass -File "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_gerar_todos.ps1"
+Set-Location "C:\Users\Guilherme\Documents\Projeto Padrão"
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c01_ligacao_settings.json" --tag SERVICORED_S01
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c02_chegada_settings.json" --tag SERVICORED_S02
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c03_primeira-falha_settings.json" --tag SERVICORED_S03
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c04_jeitinho_settings.json" --tag SERVICORED_S04
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c05_escalada_settings.json" --tag SERVICORED_S05
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\servico-redondo\settings\servico-redondo_c06_climax_settings.json" --tag SERVICORED_S06

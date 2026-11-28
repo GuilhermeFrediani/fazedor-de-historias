@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. A tiled aisle inside the bus terminal runs past a bolted bench with a bus silhouette cast into its back. At the drivers' cold counter, a plain cross marks a dry handover hatch just left of center. A short indoor passage leads to its sill. A handspan-wide steel chill plate is bolted flat into the worktop beside a dry ledge. Its upward purge port sits in a low round seat stamped from the same subzero steel as the rim. A finger's width of shallow steel separates the seat from a thick rim of old white frost. Warm strip light fills the hatch; cool side light grazes the plate and picks out the lip of the seat in profile. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: TEO is down on one knee on the left with the job card in his left hand; JUCA is upright on the right with hands clear. The wet sponge disc has sprung back inside the ring gauge. One shallow puddle covers the plate from the ring to the frosted rim. A thin wet film extends from the sponge top down its side and over the gauge lip into that same puddle. The hatch is empty. [Shot 1] Front wide. TEO pushes up from his bent knee and raises the card toward the hatch. JUCA takes a broad step back on the right, clearing the view of the water against the white lip. [Shot 2] At 00:03.000, the camera cuts to High frontal medium. TEO turns his shoulders toward the hatch with the job card and JUCA extends one arm in welcome. Below their arms the film glints down the sponge side and across the gauge lip into the same puddle. Its far edge laps against the frosted steel. One broad white edge spreads inward from that contact across the shallow water, leaving a smooth disc of ice up to the metal ring. [Shot 3] At 00:06.800, the camera cuts to Front wide again, plate large below the hatch. TEO tips the portrait toward the passage; JUCA sweeps his open arm toward the sill. The priest walks two full steps to the hatch and puts both hands on the dry sill. Ice from the same puddle crosses the wet gauge lip. The curved foot of the film turns into a raised white seam seated directly on the steel; above it the wet sponge top and side still glint. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: TEO is upright on the left with the job card in his left hand; JUCA is on the right facing the hatch. An ice disc fills the chill plate and grips the ring gauge. A thin chilled film coats the exposed top and side of the sponge disc; a white seam joins its foot to the ice on the steel lip. The priest has both hands on the dry sill.\noverall_soundscape: A rubber sole scrapes the tile as TEO rises; card stock rustles lightly as he turns; water laps once against the frosted steel; thin ice crackles in a short run toward the center; rubber soles tap twice on the passage tile.\nnon_diegetic_music: Bass clarinet draws out a quiet three-note climb over widely spaced bass pizzicati.",
+  "output_filename": "servico-redondo_c05_escalada"
+}

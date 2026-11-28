@@ -1,0 +1,33 @@
+{
+  "consecutivas": 3,
+  "historias": [
+    {
+      "slug": "so-um-dedo",
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.38,
+      "causalidade": 9.6,
+      "criticas": 0,
+      "altas": 0,
+      "quando": "2026-11-27T20:28:38"
+    },
+    {
+      "slug": "servico-redondo",
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.08,
+      "causalidade": 9.3,
+      "criticas": 0,
+      "altas": 0,
+      "quando": "2026-11-27T21:11:37"
+    },
+    {
+      "slug": "aliancas-em-dobro",
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.32,
+      "causalidade": 9.4,
+      "criticas": 0,
+      "altas": 0,
+      "quando": "2026-11-27T21:44:58"
+    }
+  ],
+  "quando": "2026-11-27T18:45:23"
+}

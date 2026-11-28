@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. A tiled aisle inside the bus terminal runs past a bolted bench with a bus silhouette cast into its back. At the drivers' cold counter, a plain cross marks a dry handover hatch just left of center. A short indoor passage leads to its sill. A handspan-wide steel chill plate is bolted flat into the worktop beside a dry ledge. Its upward purge port sits in a low round seat stamped from the same subzero steel as the rim. A finger's width of shallow steel separates the seat from a thick rim of old white frost. Warm strip light fills the hatch; cool side light grazes the plate and picks out the lip of the seat in profile. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: TEO is left with the job card in his left hand. The ring gauge lies flat around the port bead. JUCA is right with the dry sponge disc poised above the ring in his right hand. The rim is frosted and the hatch is empty. [Shot 1] Front wide. TEO draws the card against his chest with his left hand, clearing the space over the gauge. JUCA bends from the right and lowers the dry disc broad face first toward the ring. [Shot 2] At 00:03.200, the camera cuts to Low medium along the plate. TEO leans sideways and braces the left lip of the gauge with his right fingertips. JUCA tips the far sponge edge into the ring until the underside touches the bead. Through the gap below the raised near edge, a short unbroken stream wells from the port into the sponge. For two beats it feeds a dark patch that spreads across the base and climbs the yellow side. JUCA lowers the near edge into its seat. [Shot 3] At 00:07.000, the camera cuts to Profile insert with both forearms in frame. TEO pins the gauge flat as JUCA peels his right hand off the disc. TEO lifts his fingers; JUCA opens both arms to unveil his work. The dark band reaches the top and one plump bead wells up there. Dry steel shows all around the ring. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: TEO is left with the job card in his left hand; JUCA is right with his hands clear. The wet sponge disc projects above the ring gauge with one bead on top. The steel between the ring and the frosted rim is dry; the hatch is empty.\noverall_soundscape: Card stock brushes fabric with a dry rasp at TEO's chest; the sponge edge scuffs the steel ring softly; water squishes low against the cellulose base on contact; water trickles steadily from the steel port under the lifted sponge edge; trapped air sputters once from the wet sponge as the top bead swells.\nnon_diegetic_music: Soft bassoon plays one clipped note, leaves a rest and repeats it one step higher.",
+  "output_filename": "servico-redondo_c03_primeira-falha"
+}

@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. Warm work light grazes the plank walls of a narrow farm dairy. A shallow recess is cut into the stone counter. Its low front lip overhangs just the rear edge of the small four-tile floor. The tiles extend forward in an exposed strip wider than the hoop pair, with clear sightlines over the lip to both hoop bases. A high back rim hides the tiles from the dry gallery. A fixed brass tap feeds the open front half. One lamp shelf pivots on a hinge bolted to the back rim: two sealed battery hoops above, a broad clay heel underneath, a dry right handle and a high thumb switch. The raised shelf leans against a stop. One rectangular oak block sits on edge on the dry right sill in the path of the shelf corner. A closed ring box and a blank invoice share the ledge between JUCA and the groom. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: TEO is left, JUCA right and the groom between them on the dry gallery. The ring box is closed beside the blank invoice. The dark hoop shelf leans against its backstop; the oak block is on edge on the right sill. The tap is shut, the stone recess empty and all four tiles dry. [Shot 1] Frontal wide across the tiles to the gallery. Between TEO on the left and JUCA on the right, the groom raps the ledge twice and flips the ring box open beside the blank invoice. JUCA braces its base with his left fingertips until the lid reaches its stop. Two wedding bands catch the work light. [Shot 2] At 00:03.000, the camera cuts to In a medium three-shot the groom taps his wrist twice, pinches a sliver of air and points with his free hand from the wedding bands to the dark hoops. TEO copies the tiny gap with thumb and forefinger and raises it to hoop height. JUCA rocks onto his toes and reaches toward the brass tap lever. [Shot 3] At 00:07.000, the camera cuts to Return wide. The groom halves his finger gap; TEO takes half off his measure. Beside the tall oak block and raised shelf, JUCA curls his right fingers over the lever. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: The ring box is open beside the blank invoice. TEO measures a finger gap on the left and JUCA grips the tap lever on the right. The dark hoop shelf is against its backstop, the oak block on edge, the stone recess empty and the four tiles dry.\noverall_soundscape: Knuckles rap the pine ledge twice in quick succession; the brass box hinge clicks lightly at full travel; fingertips pat the bare skin of the groom's wrist twice in a soft double beat; the groom takes one short nasal inhale on the pinch; rubber soles scuff wood softly as JUCA rocks forward; the brass lever ticks against its closed stop under his fingers.\nnon_diegetic_music: Pizzicato viola plays quick, quiet pairs with a rest after each pair.",
+  "output_filename": "aliancas-em-dobro_c01_ligacao"
+}

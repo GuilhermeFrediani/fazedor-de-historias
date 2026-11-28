@@ -1,0 +1,98 @@
+{
+  "cru": "```json\n{\"auditoria\":{\"status\":\"CORRECAO_NECESSARIA\",\"nota_geral\":9.08,\"notas\":{\"estetica\":9.0,\"personagens\":8.8,\"acting_gags\":8.7,\"continuidade\":9.4,\"causalidade\":9.3,\"ritmo\":8.8},\"falhas_criticas\":0,\"falhas_altas\":0,\"falhas_medias\":0,\"falhas_baixas\":2,\"camadas\":{\"estrutural\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"narrativa\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"visual_fisica\":{\"status\":\"CORRECAO_NECESSARIA\",\"falhas_criticas\":0,\"falhas_altas\":0}}},\"problemas\":[{\"clipe\":3,\"severidade\":\"BAIXO\",\"campo\":\"planos[1].texto\",\"problema\":\"O plano mostra o contato com a gota original, mas não fixa seu perfil antes de a rodela encobri-la. Isso enfraquece a comparação visual de altura com a gota no topo.\",\"evidencia\":\"Às 00:03.200, a gota aparece na instrução de contato ('until the underside touches the bead'); às 00:07.000, a gota no topo recebe um insert de perfil.\",\"correcao_sugerida\":\"No mesmo plano baixo, enquadrar a gota do furo em perfil antes do contato, no eixo do insert final. Manter visível o fio que alimenta a rodela pela fresta.\",\"campos_dependentes\":[\"planos[2].texto do clipe 3\",\"payoff do clipe 3\"]},{\"clipe\":6,\"severidade\":\"BAIXO\",\"campo\":\"planos[2].texto\",\"problema\":\"O desvio da ficha depois da batida é indicado em relação ao batente, mas não em relação à esponja molhada, que é mais alta. O plano passa da liberação da quina à pegada do padre sem explicitar o avanço pelo trajeto seco.\",\"evidencia\":\"Às 00:07.000, 'The corner clears the seam' é seguido pela pegada do padre. A reação prevê erguer o antebraço por cima da junta, mas o plano só confirma a folga sobre a emenda.\",\"correcao_sugerida\":\"Mostrar TÉO erguer a ficha inteira acima da rodela antes de avançar até o peitoril seco. Preservar a pegada do padre antes de TÉO soltar.\",\"campos_dependentes\":[\"reacao do clipe 6\",\"efeito do clipe 6\",\"estado_out do clipe 6\",\"assinatura\"]}],\"correcoes\":[{\"clipe\":3,\"campo\":\"planos[1].texto\",\"valor_corrigido\":\"Low medium along the plate, on the same profile axis as the final insert. Keep the original bead in clear profile on the exposed port before contact. TEO leans sideways and braces the left lip of the gauge with his right fingertips. JUCA tips the far sponge edge into the ring until the underside touches the bead. Through the gap below the raised near edge, a short unbroken stream wells from the port into the sponge. For two beats it feeds a dark patch that spreads across the base and climbs the yellow side. JUCA lowers the near edge into its seat.\"},{\"clipe\":6,\"campo\":\"planos[2].texto\",\"valor_corrigido\":\"TEO lifts his left forearm as JUCA rocks back out of his bow. The corner clears the seam and the dry card springs flat. Once the whole card is above the wet sponge, TEO advances it to the dry sill. The priest lifts one hand from the sill and grips the free corner before TEO lets go. Frame the round paper seal above the ice disc with the steel gauge caught in its hub.\"}],\"resumo\":\"Estrutura válida: seis clipes de 10 s, três planos cronológicos por clipe e cinco junções com estados literalmente iguais. C1 (00:03.200→00:07.000): a ficha mossa a esponja por contato; ao separar as peças, a mossa some e a rodela segue seca. C2 (00:03.300→00:07.000): TÉO apoia o aro na beirada; o aço estrangula a rodela, a barriga desmente a aprovação e o aro termina deitado no furo. C3 (00:03.200→00:07.000): o furo alimenta a base porosa pela fresta; a faixa úmida sobe e a gota aparece no topo, com o aço externo seco. C4 (00:03.000→00:06.800): a palma direita comprime a rodela; ela recupera a altura e deixa uma única poça ligada à película até o rebordo. C5 (00:03.000→00:06.800): a frente de gelo avança pela água contínua sobre o aço frio e alcança o lábio, onde forma a emenda apoiada; o topo continua molhado e o padre chega pelo corredor. C6 (00:03.200→00:07.000): a quina para na emenda apoiada, sem tocar a esponja; a ficha flete, volta ao plano e é entregue com transferência visível. A escalada permanece no objeto, cada clipe prepara o próximo e o clímax inverte a deformação da abertura. Foley com fonte e evento, trilha instrumental discreta nos seis clipes, um som nasal no 2 e outro no 4, sem fala. Não há falha crítica; os dois ajustes de enquadramento e trajeto não exigem mudanças nos estados.\"}\n```",
+  "resumo": "",
+  "relatorio": {
+    "auditoria": {
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.08,
+      "notas": {
+        "estetica": 9.0,
+        "personagens": 8.8,
+        "acting_gags": 8.7,
+        "continuidade": 9.4,
+        "causalidade": 9.3,
+        "ritmo": 8.8
+      },
+      "falhas_criticas": 0,
+      "falhas_altas": 0,
+      "falhas_medias": 0,
+      "falhas_baixas": 2,
+      "camadas": {
+        "estrutural": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "narrativa": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "visual_fisica": {
+          "status": "CORRECAO_NECESSARIA",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        }
+      }
+    },
+    "problemas": [
+      {
+        "clipe": 3,
+        "severidade": "BAIXO",
+        "campo": "planos[1].texto",
+        "problema": "O plano mostra o contato com a gota original, mas não fixa seu perfil antes de a rodela encobri-la. Isso enfraquece a comparação visual de altura com a gota no topo.",
+        "evidencia": "Às 00:03.200, a gota aparece na instrução de contato ('until the underside touches the bead'); às 00:07.000, a gota no topo recebe um insert de perfil.",
+        "correcao_sugerida": "No mesmo plano baixo, enquadrar a gota do furo em perfil antes do contato, no eixo do insert final. Manter visível o fio que alimenta a rodela pela fresta.",
+        "campos_dependentes": [
+          "planos[2].texto do clipe 3",
+          "payoff do clipe 3"
+        ]
+      },
+      {
+        "clipe": 6,
+        "severidade": "BAIXO",
+        "campo": "planos[2].texto",
+        "problema": "O desvio da ficha depois da batida é indicado em relação ao batente, mas não em relação à esponja molhada, que é mais alta. O plano passa da liberação da quina à pegada do padre sem explicitar o avanço pelo trajeto seco.",
+        "evidencia": "Às 00:07.000, 'The corner clears the seam' é seguido pela pegada do padre. A reação prevê erguer o antebraço por cima da junta, mas o plano só confirma a folga sobre a emenda.",
+        "correcao_sugerida": "Mostrar TÉO erguer a ficha inteira acima da rodela antes de avançar até o peitoril seco. Preservar a pegada do padre antes de TÉO soltar.",
+        "campos_dependentes": [
+          "reacao do clipe 6",
+          "efeito do clipe 6",
+          "estado_out do clipe 6",
+          "assinatura"
+        ]
+      }
+    ],
+    "correcoes": [
+      {
+        "clipe": 3,
+        "campo": "planos[1].texto",
+        "valor_corrigido": "Low medium along the plate, on the same profile axis as the final insert. Keep the original bead in clear profile on the exposed port before contact. TEO leans sideways and braces the left lip of the gauge with his right fingertips. JUCA tips the far sponge edge into the ring until the underside touches the bead. Through the gap below the raised near edge, a short unbroken stream wells from the port into the sponge. For two beats it feeds a dark patch that spreads across the base and climbs the yellow side. JUCA lowers the near edge into its seat."
+      },
+      {
+        "clipe": 6,
+        "campo": "planos[2].texto",
+        "valor_corrigido": "TEO lifts his left forearm as JUCA rocks back out of his bow. The corner clears the seam and the dry card springs flat. Once the whole card is above the wet sponge, TEO advances it to the dry sill. The priest lifts one hand from the sill and grips the free corner before TEO lets go. Frame the round paper seal above the ice disc with the steel gauge caught in its hub."
+      }
+    ],
+    "resumo": "Estrutura válida: seis clipes de 10 s, três planos cronológicos por clipe e cinco junções com estados literalmente iguais. C1 (00:03.200→00:07.000): a ficha mossa a esponja por contato; ao separar as peças, a mossa some e a rodela segue seca. C2 (00:03.300→00:07.000): TÉO apoia o aro na beirada; o aço estrangula a rodela, a barriga desmente a aprovação e o aro termina deitado no furo. C3 (00:03.200→00:07.000): o furo alimenta a base porosa pela fresta; a faixa úmida sobe e a gota aparece no topo, com o aço externo seco. C4 (00:03.000→00:06.800): a palma direita comprime a rodela; ela recupera a altura e deixa uma única poça ligada à película até o rebordo. C5 (00:03.000→00:06.800): a frente de gelo avança pela água contínua sobre o aço frio e alcança o lábio, onde forma a emenda apoiada; o topo continua molhado e o padre chega pelo corredor. C6 (00:03.200→00:07.000): a quina para na emenda apoiada, sem tocar a esponja; a ficha flete, volta ao plano e é entregue com transferência visível. A escalada permanece no objeto, cada clipe prepara o próximo e o clímax inverte a deformação da abertura. Foley com fonte e evento, trilha instrumental discreta nos seis clipes, um som nasal no 2 e outro no 4, sem fala. Não há falha crítica; os dois ajustes de enquadramento e trajeto não exigem mudanças nos estados."
+  },
+  "uso": {
+    "input_tokens": 22464,
+    "input_tokens_details": {
+      "cache_write_tokens": 9072,
+      "cached_tokens": 0,
+      "cache_write_tokens_details": {
+        "ttl_30m_tokens": 9072,
+        "ttl_12h_tokens": 0
+      }
+    },
+    "output_tokens": 14568,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 37032
+  },
+  "interaction_id": "resp_23edc4242SQYih-ilydkAw6L74W4f9NspSa_fiimgDUl2GiG_qAFHDhgfxNQOi-PYTlMBewzSXb9PU9yG0fUzi8Sn-P2lJ2tfjnJjhSWR8kd5gMm8f3C3ueTT9CjLao-J7FJFIbK4kj4Ht1La6bkFb-9eruGp5liUUS3mpQzS_Qq8V6O9fTkVRbtC96_-M_VkJLCOGbrMvPzNWobm",
+  "modelo": "gpt-6.2-sol"
+}

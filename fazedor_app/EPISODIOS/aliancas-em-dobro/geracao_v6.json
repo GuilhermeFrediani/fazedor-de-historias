@@ -1,0 +1,272 @@
+{
+  "cru": "RESUMO: O noivo bate no pulso: quer as duas alianças de luz acesas para já. TÉO indica a ordem — primeiro baixar a luminária, depois abrir a torneira.  \nJUCA começa pela torneira. A luminária gira numa dobradiça fixa; a cada ajuste do calço, sua base desloca mais água para o piso.  \nO noivo recebe a nota fiscal seca. Só a câmera vê o segundo par de alianças brilhando no alagamento.\n\n```json\n{\"titulo\":\"ALIANÇAS EM DOBRO\",\"logline\":\"Na leiteria do casamento, JUCA enche o espelho d'água antes de assentar a luminária. Quando os dois aros finalmente acendem, há um espelho a mais do que o noivo encomendou.\",\"setor\":\"Elétrica rural\",\"servico\":\"Assentamento e teste da luminária de alianças a bateria sobre o espelho d'água da cerimônia.\",\"cliente\":\"O noivo, na galeria da leiteria com o estojo das alianças.\",\"mecanismo\":\"A prateleira da luminária gira numa dobradiça fixa. JUCA enche o rebaixo de pedra antes de baixar a prateleira; o ressalto maciço da face inferior entra na água e a faz passar pela borda, fora da vista dos três.\",\"degrau_final\":\"piso\",\"callback_object\":\"luminária de alianças\",\"set_historia\":\"SET: Warm work light grazes the plank walls of a narrow farm dairy. A shallow recess is cut into the stone counter. Its low front lip overhangs just the rear edge of the small four-tile floor. The tiles extend forward in an exposed strip wider than the hoop pair, with clear sightlines over the lip to both hoop bases. A high back rim hides the tiles from the dry gallery. A fixed brass tap feeds the open front half. One lamp shelf pivots on a hinge bolted to the back rim: two sealed battery hoops above, a broad clay heel underneath, a dry right handle and a high thumb switch. The raised shelf leans against a stop. One rectangular oak block sits on edge on the dry right sill in the path of the shelf corner. A closed ring box and a blank invoice share the ledge between JUCA and the groom.\",\"continuidade\":[\"TÉO mede à esquerda, JUCA executa à direita e o noivo ocupa o centro da galeria. A borda traseira esconde o piso dos três.\",\"O rebaixo faz parte do balcão de pedra. A prateleira só gira na dobradiça; apenas seu ressalto inferior entra na água. Os aros, o botão e a alça ficam secos.\",\"A torneira fecha no clipe 2. Toda a água que chega ao piso depois disso sai pela mesma borda e se junta à primeira poça.\",\"Do clipe 3 ao 5, a mão esquerda de JUCA guia a alça à direita da prateleira. A direita manobra o único calço, sempre pelo lado seco.\",\"No clipe 6, assim que os aros acendem, o noivo ergue do parapeito o estojo aberto com a mão esquerda. Só depois JUCA firma o calço com a esquerda, puxa a nota fiscal sem inscrições com a direita e a entrega ao noivo, que a recebe com a direita. O segundo par de aros é um reflexo.\"],\"assinatura\":\"JUCA entrega a nota fiscal ao noivo enquanto TÉO faz uma reverência de mão seca acima do piso alagado.\",\"objetos_plantados\":[{\"objeto\":\"estojo de alianças\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"torneira de latão\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"luminária de alianças\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"calço de carvalho\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"nota fiscal\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6}],\"canon\":\"zeca_joca_v1\",\"premissa_simples\":\"O noivo quer ver duas alianças de luz em pé sobre um espelho d'água antes da cerimônia.\",\"solucao_errada\":\"JUCA executa o segundo gesto de TÉO primeiro: enche até a nervura com a luminária ainda levantada.\",\"payoff_visual\":\"O noivo ergue o estojo aberto, com as alianças dentro, em direção aos dois aros acesos. Bem abaixo da nota fiscal seca, os quatro ladrilhos devolvem outro par de luzes.\",\"otimismo_final\":\"TÉO passa a palma sob a torneira fechada e a apresenta sequinha. Do lado da galeria, há motivo de sobra para a reverência.\",\"escalada\":[\"piso\"],\"shots\":[{\"n\":1,\"dur\":10,\"estagio\":\"LIGACAO\",\"estado_in\":\"TEO is left, JUCA right and the groom between them on the dry gallery. The ring box is closed beside the blank invoice. The dark hoop shelf leans against its backstop; the oak block is on edge on the right sill. The tap is shut, the stone recess empty and all four tiles dry.\",\"estado_out\":\"The ring box is open beside the blank invoice. TEO measures a finger gap on the left and JUCA grips the tap lever on the right. The dark hoop shelf is against its backstop, the oak block on edge, the stone recess empty and the four tiles dry.\",\"herda_de\":\"ring box\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Frontal wide across the tiles to the gallery. Between TEO on the left and JUCA on the right, the groom raps the ledge twice and flips the ring box open beside the blank invoice. JUCA braces its base with his left fingertips until the lid reaches its stop. Two wedding bands catch the work light.\"},{\"t\":\"00:03.000\",\"texto\":\"In a medium three-shot the groom taps his wrist twice, pinches a sliver of air and points with his free hand from the wedding bands to the dark hoops. TEO copies the tiny gap with thumb and forefinger and raises it to hoop height. JUCA rocks onto his toes and reaches toward the brass tap lever.\"},{\"t\":\"00:07.000\",\"texto\":\"Return wide. The groom halves his finger gap; TEO takes half off his measure. Beside the tall oak block and raised shelf, JUCA curls his right fingers over the lever.\"}],\"gag\":\"O noivo encurta o prazo entre dois dedos; TÉO tira a medida do prazo.\",\"objeto_gag\":\"estojo de alianças\",\"fisica\":\"Giro da tampa até o batente.\",\"reacao\":\"TÉO ergue o cotovelo para aferir a fresta; JUCA projeta os ombros e ganha alcance na ponta dos pés.\",\"som\":\"Juntas batem duas vezes na madeira; dobradiça de latão clica ao abrir; pontas dos dedos dão dois toques leves na pele do pulso do noivo; inspiração curta do noivo ao pinçar o prazo; solas de borracha roçam a tábua; alavanca de latão dá um tique no batente fechado.\",\"overall_soundscape\":\"Knuckles rap the pine ledge twice in quick succession; the brass box hinge clicks lightly at full travel; fingertips pat the bare skin of the groom's wrist twice in a soft double beat; the groom takes one short nasal inhale on the pinch; rubber soles scuff wood softly as JUCA rocks forward; the brass lever ticks against its closed stop under his fingers.\",\"non_diegetic_music\":\"Pizzicato viola plays quick, quiet pairs with a rest after each pair.\",\"causa\":\"O noivo abre o estojo de alianças para mostrar o desenho que quer aceso e bate no pulso para indicar a urgência.\",\"efeito\":\"O estojo fica aberto, TÉO sustenta a medida e JUCA já tem a mão na alavanca da torneira.\",\"payoff\":\"O noivo espreme mais um tiquinho de tempo; TÉO desconta o tiquinho na altura dos aros.\",\"escala\":\"piso\"},{\"n\":2,\"dur\":10,\"estagio\":\"CHEGADA\",\"estado_in\":\"The ring box is open beside the blank invoice. TEO measures a finger gap on the left and JUCA grips the tap lever on the right. The dark hoop shelf is against its backstop, the oak block on edge, the stone recess empty and the four tiles dry.\",\"estado_out\":\"Water touches the fill bead in the stone recess. The tap is shut and the four tiles are dry. TEO is at the left rim and JUCA at the right sill. The dark hoop shelf leans against its backstop, the oak block on edge. The groom is beside the open ring box and blank invoice.\",\"herda_de\":\"tap lever\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Gallery wide. TEO steps up to the left rim, raises one finger and traces a downward arc beside the raised lamp shelf. JUCA steps up to the right sill with his right hand on the lever.\"},{\"t\":\"00:02.900\",\"texto\":\"The camera faces the gallery from the front rim. At the left rim, TEO raises two fingers and taps the fill bead in the stone with his other hand. JUCA lifts the tap lever with his right palm. Water falls straight from the fixed spout to the stone bottom. The surface climbs toward TEO's fingertip with the dark lamp shelf tilted high above it.\"},{\"t\":\"00:07.000\",\"texto\":\"Return wide as the water meets the bead just under the front lip. JUCA presses the lever down and opens his hand; the stream breaks at the spout. TEO folds his second finger, leaving one finger pointing up beside the raised shelf.\"}],\"gag\":\"JUCA completa o passo dois até a risca. O passo um continua em pé ao lado do dedo de TÉO.\",\"objeto_gag\":\"torneira de latão\",\"fisica\":\"Enchimento vertical até a nervura.\",\"reacao\":\"TÉO recolhe um dedo da contagem; JUCA abre a palma com um floreio sobre a alavanca fechada.\",\"som\":\"Solas de borracha batem na madeira ao chegar à borda; unha toca a nervura de pedra; alavanca de latão range ao subir; água tamborila no fundo e marulha ao encher; alavanca clica no batente ao fechar.\",\"overall_soundscape\":\"Rubber soles thud twice on pine at the rim; TEO's nail taps the stone bead lightly on the second count; the brass lever creaks briefly on the lift; water drums on bare stone and softens to a lap as the level rises; the brass lever clicks down against its stop.\",\"non_diegetic_music\":\"Muted bassoon repeats a soft two-note figure with the accent on the second note.\",\"causa\":\"Com a mão na alavanca da torneira, JUCA segue a segunda indicação de TÉO antes de executar a primeira.\",\"efeito\":\"O rebaixo fixo fica cheio até a nervura e a torneira fecha. O ressalto da prateleira ainda não ocupou seu lugar.\",\"payoff\":\"A água para na nervura. O único dedo que sobrou na contagem de TÉO aponta para cima, ao lado da luminária ainda levantada.\",\"escala\":\"piso\"},{\"n\":3,\"dur\":10,\"estagio\":\"PRIMEIRA_FALHA\",\"estado_in\":\"Water touches the fill bead in the stone recess. The tap is shut and the four tiles are dry. TEO is at the left rim and JUCA at the right sill. The dark hoop shelf leans against its backstop, the oak block on edge. The groom is beside the open ring box and blank invoice.\",\"estado_out\":\"The dark hoop shelf rests on the tall oak block with one corner of its clay heel submerged. JUCA grips the dry right handle with his left hand; TEO measures from the left rim. One tile is wet. The tap is shut and the groom leans beside the open ring box and blank invoice.\",\"herda_de\":\"fill bead\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Start in the gallery wide. JUCA closes his left hand around the dry right handle and pulls the shelf forward off its backstop. The shelf turns on the bolted rear hinge. TEO opens his arms around the descending hoops.\"},{\"t\":\"00:03.000\",\"texto\":\"In a rim-level two-shot TEO lowers his left elbow with the hoops. JUCA bends his knees and guides the handle down with his left hand. One corner of the attached clay heel presses into the water. A thin thread curls over the front lip as the dry shelf edge lands on the tall oak block.\"},{\"t\":\"00:06.900\",\"texto\":\"Widen on the same axis. The thread connects lip to tile, then breaks and leaves a glossy patch on one tile. Above it JUCA tucks his left elbow in to brace the handle as the groom inclines both shoulders to match the slant of the two dark hoops.\"}],\"gag\":\"A luminária para inclinada no calço; quem corrige o ângulo é o noivo, com os próprios ombros.\",\"objeto_gag\":\"luminária de alianças\",\"fisica\":\"Basculamento da prateleira até o apoio alto.\",\"reacao\":\"JUCA dobra os joelhos na descida; o noivo inclina o tronco sem tirar os pés da galeria.\",\"som\":\"Madeira da alça roça a palma no primeiro puxão; dobradiça de ferro range ao girar; água marulha contra a cerâmica no contato; borda de madeira bate seca no carvalho; filete de água tamborila num ladrilho.\",\"overall_soundscape\":\"The wooden handle rubs softly against JUCA's palm on the pull; the iron hinge creaks low on the forward turn; water laps against glazed clay at first contact; the wooden shelf edge knocks sharply on oak at the stop; water patters lightly on one tile before the thread breaks.\",\"non_diegetic_music\":\"Low clarinet descends in three quiet steps and cuts the third note short.\",\"causa\":\"Com a água já na nervura, basta entrar o canto do ressalto cerâmico para vencer a folga até a borda frontal.\",\"efeito\":\"A prateleira apoia no calço alto com um canto do ressalto submerso. O primeiro ladrilho fica molhado.\",\"payoff\":\"Em cima, os aros e o noivo fazem a mesma diagonal. Embaixo, um único ladrilho ganha brilho.\",\"escala\":\"piso\"},{\"n\":4,\"dur\":10,\"estagio\":\"JEITINHO\",\"estado_in\":\"The dark hoop shelf rests on the tall oak block with one corner of its clay heel submerged. JUCA grips the dry right handle with his left hand; TEO measures from the left rim. One tile is wet. The tap is shut and the groom leans beside the open ring box and blank invoice.\",\"estado_out\":\"The flat oak block props the dark hoop shelf just above level. JUCA grips the dry handle with his left hand and touches the block with his right. TEO measures from the left. Two tiles are wet, the tap is shut and the groom leans slightly beside the open ring box and blank invoice.\",\"herda_de\":\"tall oak block\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Gallery wide. TEO brings one forearm level with the stone sill. JUCA lifts the handle clear of the tall block with his left hand and sets his right thumb against the block's upper corner.\"},{\"t\":\"00:02.800\",\"texto\":\"At sill height TEO brings his other forearm down toward the first. JUCA tips the block outward with his right thumb until its broad face strikes the dry sill. With his left hand he lowers the shelf onto the shorter support. The bolted hinge turns, the clay heel enters deeper and water folds over the same front lip.\"},{\"t\":\"00:07.000\",\"texto\":\"Widen to include the grout seam. Water drops into the first wet patch and crosses the seam onto the adjoining tile. JUCA spreads his right fingertips against the exposed side of the block. The groom lifts his low shoulder a little as the hoops come closer to upright.\"}],\"gag\":\"JUCA deita o calço. A luminária desce; a poça atravessa a junta e ganha o ladrilho ao lado.\",\"objeto_gag\":\"calço de carvalho\",\"fisica\":\"Tombamento do calço sobre a face larga.\",\"reacao\":\"TÉO aproxima os antebraços para medir a nova altura; o noivo levanta só um ombro, na proporção do ajuste.\",\"som\":\"Ferro da dobradiça chia de leve ao erguer; quina de carvalho raspa na pedra durante o giro; face larga da madeira bate chata no apoio; prateleira toca o calço com um toque curto; água chapinha na junta dos ladrilhos; suspiro baixo de JUCA ao aliviar o braço.\",\"overall_soundscape\":\"The iron hinge squeaks briefly on the lift; an oak corner rasps against stone during the tip; the broad wooden face claps flat against the sill; the shelf edge taps oak softly at the new height; water splashes across the tile seam in a short patter; JUCA gives one soft sigh as his arm eases.\",\"non_diegetic_music\":\"Plucked double bass marks two even beats; a quiet viola answers half a beat late.\",\"causa\":\"O calço alto segura a prateleira inclinada. JUCA usa a face mais larga do mesmo bloco como apoio mais baixo.\",\"efeito\":\"A prateleira desce até o calço deitado. O ressalto desloca mais água e a poça passa para o segundo ladrilho.\",\"payoff\":\"O ombro do noivo sobe um pouquinho; abaixo dele, a água atravessa a junta de ponta a ponta.\",\"escala\":\"piso\"},{\"n\":5,\"dur\":10,\"estagio\":\"ESCALADA\",\"estado_in\":\"The flat oak block props the dark hoop shelf just above level. JUCA grips the dry handle with his left hand and touches the block with his right. TEO measures from the left. Two tiles are wet, the tap is shut and the groom leans slightly beside the open ring box and blank invoice.\",\"estado_out\":\"The hoop shelf is level on the stone sill and both upright hoops are dark. A water sheet borders the last dry tile corner. The oak block weighs down the blank invoice beside the open ring box. TEO is left, JUCA right, the groom upright between them and the tap shut.\",\"herda_de\":\"flat oak block\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Start wide over the two wet tiles. TEO runs a flat hand along the line of the stone sill. JUCA lifts the handle with his left hand just enough to take the weight off the flat block.\"},{\"t\":\"00:02.700\",\"texto\":\"Low front three-quarter view. JUCA draws the block outward with his right hand and sets it on the blank invoice. TEO lowers both wrists together as JUCA eases the handle down with his left hand. The entire width of the clay heel turns into the water. A sheet pours over the lip as the shelf lands flat on stone.\"},{\"t\":\"00:06.900\",\"texto\":\"Widen with the falling sheet. It hits the puddle and spreads through the adjacent seams toward the last dry corner. The groom squares his shoulders with the upright hoops. JUCA lifts his left palm off the handle.\"}],\"gag\":\"JUCA tira o calço debaixo da luminária e arranja emprego para ele em cima da nota fiscal. A água ocupa o espaço que falta no piso.\",\"objeto_gag\":\"calço de carvalho\",\"fisica\":\"Deslize lateral do calço com a carga aliviada.\",\"reacao\":\"TÉO baixa os pulsos à mesma altura; JUCA solta a alça com a palma aberta e o noivo apruma a coluna.\",\"som\":\"Dobradiça de ferro range curta no alívio; carvalho raspa de lado na pedra; papel estala sob o calço; água chia na borda ao virar lâmina; madeira bate na pedra ao assentar; água dá uma palmada larga nos ladrilhos.\",\"overall_soundscape\":\"The iron hinge creaks briefly as the load lifts; oak scrapes sideways across the dry stone sill; invoice paper crackles under the block at set-down; water hisses along the lip as the sheet widens; wood clacks on stone as the shelf seats; the water sheet slaps the tiles in a broad patter.\",\"non_diegetic_music\":\"Muted pizzicato cello divides each soft beat in two, then four, and leaves the cadence open.\",\"causa\":\"O calço deitado é o último apoio acima da borda. Ao retirá-lo, JUCA pode baixar toda a largura do ressalto até a posição de serviço.\",\"efeito\":\"A prateleira assenta na pedra e o calço passa para cima da nota fiscal. A lâmina de água chega à borda da última ponta seca do ladrilho, mas ainda não a cobre.\",\"payoff\":\"Em cima, os aros enfim ficam no prumo. Embaixo, só uma pontinha fosca ainda quebra o espelho.\",\"escala\":\"piso\"},{\"n\":6,\"dur\":10,\"estagio\":\"CLIMAX\",\"estado_in\":\"The hoop shelf is level on the stone sill and both upright hoops are dark. A water sheet borders the last dry tile corner. The oak block weighs down the blank invoice beside the open ring box. TEO is left, JUCA right, the groom upright between them and the tap shut.\",\"estado_out\":\"Two lit hoops rise from the seated shelf and reflect in water covering all four tiles. TEO bows on the left with a dry palm; JUCA is empty-handed on the right. The groom holds the dry blank invoice in his right hand and the open ring box in his left. The oak block rests on the ledge and the tap is shut.\",\"herda_de\":\"water sheet\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Frontal wide. The advancing edge of the water sheet washes over the last dry corner. Above the four glossy tiles TEO turns a palm up under the fixed spout and JUCA brings his right thumb to the high switch.\"},{\"t\":\"00:02.600\",\"texto\":\"Low frontal three-shot, lens centered on the exposed tile strip beyond the lip with both upright hoops in frame. JUCA depresses the dry switch with his right thumb and both hoops light together. TEO sweeps his dry palm out from under the spout and bows to the groom. The groom lifts the open ring box with his left hand toward the lit pair. Below TEO's bow the water on that strip reflects both hoops in full, two unbroken loops trembling clear of the counter edge.\"},{\"t\":\"00:06.600\",\"texto\":\"Widen on the same low axis, keeping the lit pair and both complete reflections in frame. JUCA takes his thumb off the switch, pins the block with his left palm and slides the blank invoice clear with his right. He places it in the groom's open right hand and lets go. The groom raises slip and box side by side.\"}],\"gag\":\"JUCA acende a luminária de alianças e entrega dois pares pelo preço de um. TÉO faz questão de mostrar a mão seca.\",\"objeto_gag\":\"luminária de alianças\",\"fisica\":\"Compressão do botão seco até o clique.\",\"reacao\":\"TÉO exibe a palma seca e dobra a coluna numa reverência; o noivo ergue a nota com uma mão e o estojo com a outra.\",\"som\":\"Água lambe de leve o último canto de cerâmica; botão de plástico da luminária clica sob o polegar; base do estojo roça a madeira ao erguer; papel raspa sob o carvalho; nota farfalha curta na mão do noivo.\",\"overall_soundscape\":\"Water laps softly against the last ceramic corner; the plastic lamp switch clicks once under JUCA's thumb; the ring box base brushes the wooden ledge lightly on the lift; invoice paper rasps under oak as JUCA draws it clear; the dry slip rustles briefly in the groom's fingers.\",\"non_diegetic_music\":\"Clarinet and pizzicato cello finish the same quiet two-note cadence an octave apart.\",\"causa\":\"A lâmina de água do último assentamento já alcançou a borda da ponta ainda seca. Com a prateleira apoiada e as mãos livres, JUCA pode acionar o botão alto.\",\"efeito\":\"A água cobre o quarto ladrilho, os dois aros acendem e a nota fiscal seca passa da mão de JUCA à do noivo.\",\"payoff\":\"O noivo ergue a nota e o estojo para as alianças de luz. Debaixo da reverência de TÉO, outro par brilha no piso alagado.\",\"escala\":\"piso\"}]}\n```",
+  "resumo": "RESUMO: O noivo bate no pulso: quer as duas alianças de luz acesas para já. TÉO indica a ordem — primeiro baixar a luminária, depois abrir a torneira.  \nJUCA começa pela torneira. A luminária gira numa dobradiça fixa; a cada ajuste do calço, sua base desloca mais água para o piso.  \nO noivo recebe a nota fiscal seca. Só a câmera vê o segundo par de alianças brilhando no alagamento.",
+  "episodio": {
+    "titulo": "ALIANÇAS EM DOBRO",
+    "logline": "Na leiteria do casamento, JUCA enche o espelho d'água antes de assentar a luminária. Quando os dois aros finalmente acendem, há um espelho a mais do que o noivo encomendou.",
+    "setor": "Elétrica rural",
+    "servico": "Assentamento e teste da luminária de alianças a bateria sobre o espelho d'água da cerimônia.",
+    "cliente": "O noivo, na galeria da leiteria com o estojo das alianças.",
+    "mecanismo": "A prateleira da luminária gira numa dobradiça fixa. JUCA enche o rebaixo de pedra antes de baixar a prateleira; o ressalto maciço da face inferior entra na água e a faz passar pela borda, fora da vista dos três.",
+    "degrau_final": "piso",
+    "callback_object": "luminária de alianças",
+    "set_historia": "SET: Warm work light grazes the plank walls of a narrow farm dairy. A shallow recess is cut into the stone counter. Its low front lip overhangs just the rear edge of the small four-tile floor. The tiles extend forward in an exposed strip wider than the hoop pair, with clear sightlines over the lip to both hoop bases. A high back rim hides the tiles from the dry gallery. A fixed brass tap feeds the open front half. One lamp shelf pivots on a hinge bolted to the back rim: two sealed battery hoops above, a broad clay heel underneath, a dry right handle and a high thumb switch. The raised shelf leans against a stop. One rectangular oak block sits on edge on the dry right sill in the path of the shelf corner. A closed ring box and a blank invoice share the ledge between JUCA and the groom.",
+    "continuidade": [
+      "TÉO mede à esquerda, JUCA executa à direita e o noivo ocupa o centro da galeria. A borda traseira esconde o piso dos três.",
+      "O rebaixo faz parte do balcão de pedra. A prateleira só gira na dobradiça; apenas seu ressalto inferior entra na água. Os aros, o botão e a alça ficam secos.",
+      "A torneira fecha no clipe 2. Toda a água que chega ao piso depois disso sai pela mesma borda e se junta à primeira poça.",
+      "Do clipe 3 ao 5, a mão esquerda de JUCA guia a alça à direita da prateleira. A direita manobra o único calço, sempre pelo lado seco.",
+      "No clipe 6, assim que os aros acendem, o noivo ergue do parapeito o estojo aberto com a mão esquerda. Só depois JUCA firma o calço com a esquerda, puxa a nota fiscal sem inscrições com a direita e a entrega ao noivo, que a recebe com a direita. O segundo par de aros é um reflexo."
+    ],
+    "assinatura": "JUCA entrega a nota fiscal ao noivo enquanto TÉO faz uma reverência de mão seca acima do piso alagado.",
+    "objetos_plantados": [
+      {
+        "objeto": "estojo de alianças",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "torneira de latão",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "luminária de alianças",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "calço de carvalho",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "nota fiscal",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      }
+    ],
+    "canon": "zeca_joca_v1",
+    "premissa_simples": "O noivo quer ver duas alianças de luz em pé sobre um espelho d'água antes da cerimônia.",
+    "solucao_errada": "JUCA executa o segundo gesto de TÉO primeiro: enche até a nervura com a luminária ainda levantada.",
+    "payoff_visual": "O noivo ergue o estojo aberto, com as alianças dentro, em direção aos dois aros acesos. Bem abaixo da nota fiscal seca, os quatro ladrilhos devolvem outro par de luzes.",
+    "otimismo_final": "TÉO passa a palma sob a torneira fechada e a apresenta sequinha. Do lado da galeria, há motivo de sobra para a reverência.",
+    "escalada": [
+      "piso"
+    ],
+    "shots": [
+      {
+        "n": 1,
+        "dur": 10,
+        "estagio": "LIGACAO",
+        "estado_in": "TEO is left, JUCA right and the groom between them on the dry gallery. The ring box is closed beside the blank invoice. The dark hoop shelf leans against its backstop; the oak block is on edge on the right sill. The tap is shut, the stone recess empty and all four tiles dry.",
+        "estado_out": "The ring box is open beside the blank invoice. TEO measures a finger gap on the left and JUCA grips the tap lever on the right. The dark hoop shelf is against its backstop, the oak block on edge, the stone recess empty and the four tiles dry.",
+        "herda_de": "ring box",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Frontal wide across the tiles to the gallery. Between TEO on the left and JUCA on the right, the groom raps the ledge twice and flips the ring box open beside the blank invoice. JUCA braces its base with his left fingertips until the lid reaches its stop. Two wedding bands catch the work light."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "In a medium three-shot the groom taps his wrist twice, pinches a sliver of air and points with his free hand from the wedding bands to the dark hoops. TEO copies the tiny gap with thumb and forefinger and raises it to hoop height. JUCA rocks onto his toes and reaches toward the brass tap lever."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "Return wide. The groom halves his finger gap; TEO takes half off his measure. Beside the tall oak block and raised shelf, JUCA curls his right fingers over the lever."
+          }
+        ],
+        "gag": "O noivo encurta o prazo entre dois dedos; TÉO tira a medida do prazo.",
+        "objeto_gag": "estojo de alianças",
+        "fisica": "Giro da tampa até o batente.",
+        "reacao": "TÉO ergue o cotovelo para aferir a fresta; JUCA projeta os ombros e ganha alcance na ponta dos pés.",
+        "som": "Juntas batem duas vezes na madeira; dobradiça de latão clica ao abrir; pontas dos dedos dão dois toques leves na pele do pulso do noivo; inspiração curta do noivo ao pinçar o prazo; solas de borracha roçam a tábua; alavanca de latão dá um tique no batente fechado.",
+        "overall_soundscape": "Knuckles rap the pine ledge twice in quick succession; the brass box hinge clicks lightly at full travel; fingertips pat the bare skin of the groom's wrist twice in a soft double beat; the groom takes one short nasal inhale on the pinch; rubber soles scuff wood softly as JUCA rocks forward; the brass lever ticks against its closed stop under his fingers.",
+        "non_diegetic_music": "Pizzicato viola plays quick, quiet pairs with a rest after each pair.",
+        "causa": "O noivo abre o estojo de alianças para mostrar o desenho que quer aceso e bate no pulso para indicar a urgência.",
+        "efeito": "O estojo fica aberto, TÉO sustenta a medida e JUCA já tem a mão na alavanca da torneira.",
+        "payoff": "O noivo espreme mais um tiquinho de tempo; TÉO desconta o tiquinho na altura dos aros.",
+        "escala": "piso"
+      },
+      {
+        "n": 2,
+        "dur": 10,
+        "estagio": "CHEGADA",
+        "estado_in": "The ring box is open beside the blank invoice. TEO measures a finger gap on the left and JUCA grips the tap lever on the right. The dark hoop shelf is against its backstop, the oak block on edge, the stone recess empty and the four tiles dry.",
+        "estado_out": "Water touches the fill bead in the stone recess. The tap is shut and the four tiles are dry. TEO is at the left rim and JUCA at the right sill. The dark hoop shelf leans against its backstop, the oak block on edge. The groom is beside the open ring box and blank invoice.",
+        "herda_de": "tap lever",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Gallery wide. TEO steps up to the left rim, raises one finger and traces a downward arc beside the raised lamp shelf. JUCA steps up to the right sill with his right hand on the lever."
+          },
+          {
+            "t": "00:02.900",
+            "texto": "The camera faces the gallery from the front rim. At the left rim, TEO raises two fingers and taps the fill bead in the stone with his other hand. JUCA lifts the tap lever with his right palm. Water falls straight from the fixed spout to the stone bottom. The surface climbs toward TEO's fingertip with the dark lamp shelf tilted high above it."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "Return wide as the water meets the bead just under the front lip. JUCA presses the lever down and opens his hand; the stream breaks at the spout. TEO folds his second finger, leaving one finger pointing up beside the raised shelf."
+          }
+        ],
+        "gag": "JUCA completa o passo dois até a risca. O passo um continua em pé ao lado do dedo de TÉO.",
+        "objeto_gag": "torneira de latão",
+        "fisica": "Enchimento vertical até a nervura.",
+        "reacao": "TÉO recolhe um dedo da contagem; JUCA abre a palma com um floreio sobre a alavanca fechada.",
+        "som": "Solas de borracha batem na madeira ao chegar à borda; unha toca a nervura de pedra; alavanca de latão range ao subir; água tamborila no fundo e marulha ao encher; alavanca clica no batente ao fechar.",
+        "overall_soundscape": "Rubber soles thud twice on pine at the rim; TEO's nail taps the stone bead lightly on the second count; the brass lever creaks briefly on the lift; water drums on bare stone and softens to a lap as the level rises; the brass lever clicks down against its stop.",
+        "non_diegetic_music": "Muted bassoon repeats a soft two-note figure with the accent on the second note.",
+        "causa": "Com a mão na alavanca da torneira, JUCA segue a segunda indicação de TÉO antes de executar a primeira.",
+        "efeito": "O rebaixo fixo fica cheio até a nervura e a torneira fecha. O ressalto da prateleira ainda não ocupou seu lugar.",
+        "payoff": "A água para na nervura. O único dedo que sobrou na contagem de TÉO aponta para cima, ao lado da luminária ainda levantada.",
+        "escala": "piso"
+      },
+      {
+        "n": 3,
+        "dur": 10,
+        "estagio": "PRIMEIRA_FALHA",
+        "estado_in": "Water touches the fill bead in the stone recess. The tap is shut and the four tiles are dry. TEO is at the left rim and JUCA at the right sill. The dark hoop shelf leans against its backstop, the oak block on edge. The groom is beside the open ring box and blank invoice.",
+        "estado_out": "The dark hoop shelf rests on the tall oak block with one corner of its clay heel submerged. JUCA grips the dry right handle with his left hand; TEO measures from the left rim. One tile is wet. The tap is shut and the groom leans beside the open ring box and blank invoice.",
+        "herda_de": "fill bead",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Start in the gallery wide. JUCA closes his left hand around the dry right handle and pulls the shelf forward off its backstop. The shelf turns on the bolted rear hinge. TEO opens his arms around the descending hoops."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "In a rim-level two-shot TEO lowers his left elbow with the hoops. JUCA bends his knees and guides the handle down with his left hand. One corner of the attached clay heel presses into the water. A thin thread curls over the front lip as the dry shelf edge lands on the tall oak block."
+          },
+          {
+            "t": "00:06.900",
+            "texto": "Widen on the same axis. The thread connects lip to tile, then breaks and leaves a glossy patch on one tile. Above it JUCA tucks his left elbow in to brace the handle as the groom inclines both shoulders to match the slant of the two dark hoops."
+          }
+        ],
+        "gag": "A luminária para inclinada no calço; quem corrige o ângulo é o noivo, com os próprios ombros.",
+        "objeto_gag": "luminária de alianças",
+        "fisica": "Basculamento da prateleira até o apoio alto.",
+        "reacao": "JUCA dobra os joelhos na descida; o noivo inclina o tronco sem tirar os pés da galeria.",
+        "som": "Madeira da alça roça a palma no primeiro puxão; dobradiça de ferro range ao girar; água marulha contra a cerâmica no contato; borda de madeira bate seca no carvalho; filete de água tamborila num ladrilho.",
+        "overall_soundscape": "The wooden handle rubs softly against JUCA's palm on the pull; the iron hinge creaks low on the forward turn; water laps against glazed clay at first contact; the wooden shelf edge knocks sharply on oak at the stop; water patters lightly on one tile before the thread breaks.",
+        "non_diegetic_music": "Low clarinet descends in three quiet steps and cuts the third note short.",
+        "causa": "Com a água já na nervura, basta entrar o canto do ressalto cerâmico para vencer a folga até a borda frontal.",
+        "efeito": "A prateleira apoia no calço alto com um canto do ressalto submerso. O primeiro ladrilho fica molhado.",
+        "payoff": "Em cima, os aros e o noivo fazem a mesma diagonal. Embaixo, um único ladrilho ganha brilho.",
+        "escala": "piso"
+      },
+      {
+        "n": 4,
+        "dur": 10,
+        "estagio": "JEITINHO",
+        "estado_in": "The dark hoop shelf rests on the tall oak block with one corner of its clay heel submerged. JUCA grips the dry right handle with his left hand; TEO measures from the left rim. One tile is wet. The tap is shut and the groom leans beside the open ring box and blank invoice.",
+        "estado_out": "The flat oak block props the dark hoop shelf just above level. JUCA grips the dry handle with his left hand and touches the block with his right. TEO measures from the left. Two tiles are wet, the tap is shut and the groom leans slightly beside the open ring box and blank invoice.",
+        "herda_de": "tall oak block",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Gallery wide. TEO brings one forearm level with the stone sill. JUCA lifts the handle clear of the tall block with his left hand and sets his right thumb against the block's upper corner."
+          },
+          {
+            "t": "00:02.800",
+            "texto": "At sill height TEO brings his other forearm down toward the first. JUCA tips the block outward with his right thumb until its broad face strikes the dry sill. With his left hand he lowers the shelf onto the shorter support. The bolted hinge turns, the clay heel enters deeper and water folds over the same front lip."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "Widen to include the grout seam. Water drops into the first wet patch and crosses the seam onto the adjoining tile. JUCA spreads his right fingertips against the exposed side of the block. The groom lifts his low shoulder a little as the hoops come closer to upright."
+          }
+        ],
+        "gag": "JUCA deita o calço. A luminária desce; a poça atravessa a junta e ganha o ladrilho ao lado.",
+        "objeto_gag": "calço de carvalho",
+        "fisica": "Tombamento do calço sobre a face larga.",
+        "reacao": "TÉO aproxima os antebraços para medir a nova altura; o noivo levanta só um ombro, na proporção do ajuste.",
+        "som": "Ferro da dobradiça chia de leve ao erguer; quina de carvalho raspa na pedra durante o giro; face larga da madeira bate chata no apoio; prateleira toca o calço com um toque curto; água chapinha na junta dos ladrilhos; suspiro baixo de JUCA ao aliviar o braço.",
+        "overall_soundscape": "The iron hinge squeaks briefly on the lift; an oak corner rasps against stone during the tip; the broad wooden face claps flat against the sill; the shelf edge taps oak softly at the new height; water splashes across the tile seam in a short patter; JUCA gives one soft sigh as his arm eases.",
+        "non_diegetic_music": "Plucked double bass marks two even beats; a quiet viola answers half a beat late.",
+        "causa": "O calço alto segura a prateleira inclinada. JUCA usa a face mais larga do mesmo bloco como apoio mais baixo.",
+        "efeito": "A prateleira desce até o calço deitado. O ressalto desloca mais água e a poça passa para o segundo ladrilho.",
+        "payoff": "O ombro do noivo sobe um pouquinho; abaixo dele, a água atravessa a junta de ponta a ponta.",
+        "escala": "piso"
+      },
+      {
+        "n": 5,
+        "dur": 10,
+        "estagio": "ESCALADA",
+        "estado_in": "The flat oak block props the dark hoop shelf just above level. JUCA grips the dry handle with his left hand and touches the block with his right. TEO measures from the left. Two tiles are wet, the tap is shut and the groom leans slightly beside the open ring box and blank invoice.",
+        "estado_out": "The hoop shelf is level on the stone sill and both upright hoops are dark. A water sheet borders the last dry tile corner. The oak block weighs down the blank invoice beside the open ring box. TEO is left, JUCA right, the groom upright between them and the tap shut.",
+        "herda_de": "flat oak block",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Start wide over the two wet tiles. TEO runs a flat hand along the line of the stone sill. JUCA lifts the handle with his left hand just enough to take the weight off the flat block."
+          },
+          {
+            "t": "00:02.700",
+            "texto": "Low front three-quarter view. JUCA draws the block outward with his right hand and sets it on the blank invoice. TEO lowers both wrists together as JUCA eases the handle down with his left hand. The entire width of the clay heel turns into the water. A sheet pours over the lip as the shelf lands flat on stone."
+          },
+          {
+            "t": "00:06.900",
+            "texto": "Widen with the falling sheet. It hits the puddle and spreads through the adjacent seams toward the last dry corner. The groom squares his shoulders with the upright hoops. JUCA lifts his left palm off the handle."
+          }
+        ],
+        "gag": "JUCA tira o calço debaixo da luminária e arranja emprego para ele em cima da nota fiscal. A água ocupa o espaço que falta no piso.",
+        "objeto_gag": "calço de carvalho",
+        "fisica": "Deslize lateral do calço com a carga aliviada.",
+        "reacao": "TÉO baixa os pulsos à mesma altura; JUCA solta a alça com a palma aberta e o noivo apruma a coluna.",
+        "som": "Dobradiça de ferro range curta no alívio; carvalho raspa de lado na pedra; papel estala sob o calço; água chia na borda ao virar lâmina; madeira bate na pedra ao assentar; água dá uma palmada larga nos ladrilhos.",
+        "overall_soundscape": "The iron hinge creaks briefly as the load lifts; oak scrapes sideways across the dry stone sill; invoice paper crackles under the block at set-down; water hisses along the lip as the sheet widens; wood clacks on stone as the shelf seats; the water sheet slaps the tiles in a broad patter.",
+        "non_diegetic_music": "Muted pizzicato cello divides each soft beat in two, then four, and leaves the cadence open.",
+        "causa": "O calço deitado é o último apoio acima da borda. Ao retirá-lo, JUCA pode baixar toda a largura do ressalto até a posição de serviço.",
+        "efeito": "A prateleira assenta na pedra e o calço passa para cima da nota fiscal. A lâmina de água chega à borda da última ponta seca do ladrilho, mas ainda não a cobre.",
+        "payoff": "Em cima, os aros enfim ficam no prumo. Embaixo, só uma pontinha fosca ainda quebra o espelho.",
+        "escala": "piso"
+      },
+      {
+        "n": 6,
+        "dur": 10,
+        "estagio": "CLIMAX",
+        "estado_in": "The hoop shelf is level on the stone sill and both upright hoops are dark. A water sheet borders the last dry tile corner. The oak block weighs down the blank invoice beside the open ring box. TEO is left, JUCA right, the groom upright between them and the tap shut.",
+        "estado_out": "Two lit hoops rise from the seated shelf and reflect in water covering all four tiles. TEO bows on the left with a dry palm; JUCA is empty-handed on the right. The groom holds the dry blank invoice in his right hand and the open ring box in his left. The oak block rests on the ledge and the tap is shut.",
+        "herda_de": "water sheet",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Frontal wide. The advancing edge of the water sheet washes over the last dry corner. Above the four glossy tiles TEO turns a palm up under the fixed spout and JUCA brings his right thumb to the high switch."
+          },
+          {
+            "t": "00:02.600",
+            "texto": "Low frontal three-shot, lens centered on the exposed tile strip beyond the lip with both upright hoops in frame. JUCA depresses the dry switch with his right thumb and both hoops light together. TEO sweeps his dry palm out from under the spout and bows to the groom. The groom lifts the open ring box with his left hand toward the lit pair. Below TEO's bow the water on that strip reflects both hoops in full, two unbroken loops trembling clear of the counter edge."
+          },
+          {
+            "t": "00:06.600",
+            "texto": "Widen on the same low axis, keeping the lit pair and both complete reflections in frame. JUCA takes his thumb off the switch, pins the block with his left palm and slides the blank invoice clear with his right. He places it in the groom's open right hand and lets go. The groom raises slip and box side by side."
+          }
+        ],
+        "gag": "JUCA acende a luminária de alianças e entrega dois pares pelo preço de um. TÉO faz questão de mostrar a mão seca.",
+        "objeto_gag": "luminária de alianças",
+        "fisica": "Compressão do botão seco até o clique.",
+        "reacao": "TÉO exibe a palma seca e dobra a coluna numa reverência; o noivo ergue a nota com uma mão e o estojo com a outra.",
+        "som": "Água lambe de leve o último canto de cerâmica; botão de plástico da luminária clica sob o polegar; base do estojo roça a madeira ao erguer; papel raspa sob o carvalho; nota farfalha curta na mão do noivo.",
+        "overall_soundscape": "Water laps softly against the last ceramic corner; the plastic lamp switch clicks once under JUCA's thumb; the ring box base brushes the wooden ledge lightly on the lift; invoice paper rasps under oak as JUCA draws it clear; the dry slip rustles briefly in the groom's fingers.",
+        "non_diegetic_music": "Clarinet and pizzicato cello finish the same quiet two-note cadence an octave apart.",
+        "causa": "A lâmina de água do último assentamento já alcançou a borda da ponta ainda seca. Com a prateleira apoiada e as mãos livres, JUCA pode acionar o botão alto.",
+        "efeito": "A água cobre o quarto ladrilho, os dois aros acendem e a nota fiscal seca passa da mão de JUCA à do noivo.",
+        "payoff": "O noivo ergue a nota e o estojo para as alianças de luz. Debaixo da reverência de TÉO, outro par brilha no piso alagado.",
+        "escala": "piso"
+      }
+    ]
+  },
+  "uso": {
+    "input_tokens": 38201,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 26069
+    },
+    "output_tokens": 17412,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 55613
+  },
+  "interaction_id": "resp_0252cbeb847adc8c016b0a22dea5d88194aa431351c5fd515f",
+  "modelo": "gpt-6.2-astra"
+}

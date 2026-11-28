@@ -1,0 +1,11 @@
+# FAZEDOR — corrente de geração
+# Episódio: ALIANÇAS EM DOBRO
+# 6 planos · 60s · estimado 1.3 h @ 80 s/s
+# Rodar: powershell -ExecutionPolicy Bypass -File "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_gerar_todos.ps1"
+Set-Location "C:\Users\Guilherme\Documents\Projeto Padrão"
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c01_ligacao_settings.json" --tag ALIANCASEM_S01
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c02_chegada_settings.json" --tag ALIANCASEM_S02
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c03_primeira-falha_settings.json" --tag ALIANCASEM_S03
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c04_jeitinho_settings.json" --tag ALIANCASEM_S04
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c05_escalada_settings.json" --tag ALIANCASEM_S05
+& "C:\pinokio\api\wan2gp-amd\app\env\Scripts\python.exe" "C:\Users\Guilherme\Documents\Projeto Padrão\gen_test.py" --settings "C:\Users\Guilherme\Desktop\PROJETO_MINIMAX_H3_RECUPERADO\fazedor de histórias\fazedor_app\EPISODIOS\aliancas-em-dobro\settings\aliancas-em-dobro_c06_climax_settings.json" --tag ALIANCASEM_S06

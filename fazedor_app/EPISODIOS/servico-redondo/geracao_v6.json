@@ -1,0 +1,266 @@
+{
+  "cru": "RESUMO: TÉO e JUCA chegam sozinhos ao balcão frio da rodoviária. A quina da ficha do padre afunda na esponja, mas a rodela cabe no aro de TÉO: está aprovada. JUCA espreme a junta encharcada; a poça alcança a geada sem se separar da película sobre a rodela. O gelo chega à junção no lábio do aro. Na entrega, a mesma quina esbarra nessa emenda de gelo. Desta vez, quem dobra é a nota fiscal.\n\n```json\n{\"canon\":\"zeca_joca_v1\",\"titulo\":\"SERVIÇO REDONDO\",\"logline\":\"TÉO confere o diâmetro da junta e JUCA instala a esponja que passou no teste. A gota ganha um pedestal; o aperto para baixá-lo espalha água que congela até o aro e forma um batente para a nota fiscal.\",\"setor\":\"Hidráulica\",\"servico\":\"Vedar o furo de purga no centro da chapa fria do balcão de apoio aos motoristas.\",\"cliente\":\"Padre responsável pelo balcão da capelania da rodoviária.\",\"premissa_simples\":\"O padre quer a chapa fria em serviço sem a gota que brota no meio dela.\",\"solucao_errada\":\"Usar uma rodela de esponja no lugar da junta de borracha maciça porque ela cabe no aro-calibre.\",\"mecanismo\":\"O aro testa o contorno, não o material. A esponja puxa água continuamente do furo; JUCA a espreme contra a chapa. Uma única poça rasa alcança o rebordo com geada e endurece até o aro. No lábio de aço, a junção da poça com a película da rodela vira uma emenda de gelo. Essa emenda apoiada no aço barra a quina; o topo da esponja continua molhado.\",\"escalada\":[\"objeto\"],\"degrau_final\":\"objeto\",\"callback_object\":\"ficha de serviço\",\"payoff_visual\":\"Na chegada, a quina da ficha faz uma mossa na rodela. Na entrega, a mesma quina bate só na emenda de gelo ao pé da rodela. A emenda não cede e a ficha se curva num arco.\",\"otimismo_final\":\"JUCA faz uma reverência ao padre enquanto TÉO entrega o comprovante seco. Os três se ocupam da entrega por cima da chapa congelada.\",\"assinatura\":\"TÉO entrega a nota fiscal ao padre pelo guichê seco. O selo redondo do papel fica acima do disco de gelo com o aro-calibre preso no centro.\",\"set_historia\":\"SET: A tiled aisle inside the bus terminal runs past a bolted bench with a bus silhouette cast into its back. At the drivers' cold counter, a plain cross marks a dry handover hatch just left of center. A short indoor passage leads to its sill. A handspan-wide steel chill plate is bolted flat into the worktop beside a dry ledge. Its upward purge port sits in a low round seat stamped from the same subzero steel as the rim. A finger's width of shallow steel separates the seat from a thick rim of old white frost. Warm strip light fills the hatch; cool side light grazes the plate and picks out the lip of the seat in profile.\",\"continuidade\":[\"TÉO à esquerda com a ficha na mão esquerda e o aro na direita até pousá-lo no clipe 2; no clipe 3 firma o aro com a direita sem levantá-lo. JUCA à direita carrega, assenta e aperta a mesma rodela com a mão direita.\",\"Chapa fixa, aro baixo de aço, rodela amarela da largura da palma. Depois do aperto a rodela recupera a altura dentro do aro; a água expulsa fica toda na chapa rasa. A película sobre a rodela continua ligada à mesma poça pelo lábio do aro. Só a junção sobre o aço vira batente; o topo da esponja continua molhado.\",\"Na abertura o padre está representado pelo retrato na ficha do chamado; a dupla chega sozinha. Ele percorre o corredor até o guichê no clipe 5.\",\"Uma só ficha: retrato e gota na frente, selo circular da nota fiscal no verso. Sem letras nem algarismos. Bocas imóveis.\"],\"objetos_plantados\":[{\"objeto\":\"ficha de serviço\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"aro-calibre\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"rodela de esponja\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"chapa fria\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6}],\"shots\":[{\"n\":1,\"dur\":10,\"estagio\":\"LIGACAO\",\"estado_in\":\"TEO is left at the aisle entrance with the job card in his left hand and the ring gauge in his right; JUCA is right with the dry sponge disc in his right hand. A bead tops the port in the chill plate below the empty hatch. The rim is frosted.\",\"estado_out\":\"One step from the counter, TEO is left with the job card in his left hand and the ring gauge in his right. JUCA is right with the dry sponge disc in his right hand. The port bead and frosted rim are visible below the empty hatch.\",\"herda_de\":\"job card\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide down the aisle. TEO walks in on the left carrying the steel ring and the card with the priest's portrait facing out. JUCA marches in on the right carrying the yellow sponge disc flat like a serving tray. The round chill plate catches the light below the empty hatch.\"},{\"t\":\"00:03.200\",\"texto\":\"Medium on the same axis. TEO turns his shoulders and points the card corner with the drop emblem toward the wet port. JUCA takes a long step and lifts the disc to meet that corner. The straight paper edge presses a broad notch into the sponge; the yellow sides fold up around it.\"},{\"t\":\"00:07.000\",\"texto\":\"TEO draws the card left as JUCA tips his forearm back and peels the sponge off the corner. The notch springs out as their heels land one step short of the counter.\"}],\"gag\":\"JUCA oferece a junta à gota desenhada antes de chegar à verdadeira. A quina da ficha quase se enterra na suposta borracha.\",\"objeto_gag\":\"ficha de serviço\",\"fisica\":\"amassar por contato de borda\",\"reacao\":\"TÉO gira os ombros para apontar o chamado; JUCA alonga a passada e eleva o antebraço como quem serve um prato.\",\"som\":\"Solas de borracha raspam duas vezes no ladrilho da entrada; a ficha de cartão farfalha baixo ao virar; a celulose seca raspa na quina de papel ao soltar; os saltos de borracha batem curtos no ladrilho a um passo do balcão.\",\"overall_soundscape\":\"Rubber soles scuff the entry tile in two short strokes; stiff card stock rustles lightly as TEO turns it; dry cellulose rasps softly off the paper corner; rubber heels tap the tile sharply one step short of the counter.\",\"non_diegetic_music\":\"Quiet pizzicato cello plays two short beats to one long one. Low clarinet answers on the long beat.\",\"causa\":\"A ficha de serviço traz a gota do chamado no canto que TÉO aponta para o furo; JUCA levanta a rodela até esse canto.\",\"efeito\":\"A ficha afunda na esponja seca. A mossa se desfaz quando JUCA afasta a rodela, ainda a um passo da bancada.\",\"payoff\":\"A ficha sai reta e a rodela volta a parecer uma junta impecável.\",\"escala\":\"objeto\"},{\"n\":2,\"dur\":10,\"estagio\":\"CHEGADA\",\"estado_in\":\"One step from the counter, TEO is left with the job card in his left hand and the ring gauge in his right. JUCA is right with the dry sponge disc in his right hand. The port bead and frosted rim are visible below the empty hatch.\",\"estado_out\":\"TEO is left with the job card in his left hand. The ring gauge lies flat around the port bead. JUCA is right with the dry sponge disc poised above the ring in his right hand. The rim is frosted and the hatch is empty.\",\"herda_de\":\"ring gauge\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide. Both take the last step. TEO braces the upright ring on the dry ledge with his right hand. JUCA brings the disc level with its opening.\"},{\"t\":\"00:03.300\",\"texto\":\"Medium at ledge height. TEO dips one shoulder to sight along the opening as JUCA puts his weight on his front foot and pushes the disc halfway through. The steel lip pinches a waist into the sponge. TEO draws himself up and nods at the circle while the sponge bulges on either side of the ring.\"},{\"t\":\"00:07.000\",\"texto\":\"JUCA draws the disc back with his right hand; its waist rounds out. TEO lifts the ring from the ledge and lays it flat around the port. JUCA brings the disc just above it.\"}],\"gag\":\"O aro aperta a cintura da rodela. TÉO aprova o círculo que o próprio aro acabou de fazer.\",\"objeto_gag\":\"aro-calibre\",\"fisica\":\"encaixar por atrito\",\"reacao\":\"TÉO baixa um ombro para conferir a abertura e apruma a coluna para aprovar; JUCA põe o peso na perna da frente como se encaixasse ferro.\",\"som\":\"Uma sola de borracha bate de leve no último ladrilho; o aro de aço dá um clique na beirada seca; a esponja raspa dentro do aro; TÉO solta um suspiro nasal curto ao aprovar a medida; o aço pousa na chapa com um tinido baixo.\",\"overall_soundscape\":\"A rubber sole taps the last tile softly; the steel ring clicks against the dry ledge; dry sponge rasps briefly through the ring; TEO gives one soft nasal sigh at the fit; the steel gauge lands flat on the plate with a low chink.\",\"non_diegetic_music\":\"Low clarinet pairs even eighth notes over a quiet bass pizzicato.\",\"causa\":\"O aro-calibre trazido por TÉO tem a medida do assento. Uma peça mole consegue passar pelo exame de largura cedendo nas bordas.\",\"efeito\":\"O aro fica deitado em volta do furo, com a rodela aprovada suspensa sobre ele.\",\"payoff\":\"TÉO aprova o contorno de metal enquanto a peça faz barriga dos dois lados.\",\"escala\":\"objeto\"},{\"n\":3,\"dur\":10,\"estagio\":\"PRIMEIRA_FALHA\",\"estado_in\":\"TEO is left with the job card in his left hand. The ring gauge lies flat around the port bead. JUCA is right with the dry sponge disc poised above the ring in his right hand. The rim is frosted and the hatch is empty.\",\"estado_out\":\"TEO is left with the job card in his left hand; JUCA is right with his hands clear. The wet sponge disc projects above the ring gauge with one bead on top. The steel between the ring and the frosted rim is dry; the hatch is empty.\",\"herda_de\":\"sponge disc\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide. TEO draws the card against his chest with his left hand, clearing the space over the gauge. JUCA bends from the right and lowers the dry disc broad face first toward the ring.\"},{\"t\":\"00:03.200\",\"texto\":\"Low medium along the plate. TEO leans sideways and braces the left lip of the gauge with his right fingertips. JUCA tips the far sponge edge into the ring until the underside touches the bead. Through the gap below the raised near edge, a short unbroken stream wells from the port into the sponge. For two beats it feeds a dark patch that spreads across the base and climbs the yellow side. JUCA lowers the near edge into its seat.\"},{\"t\":\"00:07.000\",\"texto\":\"Profile insert with both forearms in frame. TEO pins the gauge flat as JUCA peels his right hand off the disc. TEO lifts his fingers; JUCA opens both arms to unveil his work. The dark band reaches the top and one plump bead wells up there. Dry steel shows all around the ring.\"}],\"gag\":\"Em vez de eliminar a gota, a rodela lhe dá um pedestal.\",\"objeto_gag\":\"rodela de esponja\",\"fisica\":\"embeber por capilaridade\",\"reacao\":\"TÉO inclina o tronco para visar as bordas alinhadas; JUCA se ergue da cintura e abre os braços para inaugurar a peça.\",\"som\":\"A ficha de cartão roça o tecido com um farfalho seco junto ao peito; a borda da esponja raspa de leve no aço; a água chia abafada contra a base de celulose; o fio de água sibila baixo e contínuo na fresta sob a esponja; o ar expulso da esponja estala uma vez no topo molhado.\",\"overall_soundscape\":\"Card stock brushes fabric with a dry rasp at TEO's chest; the sponge edge scuffs the steel ring softly; water squishes low against the cellulose base on contact; water trickles steadily from the steel port under the lifted sponge edge; trapped air sputters once from the wet sponge as the top bead swells.\",\"non_diegetic_music\":\"Soft bassoon plays one clipped note, leaves a rest and repeats it one step higher.\",\"causa\":\"A rodela de esponja encosta na gota ainda inclinada. Pela fresta vê-se o furo alimentar a base porosa sem interrupção antes de JUCA fechar o encaixe.\",\"efeito\":\"A água do furo encharca a rodela de baixo a cima sem passar do aro. A gota reaparece na face de cima; o aço do lado de fora continua seco.\",\"payoff\":\"O perfil da gota é o mesmo de antes; só mudou de altura.\",\"escala\":\"objeto\"},{\"n\":4,\"dur\":10,\"estagio\":\"JEITINHO\",\"estado_in\":\"TEO is left with the job card in his left hand; JUCA is right with his hands clear. The wet sponge disc projects above the ring gauge with one bead on top. The steel between the ring and the frosted rim is dry; the hatch is empty.\",\"estado_out\":\"TEO is down on one knee on the left with the job card in his left hand; JUCA is upright on the right with hands clear. The wet sponge disc has sprung back inside the ring gauge. One shallow puddle covers the plate from the ring to the frosted rim. A thin wet film extends from the sponge top down its side and over the gauge lip into that same puddle. The hatch is empty.\",\"herda_de\":\"sponge disc\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide. TEO bends both knees and sweeps his free forearm level with the metal ring. JUCA steps forward on the right and brings his right palm down toward the high sponge.\"},{\"t\":\"00:03.000\",\"texto\":\"Medium at plate height. TEO rocks back on his heels and lowers his forearm to mark the height of the steel lip. JUCA folds his front knee and presses his right palm against the wet disc. At contact the sponge flattens down to the lip. Water squeezed from its sides spills over that lip in one broad sheet onto the dry steel.\"},{\"t\":\"00:06.800\",\"texto\":\"Widen on the same axis. JUCA lifts his right palm and straightens; the sponge springs back inside the ring. TEO goes down on one knee and marks the new height with his free forearm. As the sponge rises, the film left by the squeeze glints in one unbroken line from its top down the near side, over the gauge lip into the same puddle. The puddle spreads the last finger's width to the frosted rim.\"}],\"gag\":\"JUCA aperta a junta até a altura pedida. Ao soltar, devolve à rodela toda a altura e à chapa toda a água.\",\"objeto_gag\":\"rodela de esponja\",\"fisica\":\"prensar e soltar\",\"reacao\":\"TÉO desce até apoiar um joelho no ladrilho. JUCA sai do afundo e lança o braço para o alto; a rodela sobe entre os dois.\",\"som\":\"As solas de borracha rangem no ladrilho quando JUCA abre a base; a celulose molhada chia sob a mão; a água bate baixa no aço em volta do aro; JUCA solta um resfolego nasal curto ao se erguer; a poça marulha de leve contra o rebordo.\",\"overall_soundscape\":\"Rubber soles squeak on tile as JUCA widens his stance; wet cellulose squelches once under his palm; water splashes low against steel at the foot of the ring; JUCA gives a short nasal huff as he straightens; water laps softly against the frosted lip.\",\"non_diegetic_music\":\"Quiet viola pizzicato leans on one low beat and lifts through a short triplet.\",\"causa\":\"A rodela de esponja, encharcada pelo furo, ultrapassa a linha indicada pelo antebraço de TÉO. JUCA tenta nivelá-la com um aperto.\",\"efeito\":\"A rodela recupera a altura dentro do aro. A água espremida cruza pela primeira vez o aço fora do aro e forma uma poça contínua até o rebordo frio. A película que resta sobre a rodela continua ligada à mesma poça pelo lábio do aro.\",\"payoff\":\"A única coisa que ficou rasa foi a poça.\",\"escala\":\"objeto\"},{\"n\":5,\"dur\":10,\"estagio\":\"ESCALADA\",\"estado_in\":\"TEO is down on one knee on the left with the job card in his left hand; JUCA is upright on the right with hands clear. The wet sponge disc has sprung back inside the ring gauge. One shallow puddle covers the plate from the ring to the frosted rim. A thin wet film extends from the sponge top down its side and over the gauge lip into that same puddle. The hatch is empty.\",\"estado_out\":\"TEO is upright on the left with the job card in his left hand; JUCA is on the right facing the hatch. An ice disc fills the chill plate and grips the ring gauge. A thin chilled film coats the exposed top and side of the sponge disc; a white seam joins its foot to the ice on the steel lip. The priest has both hands on the dry sill.\",\"herda_de\":\"puddle\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide. TEO pushes up from his bent knee and raises the card toward the hatch. JUCA takes a broad step back on the right, clearing the view of the water against the white lip.\"},{\"t\":\"00:03.000\",\"texto\":\"High frontal medium. TEO turns his shoulders toward the hatch with the job card and JUCA extends one arm in welcome. Below their arms the film glints down the sponge side and across the gauge lip into the same puddle. Its far edge laps against the frosted steel. One broad white edge spreads inward from that contact across the shallow water, leaving a smooth disc of ice up to the metal ring.\"},{\"t\":\"00:06.800\",\"texto\":\"Front wide again, plate large below the hatch. TEO tips the portrait toward the passage; JUCA sweeps his open arm toward the sill. The priest walks two full steps to the hatch and puts both hands on the dry sill. Ice from the same puddle crosses the wet gauge lip. The curved foot of the film turns into a raised white seam seated directly on the steel; above it the wet sponge top and side still glint.\"}],\"gag\":\"JUCA apresenta a junta do tamanho da palma. A geada termina de emoldurá-la com um disco do tamanho da chapa.\",\"objeto_gag\":\"chapa fria\",\"fisica\":\"solidificar a partir da borda\",\"reacao\":\"TÉO se levanta num impulso da perna; JUCA dá um passo largo para trás, liberando a visão da poça, gira o tronco e oferece o braço de recepcionista ao guichê.\",\"som\":\"Uma sola de borracha raspa o ladrilho quando TÉO se levanta; a ficha de cartão farfalha baixo ao girar; a água marulha contra o aço frio; o gelo fino crepita numa carreira curta até o centro; as solas de borracha do padre batem duas vezes no corredor.\",\"overall_soundscape\":\"A rubber sole scrapes the tile as TEO rises; card stock rustles lightly as he turns; water laps once against the frosted steel; thin ice crackles in a short run toward the center; rubber soles tap twice on the passage tile.\",\"non_diegetic_music\":\"Bass clarinet draws out a quiet three-note climb over widely spaced bass pizzicati.\",\"causa\":\"A poça rasa já toca o rebordo coberto de geada. Mesmo depois de a rodela recuperar a altura, a película deixada pelo aperto continua unida à mesma poça pelo lábio molhado do aro.\",\"efeito\":\"O gelo se estende pela chapa e cruza a borda molhada do aro. Uma emenda branca prende o pé da película ao aço; acima dela, a película fina já resfriada ainda brilha quando o padre chega ao guichê.\",\"payoff\":\"JUCA conclui a apresentação para o padre com a rodela montada no centro de um prato de gelo.\",\"escala\":\"objeto\"},{\"n\":6,\"dur\":10,\"estagio\":\"CLIMAX\",\"estado_in\":\"TEO is upright on the left with the job card in his left hand; JUCA is on the right facing the hatch. An ice disc fills the chill plate and grips the ring gauge. A thin chilled film coats the exposed top and side of the sponge disc; a white seam joins its foot to the ice on the steel lip. The priest has both hands on the dry sill.\",\"estado_out\":\"An ice disc fills the chill plate and grips the ring gauge. The white seam is intact on the steel lip at the foot of the sponge disc; the thin film above it is still liquid. The priest holds the flat, dry job card with its round receipt seal facing out. TEO is left with empty hands; JUCA is right beside the counter.\",\"herda_de\":\"white seam\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Front wide with the plate across the lower frame. TEO turns the card to its round receipt seal; JUCA folds his extended arm back to clear its path. After one second ease in on the sponge foot. The matte white ice seam sits directly on the steel lip; the film higher on the sponge glints wet. On its way to the sill, the low card corner passes just above the plate, level with the outer face of the seam.\"},{\"t\":\"00:03.200\",\"texto\":\"Medium in profile on the same card corner as in the aisle. TEO leans toward the hatch with the card in his left hand while JUCA bows from the waist on the right. The low corner hits only the dry outer face of the ice seam at the sponge foot. The steel lip backs the ice at the contact point; a gap separates paper from wet sponge. The corner stops on the ice and the paper bends into a broad arc under TEO's advancing hand.\"},{\"t\":\"00:07.000\",\"texto\":\"TEO lifts his forearm; JUCA rocks back out of his bow to clear the handover. The corner clears the seam and the dry card springs flat. The priest lifts one hand from the sill and grips the free corner before TEO lets go. Frame the round paper seal above the ice disc with the steel gauge caught in its hub.\"}],\"gag\":\"A mesma quina volta em direção à rodela, mas esbarra no gelo ao pé dela. Quem faz barriga é o papel.\",\"objeto_gag\":\"ficha de serviço\",\"fisica\":\"fletir contra apoio rígido\",\"reacao\":\"JUCA dobra o tronco numa reverência ao padre; TÉO ergue o antebraço por cima da junta e abre a mão para concluir a entrega.\",\"som\":\"O cartão farfalha baixo ao mostrar o selo; a quina de papel dá um tique na emenda de gelo; a ficha encurvada estala de leve ao se endireitar; o papel seco raspa curto na troca de mãos.\",\"overall_soundscape\":\"Card stock rustles softly as the seal turns out; the paper corner ticks once against the ice seam; the bent card snaps softly straight as it clears the seam; dry paper rasps briefly between their hands at the handover.\",\"non_diegetic_music\":\"Pizzicato cello reprises the opening pair of short notes. A quiet clarinet cadence lands on the handover.\",\"causa\":\"A emenda branca de gelo já formada ao pé da rodela sobressai no lábio de aço. Ao estender a ficha de serviço para o guichê, TÉO leva a quina à altura da face seca desse batente.\",\"efeito\":\"A quina para no gelo apoiado no aço, sem tocar o metal nem a película líquida. A ficha se curva, volta ao plano quando TÉO a ergue e passa seca à mão do padre.\",\"payoff\":\"Na abertura a ficha amassou a junta; na entrega, a emenda de gelo ao pé da junta não cede e a nota fiscal faz barriga.\",\"escala\":\"objeto\"}]}\n```",
+  "resumo": "RESUMO: TÉO e JUCA chegam sozinhos ao balcão frio da rodoviária. A quina da ficha do padre afunda na esponja, mas a rodela cabe no aro de TÉO: está aprovada. JUCA espreme a junta encharcada; a poça alcança a geada sem se separar da película sobre a rodela. O gelo chega à junção no lábio do aro. Na entrega, a mesma quina esbarra nessa emenda de gelo. Desta vez, quem dobra é a nota fiscal.",
+  "episodio": {
+    "canon": "zeca_joca_v1",
+    "titulo": "SERVIÇO REDONDO",
+    "logline": "TÉO confere o diâmetro da junta e JUCA instala a esponja que passou no teste. A gota ganha um pedestal; o aperto para baixá-lo espalha água que congela até o aro e forma um batente para a nota fiscal.",
+    "setor": "Hidráulica",
+    "servico": "Vedar o furo de purga no centro da chapa fria do balcão de apoio aos motoristas.",
+    "cliente": "Padre responsável pelo balcão da capelania da rodoviária.",
+    "premissa_simples": "O padre quer a chapa fria em serviço sem a gota que brota no meio dela.",
+    "solucao_errada": "Usar uma rodela de esponja no lugar da junta de borracha maciça porque ela cabe no aro-calibre.",
+    "mecanismo": "O aro testa o contorno, não o material. A esponja puxa água continuamente do furo; JUCA a espreme contra a chapa. Uma única poça rasa alcança o rebordo com geada e endurece até o aro. No lábio de aço, a junção da poça com a película da rodela vira uma emenda de gelo. Essa emenda apoiada no aço barra a quina; o topo da esponja continua molhado.",
+    "escalada": [
+      "objeto"
+    ],
+    "degrau_final": "objeto",
+    "callback_object": "ficha de serviço",
+    "payoff_visual": "Na chegada, a quina da ficha faz uma mossa na rodela. Na entrega, a mesma quina bate só na emenda de gelo ao pé da rodela. A emenda não cede e a ficha se curva num arco.",
+    "otimismo_final": "JUCA faz uma reverência ao padre enquanto TÉO entrega o comprovante seco. Os três se ocupam da entrega por cima da chapa congelada.",
+    "assinatura": "TÉO entrega a nota fiscal ao padre pelo guichê seco. O selo redondo do papel fica acima do disco de gelo com o aro-calibre preso no centro.",
+    "set_historia": "SET: A tiled aisle inside the bus terminal runs past a bolted bench with a bus silhouette cast into its back. At the drivers' cold counter, a plain cross marks a dry handover hatch just left of center. A short indoor passage leads to its sill. A handspan-wide steel chill plate is bolted flat into the worktop beside a dry ledge. Its upward purge port sits in a low round seat stamped from the same subzero steel as the rim. A finger's width of shallow steel separates the seat from a thick rim of old white frost. Warm strip light fills the hatch; cool side light grazes the plate and picks out the lip of the seat in profile.",
+    "continuidade": [
+      "TÉO à esquerda com a ficha na mão esquerda e o aro na direita até pousá-lo no clipe 2; no clipe 3 firma o aro com a direita sem levantá-lo. JUCA à direita carrega, assenta e aperta a mesma rodela com a mão direita.",
+      "Chapa fixa, aro baixo de aço, rodela amarela da largura da palma. Depois do aperto a rodela recupera a altura dentro do aro; a água expulsa fica toda na chapa rasa. A película sobre a rodela continua ligada à mesma poça pelo lábio do aro. Só a junção sobre o aço vira batente; o topo da esponja continua molhado.",
+      "Na abertura o padre está representado pelo retrato na ficha do chamado; a dupla chega sozinha. Ele percorre o corredor até o guichê no clipe 5.",
+      "Uma só ficha: retrato e gota na frente, selo circular da nota fiscal no verso. Sem letras nem algarismos. Bocas imóveis."
+    ],
+    "objetos_plantados": [
+      {
+        "objeto": "ficha de serviço",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "aro-calibre",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "rodela de esponja",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "chapa fria",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      }
+    ],
+    "shots": [
+      {
+        "n": 1,
+        "dur": 10,
+        "estagio": "LIGACAO",
+        "estado_in": "TEO is left at the aisle entrance with the job card in his left hand and the ring gauge in his right; JUCA is right with the dry sponge disc in his right hand. A bead tops the port in the chill plate below the empty hatch. The rim is frosted.",
+        "estado_out": "One step from the counter, TEO is left with the job card in his left hand and the ring gauge in his right. JUCA is right with the dry sponge disc in his right hand. The port bead and frosted rim are visible below the empty hatch.",
+        "herda_de": "job card",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide down the aisle. TEO walks in on the left carrying the steel ring and the card with the priest's portrait facing out. JUCA marches in on the right carrying the yellow sponge disc flat like a serving tray. The round chill plate catches the light below the empty hatch."
+          },
+          {
+            "t": "00:03.200",
+            "texto": "Medium on the same axis. TEO turns his shoulders and points the card corner with the drop emblem toward the wet port. JUCA takes a long step and lifts the disc to meet that corner. The straight paper edge presses a broad notch into the sponge; the yellow sides fold up around it."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "TEO draws the card left as JUCA tips his forearm back and peels the sponge off the corner. The notch springs out as their heels land one step short of the counter."
+          }
+        ],
+        "gag": "JUCA oferece a junta à gota desenhada antes de chegar à verdadeira. A quina da ficha quase se enterra na suposta borracha.",
+        "objeto_gag": "ficha de serviço",
+        "fisica": "amassar por contato de borda",
+        "reacao": "TÉO gira os ombros para apontar o chamado; JUCA alonga a passada e eleva o antebraço como quem serve um prato.",
+        "som": "Solas de borracha raspam duas vezes no ladrilho da entrada; a ficha de cartão farfalha baixo ao virar; a celulose seca raspa na quina de papel ao soltar; os saltos de borracha batem curtos no ladrilho a um passo do balcão.",
+        "overall_soundscape": "Rubber soles scuff the entry tile in two short strokes; stiff card stock rustles lightly as TEO turns it; dry cellulose rasps softly off the paper corner; rubber heels tap the tile sharply one step short of the counter.",
+        "non_diegetic_music": "Quiet pizzicato cello plays two short beats to one long one. Low clarinet answers on the long beat.",
+        "causa": "A ficha de serviço traz a gota do chamado no canto que TÉO aponta para o furo; JUCA levanta a rodela até esse canto.",
+        "efeito": "A ficha afunda na esponja seca. A mossa se desfaz quando JUCA afasta a rodela, ainda a um passo da bancada.",
+        "payoff": "A ficha sai reta e a rodela volta a parecer uma junta impecável.",
+        "escala": "objeto"
+      },
+      {
+        "n": 2,
+        "dur": 10,
+        "estagio": "CHEGADA",
+        "estado_in": "One step from the counter, TEO is left with the job card in his left hand and the ring gauge in his right. JUCA is right with the dry sponge disc in his right hand. The port bead and frosted rim are visible below the empty hatch.",
+        "estado_out": "TEO is left with the job card in his left hand. The ring gauge lies flat around the port bead. JUCA is right with the dry sponge disc poised above the ring in his right hand. The rim is frosted and the hatch is empty.",
+        "herda_de": "ring gauge",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide. Both take the last step. TEO braces the upright ring on the dry ledge with his right hand. JUCA brings the disc level with its opening."
+          },
+          {
+            "t": "00:03.300",
+            "texto": "Medium at ledge height. TEO dips one shoulder to sight along the opening as JUCA puts his weight on his front foot and pushes the disc halfway through. The steel lip pinches a waist into the sponge. TEO draws himself up and nods at the circle while the sponge bulges on either side of the ring."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "JUCA draws the disc back with his right hand; its waist rounds out. TEO lifts the ring from the ledge and lays it flat around the port. JUCA brings the disc just above it."
+          }
+        ],
+        "gag": "O aro aperta a cintura da rodela. TÉO aprova o círculo que o próprio aro acabou de fazer.",
+        "objeto_gag": "aro-calibre",
+        "fisica": "encaixar por atrito",
+        "reacao": "TÉO baixa um ombro para conferir a abertura e apruma a coluna para aprovar; JUCA põe o peso na perna da frente como se encaixasse ferro.",
+        "som": "Uma sola de borracha bate de leve no último ladrilho; o aro de aço dá um clique na beirada seca; a esponja raspa dentro do aro; TÉO solta um suspiro nasal curto ao aprovar a medida; o aço pousa na chapa com um tinido baixo.",
+        "overall_soundscape": "A rubber sole taps the last tile softly; the steel ring clicks against the dry ledge; dry sponge rasps briefly through the ring; TEO gives one soft nasal sigh at the fit; the steel gauge lands flat on the plate with a low chink.",
+        "non_diegetic_music": "Low clarinet pairs even eighth notes over a quiet bass pizzicato.",
+        "causa": "O aro-calibre trazido por TÉO tem a medida do assento. Uma peça mole consegue passar pelo exame de largura cedendo nas bordas.",
+        "efeito": "O aro fica deitado em volta do furo, com a rodela aprovada suspensa sobre ele.",
+        "payoff": "TÉO aprova o contorno de metal enquanto a peça faz barriga dos dois lados.",
+        "escala": "objeto"
+      },
+      {
+        "n": 3,
+        "dur": 10,
+        "estagio": "PRIMEIRA_FALHA",
+        "estado_in": "TEO is left with the job card in his left hand. The ring gauge lies flat around the port bead. JUCA is right with the dry sponge disc poised above the ring in his right hand. The rim is frosted and the hatch is empty.",
+        "estado_out": "TEO is left with the job card in his left hand; JUCA is right with his hands clear. The wet sponge disc projects above the ring gauge with one bead on top. The steel between the ring and the frosted rim is dry; the hatch is empty.",
+        "herda_de": "sponge disc",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide. TEO draws the card against his chest with his left hand, clearing the space over the gauge. JUCA bends from the right and lowers the dry disc broad face first toward the ring."
+          },
+          {
+            "t": "00:03.200",
+            "texto": "Low medium along the plate. TEO leans sideways and braces the left lip of the gauge with his right fingertips. JUCA tips the far sponge edge into the ring until the underside touches the bead. Through the gap below the raised near edge, a short unbroken stream wells from the port into the sponge. For two beats it feeds a dark patch that spreads across the base and climbs the yellow side. JUCA lowers the near edge into its seat."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "Profile insert with both forearms in frame. TEO pins the gauge flat as JUCA peels his right hand off the disc. TEO lifts his fingers; JUCA opens both arms to unveil his work. The dark band reaches the top and one plump bead wells up there. Dry steel shows all around the ring."
+          }
+        ],
+        "gag": "Em vez de eliminar a gota, a rodela lhe dá um pedestal.",
+        "objeto_gag": "rodela de esponja",
+        "fisica": "embeber por capilaridade",
+        "reacao": "TÉO inclina o tronco para visar as bordas alinhadas; JUCA se ergue da cintura e abre os braços para inaugurar a peça.",
+        "som": "A ficha de cartão roça o tecido com um farfalho seco junto ao peito; a borda da esponja raspa de leve no aço; a água chia abafada contra a base de celulose; o fio de água sibila baixo e contínuo na fresta sob a esponja; o ar expulso da esponja estala uma vez no topo molhado.",
+        "overall_soundscape": "Card stock brushes fabric with a dry rasp at TEO's chest; the sponge edge scuffs the steel ring softly; water squishes low against the cellulose base on contact; water trickles steadily from the steel port under the lifted sponge edge; trapped air sputters once from the wet sponge as the top bead swells.",
+        "non_diegetic_music": "Soft bassoon plays one clipped note, leaves a rest and repeats it one step higher.",
+        "causa": "A rodela de esponja encosta na gota ainda inclinada. Pela fresta vê-se o furo alimentar a base porosa sem interrupção antes de JUCA fechar o encaixe.",
+        "efeito": "A água do furo encharca a rodela de baixo a cima sem passar do aro. A gota reaparece na face de cima; o aço do lado de fora continua seco.",
+        "payoff": "O perfil da gota é o mesmo de antes; só mudou de altura.",
+        "escala": "objeto"
+      },
+      {
+        "n": 4,
+        "dur": 10,
+        "estagio": "JEITINHO",
+        "estado_in": "TEO is left with the job card in his left hand; JUCA is right with his hands clear. The wet sponge disc projects above the ring gauge with one bead on top. The steel between the ring and the frosted rim is dry; the hatch is empty.",
+        "estado_out": "TEO is down on one knee on the left with the job card in his left hand; JUCA is upright on the right with hands clear. The wet sponge disc has sprung back inside the ring gauge. One shallow puddle covers the plate from the ring to the frosted rim. A thin wet film extends from the sponge top down its side and over the gauge lip into that same puddle. The hatch is empty.",
+        "herda_de": "sponge disc",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide. TEO bends both knees and sweeps his free forearm level with the metal ring. JUCA steps forward on the right and brings his right palm down toward the high sponge."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "Medium at plate height. TEO rocks back on his heels and lowers his forearm to mark the height of the steel lip. JUCA folds his front knee and presses his right palm against the wet disc. At contact the sponge flattens down to the lip. Water squeezed from its sides spills over that lip in one broad sheet onto the dry steel."
+          },
+          {
+            "t": "00:06.800",
+            "texto": "Widen on the same axis. JUCA lifts his right palm and straightens; the sponge springs back inside the ring. TEO goes down on one knee and marks the new height with his free forearm. As the sponge rises, the film left by the squeeze glints in one unbroken line from its top down the near side, over the gauge lip into the same puddle. The puddle spreads the last finger's width to the frosted rim."
+          }
+        ],
+        "gag": "JUCA aperta a junta até a altura pedida. Ao soltar, devolve à rodela toda a altura e à chapa toda a água.",
+        "objeto_gag": "rodela de esponja",
+        "fisica": "prensar e soltar",
+        "reacao": "TÉO desce até apoiar um joelho no ladrilho. JUCA sai do afundo e lança o braço para o alto; a rodela sobe entre os dois.",
+        "som": "As solas de borracha rangem no ladrilho quando JUCA abre a base; a celulose molhada chia sob a mão; a água bate baixa no aço em volta do aro; JUCA solta um resfolego nasal curto ao se erguer; a poça marulha de leve contra o rebordo.",
+        "overall_soundscape": "Rubber soles squeak on tile as JUCA widens his stance; wet cellulose squelches once under his palm; water splashes low against steel at the foot of the ring; JUCA gives a short nasal huff as he straightens; water laps softly against the frosted lip.",
+        "non_diegetic_music": "Quiet viola pizzicato leans on one low beat and lifts through a short triplet.",
+        "causa": "A rodela de esponja, encharcada pelo furo, ultrapassa a linha indicada pelo antebraço de TÉO. JUCA tenta nivelá-la com um aperto.",
+        "efeito": "A rodela recupera a altura dentro do aro. A água espremida cruza pela primeira vez o aço fora do aro e forma uma poça contínua até o rebordo frio. A película que resta sobre a rodela continua ligada à mesma poça pelo lábio do aro.",
+        "payoff": "A única coisa que ficou rasa foi a poça.",
+        "escala": "objeto"
+      },
+      {
+        "n": 5,
+        "dur": 10,
+        "estagio": "ESCALADA",
+        "estado_in": "TEO is down on one knee on the left with the job card in his left hand; JUCA is upright on the right with hands clear. The wet sponge disc has sprung back inside the ring gauge. One shallow puddle covers the plate from the ring to the frosted rim. A thin wet film extends from the sponge top down its side and over the gauge lip into that same puddle. The hatch is empty.",
+        "estado_out": "TEO is upright on the left with the job card in his left hand; JUCA is on the right facing the hatch. An ice disc fills the chill plate and grips the ring gauge. A thin chilled film coats the exposed top and side of the sponge disc; a white seam joins its foot to the ice on the steel lip. The priest has both hands on the dry sill.",
+        "herda_de": "puddle",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide. TEO pushes up from his bent knee and raises the card toward the hatch. JUCA takes a broad step back on the right, clearing the view of the water against the white lip."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "High frontal medium. TEO turns his shoulders toward the hatch with the job card and JUCA extends one arm in welcome. Below their arms the film glints down the sponge side and across the gauge lip into the same puddle. Its far edge laps against the frosted steel. One broad white edge spreads inward from that contact across the shallow water, leaving a smooth disc of ice up to the metal ring."
+          },
+          {
+            "t": "00:06.800",
+            "texto": "Front wide again, plate large below the hatch. TEO tips the portrait toward the passage; JUCA sweeps his open arm toward the sill. The priest walks two full steps to the hatch and puts both hands on the dry sill. Ice from the same puddle crosses the wet gauge lip. The curved foot of the film turns into a raised white seam seated directly on the steel; above it the wet sponge top and side still glint."
+          }
+        ],
+        "gag": "JUCA apresenta a junta do tamanho da palma. A geada termina de emoldurá-la com um disco do tamanho da chapa.",
+        "objeto_gag": "chapa fria",
+        "fisica": "solidificar a partir da borda",
+        "reacao": "TÉO se levanta num impulso da perna; JUCA dá um passo largo para trás, liberando a visão da poça, gira o tronco e oferece o braço de recepcionista ao guichê.",
+        "som": "Uma sola de borracha raspa o ladrilho quando TÉO se levanta; a ficha de cartão farfalha baixo ao girar; a água marulha contra o aço frio; o gelo fino crepita numa carreira curta até o centro; as solas de borracha do padre batem duas vezes no corredor.",
+        "overall_soundscape": "A rubber sole scrapes the tile as TEO rises; card stock rustles lightly as he turns; water laps once against the frosted steel; thin ice crackles in a short run toward the center; rubber soles tap twice on the passage tile.",
+        "non_diegetic_music": "Bass clarinet draws out a quiet three-note climb over widely spaced bass pizzicati.",
+        "causa": "A poça rasa já toca o rebordo coberto de geada. Mesmo depois de a rodela recuperar a altura, a película deixada pelo aperto continua unida à mesma poça pelo lábio molhado do aro.",
+        "efeito": "O gelo se estende pela chapa e cruza a borda molhada do aro. Uma emenda branca prende o pé da película ao aço; acima dela, a película fina já resfriada ainda brilha quando o padre chega ao guichê.",
+        "payoff": "JUCA conclui a apresentação para o padre com a rodela montada no centro de um prato de gelo.",
+        "escala": "objeto"
+      },
+      {
+        "n": 6,
+        "dur": 10,
+        "estagio": "CLIMAX",
+        "estado_in": "TEO is upright on the left with the job card in his left hand; JUCA is on the right facing the hatch. An ice disc fills the chill plate and grips the ring gauge. A thin chilled film coats the exposed top and side of the sponge disc; a white seam joins its foot to the ice on the steel lip. The priest has both hands on the dry sill.",
+        "estado_out": "An ice disc fills the chill plate and grips the ring gauge. The white seam is intact on the steel lip at the foot of the sponge disc; the thin film above it is still liquid. The priest holds the flat, dry job card with its round receipt seal facing out. TEO is left with empty hands; JUCA is right beside the counter.",
+        "herda_de": "white seam",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Front wide with the plate across the lower frame. TEO turns the card to its round receipt seal; JUCA folds his extended arm back to clear its path. After one second ease in on the sponge foot. The matte white ice seam sits directly on the steel lip; the film higher on the sponge glints wet. On its way to the sill, the low card corner passes just above the plate, level with the outer face of the seam."
+          },
+          {
+            "t": "00:03.200",
+            "texto": "Medium in profile on the same card corner as in the aisle. TEO leans toward the hatch with the card in his left hand while JUCA bows from the waist on the right. The low corner hits only the dry outer face of the ice seam at the sponge foot. The steel lip backs the ice at the contact point; a gap separates paper from wet sponge. The corner stops on the ice and the paper bends into a broad arc under TEO's advancing hand."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "TEO lifts his forearm; JUCA rocks back out of his bow to clear the handover. The corner clears the seam and the dry card springs flat. The priest lifts one hand from the sill and grips the free corner before TEO lets go. Frame the round paper seal above the ice disc with the steel gauge caught in its hub."
+          }
+        ],
+        "gag": "A mesma quina volta em direção à rodela, mas esbarra no gelo ao pé dela. Quem faz barriga é o papel.",
+        "objeto_gag": "ficha de serviço",
+        "fisica": "fletir contra apoio rígido",
+        "reacao": "JUCA dobra o tronco numa reverência ao padre; TÉO ergue o antebraço por cima da junta e abre a mão para concluir a entrega.",
+        "som": "O cartão farfalha baixo ao mostrar o selo; a quina de papel dá um tique na emenda de gelo; a ficha encurvada estala de leve ao se endireitar; o papel seco raspa curto na troca de mãos.",
+        "overall_soundscape": "Card stock rustles softly as the seal turns out; the paper corner ticks once against the ice seam; the bent card snaps softly straight as it clears the seam; dry paper rasps briefly between their hands at the handover.",
+        "non_diegetic_music": "Pizzicato cello reprises the opening pair of short notes. A quiet clarinet cadence lands on the handover.",
+        "causa": "A emenda branca de gelo já formada ao pé da rodela sobressai no lábio de aço. Ao estender a ficha de serviço para o guichê, TÉO leva a quina à altura da face seca desse batente.",
+        "efeito": "A quina para no gelo apoiado no aço, sem tocar o metal nem a película líquida. A ficha se curva, volta ao plano quando TÉO a ergue e passa seca à mão do padre.",
+        "payoff": "Na abertura a ficha amassou a junta; na entrega, a emenda de gelo ao pé da junta não cede e a nota fiscal faz barriga.",
+        "escala": "objeto"
+      }
+    ]
+  },
+  "uso": {
+    "input_tokens": 41808,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 31251
+    },
+    "output_tokens": 16007,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 57815
+  },
+  "interaction_id": "resp_070ddd7966610f8b016b0a1b0ba3d48194858deac878eed667",
+  "modelo": "gpt-6.2-astra"
+}

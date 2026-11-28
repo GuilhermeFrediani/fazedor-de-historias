@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. Cool ceiling panels light the tiled horticulture workshop of a hospital day clinic. At the center of a steel bench a potted shrub has a flat fan of dry leaves on a slender stem leaning forward. A slot in front of the pot is longer than the fan but only a finger wide. Its balanced steel flap caps a ceramic-lined clipping box with a broad glass front, a solid back facing the workers and a small steady flame inside. A wood-based sand timer stands behind the pot. A smooth caliper lies on the left; closed pruning snips and one folded invoice with a perforated edge lie on the right. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: TEO stays left and JUCA right, one pace back. The doctor brackets a fingerbreadth at the fan tips and holds the stethoscope bell to the running sand timer. The caliper lies left, the snips and folded invoice right; the flap is shut over the little flame. [Shot 1] Frontal wide. TEO and JUCA take one brisk step to their respective stations. TEO picks up the caliper in his right hand while the doctor's pinching fingers still bracket the tips of the fan. [Shot 2] At 00:02.700, the camera cuts to Front medium with a short tilt down. TEO opens the caliper to match the doctor's pinch, then carries the unchanged gap down the face of the fan. JUCA lifts the snips in his right hand and lowers his elbow alongside the descending caliper. Their hands travel the entire height of the plant to measure one fingerbreadth. [Shot 3] At 00:07.100, the camera cuts to At bench height the lower caliper tip taps the pot rim. JUCA opens the snips around the slim stem beside the upper tip. The doctor draws the pinching hand back to the timer; the leaves remain untouched. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: TEO at left holds the caliper in his right hand, lower tip on the pot rim, upper tip a fingerbreadth up the stem. JUCA at right holds the open snips at the upper tip in his right hand. The crown leans over the shut flap; the doctor listens to the timer and the folded invoice stays right.\noverall_soundscape: Rubber soles scuff softly on tile as the pair steps in; the steel caliper joint rasps faintly as it opens; the snips scrape once against the steel top as JUCA lifts them; a caliper tip ticks crisply on the ceramic rim; the steel snip joint clicks low as the blades open.\nnon_diegetic_music: A soft bassoon descends in even steps over a quiet two-beat pizzicato pulse.",
+  "output_filename": "so-um-dedo_c02_chegada"
+}

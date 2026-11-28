@@ -1,0 +1,42 @@
+{
+  "erros": [],
+  "avisos": [
+    "MONTAGE: 9/10 - transicao fisica com contato + transformacao nos planos; corte datado dentro de todos os clipes; reacao de corpo inteiro em todos; som com corpo (eventos concretos); objeto de gag nomeado; cadeia de estado emendada (estado_out N-1 == estado_in N); arco de repeticao com variacao (mesmo objeto, fisica diferente); cérebro de comédia completo (causa→efeito→payoff + payoff visual)",
+    "o cliente nao aparece no 1o e no ultimo clipe - sem fecho.",
+    "RENDERIZABILIDADE: 9/10 (peso 65%) - orçamento de física em todos os clipes; os dois corpos agem; reação legível com corpo + som bucal moderado (2/6 clipes); estado emendado entre clipes; nenhuma física impossível",
+    "[6] action com 86 palavras - alvo 35-70.",
+    "NOTA DE HUMOR: 9/10 - todo clipe tem piada fisica declarada; dano material visivel; climax em quadro; gags variadas; plantio/colheita declarados; objetos de gag nomeados"
+  ],
+  "total_s": 60,
+  "chars_por_plano": {
+    "1": 3444,
+    "2": 3355,
+    "3": 3381,
+    "4": 3442,
+    "5": 3377,
+    "6": 3659
+  },
+  "n_planos": 6,
+  "formato": "dossie_v4",
+  "humor": 9,
+  "render": 9,
+  "montage": 9,
+  "nota": 9.0,
+  "checks_render": [
+    "orçamento de física em todos os clipes",
+    "os dois corpos agem",
+    "reação legível com corpo + som bucal moderado (2/6 clipes)",
+    "estado emendado entre clipes",
+    "nenhuma física impossível"
+  ],
+  "checks_montage": [
+    "transicao fisica com contato + transformacao nos planos",
+    "corte datado dentro de todos os clipes",
+    "reacao de corpo inteiro em todos",
+    "som com corpo (eventos concretos)",
+    "objeto de gag nomeado",
+    "cadeia de estado emendada (estado_out N-1 == estado_in N)",
+    "arco de repeticao com variacao (mesmo objeto, fisica diferente)",
+    "cérebro de comédia completo (causa→efeito→payoff + payoff visual)"
+  ]
+}

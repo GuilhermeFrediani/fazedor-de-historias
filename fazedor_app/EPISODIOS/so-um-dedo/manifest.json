@@ -1,0 +1,38 @@
+[
+  {
+    "n": 1,
+    "estagio": "LIGACAO",
+    "video_length": "10s",
+    "chars": 3185
+  },
+  {
+    "n": 2,
+    "estagio": "CHEGADA",
+    "video_length": "10s",
+    "chars": 3137
+  },
+  {
+    "n": 3,
+    "estagio": "PRIMEIRA_FALHA",
+    "video_length": "10s",
+    "chars": 3109
+  },
+  {
+    "n": 4,
+    "estagio": "JEITINHO",
+    "video_length": "10s",
+    "chars": 3043
+  },
+  {
+    "n": 5,
+    "estagio": "ESCALADA",
+    "video_length": "10s",
+    "chars": 3230
+  },
+  {
+    "n": 6,
+    "estagio": "CLIMAX",
+    "video_length": "10s",
+    "chars": 3416
+  }
+]

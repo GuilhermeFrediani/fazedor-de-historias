@@ -1,0 +1,22 @@
+{
+  "slug": "aliancas-em-dobro",
+  "pasta": "C:\\Users\\Guilherme\\Desktop\\PROJETO_MINIMAX_H3_RECUPERADO\\fazedor de histórias\\fazedor_app\\EPISODIOS\\aliancas-em-dobro",
+  "tema": {
+    "setor": "rural",
+    "servico": "elétrica",
+    "cliente": "noivo",
+    "degrau": "alaga",
+    "mecanismo": "inverteu a ordem",
+    "molde": "C"
+  },
+  "resumo": "ELÉTRICA · RURAL · cliente NOIVO · \"inverteu a ordem\" → ALAGA (molde C)",
+  "ideia": "Contratados para um serviço de elétrica num lugar do tipo rural, para um cliente noivo. Abertura: o prazo é curtíssimo e é anunciado por gestos apressados. O erro central nasce porque \"inverteu a ordem\", e a escalada termina quando tudo alaga (dano só material). TÉO mede e planeja à esquerda; JUCA executa com confiança total à direita; ninguém percebe nada. Formato: episódio de 60 segundos = EXATAMENTE 6 clipes de 10 segundos (estágios LIGACAO, CHEGADA, PRIMEIRA_FALHA, JEITINHO, ESCALADA, CLIMAX). NÃO são 30 clipes.",
+  "auditoria": {
+    "status": "CORRECAO_NECESSARIA",
+    "nota_geral": 9.32,
+    "causalidade": 9.4,
+    "falhas_criticas": 0,
+    "rodadas": 3,
+    "modelo": "gpt-6.2-sol"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "cru": "```json\n{\"auditoria\":{\"status\":\"CORRECAO_NECESSARIA\",\"nota_geral\":9.32,\"notas\":{\"estetica\":9.2,\"personagens\":9.1,\"acting_gags\":9.1,\"continuidade\":9.7,\"causalidade\":9.4,\"ritmo\":9},\"falhas_criticas\":0,\"falhas_altas\":0,\"falhas_medias\":0,\"falhas_baixas\":1,\"camadas\":{\"estrutural\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"narrativa\":{\"status\":\"CORRECAO_NECESSARIA\",\"falhas_criticas\":0,\"falhas_altas\":0},\"visual_fisica\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0}}},\"problemas\":[{\"clipe\":5,\"severidade\":\"BAIXO\",\"campo\":\"gag\",\"problema\":\"A redação antecipa a cobertura completa do piso, reservada ao clímax. Os planos e os estados já preservam a última ponta seca.\",\"evidencia\":\"A gag diz «A água ocupa o espaço que falta no piso». Em 00:06.900, a lâmina ainda avança em direção à ponta seca; o estado_out a mantém descoberta. A água só a cobre na abertura do clipe 6.\",\"correcao_sugerida\":\"Precisar que a lâmina chega à borda da última ponta seca, sem cobri-la. Não alterar planos nem estados.\",\"campos_dependentes\":[\"planos, efeito, payoff e estado_out do clipe 5\",\"estado_in e primeiro plano do clipe 6\"]}],\"correcoes\":[{\"clipe\":5,\"campo\":\"gag\",\"valor_corrigido\":\"JUCA tira o calço debaixo da luminária e arranja emprego para ele em cima da nota fiscal. A lâmina avança até a borda da última ponta seca, sem cobri-la.\"}],\"resumo\":\"JSON válido: seis clipes de 10 s, três planos em ordem por clipe e cinco emendas de estado literalmente iguais. No clipe 1, estojo e gestos do noivo motivam a medição do prazo; no 2, a alavanca abre e fecha ao atingir a nervura. Nos clipes 3–5, os planos mostram o ressalto entrando cada vez mais fundo, com apoio no calço alto, no calço deitado e por fim na pedra. O escoamento alimenta a mesma poça, enquanto o noivo corrige a postura a cada descida. No 6, a lâmina cobre a última ponta, o botão acende os aros e o eixo baixo mostra o reflexo na faixa exposta; a entrega preserva a continuidade das mãos. Foley ligado às ações, música instrumental nos seis clipes e sons não verbais apenas no 1 e no 4. Só a redação da gag 5 precisa de ajuste.\"}\n```",
+  "resumo": "",
+  "relatorio": {
+    "auditoria": {
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.32,
+      "notas": {
+        "estetica": 9.2,
+        "personagens": 9.1,
+        "acting_gags": 9.1,
+        "continuidade": 9.7,
+        "causalidade": 9.4,
+        "ritmo": 9
+      },
+      "falhas_criticas": 0,
+      "falhas_altas": 0,
+      "falhas_medias": 0,
+      "falhas_baixas": 1,
+      "camadas": {
+        "estrutural": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "narrativa": {
+          "status": "CORRECAO_NECESSARIA",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "visual_fisica": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        }
+      }
+    },
+    "problemas": [
+      {
+        "clipe": 5,
+        "severidade": "BAIXO",
+        "campo": "gag",
+        "problema": "A redação antecipa a cobertura completa do piso, reservada ao clímax. Os planos e os estados já preservam a última ponta seca.",
+        "evidencia": "A gag diz «A água ocupa o espaço que falta no piso». Em 00:06.900, a lâmina ainda avança em direção à ponta seca; o estado_out a mantém descoberta. A água só a cobre na abertura do clipe 6.",
+        "correcao_sugerida": "Precisar que a lâmina chega à borda da última ponta seca, sem cobri-la. Não alterar planos nem estados.",
+        "campos_dependentes": [
+          "planos, efeito, payoff e estado_out do clipe 5",
+          "estado_in e primeiro plano do clipe 6"
+        ]
+      }
+    ],
+    "correcoes": [
+      {
+        "clipe": 5,
+        "campo": "gag",
+        "valor_corrigido": "JUCA tira o calço debaixo da luminária e arranja emprego para ele em cima da nota fiscal. A lâmina avança até a borda da última ponta seca, sem cobri-la."
+      }
+    ],
+    "resumo": "JSON válido: seis clipes de 10 s, três planos em ordem por clipe e cinco emendas de estado literalmente iguais. No clipe 1, estojo e gestos do noivo motivam a medição do prazo; no 2, a alavanca abre e fecha ao atingir a nervura. Nos clipes 3–5, os planos mostram o ressalto entrando cada vez mais fundo, com apoio no calço alto, no calço deitado e por fim na pedra. O escoamento alimenta a mesma poça, enquanto o noivo corrige a postura a cada descida. No 6, a lâmina cobre a última ponta, o botão acende os aros e o eixo baixo mostra o reflexo na faixa exposta; a entrega preserva a continuidade das mãos. Foley ligado às ações, música instrumental nos seis clipes e sons não verbais apenas no 1 e no 4. Só a redação da gag 5 precisa de ajuste."
+  },
+  "uso": {
+    "input_tokens": 22858,
+    "input_tokens_details": {
+      "cache_write_tokens": 8931,
+      "cached_tokens": 0,
+      "cache_write_tokens_details": {
+        "ttl_30m_tokens": 8931,
+        "ttl_12h_tokens": 0
+      }
+    },
+    "output_tokens": 14451,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 37309
+  },
+  "interaction_id": "resp_2f5b72bc2-LL57kBWI_1csAnILqWwpkyStz2iJ428VAhsDGytHsrKk016rtWkwOVWStV0-515UIf-JgDBDMcpCOiqZPVjKkdQHbN_tlW8B_f_metec_anIJxOteStaqGRsSTvx5AowM67B-mkNzpdj8MKpSNJRvlsX4q5gIQR2as6Cz2xgJ30ELv91lElCEyQHCkYqRXGXp6G7dbn",
+  "modelo": "gpt-6.2-sol"
+}

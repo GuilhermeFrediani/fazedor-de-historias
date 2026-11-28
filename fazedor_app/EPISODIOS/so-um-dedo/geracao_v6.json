@@ -1,0 +1,261 @@
+{
+  "cru": "RESUMO: O médico vira uma ampulheta, encosta o estetoscópio no vidro e pede que aparem só um dedo das pontas. TÉO mede esse dedo a partir do vaso. JUCA corta a copa inteira e a despacha como uma única apara. A nota fiscal chega no prazo; ninguém vê a copa reaparecer de cabeça para baixo, toda em chamas, no visor do coletor fechado.\n\n```json\n{\"titulo\":\"SÓ UM DEDO\",\"canon\":\"zeca_joca_v1\",\"logline\":\"Enquanto o médico toma o pulso da ampulheta, TÉO mede a poda pela ponta errada e JUCA transforma a copa inteira numa única apara.\",\"setor\":\"Jardinagem hospitalar\",\"servico\":\"Aparar um dedo das pontas de um arbusto em leque no ateliê de terapia ocupacional.\",\"cliente\":\"Médico responsável pelo ateliê do hospital-dia.\",\"premissa_simples\":\"A poda tem de ficar pronta antes que a areia da pequena ampulheta acabe.\",\"mecanismo\":\"O dedo que era para tirar vira o dedo que deve sobrar. A abertura do compasso não muda; muda a extremidade da planta de onde TÉO começa a contar.\",\"solucao_errada\":\"TÉO copia o beliscão do médico nas folhas, mas apoia o compasso na borda do vaso. JUCA corta o talo na altura indicada.\",\"escalada\":[\"objeto\"],\"degrau_final\":\"objeto\",\"callback_object\":\"copa em leque\",\"payoff_visual\":\"Acima da bancada, um toco cabe entre as pontas do compasso. Abaixo, o leque recupera sua silhueta inteira no visor, invertido e em chamas.\",\"otimismo_final\":\"O médico recebe a nota a um grão do prazo. JUCA faz uma mesura e TÉO exibe o toco como um serviço de precisão.\",\"set_historia\":\"SET: Cool ceiling panels light the tiled horticulture workshop of a hospital day clinic. At the center of a steel bench a potted shrub has a flat fan of dry leaves on a slender stem leaning forward. A slot in front of the pot is longer than the fan but only a finger wide. Its balanced steel flap caps a ceramic-lined clipping box with a broad glass front, a solid back facing the workers and a small steady flame inside. A wood-based sand timer stands behind the pot. A smooth caliper lies on the left; closed pruning snips and one folded invoice with a perforated edge lie on the right.\",\"continuidade\":[\"TÉO mede à esquerda com o compasso na mão direita. JUCA executa à direita; pousa a tesoura antes de pegar o talo e solta o talo antes de pegar a nota.\",\"O médico permanece atrás do vaso. A campânula do estetoscópio fica na mão esquerda; a direita vira a ampulheta uma só vez e fica livre para receber a nota.\",\"O visor fica abaixo do tampo, de frente para a câmera. Do lado dos três só se vê a chapa opaca do coletor. O fogo permanece na cuba cerâmica.\",\"Há uma única copa. Depois do corte, o toco permanece no vaso. A nota fiscal só tem dobra e picote; não há inscrições legíveis, fala ou articulação de boca.\"],\"objetos_plantados\":[{\"objeto\":\"ampulheta\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6},{\"objeto\":\"compasso liso\",\"plantado_no_clipe\":1,\"pago_no_clipe\":3},{\"objeto\":\"copa em leque\",\"plantado_no_clipe\":1,\"pago_no_clipe\":6}],\"assinatura\":\"JUCA entrega a nota fiscal de quina ao médico, pelo mesmo gesto com que despachou a copa. O médico aceita sem tirar o estetoscópio da ampulheta.\",\"shots\":[{\"n\":1,\"dur\":10,\"estagio\":\"LIGACAO\",\"estado_in\":\"TEO stands left and JUCA right, one pace from the bench. The doctor holds the stethoscope bell beside the spent sand timer. The fan crown leans over the closed flap; a small flame shows behind the front glass. The caliper lies left; the snips and folded invoice lie right.\",\"estado_out\":\"TEO stays left and JUCA right, one pace back. The doctor brackets a fingerbreadth at the fan tips and holds the stethoscope bell to the running sand timer. The caliper lies left, the snips and folded invoice right; the flap is shut over the little flame.\",\"herda_de\":\"spent sand timer\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Frontal wide, both levels of the bench in view. Between TEO and JUCA the doctor flips the tiny sand timer with the right hand, drums twice on its wooden base and beckons the pair in with two quick strokes of the same finger.\"},{\"t\":\"00:02.800\",\"texto\":\"Front medium. The doctor presses the stethoscope bell in the left hand against the glass and pinches just the top fingerbreadth of leaves with the right. TEO copies the gap between his left thumb and forefinger; JUCA lifts his chest and offers an empty right palm for the snips like an assistant waiting for an instrument.\"},{\"t\":\"00:07.200\",\"texto\":\"Back in the wide, the doctor's right finger darts from the falling sand to the leaf tips and holds the pinch there. The caliper, snips and folded invoice sit in view; low in frame the little flame stays behind glass.\"}],\"gag\":\"O chamado é tão urgente que o médico toma o pulso da ampulheta, não o da planta.\",\"objeto_gag\":\"ampulheta\",\"fisica\":\"encher o bulbo inferior por gravidade\",\"reacao\":\"TÉO ergue o cotovelo para copiar o vão dos dedos; JUCA apruma a coluna e estende a palma para receber um instrumento.\",\"som\":\"A base de madeira bate seca no aço ao pousar; o dedo tamborila duas vezes na madeira; a campânula metálica tine de leve no vidro; as pontas secas farfalham no beliscão; JUCA puxa o ar uma vez ao erguer o peito.\",\"overall_soundscape\":\"The timer's wooden foot knocks sharply on steel as it lands; a fingertip drums twice on the wood in a quick roll; the metal stethoscope bell ticks lightly against glass; dry leaf tips rustle faintly in the pinch; JUCA takes one short audible breath as his chest lifts.\",\"non_diegetic_music\":\"Quiet pizzicato viola plays pairs of quick eighth notes with a short rest after each pair.\",\"causa\":\"O médico vira a ampulheta esgotada para dar à dupla apenas uma corrida de areia e mostra nas folhas quanto quer tirar.\",\"efeito\":\"A areia começa a cair; os dedos do médico enquadram um dedo de folhagem no alto da copa.\",\"payoff\":\"A campânula fica colada ao vidro como se o prazo tivesse pulsação.\",\"escala\":\"objeto\"},{\"n\":2,\"dur\":10,\"estagio\":\"CHEGADA\",\"estado_in\":\"TEO stays left and JUCA right, one pace back. The doctor brackets a fingerbreadth at the fan tips and holds the stethoscope bell to the running sand timer. The caliper lies left, the snips and folded invoice right; the flap is shut over the little flame.\",\"estado_out\":\"TEO at left holds the caliper in his right hand, lower tip on the pot rim, upper tip a fingerbreadth up the stem. JUCA at right holds the open snips at the upper tip in his right hand. The crown leans over the shut flap; the doctor listens to the timer and the folded invoice stays right.\",\"herda_de\":\"a fingerbreadth at the fan tips\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Frontal wide. TEO and JUCA take one brisk step to their respective stations. TEO picks up the caliper in his right hand while the doctor's pinching fingers still bracket the tips of the fan.\"},{\"t\":\"00:02.700\",\"texto\":\"Front medium with a short tilt down. TEO opens the caliper to match the doctor's pinch, then carries the unchanged gap down the face of the fan. JUCA lifts the snips in his right hand and lowers his elbow alongside the descending caliper. Their hands travel the entire height of the plant to measure one fingerbreadth.\"},{\"t\":\"00:07.100\",\"texto\":\"At bench height the lower caliper tip taps the pot rim. JUCA opens the snips around the slim stem beside the upper tip. The doctor draws the pinching hand back to the timer; the leaves remain untouched.\"}],\"gag\":\"A medida chega intacta ao extremo errado da planta.\",\"objeto_gag\":\"compasso liso\",\"fisica\":\"deslocar sem variar a abertura\",\"reacao\":\"TÉO baixa o ombro mantendo o punho firme; o cotovelo de JUCA imita a descida inteira com a tesoura.\",\"som\":\"As solas de borracha roçam brevemente o ladrilho na chegada; a junta de aço raspa baixo ao abrir o compasso; a tesoura arranha de leve o tampo ao ser erguida; a ponta do compasso dá um tique seco na cerâmica; o eixo da tesoura estala ao abrir.\",\"overall_soundscape\":\"Rubber soles scuff softly on tile as the pair steps in; the steel caliper joint rasps faintly as it opens; the snips scrape once against the steel top as JUCA lifts them; a caliper tip ticks crisply on the ceramic rim; the steel snip joint clicks low as the blades open.\",\"non_diegetic_music\":\"A soft bassoon descends in even steps over a quiet two-beat pizzicato pulse.\",\"causa\":\"O dedo mostrado nas pontas das folhas fornece a abertura certa, mas TÉO leva essa abertura até o vaso para começar a medição.\",\"efeito\":\"A tesoura aberta cerca o talo um dedo acima da borda do vaso.\",\"payoff\":\"No alto ficaram as pontas pedidas pelo médico; lá embaixo, o compasso autoriza outro corte.\",\"escala\":\"objeto\"},{\"n\":3,\"dur\":10,\"estagio\":\"PRIMEIRA_FALHA\",\"estado_in\":\"TEO at left holds the caliper in his right hand, lower tip on the pot rim, upper tip a fingerbreadth up the stem. JUCA at right holds the open snips at the upper tip in his right hand. The crown leans over the shut flap; the doctor listens to the timer and the folded invoice stays right.\",\"estado_out\":\"The finger-high stump fits the caliper held by TEO at left. The fan crown lies flat across the closed flap. The snips are back at JUCA's right beside the folded invoice; the doctor keeps the stethoscope bell on the running sand timer.\",\"herda_de\":\"open snips at the upper tip\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"At bench height TEO steadies his caliper wrist and JUCA sets his feet for the tiny cut. The belly of the fan projects forward beyond the stem, directly over the flap.\"},{\"t\":\"00:03.000\",\"texto\":\"Low frontal medium. JUCA closes the right-hand snips on the stem beside the upper tip. The wood pinches, the stem parts and the blades stop together. TEO draws his caliper wrist clear as the leaning crown pitches forward. Its dry fringe hits steel first; the whole fan lands face down across the two fixed lips of the slot.\"},{\"t\":\"00:06.900\",\"texto\":\"Bench wide. JUCA sets the shut snips down at his right and presents the fallen fan with an open palm. TEO seats the caliper against the rim again. The stump fits neatly between its tips; his shoulders relax.\"}],\"gag\":\"Em vez de sair um dedo de folhas, sobra um dedo de planta. A apara é grande o bastante para servir de tampa.\",\"objeto_gag\":\"copa em leque\",\"fisica\":\"tombar\",\"reacao\":\"TÉO solta os ombros quando o toco cabe no compasso; JUCA apresenta a copa caída com a palma direita.\",\"som\":\"O talo lenhoso estala seco entre as lâminas; o aço dá um clique curto ao fechar; as folhas batem de chapa no metal; a tesoura toca o tampo com um claque leve; TÉO solta um suspiro curto de satisfação.\",\"overall_soundscape\":\"The woody stem cracks dryly under the blades; the steel blades click shut on the cut; dry leaves slap flat against the steel lips in one broad beat; the snips clack softly onto the bench at the right; TEO lets out one soft sigh as his shoulders settle.\",\"non_diegetic_music\":\"One low pizzicato bass note separates two quiet viola phrases. The second phrase stops a beat early.\",\"causa\":\"As lâminas abertas na ponta superior do compasso já envolvem o talo que sustenta toda a copa inclinada.\",\"efeito\":\"A copa inteira se separa e deita sobre a fenda fechada. Fica no vaso um toco de um dedo.\",\"payoff\":\"TÉO confere o toco e a conta fecha perfeitamente.\",\"escala\":\"objeto\"},{\"n\":4,\"dur\":10,\"estagio\":\"JEITINHO\",\"estado_in\":\"The finger-high stump fits the caliper held by TEO at left. The fan crown lies flat across the closed flap. The snips are back at JUCA's right beside the folded invoice; the doctor keeps the stethoscope bell on the running sand timer.\",\"estado_out\":\"TEO holds the caliper across the slot from the left. JUCA grips the stalk in his right hand with the fan crown fringe down on the closed flap. The stump stands behind it; the doctor listens to the sand timer and the snips and folded invoice stay right.\",\"herda_de\":\"fan crown lies flat across the closed flap\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Bench wide. JUCA gives the flat fan one light pat with his right palm. Both fixed lips support it like a lid. TEO bends sideways to sight along the short length of slot still showing at one end.\"},{\"t\":\"00:03.000\",\"texto\":\"High front angle. TEO lifts the caliper off the stump and turns its gap across the slot. JUCA grips the cut stalk with his right hand and lifts that end first. The heavier fringe hangs down, turning the fan edge on. From above, the crown that covered the slot makes a single thin stripe between the open caliper tips.\"},{\"t\":\"00:07.300\",\"texto\":\"Return to the frontal wide. JUCA lowers the long leafy edge onto the closed flap but keeps the weight in his right hand. From this angle the thin stripe is a broad upside-down fan with the stalk sticking up.\"}],\"gag\":\"JUCA faz a copa caber sem aparar mais nada: vai despachá-la de quina, como uma carta.\",\"objeto_gag\":\"copa em leque\",\"fisica\":\"girar pelo talo\",\"reacao\":\"TÉO põe o punho de través para medir a fenda; JUCA ergue o cotovelo e deixa a franja pender da mão direita.\",\"som\":\"As folhas secas crepitam de leve sob a palma; a ponta do compasso raspa baixinho ao sair da cerâmica; o talo de madeira range uma vez na mão; a franja seca roça a chapa num ruído fino ao pousar.\",\"overall_soundscape\":\"Dry leaves crunch lightly under JUCA's pat; the steel caliper tip rasps softly off the ceramic rim; the woody stalk creaks once in the turning grip; the dry fringe brushes the steel flap in a single soft sweep as it settles.\",\"non_diegetic_music\":\"Pizzicato cello turns the opening pair of notes into a quiet waltz in three.\",\"causa\":\"A copa em leque deitada atravessa os dois lábios fixos da fenda e não deixa a portinhola ceder.\",\"efeito\":\"JUCA põe a copa de quina. A franja fica apoiada na portinhola, ainda sustentada pelo talo.\",\"payoff\":\"Vista de cima, a copa inteira passa por uma apara finíssima.\",\"escala\":\"objeto\"},{\"n\":5,\"dur\":10,\"estagio\":\"ESCALADA\",\"estado_in\":\"TEO holds the caliper across the slot from the left. JUCA grips the stalk in his right hand with the fan crown fringe down on the closed flap. The stump stands behind it; the doctor listens to the sand timer and the snips and folded invoice stay right.\",\"estado_out\":\"The flap is shut again. Behind the front glass the inverted fan crown rests on the ceramic bed; one leaf curls in the small flame. TEO holds the caliper clear at left, JUCA's right hand is empty beside the snips and folded invoice, and the doctor listens to the last of the sand.\",\"herda_de\":\"fan crown fringe down on the closed flap\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Frontal wide. JUCA plants his feet and brings his right forearm upright over the stalk. The fringe sits lengthwise on the flap with room at both ends. TEO draws his left elbow in to give the fan a clear path.\"},{\"t\":\"00:02.900\",\"texto\":\"Level frontal medium across both halves of the bench. TEO lifts his right elbow and carries the caliper clear of the slot. JUCA bears down on the stalk with his right hand. The leafy fringe presses the steel flap inward on its hinge. JUCA opens his fingers; the whole inverted fan slips past the fixed lip in one piece.\"},{\"t\":\"00:06.700\",\"texto\":\"Low frontal wide. Through the glass the fringe lands on the ceramic bed. The weighted flap swings shut above the stalk. The fan settles against the ceramic back and one leaf touches the little flame and curls. Above it JUCA draws his empty hand back beside the invoice.\"}],\"gag\":\"O risquinho que passou pelo tampo ocupa quase todo o visor do coletor.\",\"objeto_gag\":\"copa em leque\",\"fisica\":\"deslizar pela portinhola basculante\",\"reacao\":\"TÉO suspende o cotovelo cerimoniosamente para dar passagem à apara; JUCA abre os dedos e recolhe o braço como quem acabou de postar uma carta.\",\"som\":\"As solas de borracha chiam brevemente no ladrilho; a dobradiça de aço range baixo ao ceder; as folhas raspam na beirada de metal numa passada longa; a franja seca crepita contra a cuba cerâmica; a chapa dá um claque seco ao fechar.\",\"overall_soundscape\":\"Rubber soles squeak briefly on tile as JUCA braces; the steel hinge rasps low as the flap tips in; dry leaves scrape the steel lip in one long descending stroke; the dry fringe crinkles softly against the ceramic bed; the weighted steel flap clacks shut above it.\",\"non_diegetic_music\":\"Low clarinet repeats a soft descending pair, closer together on each pass, then leaves one beat open.\",\"causa\":\"De quina sobre a portinhola fechada, a franja da copa agora pressiona a parte móvel em vez das duas bordas fixas.\",\"efeito\":\"A copa desce inteira. A portinhola retorna ao batente, e uma folha se encrespa na pequena chama dentro do coletor.\",\"payoff\":\"Abaixo do tampo reaparece a largura verdadeira da apara, com o talo para cima.\",\"escala\":\"objeto\"},{\"n\":6,\"dur\":10,\"estagio\":\"CLIMAX\",\"estado_in\":\"The flap is shut again. Behind the front glass the inverted fan crown rests on the ceramic bed; one leaf curls in the small flame. TEO holds the caliper clear at left, JUCA's right hand is empty beside the snips and folded invoice, and the doctor listens to the last of the sand.\",\"estado_out\":\"From the left TEO holds the caliper to the finger-high stump; JUCA stands empty-handed at right beside the snips. The doctor holds the folded invoice beside the empty upper bulb of the sand timer. Below the shut flap the entire inverted fan crown burns behind intact glass, its leaf edges black and curled.\",\"herda_de\":\"one leaf curls in the small flame\",\"planos\":[{\"t\":\"00:00.000\",\"texto\":\"Low frontal wide. The curled leaf darkens against its neighbor behind the glass. Above the opaque back of the box TEO turns the caliper upright, JUCA reaches for the folded invoice and the doctor keeps the stethoscope bell against the timer.\"},{\"t\":\"00:02.800\",\"texto\":\"Deep frontal medium. TEO seats the lower caliper tip on the pot rim and dips a shoulder until the upper one meets the stump. JUCA picks up the folded invoice with his right hand and offers it edge first. The doctor's right fingers close on its perforated corner before JUCA lets go. Below their hands flame travels across the inverted fan.\"},{\"t\":\"00:07.000\",\"texto\":\"Hold both levels in the wide. The last grain drops. The doctor draws the invoice to the timer; JUCA gives a short bow toward the doctor and TEO displays the gap. Behind the glass the last leaf catches, completing the original fan silhouette upside down in flame with a curling black fringe.\"}],\"gag\":\"O médico recebe a nota de quina. A copa em leque também foi entregue inteira, só que no andar de baixo.\",\"objeto_gag\":\"copa em leque\",\"fisica\":\"encrespar pelo calor\",\"reacao\":\"TÉO baixa um ombro para alinhar o toco; JUCA faz uma mesura curta e o médico recolhe a nota junto à ampulheta, sem que ninguém se abaixe até o visor.\",\"som\":\"Uma folha seca crepita abafada atrás do vidro; a ponta de aço dá um tique leve na borda cerâmica; o papel picotado raspa no tampo ao ser erguido; a dobra de papel estala de leve nos dedos do médico; a folhagem inteira crepita num rumor baixo quando cai o último grão.\",\"overall_soundscape\":\"One dry leaf crackles faintly behind the thick glass at first; the steel caliper tip ticks lightly on the ceramic rim; perforated paper rasps against steel as JUCA lifts the invoice; the folded paper crinkles briefly in the doctor's grip; the whole dry crown crackles in a muffled rolling run at the last grain.\",\"non_diegetic_music\":\"Viola and bassoon bring back the opening pair of eighth notes very softly and settle into one tidy final chord.\",\"causa\":\"Uma folha já se encrespa na chama do coletor fechado, onde caiu toda a folhagem em vez de uma ponta.\",\"efeito\":\"A última folha pega fogo e a copa inteira arde atrás do vidro intacto. A nota fiscal passa da mão de JUCA para a do médico antes de esvaziar o bulbo superior.\",\"payoff\":\"Em cima, um dedo de toco certificado pelo compasso. Embaixo, sem testemunhas, o leque inteiro desenhado em fogo.\",\"escala\":\"objeto\"}]}\n```",
+  "resumo": "RESUMO: O médico vira uma ampulheta, encosta o estetoscópio no vidro e pede que aparem só um dedo das pontas. TÉO mede esse dedo a partir do vaso. JUCA corta a copa inteira e a despacha como uma única apara. A nota fiscal chega no prazo; ninguém vê a copa reaparecer de cabeça para baixo, toda em chamas, no visor do coletor fechado.",
+  "episodio": {
+    "titulo": "SÓ UM DEDO",
+    "canon": "zeca_joca_v1",
+    "logline": "Enquanto o médico toma o pulso da ampulheta, TÉO mede a poda pela ponta errada e JUCA transforma a copa inteira numa única apara.",
+    "setor": "Jardinagem hospitalar",
+    "servico": "Aparar um dedo das pontas de um arbusto em leque no ateliê de terapia ocupacional.",
+    "cliente": "Médico responsável pelo ateliê do hospital-dia.",
+    "premissa_simples": "A poda tem de ficar pronta antes que a areia da pequena ampulheta acabe.",
+    "mecanismo": "O dedo que era para tirar vira o dedo que deve sobrar. A abertura do compasso não muda; muda a extremidade da planta de onde TÉO começa a contar.",
+    "solucao_errada": "TÉO copia o beliscão do médico nas folhas, mas apoia o compasso na borda do vaso. JUCA corta o talo na altura indicada.",
+    "escalada": [
+      "objeto"
+    ],
+    "degrau_final": "objeto",
+    "callback_object": "copa em leque",
+    "payoff_visual": "Acima da bancada, um toco cabe entre as pontas do compasso. Abaixo, o leque recupera sua silhueta inteira no visor, invertido e em chamas.",
+    "otimismo_final": "O médico recebe a nota a um grão do prazo. JUCA faz uma mesura e TÉO exibe o toco como um serviço de precisão.",
+    "set_historia": "SET: Cool ceiling panels light the tiled horticulture workshop of a hospital day clinic. At the center of a steel bench a potted shrub has a flat fan of dry leaves on a slender stem leaning forward. A slot in front of the pot is longer than the fan but only a finger wide. Its balanced steel flap caps a ceramic-lined clipping box with a broad glass front, a solid back facing the workers and a small steady flame inside. A wood-based sand timer stands behind the pot. A smooth caliper lies on the left; closed pruning snips and one folded invoice with a perforated edge lie on the right.",
+    "continuidade": [
+      "TÉO mede à esquerda com o compasso na mão direita. JUCA executa à direita; pousa a tesoura antes de pegar o talo e solta o talo antes de pegar a nota.",
+      "O médico permanece atrás do vaso. A campânula do estetoscópio fica na mão esquerda; a direita vira a ampulheta uma só vez e fica livre para receber a nota.",
+      "O visor fica abaixo do tampo, de frente para a câmera. Do lado dos três só se vê a chapa opaca do coletor. O fogo permanece na cuba cerâmica.",
+      "Há uma única copa. Depois do corte, o toco permanece no vaso. A nota fiscal só tem dobra e picote; não há inscrições legíveis, fala ou articulação de boca."
+    ],
+    "objetos_plantados": [
+      {
+        "objeto": "ampulheta",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      },
+      {
+        "objeto": "compasso liso",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 3
+      },
+      {
+        "objeto": "copa em leque",
+        "plantado_no_clipe": 1,
+        "pago_no_clipe": 6
+      }
+    ],
+    "assinatura": "JUCA entrega a nota fiscal de quina ao médico, pelo mesmo gesto com que despachou a copa. O médico aceita sem tirar o estetoscópio da ampulheta.",
+    "shots": [
+      {
+        "n": 1,
+        "dur": 10,
+        "estagio": "LIGACAO",
+        "estado_in": "TEO stands left and JUCA right, one pace from the bench. The doctor holds the stethoscope bell beside the spent sand timer. The fan crown leans over the closed flap; a small flame shows behind the front glass. The caliper lies left; the snips and folded invoice lie right.",
+        "estado_out": "TEO stays left and JUCA right, one pace back. The doctor brackets a fingerbreadth at the fan tips and holds the stethoscope bell to the running sand timer. The caliper lies left, the snips and folded invoice right; the flap is shut over the little flame.",
+        "herda_de": "spent sand timer",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Frontal wide, both levels of the bench in view. Between TEO and JUCA the doctor flips the tiny sand timer with the right hand, drums twice on its wooden base and beckons the pair in with two quick strokes of the same finger."
+          },
+          {
+            "t": "00:02.800",
+            "texto": "Front medium. The doctor presses the stethoscope bell in the left hand against the glass and pinches just the top fingerbreadth of leaves with the right. TEO copies the gap between his left thumb and forefinger; JUCA lifts his chest and offers an empty right palm for the snips like an assistant waiting for an instrument."
+          },
+          {
+            "t": "00:07.200",
+            "texto": "Back in the wide, the doctor's right finger darts from the falling sand to the leaf tips and holds the pinch there. The caliper, snips and folded invoice sit in view; low in frame the little flame stays behind glass."
+          }
+        ],
+        "gag": "O chamado é tão urgente que o médico toma o pulso da ampulheta, não o da planta.",
+        "objeto_gag": "ampulheta",
+        "fisica": "encher o bulbo inferior por gravidade",
+        "reacao": "TÉO ergue o cotovelo para copiar o vão dos dedos; JUCA apruma a coluna e estende a palma para receber um instrumento.",
+        "som": "A base de madeira bate seca no aço ao pousar; o dedo tamborila duas vezes na madeira; a campânula metálica tine de leve no vidro; as pontas secas farfalham no beliscão; JUCA puxa o ar uma vez ao erguer o peito.",
+        "overall_soundscape": "The timer's wooden foot knocks sharply on steel as it lands; a fingertip drums twice on the wood in a quick roll; the metal stethoscope bell ticks lightly against glass; dry leaf tips rustle faintly in the pinch; JUCA takes one short audible breath as his chest lifts.",
+        "non_diegetic_music": "Quiet pizzicato viola plays pairs of quick eighth notes with a short rest after each pair.",
+        "causa": "O médico vira a ampulheta esgotada para dar à dupla apenas uma corrida de areia e mostra nas folhas quanto quer tirar.",
+        "efeito": "A areia começa a cair; os dedos do médico enquadram um dedo de folhagem no alto da copa.",
+        "payoff": "A campânula fica colada ao vidro como se o prazo tivesse pulsação.",
+        "escala": "objeto"
+      },
+      {
+        "n": 2,
+        "dur": 10,
+        "estagio": "CHEGADA",
+        "estado_in": "TEO stays left and JUCA right, one pace back. The doctor brackets a fingerbreadth at the fan tips and holds the stethoscope bell to the running sand timer. The caliper lies left, the snips and folded invoice right; the flap is shut over the little flame.",
+        "estado_out": "TEO at left holds the caliper in his right hand, lower tip on the pot rim, upper tip a fingerbreadth up the stem. JUCA at right holds the open snips at the upper tip in his right hand. The crown leans over the shut flap; the doctor listens to the timer and the folded invoice stays right.",
+        "herda_de": "a fingerbreadth at the fan tips",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Frontal wide. TEO and JUCA take one brisk step to their respective stations. TEO picks up the caliper in his right hand while the doctor's pinching fingers still bracket the tips of the fan."
+          },
+          {
+            "t": "00:02.700",
+            "texto": "Front medium with a short tilt down. TEO opens the caliper to match the doctor's pinch, then carries the unchanged gap down the face of the fan. JUCA lifts the snips in his right hand and lowers his elbow alongside the descending caliper. Their hands travel the entire height of the plant to measure one fingerbreadth."
+          },
+          {
+            "t": "00:07.100",
+            "texto": "At bench height the lower caliper tip taps the pot rim. JUCA opens the snips around the slim stem beside the upper tip. The doctor draws the pinching hand back to the timer; the leaves remain untouched."
+          }
+        ],
+        "gag": "A medida chega intacta ao extremo errado da planta.",
+        "objeto_gag": "compasso liso",
+        "fisica": "deslocar sem variar a abertura",
+        "reacao": "TÉO baixa o ombro mantendo o punho firme; o cotovelo de JUCA imita a descida inteira com a tesoura.",
+        "som": "As solas de borracha roçam brevemente o ladrilho na chegada; a junta de aço raspa baixo ao abrir o compasso; a tesoura arranha de leve o tampo ao ser erguida; a ponta do compasso dá um tique seco na cerâmica; o eixo da tesoura estala ao abrir.",
+        "overall_soundscape": "Rubber soles scuff softly on tile as the pair steps in; the steel caliper joint rasps faintly as it opens; the snips scrape once against the steel top as JUCA lifts them; a caliper tip ticks crisply on the ceramic rim; the steel snip joint clicks low as the blades open.",
+        "non_diegetic_music": "A soft bassoon descends in even steps over a quiet two-beat pizzicato pulse.",
+        "causa": "O dedo mostrado nas pontas das folhas fornece a abertura certa, mas TÉO leva essa abertura até o vaso para começar a medição.",
+        "efeito": "A tesoura aberta cerca o talo um dedo acima da borda do vaso.",
+        "payoff": "No alto ficaram as pontas pedidas pelo médico; lá embaixo, o compasso autoriza outro corte.",
+        "escala": "objeto"
+      },
+      {
+        "n": 3,
+        "dur": 10,
+        "estagio": "PRIMEIRA_FALHA",
+        "estado_in": "TEO at left holds the caliper in his right hand, lower tip on the pot rim, upper tip a fingerbreadth up the stem. JUCA at right holds the open snips at the upper tip in his right hand. The crown leans over the shut flap; the doctor listens to the timer and the folded invoice stays right.",
+        "estado_out": "The finger-high stump fits the caliper held by TEO at left. The fan crown lies flat across the closed flap. The snips are back at JUCA's right beside the folded invoice; the doctor keeps the stethoscope bell on the running sand timer.",
+        "herda_de": "open snips at the upper tip",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "At bench height TEO steadies his caliper wrist and JUCA sets his feet for the tiny cut. The belly of the fan projects forward beyond the stem, directly over the flap."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "Low frontal medium. JUCA closes the right-hand snips on the stem beside the upper tip. The wood pinches, the stem parts and the blades stop together. TEO draws his caliper wrist clear as the leaning crown pitches forward. Its dry fringe hits steel first; the whole fan lands face down across the two fixed lips of the slot."
+          },
+          {
+            "t": "00:06.900",
+            "texto": "Bench wide. JUCA sets the shut snips down at his right and presents the fallen fan with an open palm. TEO seats the caliper against the rim again. The stump fits neatly between its tips; his shoulders relax."
+          }
+        ],
+        "gag": "Em vez de sair um dedo de folhas, sobra um dedo de planta. A apara é grande o bastante para servir de tampa.",
+        "objeto_gag": "copa em leque",
+        "fisica": "tombar",
+        "reacao": "TÉO solta os ombros quando o toco cabe no compasso; JUCA apresenta a copa caída com a palma direita.",
+        "som": "O talo lenhoso estala seco entre as lâminas; o aço dá um clique curto ao fechar; as folhas batem de chapa no metal; a tesoura toca o tampo com um claque leve; TÉO solta um suspiro curto de satisfação.",
+        "overall_soundscape": "The woody stem cracks dryly under the blades; the steel blades click shut on the cut; dry leaves slap flat against the steel lips in one broad beat; the snips clack softly onto the bench at the right; TEO lets out one soft sigh as his shoulders settle.",
+        "non_diegetic_music": "One low pizzicato bass note separates two quiet viola phrases. The second phrase stops a beat early.",
+        "causa": "As lâminas abertas na ponta superior do compasso já envolvem o talo que sustenta toda a copa inclinada.",
+        "efeito": "A copa inteira se separa e deita sobre a fenda fechada. Fica no vaso um toco de um dedo.",
+        "payoff": "TÉO confere o toco e a conta fecha perfeitamente.",
+        "escala": "objeto"
+      },
+      {
+        "n": 4,
+        "dur": 10,
+        "estagio": "JEITINHO",
+        "estado_in": "The finger-high stump fits the caliper held by TEO at left. The fan crown lies flat across the closed flap. The snips are back at JUCA's right beside the folded invoice; the doctor keeps the stethoscope bell on the running sand timer.",
+        "estado_out": "TEO holds the caliper across the slot from the left. JUCA grips the stalk in his right hand with the fan crown fringe down on the closed flap. The stump stands behind it; the doctor listens to the sand timer and the snips and folded invoice stay right.",
+        "herda_de": "fan crown lies flat across the closed flap",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Bench wide. JUCA gives the flat fan one light pat with his right palm. Both fixed lips support it like a lid. TEO bends sideways to sight along the short length of slot still showing at one end."
+          },
+          {
+            "t": "00:03.000",
+            "texto": "High front angle. TEO lifts the caliper off the stump and turns its gap across the slot. JUCA grips the cut stalk with his right hand and lifts that end first. The heavier fringe hangs down, turning the fan edge on. From above, the crown that covered the slot makes a single thin stripe between the open caliper tips."
+          },
+          {
+            "t": "00:07.300",
+            "texto": "Return to the frontal wide. JUCA lowers the long leafy edge onto the closed flap but keeps the weight in his right hand. From this angle the thin stripe is a broad upside-down fan with the stalk sticking up."
+          }
+        ],
+        "gag": "JUCA faz a copa caber sem aparar mais nada: vai despachá-la de quina, como uma carta.",
+        "objeto_gag": "copa em leque",
+        "fisica": "girar pelo talo",
+        "reacao": "TÉO põe o punho de través para medir a fenda; JUCA ergue o cotovelo e deixa a franja pender da mão direita.",
+        "som": "As folhas secas crepitam de leve sob a palma; a ponta do compasso raspa baixinho ao sair da cerâmica; o talo de madeira range uma vez na mão; a franja seca roça a chapa num ruído fino ao pousar.",
+        "overall_soundscape": "Dry leaves crunch lightly under JUCA's pat; the steel caliper tip rasps softly off the ceramic rim; the woody stalk creaks once in the turning grip; the dry fringe brushes the steel flap in a single soft sweep as it settles.",
+        "non_diegetic_music": "Pizzicato cello turns the opening pair of notes into a quiet waltz in three.",
+        "causa": "A copa em leque deitada atravessa os dois lábios fixos da fenda e não deixa a portinhola ceder.",
+        "efeito": "JUCA põe a copa de quina. A franja fica apoiada na portinhola, ainda sustentada pelo talo.",
+        "payoff": "Vista de cima, a copa inteira passa por uma apara finíssima.",
+        "escala": "objeto"
+      },
+      {
+        "n": 5,
+        "dur": 10,
+        "estagio": "ESCALADA",
+        "estado_in": "TEO holds the caliper across the slot from the left. JUCA grips the stalk in his right hand with the fan crown fringe down on the closed flap. The stump stands behind it; the doctor listens to the sand timer and the snips and folded invoice stay right.",
+        "estado_out": "The flap is shut again. Behind the front glass the inverted fan crown rests on the ceramic bed; one leaf curls in the small flame. TEO holds the caliper clear at left, JUCA's right hand is empty beside the snips and folded invoice, and the doctor listens to the last of the sand.",
+        "herda_de": "fan crown fringe down on the closed flap",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Frontal wide. JUCA plants his feet and brings his right forearm upright over the stalk. The fringe sits lengthwise on the flap with room at both ends. TEO draws his left elbow in to give the fan a clear path."
+          },
+          {
+            "t": "00:02.900",
+            "texto": "Level frontal medium across both halves of the bench. TEO lifts his right elbow and carries the caliper clear of the slot. JUCA bears down on the stalk with his right hand. The leafy fringe presses the steel flap inward on its hinge. JUCA opens his fingers; the whole inverted fan slips past the fixed lip in one piece."
+          },
+          {
+            "t": "00:06.700",
+            "texto": "Low frontal wide. Through the glass the fringe lands on the ceramic bed. The weighted flap swings shut above the stalk. The fan settles against the ceramic back and one leaf touches the little flame and curls. Above it JUCA draws his empty hand back beside the invoice."
+          }
+        ],
+        "gag": "O risquinho que passou pelo tampo ocupa quase todo o visor do coletor.",
+        "objeto_gag": "copa em leque",
+        "fisica": "deslizar pela portinhola basculante",
+        "reacao": "TÉO suspende o cotovelo cerimoniosamente para dar passagem à apara; JUCA abre os dedos e recolhe o braço como quem acabou de postar uma carta.",
+        "som": "As solas de borracha chiam brevemente no ladrilho; a dobradiça de aço range baixo ao ceder; as folhas raspam na beirada de metal numa passada longa; a franja seca crepita contra a cuba cerâmica; a chapa dá um claque seco ao fechar.",
+        "overall_soundscape": "Rubber soles squeak briefly on tile as JUCA braces; the steel hinge rasps low as the flap tips in; dry leaves scrape the steel lip in one long descending stroke; the dry fringe crinkles softly against the ceramic bed; the weighted steel flap clacks shut above it.",
+        "non_diegetic_music": "Low clarinet repeats a soft descending pair, closer together on each pass, then leaves one beat open.",
+        "causa": "De quina sobre a portinhola fechada, a franja da copa agora pressiona a parte móvel em vez das duas bordas fixas.",
+        "efeito": "A copa desce inteira. A portinhola retorna ao batente, e uma folha se encrespa na pequena chama dentro do coletor.",
+        "payoff": "Abaixo do tampo reaparece a largura verdadeira da apara, com o talo para cima.",
+        "escala": "objeto"
+      },
+      {
+        "n": 6,
+        "dur": 10,
+        "estagio": "CLIMAX",
+        "estado_in": "The flap is shut again. Behind the front glass the inverted fan crown rests on the ceramic bed; one leaf curls in the small flame. TEO holds the caliper clear at left, JUCA's right hand is empty beside the snips and folded invoice, and the doctor listens to the last of the sand.",
+        "estado_out": "From the left TEO holds the caliper to the finger-high stump; JUCA stands empty-handed at right beside the snips. The doctor holds the folded invoice beside the empty upper bulb of the sand timer. Below the shut flap the entire inverted fan crown burns behind intact glass, its leaf edges black and curled.",
+        "herda_de": "one leaf curls in the small flame",
+        "planos": [
+          {
+            "t": "00:00.000",
+            "texto": "Low frontal wide. The curled leaf darkens against its neighbor behind the glass. Above the opaque back of the box TEO turns the caliper upright, JUCA reaches for the folded invoice and the doctor keeps the stethoscope bell against the timer."
+          },
+          {
+            "t": "00:02.800",
+            "texto": "Deep frontal medium. TEO seats the lower caliper tip on the pot rim and dips a shoulder until the upper one meets the stump. JUCA picks up the folded invoice with his right hand and offers it edge first. The doctor's right fingers close on its perforated corner before JUCA lets go. Below their hands flame travels across the inverted fan."
+          },
+          {
+            "t": "00:07.000",
+            "texto": "Hold both levels in the wide. The last grain drops. The doctor draws the invoice to the timer; JUCA gives a short bow toward the doctor and TEO displays the gap. Behind the glass the last leaf catches, completing the original fan silhouette upside down in flame with a curling black fringe."
+          }
+        ],
+        "gag": "O médico recebe a nota de quina. A copa em leque também foi entregue inteira, só que no andar de baixo.",
+        "objeto_gag": "copa em leque",
+        "fisica": "encrespar pelo calor",
+        "reacao": "TÉO baixa um ombro para alinhar o toco; JUCA faz uma mesura curta e o médico recolhe a nota junto à ampulheta, sem que ninguém se abaixe até o visor.",
+        "som": "Uma folha seca crepita abafada atrás do vidro; a ponta de aço dá um tique leve na borda cerâmica; o papel picotado raspa no tampo ao ser erguido; a dobra de papel estala de leve nos dedos do médico; a folhagem inteira crepita num rumor baixo quando cai o último grão.",
+        "overall_soundscape": "One dry leaf crackles faintly behind the thick glass at first; the steel caliper tip ticks lightly on the ceramic rim; perforated paper rasps against steel as JUCA lifts the invoice; the folded paper crinkles briefly in the doctor's grip; the whole dry crown crackles in a muffled rolling run at the last grain.",
+        "non_diegetic_music": "Viola and bassoon bring back the opening pair of eighth notes very softly and settle into one tidy final chord.",
+        "causa": "Uma folha já se encrespa na chama do coletor fechado, onde caiu toda a folhagem em vez de uma ponta.",
+        "efeito": "A última folha pega fogo e a copa inteira arde atrás do vidro intacto. A nota fiscal passa da mão de JUCA para a do médico antes de esvaziar o bulbo superior.",
+        "payoff": "Em cima, um dedo de toco certificado pelo compasso. Embaixo, sem testemunhas, o leque inteiro desenhado em fogo.",
+        "escala": "objeto"
+      }
+    ]
+  },
+  "uso": {
+    "input_tokens": 31530,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 8468
+    },
+    "output_tokens": 27937,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 59467
+  },
+  "interaction_id": "resp_042b113d3fd4f6a2016b0a0fbcf788819498145603469d2ede",
+  "modelo": "gpt-6.2-astra"
+}

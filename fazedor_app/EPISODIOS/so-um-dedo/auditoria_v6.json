@@ -1,0 +1,134 @@
+{
+  "cru": "```json\n{\"auditoria\":{\"status\":\"CORRECAO_NECESSARIA\",\"nota_geral\":9.38,\"notas\":{\"estetica\":8.8,\"personagens\":9,\"acting_gags\":9,\"continuidade\":10,\"causalidade\":9.6,\"ritmo\":9},\"falhas_criticas\":0,\"falhas_altas\":0,\"falhas_medias\":3,\"falhas_baixas\":1,\"camadas\":{\"estrutural\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"narrativa\":{\"status\":\"APROVADO\",\"falhas_criticas\":0,\"falhas_altas\":0},\"visual_fisica\":{\"status\":\"CORRECAO_NECESSARIA\",\"falhas_criticas\":0,\"falhas_altas\":0}}},\"problemas\":[{\"clipe\":2,\"severidade\":\"MEDIO\",\"campo\":\"som\",\"problema\":\"Dois eventos de foley nomeiam as peças e o ruído, mas não o material da fonte.\",\"evidencia\":\"«a tesoura arranha de leve o tampo» e «o eixo da tesoura estala ao abrir». O campo overall_soundscape já nomeia o aço nos dois eventos.\",\"correcao_sugerida\":\"Nomear o aço no raspar da tesoura contra o tampo e no estalo do eixo, sem acrescentar eventos.\",\"campos_dependentes\":[\"planos[1].texto e planos[2].texto do clipe 2\",\"overall_soundscape do clipe 2\"]},{\"clipe\":3,\"severidade\":\"MEDIO\",\"campo\":\"som; overall_soundscape\",\"problema\":\"O claque ao pousar a tesoura não identifica o material em nenhuma das duas faixas de descrição.\",\"evidencia\":\"«a tesoura toca o tampo com um claque leve» e «the snips clack softly onto the bench at the right».\",\"correcao_sugerida\":\"Nomear o aço da tesoura e do tampo no evento de pouso, separado do clique do corte.\",\"campos_dependentes\":[\"planos[2].texto do clipe 3\",\"set_historia\"]},{\"clipe\":5,\"severidade\":\"MEDIO\",\"campo\":\"som\",\"problema\":\"O claque final identifica a peça, mas não seu material.\",\"evidencia\":\"«a chapa dá um claque seco ao fechar». O campo overall_soundscape já identifica a portinhola como aço.\",\"correcao_sugerida\":\"Especificar «chapa de aço» no claque de fechamento.\",\"campos_dependentes\":[\"planos[2].texto do clipe 5\",\"overall_soundscape do clipe 5\"]},{\"clipe\":6,\"severidade\":\"BAIXO\",\"campo\":\"planos[1].texto\",\"problema\":\"A entrega antes do prazo está clara, mas não se vê que restava exatamente um grão no instante da entrega.\",\"evidencia\":\"O médico recebe a nota no segundo plano; o último grão só é mencionado no plano geral seguinte. O otimismo_final promete a entrega «a um grão do prazo».\",\"correcao_sugerida\":\"No fim do segundo plano, reenquadrar sem corte para mostrar o picote na mão do médico e um único grão acima do gargalo no instante em que JUCA solta a nota.\",\"campos_dependentes\":[\"planos[2].texto do clipe 6\",\"efeito do clipe 6\",\"estado_out do clipe 6\",\"otimismo_final\",\"objetos_plantados: ampulheta\"]}],\"correcoes\":[{\"clipe\":2,\"campo\":\"som\",\"valor_corrigido\":\"As solas de borracha roçam brevemente o ladrilho na chegada; a junta de aço raspa baixo ao abrir o compasso; a tesoura de aço arranha de leve o tampo de aço ao ser erguida; a ponta do compasso dá um tique seco na cerâmica; o eixo de aço da tesoura estala ao abrir.\"},{\"clipe\":3,\"campo\":\"som\",\"valor_corrigido\":\"O talo lenhoso estala seco entre as lâminas; o aço dá um clique curto ao fechar; as folhas batem de chapa no metal; a tesoura de aço toca o tampo de aço com um claque leve; TÉO solta um suspiro curto de satisfação.\"},{\"clipe\":3,\"campo\":\"overall_soundscape\",\"valor_corrigido\":\"The woody stem cracks dryly under the blades; the steel blades click shut on the cut; dry leaves slap flat against the steel lips in one broad beat; the steel snips clack softly onto the steel bench at the right; TEO lets out one soft sigh as his shoulders settle.\"},{\"clipe\":5,\"campo\":\"som\",\"valor_corrigido\":\"As solas de borracha chiam brevemente no ladrilho; a dobradiça de aço range baixo ao ceder; as folhas raspam na beirada de metal numa passada longa; a franja seca crepita contra a cuba cerâmica; a chapa de aço dá um claque seco ao fechar.\"},{\"clipe\":6,\"campo\":\"planos[1].texto\",\"valor_corrigido\":\"Deep frontal medium. TEO seats the lower caliper tip on the pot rim and dips a shoulder until the upper one meets the stump. JUCA picks up the folded invoice with his right hand and offers it edge first. Below their hands flame travels across the inverted fan. At the end of the shot, tighten without cutting to frame the timer's upper bulb beside the handoff. The doctor's right fingers close on the perforated corner before JUCA lets go. One grain is visible above the neck at the release.\"}],\"resumo\":\"A: JSON válido, seis clipes de 10 s, seis estágios em sequência e três planos cronológicos por clipe. B: no 1/P1–3, o giro inicia a queda da areia e a campânula no vidro paga o gag da urgência; no 2/P1–3, a abertura copiada chega intacta à borda errada e posiciona a tesoura; no 3/P2–3, as lâminas separam o talo, a copa cai sobre os apoios e o toco cabe no compasso; no 4/P1–3, os lábios fixos sustentam a copa deitada, e JUCA a vira pelo talo até ela parecer fina de cima; no 5/P2–3, a franja abre a portinhola, a copa reaparece inteira na cuba e uma folha toca a chama; no 6/P1–3, a chama se propaga, a silhueta retorna invertida e a nota muda de mão antes da queda do último grão. C: os cinco pares de estados são literalmente iguais e os efeitos persistem. D/H: os planos sustentam os contatos, os apoios, a queda e a transferência de mão, sem transformação física fora de quadro. E/F: a consequência cresce dentro do degrau objeto, e o envio de quina prepara a entrega da nota fiscal. G: música instrumental discreta nos seis clipes, um som bucal não verbal no 1 e um no 3, sem fala. Restam três ajustes de material no foley e um de enquadramento no prazo final.\"}\n```",
+  "resumo": "",
+  "relatorio": {
+    "auditoria": {
+      "status": "CORRECAO_NECESSARIA",
+      "nota_geral": 9.38,
+      "notas": {
+        "estetica": 8.8,
+        "personagens": 9,
+        "acting_gags": 9,
+        "continuidade": 10,
+        "causalidade": 9.6,
+        "ritmo": 9
+      },
+      "falhas_criticas": 0,
+      "falhas_altas": 0,
+      "falhas_medias": 3,
+      "falhas_baixas": 1,
+      "camadas": {
+        "estrutural": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "narrativa": {
+          "status": "APROVADO",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        },
+        "visual_fisica": {
+          "status": "CORRECAO_NECESSARIA",
+          "falhas_criticas": 0,
+          "falhas_altas": 0
+        }
+      }
+    },
+    "problemas": [
+      {
+        "clipe": 2,
+        "severidade": "MEDIO",
+        "campo": "som",
+        "problema": "Dois eventos de foley nomeiam as peças e o ruído, mas não o material da fonte.",
+        "evidencia": "«a tesoura arranha de leve o tampo» e «o eixo da tesoura estala ao abrir». O campo overall_soundscape já nomeia o aço nos dois eventos.",
+        "correcao_sugerida": "Nomear o aço no raspar da tesoura contra o tampo e no estalo do eixo, sem acrescentar eventos.",
+        "campos_dependentes": [
+          "planos[1].texto e planos[2].texto do clipe 2",
+          "overall_soundscape do clipe 2"
+        ]
+      },
+      {
+        "clipe": 3,
+        "severidade": "MEDIO",
+        "campo": "som; overall_soundscape",
+        "problema": "O claque ao pousar a tesoura não identifica o material em nenhuma das duas faixas de descrição.",
+        "evidencia": "«a tesoura toca o tampo com um claque leve» e «the snips clack softly onto the bench at the right».",
+        "correcao_sugerida": "Nomear o aço da tesoura e do tampo no evento de pouso, separado do clique do corte.",
+        "campos_dependentes": [
+          "planos[2].texto do clipe 3",
+          "set_historia"
+        ]
+      },
+      {
+        "clipe": 5,
+        "severidade": "MEDIO",
+        "campo": "som",
+        "problema": "O claque final identifica a peça, mas não seu material.",
+        "evidencia": "«a chapa dá um claque seco ao fechar». O campo overall_soundscape já identifica a portinhola como aço.",
+        "correcao_sugerida": "Especificar «chapa de aço» no claque de fechamento.",
+        "campos_dependentes": [
+          "planos[2].texto do clipe 5",
+          "overall_soundscape do clipe 5"
+        ]
+      },
+      {
+        "clipe": 6,
+        "severidade": "BAIXO",
+        "campo": "planos[1].texto",
+        "problema": "A entrega antes do prazo está clara, mas não se vê que restava exatamente um grão no instante da entrega.",
+        "evidencia": "O médico recebe a nota no segundo plano; o último grão só é mencionado no plano geral seguinte. O otimismo_final promete a entrega «a um grão do prazo».",
+        "correcao_sugerida": "No fim do segundo plano, reenquadrar sem corte para mostrar o picote na mão do médico e um único grão acima do gargalo no instante em que JUCA solta a nota.",
+        "campos_dependentes": [
+          "planos[2].texto do clipe 6",
+          "efeito do clipe 6",
+          "estado_out do clipe 6",
+          "otimismo_final",
+          "objetos_plantados: ampulheta"
+        ]
+      }
+    ],
+    "correcoes": [
+      {
+        "clipe": 2,
+        "campo": "som",
+        "valor_corrigido": "As solas de borracha roçam brevemente o ladrilho na chegada; a junta de aço raspa baixo ao abrir o compasso; a tesoura de aço arranha de leve o tampo de aço ao ser erguida; a ponta do compasso dá um tique seco na cerâmica; o eixo de aço da tesoura estala ao abrir."
+      },
+      {
+        "clipe": 3,
+        "campo": "som",
+        "valor_corrigido": "O talo lenhoso estala seco entre as lâminas; o aço dá um clique curto ao fechar; as folhas batem de chapa no metal; a tesoura de aço toca o tampo de aço com um claque leve; TÉO solta um suspiro curto de satisfação."
+      },
+      {
+        "clipe": 3,
+        "campo": "overall_soundscape",
+        "valor_corrigido": "The woody stem cracks dryly under the blades; the steel blades click shut on the cut; dry leaves slap flat against the steel lips in one broad beat; the steel snips clack softly onto the steel bench at the right; TEO lets out one soft sigh as his shoulders settle."
+      },
+      {
+        "clipe": 5,
+        "campo": "som",
+        "valor_corrigido": "As solas de borracha chiam brevemente no ladrilho; a dobradiça de aço range baixo ao ceder; as folhas raspam na beirada de metal numa passada longa; a franja seca crepita contra a cuba cerâmica; a chapa de aço dá um claque seco ao fechar."
+      },
+      {
+        "clipe": 6,
+        "campo": "planos[1].texto",
+        "valor_corrigido": "Deep frontal medium. TEO seats the lower caliper tip on the pot rim and dips a shoulder until the upper one meets the stump. JUCA picks up the folded invoice with his right hand and offers it edge first. Below their hands flame travels across the inverted fan. At the end of the shot, tighten without cutting to frame the timer's upper bulb beside the handoff. The doctor's right fingers close on the perforated corner before JUCA lets go. One grain is visible above the neck at the release."
+      }
+    ],
+    "resumo": "A: JSON válido, seis clipes de 10 s, seis estágios em sequência e três planos cronológicos por clipe. B: no 1/P1–3, o giro inicia a queda da areia e a campânula no vidro paga o gag da urgência; no 2/P1–3, a abertura copiada chega intacta à borda errada e posiciona a tesoura; no 3/P2–3, as lâminas separam o talo, a copa cai sobre os apoios e o toco cabe no compasso; no 4/P1–3, os lábios fixos sustentam a copa deitada, e JUCA a vira pelo talo até ela parecer fina de cima; no 5/P2–3, a franja abre a portinhola, a copa reaparece inteira na cuba e uma folha toca a chama; no 6/P1–3, a chama se propaga, a silhueta retorna invertida e a nota muda de mão antes da queda do último grão. C: os cinco pares de estados são literalmente iguais e os efeitos persistem. D/H: os planos sustentam os contatos, os apoios, a queda e a transferência de mão, sem transformação física fora de quadro. E/F: a consequência cresce dentro do degrau objeto, e o envio de quina prepara a entrega da nota fiscal. G: música instrumental discreta nos seis clipes, um som bucal não verbal no 1 e um no 3, sem fala. Restam três ajustes de material no foley e um de enquadramento no prazo final."
+  },
+  "uso": {
+    "input_tokens": 23109,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 8512
+    },
+    "output_tokens": 16076,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 39185
+  },
+  "interaction_id": "resp_02810c8ed1597eaa016b0a11a53df08196950197e74c735e84",
+  "modelo": "gpt-6.2-sol"
+}

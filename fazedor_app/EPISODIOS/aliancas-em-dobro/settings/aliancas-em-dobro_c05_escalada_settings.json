@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. Warm work light grazes the plank walls of a narrow farm dairy. A shallow recess is cut into the stone counter. Its low front lip overhangs just the rear edge of the small four-tile floor. The tiles extend forward in an exposed strip wider than the hoop pair, with clear sightlines over the lip to both hoop bases. A high back rim hides the tiles from the dry gallery. A fixed brass tap feeds the open front half. One lamp shelf pivots on a hinge bolted to the back rim: two sealed battery hoops above, a broad clay heel underneath, a dry right handle and a high thumb switch. The raised shelf leans against a stop. One rectangular oak block sits on edge on the dry right sill in the path of the shelf corner. A closed ring box and a blank invoice share the ledge between JUCA and the groom. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: The flat oak block props the dark hoop shelf just above level. JUCA grips the dry handle with his left hand and touches the block with his right. TEO measures from the left. Two tiles are wet, the tap is shut and the groom leans slightly beside the open ring box and blank invoice. [Shot 1] Start wide over the two wet tiles. TEO runs a flat hand along the line of the stone sill. JUCA lifts the handle with his left hand just enough to take the weight off the flat block. [Shot 2] At 00:02.700, the camera cuts to Low front three-quarter view. JUCA draws the block outward with his right hand and sets it on the blank invoice. TEO lowers both wrists together as JUCA eases the handle down with his left hand. The entire width of the clay heel turns into the water. A sheet pours over the lip as the shelf lands flat on stone. [Shot 3] At 00:06.900, the camera cuts to Widen with the falling sheet. It hits the puddle and spreads through the adjacent seams toward the last dry corner. The groom squares his shoulders with the upright hoops. JUCA lifts his left palm off the handle. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: The hoop shelf is level on the stone sill and both upright hoops are dark. A water sheet borders the last dry tile corner. The oak block weighs down the blank invoice beside the open ring box. TEO is left, JUCA right, the groom upright between them and the tap shut.\noverall_soundscape: The iron hinge creaks briefly as the load lifts; oak scrapes sideways across the dry stone sill; invoice paper crackles under the block at set-down; water hisses along the lip as the sheet widens; wood clacks on stone as the shelf seats; the water sheet slaps the tiles in a broad patter.\nnon_diegetic_music: Muted pizzicato cello divides each soft beat in two, then four, and leaves the cadence open.",
+  "output_filename": "aliancas-em-dobro_c05_escalada"
+}

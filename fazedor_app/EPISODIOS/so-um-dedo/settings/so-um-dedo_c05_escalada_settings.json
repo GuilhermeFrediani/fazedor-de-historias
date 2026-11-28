@@ -1,0 +1,25 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "num_inference_steps": 8,
+  "resolution": "1152x640",
+  "force_fps": 24,
+  "seed": 7001,
+  "guidance_scale": 1,
+  "flow_shift": 12,
+  "skip_steps_cache_type": "spectrum",
+  "audio_prompt_type": "",
+  "activated_loras": [
+    "https://huggingface.co/DeepBeepMeep/MiniMax-H3/resolve/main/loras/minimax_h3_lightx2v_fl2v_turbo_8step_alpha8_v1.0_bf16.safetensors"
+  ],
+  "loras_multipliers": "1.0",
+  "config": "gguf_q4_k_m",
+  "_cli_extra": [
+    "--profile",
+    "5",
+    "--max-ram",
+    "24"
+  ],
+  "video_length": "10s",
+  "prompt": "integrated_multimodal_description: Claymation plasticine stop-motion, handcrafted modelling clay with visible fingerprints and matte finish, photographed on a miniature practical set. Cool ceiling panels light the tiled horticulture workshop of a hospital day clinic. At the center of a steel bench a potted shrub has a flat fan of dry leaves on a slender stem leaning forward. A slot in front of the pot is longer than the fan but only a finger wide. Its balanced steel flap caps a ceramic-lined clipping box with a broad glass front, a solid back facing the workers and a small steady flame inside. A wood-based sand timer stands behind the pot. A smooth caliper lies on the left; closed pruning snips and one folded invoice with a perforated edge lie on the right. TEO (frame left): tall thin white clay man, huge straw-blond walrus moustache, teal knitted beanie with cream stripes, red-and-black checked flannel shirt, brown suspenders, khaki trousers, dark boots. JUCA (frame right): short wide Black clay man, burnt-brown flat cap, mustard cable-knit sweater, olive-green trousers, pale wooden clogs, pencil behind the right ear. Exactly two clay puppets appear in the frame: TEO stays at frame left and JUCA stays at frame right; no other people or animals appear. AT START: TEO holds the caliper across the slot from the left. JUCA grips the stalk in his right hand with the fan crown fringe down on the closed flap. The stump stands behind it; the doctor listens to the sand timer and the snips and folded invoice stay right. [Shot 1] Frontal wide. JUCA plants his feet and brings his right forearm upright over the stalk. The fringe sits lengthwise on the flap with room at both ends. TEO draws his left elbow in to give the fan a clear path. [Shot 2] At 00:02.900, the camera cuts to Level frontal medium across both halves of the bench. TEO lifts his right elbow and carries the caliper clear of the slot. JUCA bears down on the stalk with his right hand. The leafy fringe presses the steel flap inward on its hinge. JUCA opens his fingers; the whole inverted fan slips past the fixed lip in one piece. [Shot 3] At 00:06.700, the camera cuts to Low frontal wide. Through the glass the fringe lands on the ceramic bed. The weighted flap swings shut above the stalk. The fan settles against the ceramic back and one leaf touches the little flame and curls. Above it JUCA draws his empty hand back beside the invoice. They do not speak and their mouths do not move, but they breathe, swallow and react with their whole bodies. AT END: The flap is shut again. Behind the front glass the inverted fan crown rests on the ceramic bed; one leaf curls in the small flame. TEO holds the caliper clear at left, JUCA's right hand is empty beside the snips and folded invoice, and the doctor listens to the last of the sand.\noverall_soundscape: Rubber soles squeak briefly on tile as JUCA braces; the steel hinge rasps low as the flap tips in; dry leaves scrape the steel lip in one long descending stroke; the dry fringe crinkles softly against the ceramic bed; the weighted steel flap clacks shut above it.\nnon_diegetic_music: Low clarinet repeats a soft descending pair, closer together on each pass, then leaves one beat open.",
+  "output_filename": "so-um-dedo_c05_escalada"
+}
